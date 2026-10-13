@@ -164,9 +164,9 @@ brand kit, and real photos (13 slots with briefs in `src/content/images.ts`).
 
 ## 7. Launch blockers and open issues
 
-1. **Repository.** The GitHub app couldn't create `Ssmith362/acorn-electric-website`
-   (no repo-create permission). The code is committed locally; see the session
-   notes for how it gets pushed.
+1. **Repository.** Code lives in `Ssmith362/AcornElectric`. Note the repo is
+   **public**; no secrets are committed (`.env*` is ignored), but switch it to
+   private if Acorn prefers.
 2. **Address conflict** unresolved; no address in schema or on the page.
 3. **License number** sourced from a third party; verify on L&I.
 4. **Old-site redirects.** The current site couldn't be crawled from the build
