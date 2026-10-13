@@ -1,0 +1,14 @@
+# Normalise line endings so a Windows checkout and the Linux build container
+# produce byte-identical files. Without this, CRLF can leak into the repo and
+# break shell scripts on the server.
+* text=auto eol=lf
+
+# Binary assets must never be line-ending normalised.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
