@@ -18,7 +18,7 @@ export function CtaSection({
 }) {
   return (
     <section id={id} className="on-night relative overflow-hidden bg-night-950 py-20 text-white lg:py-28" aria-labelledby={`${id}-title`}>
-      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_15%_30%,rgb(210_244_85/.10),transparent_70%)]" />
+      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_15%_30%,rgb(255_239_31/.10),transparent_70%)]" />
       <div className="container-x relative grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5" data-reveal>
           <p className="label-mono flex items-center gap-3 text-mist-300">

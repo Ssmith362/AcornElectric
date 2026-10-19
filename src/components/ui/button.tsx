@@ -4,7 +4,7 @@ import type { ComponentProps, ReactNode } from "react";
 type Variant = "volt" | "outline-night" | "outline-mist" | "ink";
 
 const styles: Record<Variant, string> = {
-  volt: "bg-volt-400 text-night-950 hover:bg-volt-300 shadow-[0_0_0_1px_rgb(210_244_85/.4),0_8px_30px_-8px_rgb(210_244_85/.45)]",
+  volt: "bg-volt-400 text-night-950 hover:bg-volt-300 shadow-[0_0_0_1px_rgb(255_239_31/.4),0_8px_30px_-8px_rgb(255_239_31/.45)]",
   "outline-night": "border border-white/25 text-white hover:border-volt-400 hover:text-volt-300",
   "outline-mist": "border border-ink/20 text-ink hover:border-ink hover:bg-ink hover:text-mist-50",
   ink: "bg-ink text-mist-50 hover:bg-night-700",

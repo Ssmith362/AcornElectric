@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Residential Electrical Services in Spokane | Acorn Electric",
   description:
-    "EV chargers, panel and service upgrades, subpanels, hot tub wiring, recessed and exterior lighting, mast repair, inspections and repairs for Spokane-area homes.",
+    "EV chargers, panel and service upgrades, hot tubs, knob and tube rewiring, surge protection, remodels, new homes, inspections and repairs for Spokane-area homes.",
   path: "/services",
 });
 

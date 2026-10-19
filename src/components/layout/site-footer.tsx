@@ -12,7 +12,7 @@ export function SiteFooter() {
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-volt-400/50 to-transparent" />
       <div className="container-x grid gap-12 py-16 lg:grid-cols-12 lg:py-20">
         <div className="lg:col-span-4">
-          <Logo />
+          <Logo size="lg" />
           <p className="mt-6 max-w-sm leading-relaxed">
             Residential electrical work for Spokane homeowners. Understand the problem, do it properly, leave you
             with one less thing to worry about.

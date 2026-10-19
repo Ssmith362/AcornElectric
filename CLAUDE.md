@@ -21,6 +21,7 @@ Digital" on any client-facing output.
 
 - Business facts: `src/lib/site.ts` (each fact has a `verified` flag)
 - Services / areas / jobs / reviews / images: `src/content/*.ts`
+  (site order of services is the `order` list in `services.ts`)
 - Design tokens: `src/app/globals.css` (`@theme`)
 - Structured data rules: `src/lib/schema.ts`
 - Handoff, launch checklist, roadmap: `docs/`
@@ -34,9 +35,12 @@ leave it null, and the site shows a "To confirm" flag in preview builds.
 
 ## Design
 
-Deliberately NOT the Everclean/EREP template: no rounded cards, no warm sand,
-no Archivo/Inter. Night + volt + copper + mist, square corners, 1px rules,
-panel-schedule and circuit-trace motifs. Keep it that way.
+Deliberately NOT the Everclean/EREP template: no rounded cards, no Archivo/Inter.
+Square corners, 1px rules, panel-schedule and circuit-trace motifs.
+Token names night/volt/copper/mist now carry Acorn's real brand colours,
+sampled from the logo (Oct 2026): night = forest green, volt = electric
+yellow, copper = squirrel orange, mist = light cream. Real logo and mascot
+live in `public/brand/` and render through `src/components/ui/logo.tsx`.
 
 ## SEO rules
 

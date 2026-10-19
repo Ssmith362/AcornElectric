@@ -1,20 +1,18 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   ACORN ELECTRIC: TEMPORARY DESIGN SYSTEM
+   ACORN ELECTRIC: DESIGN SYSTEM (brand kit applied Oct 2026)
    --------------------------------------------------------------------------
-   Built before Acorn's brand kit arrives. Every colour and font lives in the
-   @theme block below, so swapping in the real brand is a token change, not a
-   rewrite.
-
-   The idea: "grown, then wired." An acorn is copper-brown and alive; current
-   is precise and bright. So:
-     - Night (deep green-black) is the stage. Dark sections carry the drama.
-     - Volt (a live-wire chartreuse) is the current: a thin line, a lit word,
-       a status light. Never a background wash, never body text on light.
-     - Copper is the acorn and the conductor: hairlines, numbers, small marks.
-     - Mist (cool green-grey) is the light surface. Not warm sand, not white.
-     - Square corners and 1px rules. Panels and schedules, not rounded cards.
+   Colours are sampled from Acorn's own logo files (Eric, Oct 16 2026):
+     - Night  = the forest green behind the ACORN wordmark (#013328), deepened
+                into a scale for dark sections.
+     - Volt   = the electric yellow of "ELECTRIC" and the lightning tails.
+                The current: thin lines, lit words, status lights, buttons.
+     - Copper = the squirrel's orange fur and the acorn in the "O".
+     - Mist   = the cream of the wordmark letters, kept very light as the
+                page surface so it reads as cream, not sand.
+   Token NAMES are unchanged from the temporary system, so components didn't
+   need rewriting. Square corners and 1px rules stay.
 
    Signature motifs (see src/components/ui):
      - Trace: a circuit-trace line that runs down the page edge and bends 45°
@@ -24,38 +22,45 @@
    ========================================================================== */
 
 @theme {
-  --color-night-950: #050908;
-  --color-night-900: #0a110f;
-  --color-night-850: #0e1714;
-  --color-night-800: #131e1a;
-  --color-night-700: #1d2a25;
-  --color-night-600: #2a3a34;
-  --color-night-500: #3d5049;
+  --color-night-950: #021a14;
+  --color-night-900: #04241c;
+  --color-night-850: #072b22;
+  --color-night-800: #013328;
+  --color-night-700: #0d4336;
+  --color-night-600: #1c5646;
+  --color-night-500: #346b5a;
 
-  --color-volt-200: #effcb8;
-  --color-volt-300: #e2fa86;
-  --color-volt-400: #d2f455;
-  --color-volt-500: #bde52f;
-  --color-volt-600: #93b81a;
+  --color-volt-200: #fffbb8;
+  --color-volt-300: #fff76a;
+  --color-volt-400: #ffef1f;
+  --color-volt-500: #f5df00;
+  --color-volt-600: #cdb700;
   /* Only for volt-family text on LIGHT surfaces (passes AA on mist-50). */
-  --color-volt-ink: #4b6100;
+  --color-volt-ink: #6a5c00;
 
-  --color-copper-200: #f3d2b5;
-  --color-copper-300: #e8ad7d;
-  --color-copper-400: #da8b52;
-  --color-copper-500: #c26f36;
-  --color-copper-600: #9d5626;
-  --color-copper-700: #7a411b;
+  --color-copper-200: #fcd7b8;
+  --color-copper-300: #f6aa72;
+  --color-copper-400: #ec8540;
+  --color-copper-500: #e0661d;
+  --color-copper-600: #b83d08;
+  --color-copper-700: #9c3509;
 
-  --color-mist-50: #f3f5f1;
-  --color-mist-100: #e9ede6;
-  --color-mist-200: #d9dfd5;
-  --color-mist-300: #bdc6b8;
-  --color-mist-400: #8f9a8b;
+  --color-mist-50: #fdf9ef;
+  --color-mist-100: #f9f0dc;
+  --color-mist-200: #efe3c4;
+  --color-mist-300: #ddd0ad;
+  --color-mist-400: #a99d7e;
 
-  --color-ink: #0a110f;
-  --color-ink-soft: #3c4843;
-  --color-ink-mute: #5b6862;
+  /* Brand accents used as-is */
+  --color-brand-green: #013328;
+  --color-brand-cream: #feefc6;
+  --color-brand-yellow: #ffff01;
+  --color-brand-orange: #e0661d;
+  --color-brand-leaf: #2d6f41;
+
+  --color-ink: #082019;
+  --color-ink-soft: #34463d;
+  --color-ink-mute: #56665c;
 
   --color-danger: #b42318;
   --color-ok: #2f7a3e;
@@ -74,10 +79,10 @@
 @keyframes pulse-node {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgb(210 244 85 / 0.55);
+    box-shadow: 0 0 0 0 rgb(255 239 31 / 0.55);
   }
   50% {
-    box-shadow: 0 0 0 6px rgb(210 244 85 / 0);
+    box-shadow: 0 0 0 6px rgb(255 239 31 / 0);
   }
 }
 
@@ -169,8 +174,8 @@
 @utility text-lit {
   color: var(--color-volt-400);
   text-shadow:
-    0 0 18px rgb(210 244 85 / 0.35),
-    0 0 2px rgb(210 244 85 / 0.6);
+    0 0 18px rgb(255 239 31 / 0.35),
+    0 0 2px rgb(255 239 31 / 0.6);
 }
 
 /* Fine grid, like the back of a breaker panel or a drafting sheet. */
@@ -185,8 +190,8 @@
 @utility bg-grid-mist {
   background-color: var(--color-mist-50);
   background-image:
-    linear-gradient(rgb(10 17 15 / 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(10 17 15 / 0.045) 1px, transparent 1px);
+    linear-gradient(rgb(8 32 25 / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(8 32 25 / 0.045) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 

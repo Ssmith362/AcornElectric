@@ -1,42 +1,39 @@
+import Image from "next/image";
+
 /**
- * TEMPORARY MARK. Acorn's real logo files haven't been supplied yet; this is
- * a stand-in drawn to sit in the design system. When the real logo arrives,
- * replace this component's contents with it (inline SVG keeps it crisp and
- * lets it take colour from CSS). Every header/footer use goes through here.
+ * Acorn's real logo (supplied by Eric Beisley, Oct 16 2026). Cut out from the
+ * on-black JPG exports, so the cream keyline is intact and it sits on the dark
+ * header and footer. Masters: Acorn Electric-01…08.jpg; Eric also has AI/EPS.
+ *
+ * Files in /public/brand:
+ *   acorn-logo-horizontal-640  mascot + wordmark side by side (header, footer)
+ *   acorn-wordmark-640         wordmark only
+ *   acorn-mascot-900           the squirrel on its own
  */
-export function AcornMark({ className = "h-8 w-8" }: { className?: string }) {
+export function Logo({ size = "md" }: { size?: "md" | "lg"; tone?: "light" | "dark" }) {
+  const cls = size === "lg" ? "h-20 w-auto sm:h-24" : "h-12 w-auto sm:h-14 lg:h-[3.75rem]";
   return (
-    <svg viewBox="0 0 32 32" className={className} aria-hidden="true" focusable="false">
-      {/* stem that turns into a trace */}
-      <path d="M16 7.5V4.5l3-3" fill="none" stroke="var(--color-volt-400)" strokeWidth="1.6" strokeLinecap="square" />
-      <circle cx="19.6" cy="1.6" r="1.4" fill="var(--color-volt-400)" />
-      {/* cap */}
-      <path d="M5.5 13.2c0-4.6 4.7-6.4 10.5-6.4s10.5 1.8 10.5 6.4z" fill="var(--color-copper-500)" />
-      <path d="M8 10.2h16M7 12h18" stroke="var(--color-copper-700)" strokeWidth=".8" opacity=".55" />
-      {/* nut */}
-      <path
-        d="M7.6 14.6h16.8c0 7.2-3.6 13-8.4 15-4.8-2-8.4-7.8-8.4-15z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-      />
-      {/* filament */}
-      <path d="M16 16.5v6.2" stroke="var(--color-volt-400)" strokeWidth="1.6" />
-      <circle cx="16" cy="25" r="1.3" fill="var(--color-volt-400)" />
-    </svg>
+    <Image
+      src="/brand/acorn-logo-horizontal-640.webp"
+      alt="Acorn Electric"
+      width={640}
+      height={327}
+      priority
+      className={cls}
+    />
   );
 }
 
-export function Logo({ tone = "light" }: { tone?: "light" | "dark" }) {
-  const word = tone === "light" ? "text-white" : "text-ink";
-  const sub = tone === "light" ? "text-mist-300" : "text-ink-mute";
+/** The squirrel on its own. Decorative unless you pass alt text. */
+export function Mascot({ className = "h-40 w-auto", alt = "" }: { className?: string; alt?: string }) {
   return (
-    <span className="inline-flex items-center gap-2.5">
-      <AcornMark className={`h-9 w-9 ${word}`} />
-      <span className="flex flex-col leading-none">
-        <span className={`font-display text-[1.35rem] font-bold tracking-[-0.03em] ${word}`}>Acorn</span>
-        <span className={`label-mono mt-1 text-[0.6rem] tracking-[0.32em] ${sub}`}>Electric</span>
-      </span>
-    </span>
+    <Image
+      src="/brand/acorn-mascot-900.webp"
+      alt={alt}
+      width={900}
+      height={1106}
+      className={className}
+      aria-hidden={alt ? undefined : true}
+    />
   );
 }

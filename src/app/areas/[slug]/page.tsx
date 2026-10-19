@@ -33,7 +33,7 @@ export default async function AreaPage({ params }: Props) {
   return (
     <>
       <section className="on-night relative isolate overflow-hidden bg-grid-night text-white">
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_40%_60%_at_85%_30%,rgb(194_111_54/.18),transparent_70%)]" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_40%_60%_at_85%_30%,rgb(224_102_29/.18),transparent_70%)]" />
         <div className="container-x pt-8 pb-16 lg:pt-10 lg:pb-24">
           <Breadcrumbs trail={[{ name: "Service areas", path: "/areas" }, { name: a.name, path }]} />
           <div className="mt-10 max-w-4xl">

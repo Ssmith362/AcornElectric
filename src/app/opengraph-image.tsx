@@ -1,15 +1,17 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 /**
- * Site-wide share card, generated at build time. Temporary until a real
- * branded photo exists; then drop a 1200×630 image in /public/og/ and pass it
- * as `image` to pageMetadata() instead.
+ * Site-wide share card, generated at build time, with Acorn's real logo.
  */
 export const alt = "Acorn Electric, residential electrician in Spokane, WA";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OgImage() {
+export default async function OgImage() {
+  const logo = await readFile(join(process.cwd(), "public/brand/acorn-logo-horizontal-640.png"));
+  const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
   return new ImageResponse(
     (
       <div
@@ -19,26 +21,26 @@ export default function OgImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: "72px 80px",
-          background: "#0a110f",
+          padding: "56px 80px 64px",
+          background: "#04241c",
           backgroundImage:
             "linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
           color: "white",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          <div style={{ width: 18, height: 18, borderRadius: 9, background: "#d2f455", boxShadow: "0 0 24px #d2f455" }} />
-          <div style={{ fontSize: 30, letterSpacing: 8, color: "#bdc6b8" }}>ACORN ELECTRIC</div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logoSrc} width={340} height={174} alt="" />
         </div>
-        <div style={{ display: "flex", flexDirection: "column", fontSize: 92, fontWeight: 700, lineHeight: 1, letterSpacing: -3 }}>
+        <div style={{ display: "flex", flexDirection: "column", fontSize: 84, fontWeight: 700, lineHeight: 1, letterSpacing: -3 }}>
           <span>Wired right.</span>
-          <span style={{ color: "#d2f455" }}>One less thing</span>
+          <span style={{ color: "#ffef1f" }}>One less thing</span>
           <span>to worry about.</span>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 28, color: "#bdc6b8" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 28, color: "#ddd0ad" }}>
           <span>Residential electrician · Spokane, WA</span>
-          <span style={{ color: "#da8b52" }}>callacornelectric.com</span>
+          <span style={{ color: "#ec8540" }}>callacornelectric.com</span>
         </div>
       </div>
     ),

@@ -17,7 +17,7 @@ export const metadata = pageMetadata({
 export default function ContactPage() {
   return (
     <section className="on-night relative isolate overflow-hidden bg-grid-night text-white">
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_50%_at_20%_20%,rgb(210_244_85/.10),transparent_70%)]" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_50%_at_20%_20%,rgb(255_239_31/.10),transparent_70%)]" />
       <div className="container-x pt-8 pb-16 lg:pt-10 lg:pb-24">
         <Breadcrumbs trail={[{ name: "Contact", path: "/contact" }]} />
         <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-16">

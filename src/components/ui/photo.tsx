@@ -31,10 +31,18 @@ export function Photo({
       style={{ aspectRatio: `${img.width} / ${img.height}` }}
     >
       {img.src ? (
-        <Image src={img.src} alt={img.alt} fill sizes={sizes} priority={priority} className="object-cover" />
+        <Image
+          src={img.src}
+          alt={img.alt}
+          fill
+          sizes={sizes}
+          priority={priority}
+          className="object-cover"
+          style={"focus" in img && img.focus ? { objectPosition: img.focus } : undefined}
+        />
       ) : (
         <>
-          <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgb(210_244_85/.07),transparent_60%)]" />
+          <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgb(255_239_31/.07),transparent_60%)]" />
           <PlaceholderArt art={img.art} />
           <figcaption className={`absolute right-7 left-7 flex justify-end ${label === "top" ? "top-3" : "bottom-3"}`}>
             <span className="label-mono max-w-full truncate border border-white/15 bg-night-950/80 px-2.5 py-1.5 text-[0.6rem] text-mist-300 backdrop-blur-sm">

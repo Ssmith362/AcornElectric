@@ -36,7 +36,7 @@ export async function sendMail(opts: {
   const html = `<table cellpadding="6" style="border-collapse:collapse;font:15px system-ui,sans-serif">${opts.rows
     .map(
       ([k, v]) =>
-        `<tr><td style="color:#5b6862;vertical-align:top;white-space:nowrap"><strong>${esc(k)}</strong></td><td style="color:#0a110f;white-space:pre-wrap">${esc(v)}</td></tr>`,
+        `<tr><td style="color:#56665c;vertical-align:top;white-space:nowrap"><strong>${esc(k)}</strong></td><td style="color:#082019;white-space:pre-wrap">${esc(v)}</td></tr>`,
     )
     .join("")}</table>`;
 

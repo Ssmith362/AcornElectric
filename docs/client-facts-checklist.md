@@ -10,15 +10,15 @@ Status key: ✅ confirmed · 🟡 sourced but unconfirmed · ❌ unknown
 | Fact | Current value | Status | Source / note |
 |---|---|---|---|
 | Business name | Acorn Electric | 🟡 | Current website |
-| Legal name | Acorn Electric LLC | 🟡 | Public license listing (BuildZoom). Not shown on site or in schema until confirmed |
-| Owner | Eric Beisley | 🟡 | Public license listing / Alignable. Not used in copy yet |
-| **Phone** | (509) 808-1925 | 🟡 marked verified | Same on current site and license listing. Confirm it's the number Acorn wants advertised |
-| **Lead email** | eric@callacornelectric.com | 🟡 | Current website. Confirm where leads and applications should go (`LEADS_TO`, `CAREERS_TO`) |
+| Legal name | Acorn Electric LLC | ✅ | Eric's email signature, Oct 16 2026 ("Owner- Acorn Electric LLC") |
+| Owner | Eric Beisley | ✅ | Eric's email signature, Oct 16 2026 |
+| Phone | (509) 808-1925 | ✅ | Eric's email signature, Oct 16 2026 |
+| Public email | eric@callacornelectric.com | ✅ | Eric's email signature. Still set where form leads/applications go (`LEADS_TO`, `CAREERS_TO`) |
 | **Public address** | *not published* | ❌ | Site lists 4615 E 6th Ave, Spokane Valley; Google reportedly lists 3707 E Decatur Ave #2, Spokane. Decide which is real, and whether to show an address at all (service-area business). Update Google Business Profile to match |
 | **WA contractor license #** | ACORNEL752C5 | 🟡 | Third-party listing only. Verify on https://secure.lni.wa.gov/verify/ |
 | Hours | *not shown* | ❌ | |
 | Emergency / after-hours service | *not claimed anywhere* | ❌ | Old site mentions "emergency services". Don't add until confirmed, with real availability |
-| Official website URL | https://www.callacornelectric.com | 🟡 | Confirm www vs non-www for the canonical host |
+| Official website URL | https://www.callacornelectric.com | 🟡 | Eric confirmed he bought callacornelectric.com on Wix. Confirm www vs non-www for the canonical host |
 | Social profiles | *none linked* | ❌ | Only add genuine Acorn accounts. Old site's social links reportedly point to wrong profiles |
 | **Google Business Profile URL + review link** | *none* | ❌ | Needed for reviews section + `sameAs` |
 | Review count / rating | *not shown* | ❌ | Audit said 70 five-star reviews; one aggregator shows 15. Don't show a number until verified at launch |
@@ -41,6 +41,24 @@ Status key: ✅ confirmed · 🟡 sourced but unconfirmed · ❌ unknown
 | Warranty | *none claimed* | |
 | Process (4 steps) | Generic | Confirm it matches how Acorn actually quotes, schedules and follows up |
 | "Floors protected, dust controlled, cleaned up after" | Brand value | Confirm it reflects practice |
+
+### Services added from Eric's list (Oct 16 2026)
+
+Eric's own list: new custom home electrical, remodels and additions, panel
+upgrades, service upgrades, troubleshooting, power for new appliances, EV
+chargers, grounding updates, knob and tube rewire, whole-home surge
+protection, whole-home safety inspection, real estate repairs to sell a home,
+commercial electrical. All have pages (`src/content/services-added.ts` for the
+new ones).
+
+**Acorn does NOT do:** solar, industrial, large-scale construction, commercial
+fire alarm, sound and audio. Nothing on the site advertises these; the attic
+fan and commercial FAQs say so plainly.
+
+Not on Eric's list but already built (kept, `confirmed: true` from the brief):
+subpanels, hot tub wiring (also named in the Oct 12 meeting), recessed
+lighting, service mast repair, attic fans. Exterior lighting still
+`confirmed: false`, although Eric's covered-deck photos suggest he does it.
 
 ## Service areas (`src/content/areas.ts`)
 
@@ -69,8 +87,10 @@ Status key: ✅ confirmed · 🟡 sourced but unconfirmed · ❌ unknown
 
 | Item | Status | Note |
 |---|---|---|
-| **Logo (vector)** | ❌ | Temporary mark in `src/components/ui/logo.tsx` |
-| Brand colours / fonts | ❌ | Temporary system in `src/app/globals.css`; swap tokens when the kit arrives |
-| **Photos** | ❌ | 13 slots listed in `src/content/images.ts`, each with a shot brief. Placeholders are labelled as placeholders |
+| Logo | ✅ | Real logo set from Eric (8 JPG exports, Oct 16 2026). Transparent cut-outs in `public/brand/`. Eric also has AI/EPS masters if we need vectors |
+| Brand colours | ✅ | Sampled from the logo: green #013328, cream #FEEFC6, yellow #FFFF01, orange #E0661D. In `src/app/globals.css` |
+| Brand fonts | 🟡 | Eric's "font and color guide" (.ai + screenshot) came as Gmail attachments we haven't opened yet. Site still uses Bricolage Grotesque + Geist; swap if the guide names a font |
+| Photos | 🟡 | 14 real job photos from Eric (Oct 16 2026) placed in `src/content/images.ts`. Still on placeholders: hot tub, attic fan, repair, van, surge protector, home-sale repair, commercial |
+| Careers photo of Eric with two kids | 🟡 | Eric sent it; confirm he's happy with the kids on the public careers page |
 | Real customer reviews (text + name) | ❌ | `src/content/reviews.ts`. Copy from Google, word for word |
 | Owner bio / photo (optional) | ❌ | Would strengthen an About section later |

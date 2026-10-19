@@ -1,4 +1,5 @@
 import { SHOW_REVIEW_FLAGS } from "@/components/ui/review-flag";
+import { addedServices } from "./services-added";
 import type { Service } from "./types";
 
 /**
@@ -17,7 +18,7 @@ import type { Service } from "./types";
 const permitLine =
   "Inside Spokane city limits, electrical permits and inspections go through the City of Spokane. Most other addresses in the area, including unincorporated Spokane County, are permitted and inspected by Washington L&I. We check which applies to your address.";
 
-export const services: Service[] = [
+const coreServices: Service[] = [
   {
     slug: "ev-charger-installation",
     name: "EV charger installation",
@@ -141,13 +142,13 @@ export const services: Service[] = [
     slug: "electrical-panel-upgrades",
     name: "Electrical panel upgrade",
     short: "Panel upgrades",
-    tag: "Service · 100–200A",
+    tag: "Replace · Breakers · Space",
     confirmed: true,
     image: "panel",
     meta: {
       title: "Electrical Panel Upgrades in Spokane, WA | Acorn Electric",
       description:
-        "Panel replacements and service upgrades for Spokane homes. Out of breaker space, an older panel, or adding an EV charger or hot tub? Options first.",
+        "Electrical panel replacement for Spokane homes. Out of breaker space, an older or flagged panel, or adding an EV charger or hot tub? Options first.",
     },
     h1: "Electrical panel upgrades for Spokane homes",
     lede:
@@ -233,7 +234,7 @@ export const services: Service[] = [
         a: "Some older panel lines, such as Federal Pacific Stab-Lok and Zinsco, have well-documented reliability concerns, and many insurers and home inspectors flag them. We'll look at yours and tell you honestly what we see.",
       },
     ],
-    related: ["subpanel-installation", "ev-charger-installation", "service-mast-repair"],
+    related: ["electrical-service-upgrade", "whole-home-surge-protection", "ev-charger-installation"],
   },
   {
     slug: "subpanel-installation",
@@ -488,7 +489,7 @@ export const services: Service[] = [
         a: "Usually the dimmer isn't compatible with the LED fixtures. Replacing the dimmer with a matched one fixes most cases.",
       },
     ],
-    related: ["exterior-lighting", "electrical-repair", "attic-fan-installation"],
+    related: ["remodel-and-addition-wiring", "exterior-lighting", "electrical-repair"],
   },
   {
     slug: "service-mast-repair",
@@ -574,7 +575,7 @@ export const services: Service[] = [
         a: `Yes. Service entrance work requires a permit and inspection before reconnection. ${permitLine}`,
       },
     ],
-    related: ["electrical-panel-upgrades", "electrical-inspections", "electrical-repair"],
+    related: ["electrical-service-upgrade", "electrical-panel-upgrades", "grounding-and-bonding-upgrades"],
   },
   {
     slug: "electrical-inspections",
@@ -660,7 +661,7 @@ export const services: Service[] = [
         a: "Not necessarily, but it deserves a close look. Its condition, how much is still live and what's been modified all matter, and insurers often ask about it. An inspection gives you facts to negotiate with.",
       },
     ],
-    related: ["electrical-repair", "electrical-panel-upgrades", "service-mast-repair"],
+    related: ["knob-and-tube-rewiring", "real-estate-electrical-repairs", "electrical-repair"],
   },
   {
     slug: "attic-fan-installation",
@@ -733,8 +734,8 @@ export const services: Service[] = [
         a: "No. An attic fan ventilates the attic only. A whole-house fan pulls cooler outside air through open windows into the house and exhausts it through the attic. They solve different problems.",
       },
       {
-        q: "Solar or wired attic fan?",
-        a: "Solar fans need no circuit but only run when the sun is on the panel. Wired fans run on a thermostat whenever it's hot. Both have a place; we'll discuss which fits your home.",
+        q: "Do you install solar-powered attic fans?",
+        a: "No. We install wired attic fans on a thermostat, which run whenever the attic is hot rather than only when the sun is on a panel. We don't do solar work.",
       },
       {
         q: "Will an attic fan cause a roof leak?",
@@ -900,12 +901,46 @@ export const services: Service[] = [
       },
       {
         q: "Do you work on older homes with knob-and-tube or aluminum wiring?",
-        a: "Yes. Older wiring needs particular care and the right materials. We'll tell you what we find and what your options are.",
+        a: "Yes. Older wiring needs particular care and the right materials. We'll tell you what we find and what your options are, including a full knob and tube rewire if it's time.",
       },
     ],
-    related: ["electrical-inspections", "electrical-panel-upgrades", "recessed-lighting"],
+    related: ["electrical-inspections", "knob-and-tube-rewiring", "whole-home-surge-protection"],
   },
 ];
+
+/**
+ * Site order (panel-schedule index, nav, footer, services page). Highest-demand
+ * searches first, per the Oct 12 2026 meeting: EV chargers, panels, hot tubs.
+ */
+const order = [
+  "ev-charger-installation",
+  "electrical-panel-upgrades",
+  "electrical-service-upgrade",
+  "hot-tub-wiring",
+  "knob-and-tube-rewiring",
+  "whole-home-surge-protection",
+  "electrical-inspections",
+  "electrical-repair",
+  "dedicated-appliance-circuits",
+  "subpanel-installation",
+  "remodel-and-addition-wiring",
+  "new-home-electrical",
+  "real-estate-electrical-repairs",
+  "grounding-and-bonding-upgrades",
+  "recessed-lighting",
+  "exterior-lighting",
+  "service-mast-repair",
+  "attic-fan-installation",
+  "commercial-electrical",
+];
+
+const all = [...coreServices, ...addedServices];
+export const services: Service[] = order.map((slug) => {
+  const s = all.find((x) => x.slug === slug);
+  if (!s) throw new Error(`services order lists unknown slug: ${slug}`);
+  return s;
+});
+if (services.length !== all.length) throw new Error("A service is missing from the `order` list in services.ts");
 
 /**
  * What the site actually shows. Unconfirmed services appear only in preview

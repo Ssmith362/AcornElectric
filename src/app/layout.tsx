@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: "%s | Acorn Electric",
   },
   description:
-    "Residential electrician in Spokane, WA. EV chargers, panel upgrades, subpanels, hot tub wiring, lighting and repairs, done properly and explained clearly.",
+    "Residential electrician in Spokane, WA. EV chargers, panel and service upgrades, hot tubs, knob and tube rewiring, remodels and repairs, done properly and explained clearly.",
   applicationName: site.name,
   // Belt and braces with robots.txt: preview builds are never indexable.
   ...(ALLOW_INDEXING ? {} : { robots: { index: false, follow: false } }),
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050908",
+  themeColor: "#04241c",
   colorScheme: "light",
 };
 

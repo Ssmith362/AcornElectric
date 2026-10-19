@@ -1,3 +1,4 @@
+import { Mascot } from "@/components/ui/logo";
 import { SectionHead } from "@/components/ui/section-head";
 
 /**
@@ -38,6 +39,9 @@ export function Principles() {
             title={<span id="why-title">We&apos;d rather do it once.</span>}
             intro="Doing electrical work properly isn't the fastest or the cheapest way. It's the way that doesn't come back to bite you."
           />
+          <div className="mt-12 hidden lg:block" data-reveal>
+            <Mascot className="h-auto w-56 drop-shadow-[0_18px_30px_rgb(8_32_25/.18)] xl:w-64" />
+          </div>
         </div>
         <ol className="lg:col-span-7">
           {principles.map((p, i) => (

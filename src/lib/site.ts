@@ -17,21 +17,21 @@ type Fact<T> = { value: T; verified: boolean; note?: string };
 
 export const site = {
   name: "Acorn Electric",
-  legalName: { value: "Acorn Electric LLC", verified: false, note: "From public license listing." } as Fact<string>,
+  legalName: { value: "Acorn Electric LLC", verified: true, note: "Eric's email signature (Oct 16 2026): \"Owner- Acorn Electric LLC\"." } as Fact<string>,
 
   /** Shown in copy as the person behind the business. Public license record. */
-  owner: { value: "Eric Beisley", verified: false } as Fact<string>,
+  owner: { value: "Eric Beisley", verified: true, note: "Eric's email signature, Oct 16 2026." } as Fact<string>,
 
   phone: {
     value: { display: "(509) 808-1925", e164: "+15098081925" },
     verified: true,
-    note: "Same number on Acorn's current website and the public license listing. Still confirm it's the line Acorn wants advertised.",
+    note: "Eric's email signature (Oct 16 2026), current website and license listing all agree.",
   } as Fact<{ display: string; e164: string }>,
 
   email: {
     value: "eric@callacornelectric.com",
-    verified: false,
-    note: "Listed on the current website. Confirm this is where leads should go.",
+    verified: true,
+    note: "Eric's business email (signature, Oct 16 2026). Form leads go wherever LEADS_TO points.",
   } as Fact<string>,
 
   /**
