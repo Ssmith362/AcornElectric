@@ -1,59 +1,106 @@
-import { SectionHead } from "@/components/ui/section-head";
 import { ReviewFlag, SHOW_REVIEW_FLAGS } from "@/components/ui/review-flag";
-import { reviews } from "@/content/reviews";
+import { reviews, type Review } from "@/content/reviews";
 import { site } from "@/lib/site";
 
 /**
- * Proof. Real Google reviews from src/content/reviews.ts, shown the way the
- * Therapy in Motion site does: the customer's words, their name, "via Google",
- * and links out to Google. No stars or review count on purpose: those live on
- * the Google profile so they are always current. No review schema either.
+ * Proof, shown like the Therapy in Motion site: two ribbons of compact review
+ * cards drifting in opposite directions. Real Google reviews only, word for
+ * word (src/content/reviews.ts). Each card shows the stars the reviewer gave,
+ * the quote (clamped visually, full text stays in the HTML), the name, Google's
+ * own "5 months ago" wording and "via Google".
+ *
+ * No overall rating or review count is printed (they'd go stale; Google shows
+ * the live numbers), and no review structured data (Google ignores it on a
+ * business's own site).
  */
+function Stars({ rating }: { rating: number }) {
+  return (
+    <div className="flex items-center gap-0.5" role="img" aria-label={`${rating.toFixed(1)} out of 5 stars`}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg key={i} viewBox="0 0 20 20" className={`h-4 w-4 ${i < Math.round(rating) ? "text-volt-500" : "text-ink/15"}`} fill="currentColor" aria-hidden="true">
+          <path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L1.6 7.7l5.8-.8L10 1.6Z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+function Ribbon({ items, reverse = false }: { items: Review[]; reverse?: boolean }) {
+  return (
+    <div className={`marquee-track ${reverse ? "marquee-track--reverse" : "marquee-track--slow"} gap-4`}>
+      {[0, 1].map((copy) => (
+        <div key={copy} className="flex shrink-0 gap-4" aria-hidden={copy === 1 ? "true" : undefined}>
+          {items.map((r) => (
+            <figure key={`${copy}-${r.name}`} className="flex w-[19rem] shrink-0 flex-col border border-ink/10 bg-white px-5 py-4 sm:w-[21rem]">
+              <Stars rating={r.rating} />
+              <blockquote className="mt-2 line-clamp-3 font-sans text-[0.92rem] leading-snug whitespace-normal text-ink">
+                “{r.quote}”
+              </blockquote>
+              <figcaption className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[0.8rem]">
+                <span className="font-semibold text-ink">{r.name}</span>
+                {r.when ? <span className="text-ink/55">{r.when}</span> : null}
+                <span className="text-ink/45">via {r.source}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function Reviews() {
   if (!reviews.length && !SHOW_REVIEW_FLAGS) return null;
   const link = site.google.reviewUrl || site.google.profileUrl;
+  const half = Math.ceil(reviews.length / 2);
 
   return (
-    <section className="bg-mist-50 py-20 lg:py-28" aria-labelledby="reviews-title">
+    <section className="overflow-hidden bg-mist-100 py-14 sm:py-20" aria-labelledby="reviews-title">
       <div className="container-x">
-        <SectionHead label="In their own words" title={<span id="reviews-title">What customers say.</span>} />
-        {reviews.length ? (
-          <ul className="mt-12 gap-5 md:columns-2 lg:columns-3">
-            {reviews.map((r) => (
-              <li
-                key={r.name}
-                className="mb-5 break-inside-avoid border border-ink/10 bg-white p-7"
-                data-reveal
-              >
-                <blockquote className="font-sans text-[1.02rem] leading-relaxed whitespace-pre-line text-ink">
-                  “{r.quote}”
-                </blockquote>
-                <p className="mt-5 text-sm text-ink-mute">
-                  <em className="font-semibold text-ink">{r.name}</em>
-                  <span className="label-mono ml-2 text-[0.62rem]">via {r.source}</span>
-                </p>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div className="mt-10 flex flex-col gap-4 border border-dashed border-copper-500/50 p-8">
-            <ReviewFlag>add real Google reviews</ReviewFlag>
+        <div className="grid items-end gap-5 lg:grid-cols-[1fr_auto] lg:gap-12">
+          <div data-reveal>
+            <p className="label-mono flex items-center gap-3 text-copper-700">
+              <span aria-hidden="true" className="h-px w-8 bg-copper-500/60" />
+              What customers say
+            </p>
+            <h2 id="reviews-title" className="mt-4 text-[1.9rem] leading-[1.1] sm:text-3xl lg:text-4xl">
+              In their own words
+            </h2>
           </div>
-        )}
-        <p className="mt-8 max-w-2xl text-sm text-ink-soft">
-          Ratings and review counts live on our Google Business Profile, so they are always current there.
-        </p>
-        {link ? (
-          <div className="mt-4 flex flex-wrap gap-x-8 gap-y-2">
-            <a href={link} rel="noopener" className="inline-flex items-center gap-2 font-semibold underline underline-offset-4">
-              Read them on Google <span aria-hidden="true">↗</span>
-            </a>
-            <a href={link} rel="noopener" className="inline-flex items-center gap-2 font-semibold underline underline-offset-4">
-              Read or leave a Google review <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        ) : null}
+          {link ? (
+            <div className="flex flex-col items-start gap-2.5 lg:items-end">
+              <a href={link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-ink/25 px-6 py-3 font-semibold hover:bg-ink/5">
+                Read them on Google
+              </a>
+              <p className="max-w-[19rem] text-[0.84rem] leading-snug text-ink/60 lg:text-right">
+                Ratings and review counts live on the Google Business Profile, so they are always current there.
+              </p>
+            </div>
+          ) : null}
+        </div>
       </div>
+
+      {reviews.length ? (
+        <div className="marquee mt-8 grid gap-4">
+          <Ribbon items={reviews.slice(0, half)} />
+          <Ribbon items={reviews.slice(half)} reverse />
+        </div>
+      ) : (
+        <div className="container-x mt-8">
+          <ReviewFlag>add real Google reviews</ReviewFlag>
+        </div>
+      )}
+
+      {link ? (
+        <div className="container-x">
+          <p className="mt-7 text-[0.92rem] text-ink/70">
+            <a href={link} target="_blank" rel="noopener noreferrer" className="font-semibold text-copper-700 underline underline-offset-4 hover:text-ink">
+              Read or leave a Google review
+            </a>
+            .
+          </p>
+        </div>
+      ) : null}
     </section>
   );
 }
