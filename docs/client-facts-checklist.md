@@ -35,7 +35,7 @@ Status key: ✅ confirmed · 🟡 sourced but unconfirmed · ❌ unknown
 | Service mast repair | true | Does Acorn also handle roof flashing, or coordinate with a roofer? |
 | Home electrical inspections | true | Does Acorn give written findings? Copy currently says "tell us if you need it in writing" |
 | Attic fan installation | true | Who cuts/flashes the roof penetration? |
-| **Exterior lighting** | **false** | Brief says "if offered". Page hidden in production until confirmed. Also: low-voltage landscape lighting? |
+| **Exterior lighting** | **true** | Confirmed by Eric (relayed by Spencer, Oct 19, 2026). Page is live. Still open: low-voltage landscape lighting? |
 | Electrical repair & troubleshooting | true | Old site offers "demand calls" |
 | Prices | *none published* | Old booking page listed Demand call $100 / Inspection $150 / System upgrade $250. Confirm before publishing any price |
 | Warranty | *none claimed* | |
@@ -57,8 +57,8 @@ fan and commercial FAQs say so plainly.
 
 Not on Eric's list but already built (kept, `confirmed: true` from the brief):
 subpanels, hot tub wiring (also named in the Oct 12 meeting), recessed
-lighting, service mast repair, attic fans. Exterior lighting still
-`confirmed: false`, although Eric's covered-deck photos suggest he does it.
+lighting, service mast repair, attic fans. Exterior lighting is confirmed
+(Oct 19, 2026).
 
 ## Service areas (`src/content/areas.ts`)
 

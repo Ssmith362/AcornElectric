@@ -749,7 +749,7 @@ const coreServices: Service[] = [
     name: "Exterior lighting installation",
     short: "Exterior lighting",
     tag: "Wet-rated · Motion · Timer",
-    confirmed: false,
+    confirmed: true,
     image: "exterior",
     meta: {
       title: "Exterior Lighting Installation in Spokane | Acorn Electric",
