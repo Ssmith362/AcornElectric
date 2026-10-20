@@ -11,16 +11,18 @@ import { ALLOW_INDEXING, BASE_URL } from "@/lib/seo";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-// Self-hosted (OFL, see ./fonts/README.md) so builds never fetch from Google.
-const bricolage = localFont({
-  src: "./fonts/bricolage-grotesque-variable.woff2",
-  variable: "--font-bricolage",
-  weight: "200 800",
+// Brand fonts per Eric's guide: Luckiest Guy (primary), Modica SemiBold (secondary;
+// Montserrat is the free stand-in until a Modica web licence/file arrives).
+// Self-hosted (see ./fonts/README.md) so builds never fetch from Google.
+const luckiest = localFont({
+  src: "./fonts/luckiest-guy-400.woff2",
+  variable: "--font-luckiest",
+  weight: "400",
   display: "swap",
 });
-const geist = localFont({
-  src: "./fonts/geist-variable.woff2",
-  variable: "--font-geist",
+const montserrat = localFont({
+  src: "./fonts/montserrat-variable.woff2",
+  variable: "--font-montserrat",
   weight: "100 900",
   display: "swap",
 });
@@ -47,13 +49,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#04241c",
+  themeColor: "#012730",
   colorScheme: "light",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-US" className={`${bricolage.variable} ${geist.variable} ${geistMono.variable}`}>
+    <html lang="en-US" className={`${luckiest.variable} ${montserrat.variable} ${geistMono.variable}`}>
       <body>
         <a
           href="#main"

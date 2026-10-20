@@ -19,7 +19,7 @@ export function Reviews() {
           <ul className="mt-12 grid gap-px border border-ink/10 bg-ink/10 md:grid-cols-3">
             {reviews.map((r) => (
               <li key={r.name + r.quote.slice(0, 20)} className="flex flex-col justify-between bg-mist-50 p-7" data-reveal>
-                <blockquote className="font-display text-xl leading-snug">“{r.quote}”</blockquote>
+                <blockquote className="font-sans text-xl leading-snug">“{r.quote}”</blockquote>
                 <p className="label-mono mt-6 text-[0.65rem] text-ink-mute">
                   {r.name} · {r.source}
                   {r.service ? ` · ${r.service}` : ""}

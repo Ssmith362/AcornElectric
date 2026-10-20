@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
 import { ReviewFlag } from "@/components/ui/review-flag";
-import { publishedAreas as areas } from "@/content/areas";
+import { communities } from "@/content/areas";
 import { mailto, site, tel } from "@/lib/site";
 import { serviceNav } from "./nav";
 
@@ -54,13 +54,13 @@ export function SiteFooter() {
         <nav aria-label="Areas and company" className="lg:col-span-2">
           <p className="label-mono text-[0.65rem] text-mist-400">Areas</p>
           <ul className="mt-5 space-y-2.5 text-[0.95rem]">
-            <li>
-              <Link href="/areas" className="hover:text-volt-300">Spokane</Link>
-            </li>
-            {areas.map((a) => (
-              <li key={a.slug}>
-                <Link href={`/areas/${a.slug}`} className="hover:text-volt-300">
-                  {a.name}
+            {communities.map((c) => (
+              <li key={c.name}>
+                <Link
+                  href={c.page ? `/areas/${c.page}` : c.name === "Spokane" ? "/areas" : `/areas#${c.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="hover:text-volt-300"
+                >
+                  {c.name}
                 </Link>
               </li>
             ))}

@@ -2,8 +2,9 @@ import { SHOW_REVIEW_FLAGS } from "@/components/ui/review-flag";
 import type { Area } from "./types";
 
 /**
- * Service-area pages. Spokane itself is the homepage's job; these pages cover
- * the surrounding communities Acorn is targeting.
+ * Dedicated service-area pages. Spokane itself is the homepage's job; these
+ * pages cover the communities with the strongest search demand and the most
+ * to say locally.
  *
  * Every area page must say something genuinely local (housing, permitting,
  * utility, common projects). If you can't write that for a town, don't add a
@@ -11,12 +12,17 @@ import type { Area } from "./types";
  *
  * `confirmed: false` = Acorn hasn't confirmed they serve it. The page builds
  * for review but is noindex and out of the sitemap until confirmed.
+ *
+ * Eric supplied all 12 communities (Oct 2026), so every one is listed on /areas,
+ * in the footer-facing copy and in schema. Only the three below earn their own
+ * page: listing a town is not the same as ranking for it, and a page needs
+ * something local to say. Add another only with genuinely distinct content.
  */
 export const areas: Area[] = [
   {
     slug: "north-spokane",
     name: "North Spokane",
-    confirmed: false,
+    confirmed: true,
     meta: {
       title: "Electrician in North Spokane, WA | Acorn Electric",
       description:
@@ -56,7 +62,7 @@ export const areas: Area[] = [
   {
     slug: "mead",
     name: "Mead",
-    confirmed: false,
+    confirmed: true,
     meta: {
       title: "Electrician in Mead, WA | Acorn Electric",
       description:
@@ -95,7 +101,7 @@ export const areas: Area[] = [
   {
     slug: "spokane-valley",
     name: "Spokane Valley",
-    confirmed: false,
+    confirmed: true,
     meta: {
       title: "Electrician in Spokane Valley, WA | Acorn Electric",
       description:
@@ -130,13 +136,85 @@ export const areas: Area[] = [
 ];
 
 /**
- * Communities named in the brief that do NOT get a page yet. Shown on /areas
- * only once Acorn confirms them (set `confirmed: true`).
+ * All 12 communities Eric listed, in his order. `page` points at a dedicated
+ * page above; the rest are listed on /areas only. Permit authority is the one
+ * fact that genuinely differs: only the City of Spokane runs its own electrical
+ * permits and inspections, everywhere else goes through Washington L&I.
+ * Keep `note` factual and hedged; don't claim utility or housing details we
+ * haven't verified.
  */
-export const otherCommunities: { name: string; confirmed: boolean }[] = [
-  { name: "Airway Heights", confirmed: false },
-  { name: "Cheney", confirmed: false },
-  { name: "Liberty Lake", confirmed: false },
+export type Community = {
+  name: string;
+  /** slug of a dedicated page in `areas`, if one exists */
+  page?: string;
+  permit: "city" | "lni" | "varies";
+  note: string;
+};
+
+export const communities: Community[] = [
+  {
+    name: "Spokane",
+    permit: "city",
+    note: "Home base. Permits and inspections run through the City of Spokane, and we handle them for any work that needs one.",
+  },
+  {
+    name: "Spokane Valley",
+    page: "spokane-valley",
+    permit: "lni",
+    note: "Everything from post-war ramblers to new builds. Permitted through Washington L&I.",
+  },
+  {
+    name: "Liberty Lake",
+    permit: "lni",
+    note: "East of the Valley, with a lot of newer homes. Permitted through Washington L&I.",
+  },
+  {
+    name: "Cheney",
+    permit: "lni",
+    note: "Southwest of Spokane, home to Eastern Washington University. Permitted through Washington L&I.",
+  },
+  {
+    name: "Airway Heights",
+    permit: "lni",
+    note: "West of Spokane along the Highway 2 corridor. Permitted through Washington L&I.",
+  },
+  {
+    name: "North Spokane",
+    page: "north-spokane",
+    permit: "varies",
+    note: "Straddles the city limit, so the permit depends on your address. We check before we start.",
+  },
+  {
+    name: "South Hill",
+    permit: "city",
+    note: "Inside Spokane city limits, with many early-1900s homes where wiring and panel age are the first things we look at.",
+  },
+  {
+    name: "Mead",
+    page: "mead",
+    permit: "lni",
+    note: "Bigger lots, shops and hot tubs. Unincorporated Spokane County, permitted through Washington L&I.",
+  },
+  {
+    name: "Deer Park",
+    permit: "lni",
+    note: "North of Mead, where rural properties and outbuildings are common. Permitted through Washington L&I.",
+  },
+  {
+    name: "Medical Lake",
+    permit: "lni",
+    note: "West of Spokane, a small lakeside town. Permitted through Washington L&I.",
+  },
+  {
+    name: "Greenacres",
+    permit: "lni",
+    note: "East of the Valley, unincorporated, and more rural in feel. Permitted through Washington L&I.",
+  },
+  {
+    name: "Otis Orchards",
+    permit: "lni",
+    note: "Out on the eastern edge of the county, unincorporated. Permitted through Washington L&I.",
+  },
 ];
 
 /** Unconfirmed areas appear only in preview builds, never in production. */

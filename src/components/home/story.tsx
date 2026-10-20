@@ -49,7 +49,7 @@ export function Story() {
               <Link href={`/services/${s.slug}`} className="group grid grid-cols-[2.5rem_1fr_auto] items-start gap-4 py-7 sm:py-8">
                 <span className="label-mono pt-2 text-copper-600">{String(i + 1).padStart(2, "0")}</span>
                 <span>
-                  <span className="block font-display text-2xl leading-tight font-semibold tracking-[-0.02em] sm:text-[1.9rem]">
+                  <span className="block font-sans text-2xl leading-tight font-semibold tracking-[0.01em] sm:text-[1.9rem]">
                     {s.problem}
                   </span>
                   <span className="label-mono mt-3 block text-[0.65rem] text-ink-mute transition-colors group-hover:text-copper-700">

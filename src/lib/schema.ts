@@ -1,6 +1,6 @@
 import type { Faq, Service } from "@/content/types";
 import type { Opening } from "@/content/careers";
-import { areas } from "@/content/areas";
+import { communities } from "@/content/areas";
 import { services } from "@/content/services";
 import { absoluteUrl, BASE_URL } from "./seo";
 import { site } from "./site";
@@ -17,8 +17,7 @@ import { site } from "./site";
 export const BUSINESS_ID = `${BASE_URL}/#business`;
 
 function served() {
-  const confirmed = areas.filter((a) => a.confirmed).map((a) => a.name);
-  return ["Spokane", ...confirmed].map((name) => ({
+  return communities.map(({ name }) => ({
     "@type": "City",
     name: `${name}, WA`,
   }));

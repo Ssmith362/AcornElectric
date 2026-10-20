@@ -22,17 +22,17 @@
    ========================================================================== */
 
 @theme {
-  --color-night-950: #021a14;
-  --color-night-900: #04241c;
+  --color-night-950: #011d24;
+  --color-night-900: #012730;
   --color-night-850: #072b22;
-  --color-night-800: #013328;
-  --color-night-700: #0d4336;
+  --color-night-800: #0a3340;
+  --color-night-700: #1a4350;
   --color-night-600: #1c5646;
   --color-night-500: #346b5a;
 
   --color-volt-200: #fffbb8;
   --color-volt-300: #fff76a;
-  --color-volt-400: #ffef1f;
+  --color-volt-400: #ffe842;
   --color-volt-500: #f5df00;
   --color-volt-600: #cdb700;
   /* Only for volt-family text on LIGHT surfaces (passes AA on mist-50). */
@@ -41,8 +41,8 @@
   --color-copper-200: #fcd7b8;
   --color-copper-300: #f6aa72;
   --color-copper-400: #ec8540;
-  --color-copper-500: #e0661d;
-  --color-copper-600: #b83d08;
+  --color-copper-500: #e16521;
+  --color-copper-600: #b83d08; /* AA on cream; guide orange #d74d21 is --color-brand-ember */
   --color-copper-700: #9c3509;
 
   --color-mist-50: #fdf9ef;
@@ -52,11 +52,12 @@
   --color-mist-400: #a99d7e;
 
   /* Brand accents used as-is */
-  --color-brand-green: #013328;
-  --color-brand-cream: #feefc6;
+  --color-brand-green: #012730;
+  --color-brand-cream: #f9e6b9;
   --color-brand-yellow: #ffff01;
-  --color-brand-orange: #e0661d;
-  --color-brand-leaf: #2d6f41;
+  --color-brand-orange: #e16521;
+  --color-brand-ember: #d74d21;
+  --color-brand-leaf: #295b3b;
 
   --color-ink: #082019;
   --color-ink-soft: #34463d;
@@ -65,8 +66,8 @@
   --color-danger: #b42318;
   --color-ok: #2f7a3e;
 
-  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-luckiest), Impact, "Arial Black", ui-sans-serif, sans-serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --radius-sq: 2px;
@@ -79,10 +80,10 @@
 @keyframes pulse-node {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgb(255 239 31 / 0.55);
+    box-shadow: 0 0 0 0 rgb(255 232 66 / 0.55);
   }
   50% {
-    box-shadow: 0 0 0 6px rgb(255 239 31 / 0);
+    box-shadow: 0 0 0 6px rgb(255 232 66 / 0);
   }
 }
 
@@ -110,8 +111,8 @@
     background-color: var(--color-mist-50);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
-    overflow-x: clip;
+    font-synthesis-weight: none;
+        overflow-x: clip;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -120,7 +121,9 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
+    font-weight: 400;
+    font-synthesis: none; /* Luckiest Guy has one weight; never fake bold */
+    letter-spacing: 0.01em;
     text-wrap: balance;
   }
 
@@ -174,8 +177,8 @@
 @utility text-lit {
   color: var(--color-volt-400);
   text-shadow:
-    0 0 18px rgb(255 239 31 / 0.35),
-    0 0 2px rgb(255 239 31 / 0.6);
+    0 0 18px rgb(255 232 66 / 0.35),
+    0 0 2px rgb(255 232 66 / 0.6);
 }
 
 /* Fine grid, like the back of a breaker panel or a drafting sheet. */

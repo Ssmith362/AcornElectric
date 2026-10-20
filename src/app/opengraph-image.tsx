@@ -22,7 +22,7 @@ export default async function OgImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "56px 80px 64px",
-          background: "#04241c",
+          background: "#012730",
           backgroundImage:
             "linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px)",
           backgroundSize: "48px 48px",

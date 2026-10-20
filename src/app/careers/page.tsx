@@ -48,7 +48,7 @@ export default function CareersPage() {
           <div className="mt-10 grid items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <p className="label-mono text-volt-400">Careers at Acorn Electric</p>
-              <h1 className="mt-5 text-5xl leading-[0.95] font-bold tracking-[-0.04em] sm:text-7xl lg:text-[5.2rem]">
+              <h1 className="mt-5 text-5xl leading-[0.95] font-bold tracking-[0.01em] sm:text-7xl lg:text-[5.2rem]">
                 Own your work.
                 <br />
                 <span className="text-lit">Grow your career.</span>

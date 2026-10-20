@@ -3,7 +3,7 @@ import { ServiceRequestForm } from "@/components/forms/service-request-form";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { PhoneGlyph } from "@/components/ui/button";
 import { ReviewFlag } from "@/components/ui/review-flag";
-import { publishedAreas as areas } from "@/content/areas";
+import { communities } from "@/content/areas";
 import { pageMetadata } from "@/lib/seo";
 import { mailto, site, tel } from "@/lib/site";
 
@@ -23,7 +23,7 @@ export default function ContactPage() {
         <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <p className="label-mono text-volt-400">Request service</p>
-            <h1 className="mt-5 text-5xl leading-[0.95] font-bold tracking-[-0.04em] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-5 text-5xl leading-[0.95] font-bold tracking-[0.01em] sm:text-6xl lg:text-7xl">
               What&apos;s going on at your place?
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-mist-200">
@@ -67,21 +67,7 @@ export default function ContactPage() {
               <div>
                 <dt className="label-mono text-[0.62rem] text-mist-400">Service area</dt>
                 <dd className="mt-2 text-mist-200">
-                  {areas.length ? (
-                    <>
-                      Spokane and nearby, including{" "}
-                      {areas.map((a, i) => (
-                        <span key={a.slug}>
-                          <Link href={`/areas/${a.slug}`} className="underline underline-offset-4 hover:text-volt-300">
-                            {a.name}
-                          </Link>
-                          {i < areas.length - 2 ? ", " : i === areas.length - 2 ? " and " : "."}
-                        </span>
-                      ))}
-                    </>
-                  ) : (
-                    "Spokane and nearby communities. Ask us about your address."
-                  )}
+                  Spokane and nearby: {communities.slice(1).map((c) => c.name).join(", ").replace(/, ([^,]+)$/, ", and $1")}.
                 </dd>
               </div>
               <div>

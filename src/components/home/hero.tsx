@@ -28,19 +28,15 @@ export function Hero() {
           </p>
           <h1
             id="hero-title"
-            className="mt-6 text-[2.85rem] leading-[0.95] font-bold tracking-[-0.04em] sm:text-7xl lg:text-[5.2rem] xl:text-[6rem]"
+            className="mt-6 max-w-2xl text-[2.5rem] leading-[1.04] tracking-[0.01em] sm:text-6xl lg:text-[3.9rem] xl:text-[4.4rem]"
             data-reveal
           >
-            Wired right.
-            <br />
-            <span className="text-lit">One less thing</span>
-            <br />
-            to worry about.
+            Electrical work that makes your home <span className="text-lit">work better.</span>
           </h1>
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-mist-200 sm:text-xl" data-reveal>
-            EV chargers, panel and service upgrades, hot tubs, older-home rewires and the repairs nobody wants to
-            think about. We explain what your home needs, do the work properly, and leave you with something that
-            just works.
+            Help for the upgrades, repairs, and electrical projects that make everyday life at home safer and easier.
+            Acorn Electric helps you understand what your home needs, explains your options, and gets the work done
+            properly.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row" data-reveal>
             <ButtonLink href="/contact" arrow>

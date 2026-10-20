@@ -45,7 +45,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {s.tag}
                 {!s.confirmed ? <ReviewFlag tone="dark">Acorn offers this service</ReviewFlag> : null}
               </p>
-              <h1 className="mt-5 text-[2.6rem] leading-[0.98] font-bold tracking-[-0.035em] sm:text-6xl lg:text-[4.2rem]" data-reveal>
+              <h1 className="mt-5 text-[2.6rem] leading-[0.98] font-bold tracking-[0.01em] sm:text-6xl lg:text-[4.2rem]" data-reveal>
                 {s.h1}
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-mist-200 sm:text-xl" data-reveal>

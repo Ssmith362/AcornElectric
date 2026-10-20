@@ -41,7 +41,7 @@ export default async function AreaPage({ params }: Props) {
               Service area · {a.name}, WA
               {!a.confirmed ? <ReviewFlag tone="dark">Acorn serves {a.name}</ReviewFlag> : null}
             </p>
-            <h1 className="mt-5 text-5xl leading-[0.98] font-bold tracking-[-0.035em] sm:text-6xl lg:text-7xl">{a.h1}</h1>
+            <h1 className="mt-5 text-5xl leading-[0.98] font-bold tracking-[0.01em] sm:text-6xl lg:text-7xl">{a.h1}</h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-mist-200 sm:text-xl">{a.lede}</p>
             <div className="mt-8">
               <ButtonLink href="#request" arrow>

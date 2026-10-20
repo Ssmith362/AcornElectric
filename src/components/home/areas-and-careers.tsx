@@ -3,7 +3,7 @@ import { AreaMap } from "@/components/sections/area-map";
 import { ButtonLink } from "@/components/ui/button";
 import { Photo } from "@/components/ui/photo";
 import { SectionHead } from "@/components/ui/section-head";
-import { publishedAreas as areas } from "@/content/areas";
+import { communities } from "@/content/areas";
 
 export function AreasBlock() {
   return (
@@ -14,16 +14,22 @@ export function AreasBlock() {
             tone="night"
             index="05"
             label="Where we work"
-            title={<span id="areas-title">Spokane, and the communities around it.</span>}
+            title={<span id="areas-title">Spokane and eleven communities around it.</span>}
             intro="Not sure if we cover your address? Put your ZIP code in the request form and we'll tell you straight away."
           />
-          <ul className="mt-8 border-t border-white/10" data-reveal>
-            {areas.map((a) => (
-              <li key={a.slug} className="border-b border-white/10">
-                <Link href={`/areas/${a.slug}`} className="flex items-center justify-between py-3.5 text-lg hover:text-volt-300">
-                  {a.name}
-                  <span aria-hidden="true">→</span>
-                </Link>
+          <ul className="mt-8 grid grid-cols-2 gap-x-6 border-t border-white/10" data-reveal>
+            {communities.map((c) => (
+              <li key={c.name} className="border-b border-white/10">
+                {c.page ? (
+                  <Link href={`/areas/${c.page}`} className="flex items-center justify-between py-3 hover:text-volt-300">
+                    {c.name}
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                ) : (
+                  <Link href={`/areas#${c.name.toLowerCase().replace(/\s+/g, "-")}`} className="block py-3 text-mist-200 hover:text-volt-300">
+                    {c.name}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

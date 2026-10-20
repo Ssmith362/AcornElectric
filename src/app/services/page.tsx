@@ -23,7 +23,7 @@ export default function ServicesPage() {
           </div>
           <div className="lg:col-span-5">
             <p className="label-mono text-volt-400">Residential electrical services</p>
-            <h1 className="mt-5 text-5xl leading-[0.98] font-bold tracking-[-0.035em] sm:text-6xl">
+            <h1 className="mt-5 text-5xl leading-[0.98] font-bold tracking-[0.01em] sm:text-6xl">
               What your home needs, done properly.
             </h1>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-mist-300">

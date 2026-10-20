@@ -66,7 +66,7 @@ export function MobileNav() {
             <ul className="space-y-1">
               {primaryNav.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} onClick={hide} className="block py-2 font-display text-3xl font-semibold tracking-tight">
+                  <Link href={item.href} onClick={hide} className="block py-2 font-display text-3xl font-semibold tracking-[0.01em]">
                     {item.label}
                   </Link>
                 </li>
