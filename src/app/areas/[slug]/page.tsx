@@ -60,8 +60,8 @@ export default async function AreaPage({ params }: Props) {
           <ul className="mt-10 grid gap-px border border-ink/10 bg-ink/10 md:grid-cols-3">
             {a.local.map((p, i) => (
               <li key={p.title} className="bg-mist-50 p-7" data-reveal style={{ ["--reveal-i" as string]: i }}>
-                <span className="label-mono text-copper-700">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="mt-3 text-xl leading-snug font-bold">{p.title}</h3>
+                <span aria-hidden="true" className="block h-px w-8 bg-copper-500" />
+                <h3 className="mt-4 text-xl leading-snug font-bold">{p.title}</h3>
                 <p className="mt-2.5 leading-relaxed text-ink-soft">{p.body}</p>
               </li>
             ))}

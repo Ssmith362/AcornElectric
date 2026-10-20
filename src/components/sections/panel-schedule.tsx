@@ -16,14 +16,13 @@ export function PanelSchedule({ exclude = [] as string[] }) {
       </div>
       <ol className="grid sm:grid-cols-2">
         {list.map((s) => {
-          const pos = String(services.indexOf(s) + 1).padStart(2, "0");
           return (
             <li key={s.slug} className="border-b border-white/8 bg-night-900 sm:odd:border-r" data-reveal>
               <Link
                 href={`/services/${s.slug}`}
                 className="group flex h-full items-center gap-4 px-3 py-4 transition-colors hover:bg-night-800 sm:px-4"
               >
-                <span className="label-mono w-6 text-copper-400">{pos}</span>
+                <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-copper-400" />
                 <span className="flex min-w-0 flex-1 flex-col">
                   <span className="font-sans text-lg leading-tight font-semibold text-white group-hover:text-volt-200">
                     {s.short}

@@ -105,7 +105,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <ol className="mt-12 grid border-t border-l border-ink/12 md:grid-cols-2 lg:grid-cols-3">
             {s.work.steps.map((st, i) => (
               <li key={st.title} className="border-r border-b border-ink/12 bg-mist-50 p-6 sm:p-7" data-reveal style={{ ["--reveal-i" as string]: i % 3 }}>
-                <span className="label-mono text-copper-700">{String(i + 1).padStart(2, "0")}</span>
+                <span className="label-mono text-copper-700">Step {i + 1}</span>
                 <h3 className="mt-3 text-xl leading-snug font-bold">{st.title}</h3>
                 <p className="mt-2.5 leading-relaxed text-ink-soft">{st.body}</p>
               </li>

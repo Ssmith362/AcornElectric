@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 /**
- * Section heading with a numbered index, like a breaker position: "03 —".
+ * Section heading: a short rule and a plain label above the title.
  * `tone` follows the section surface.
  */
 export function SectionHead({

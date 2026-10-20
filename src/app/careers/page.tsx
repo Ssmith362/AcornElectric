@@ -82,7 +82,7 @@ export default function CareersPage() {
           <ul className="mt-12 grid gap-px border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
             {offer.map((o, i) => (
               <li key={o.title} className="bg-mist-50 p-7" data-reveal style={{ ["--reveal-i" as string]: i }}>
-                <span className="font-display text-4xl font-bold text-copper-500">{i + 1}</span>
+                <span aria-hidden="true" className="block h-px w-8 bg-copper-500" />
                 <h3 className="mt-4 text-xl font-bold">{o.title}</h3>
                 <p className="mt-2.5 leading-relaxed text-ink-soft">{o.body}</p>
               </li>
@@ -201,8 +201,8 @@ export default function CareersPage() {
                 ["We read every one", "A person at Acorn reviews your application, not a filter."],
                 ["A conversation", "If it looks like a fit, we'll set up a call and then a meeting."],
               ].map(([t, b], i) => (
-                <li key={t} className="grid grid-cols-[2.5rem_1fr] gap-3">
-                  <span className="label-mono pt-1 text-volt-400">{String(i + 1).padStart(2, "0")}</span>
+                <li key={t} className="grid grid-cols-[3.5rem_1fr] gap-3">
+                  <span className="label-mono pt-1 text-volt-400">Step {i + 1}</span>
                   <div>
                     <p className="font-semibold">{t}</p>
                     <p className="mt-1 text-mist-300">{b}</p>

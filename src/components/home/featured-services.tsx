@@ -13,7 +13,6 @@ export function FeaturedServices() {
       <div className="container-x">
         <SectionHead
           tone="night"
-          index="02"
           label="What we do most"
           title={<span id="services-title">The jobs Spokane homes ask for most.</span>}
           intro="Every service has its own page with what's involved, what affects it, and answers to the questions people actually ask."

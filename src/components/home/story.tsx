@@ -39,10 +39,10 @@ export function Story() {
         </div>
 
         <ol className="border-t border-ink/15 lg:col-span-7">
-          {picks.map((s, i) => (
+          {picks.map((s) => (
             <li key={s.slug} className="border-b border-ink/15" data-reveal>
               <Link href={`/services/${s.slug}`} className="group grid grid-cols-[2.5rem_1fr_auto] items-start gap-4 py-7 sm:py-8">
-                <span className="label-mono pt-2 text-copper-600">{String(i + 1).padStart(2, "0")}</span>
+                <span aria-hidden="true" className="mt-4 h-px w-6 bg-copper-500" />
                 <span>
                   <span className="block font-sans text-2xl leading-tight font-semibold tracking-[0.01em] sm:text-[1.9rem]">
                     {s.problem}

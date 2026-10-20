@@ -34,7 +34,6 @@ export function Principles() {
       <div className="container-x grid gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionHead
-            index="03"
             label="How we work"
             title={<span id="why-title">We&apos;d rather do it once.</span>}
             intro="Doing electrical work properly isn't the fastest or the cheapest way. It's the way that doesn't come back to bite you."
@@ -44,9 +43,9 @@ export function Principles() {
           </div>
         </div>
         <ol className="lg:col-span-7">
-          {principles.map((p, i) => (
+          {principles.map((p) => (
             <li key={p.title} className="grid grid-cols-[3rem_1fr] gap-4 border-t border-ink/15 py-7 first:border-t-2 first:border-ink" data-reveal>
-              <span className="font-display text-3xl leading-none font-bold text-copper-500">{i + 1}</span>
+              <span aria-hidden="true" className="mt-3 h-px w-8 bg-copper-500" />
               <div>
                 <h3 className="text-2xl leading-tight font-bold">{p.title}</h3>
                 <p className="mt-2.5 max-w-xl leading-relaxed text-ink-soft">{p.body}</p>

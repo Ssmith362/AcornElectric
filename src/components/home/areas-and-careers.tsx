@@ -12,7 +12,6 @@ export function AreasBlock() {
         <div className="lg:col-span-5">
           <SectionHead
             tone="night"
-            index="05"
             label="Where we work"
             title={<span id="areas-title">Spokane and eleven communities around it.</span>}
             intro="Not sure if we cover your address? Put your ZIP code in the request form and we'll tell you straight away."
@@ -50,7 +49,10 @@ export function CareersTeaser() {
           <Photo id="van" sizes="(min-width: 1024px) 30vw, 100vw" ticks={false} />
         </div>
         <div className="lg:col-span-5" data-reveal>
-          <p className="label-mono text-copper-700">06 · For electricians</p>
+          <p className="label-mono flex items-center gap-3 text-copper-700">
+            <span aria-hidden="true" className="h-px w-8 bg-copper-500/60" />
+            For electricians
+          </p>
           <h2 id="careers-title" className="mt-4 text-3xl leading-tight font-bold sm:text-4xl">
             Experienced residential electrician? Grow with a company that invests in you.
           </h2>

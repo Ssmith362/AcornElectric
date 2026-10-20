@@ -37,7 +37,7 @@ export function Process({ index = "04" }: { index?: string }) {
                 aria-hidden="true"
                 className={`relative z-10 block h-5 w-5 border-2 ${i === steps.length - 1 ? "animate-pulse-node border-volt-500 bg-volt-400" : "border-copper-500 bg-mist-50"}`}
               />
-              <p className="label-mono mt-6 text-copper-700">Step {String(i + 1).padStart(2, "0")}</p>
+              <p className="label-mono mt-6 text-copper-700">Step {i + 1}</p>
               <h3 className="mt-3 text-2xl leading-tight font-bold">{s.title}</h3>
               <p className="mt-3 leading-relaxed text-ink-soft">{s.body}</p>
             </li>

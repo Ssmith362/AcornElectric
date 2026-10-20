@@ -77,7 +77,7 @@ export function MobileNav() {
               {serviceNav.map((s) => (
                 <li key={s.href} className="border-b border-white/10">
                   <Link href={s.href} onClick={hide} className="flex items-center gap-3 py-3 text-mist-100">
-                    <span className="label-mono text-[0.62rem] text-copper-400">{s.pos}</span>
+                    <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-copper-400" />
                     {s.label}
                   </Link>
                 </li>

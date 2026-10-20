@@ -7,8 +7,7 @@ export const primaryNav = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
-export const serviceNav = services.map((s, i) => ({
+export const serviceNav = services.map((s) => ({
   label: s.short,
   href: `/services/${s.slug}`,
-  pos: String(i + 1).padStart(2, "0"),
 }));
