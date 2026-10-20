@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
 import { ButtonLink, PhoneGlyph } from "@/components/ui/button";
-import { ReviewFlag } from "@/components/ui/review-flag";
 import { site, tel } from "@/lib/site";
 import { MobileNav } from "./mobile-nav";
 import { primaryNav, serviceNav } from "./nav";
@@ -17,7 +16,6 @@ export function SiteHeader() {
           </p>
           <p className="label-mono ml-auto flex items-center gap-3 text-[0.62rem] whitespace-nowrap">
             <span>WA Electrical Contractor Lic. {site.license.value}</span>
-            {!site.license.verified ? <ReviewFlag tone="dark">license # on L&I</ReviewFlag> : null}
           </p>
         </div>
       </div>

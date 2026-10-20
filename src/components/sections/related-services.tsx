@@ -13,8 +13,7 @@ export function RelatedServices({ slugs, title = "Often part of the same project
             <li key={s.slug} className="bg-mist-50">
               <Link href={`/services/${s.slug}`} className="group flex h-full flex-col justify-between gap-6 p-6 hover:bg-white">
                 <span>
-                  <span className="label-mono text-[0.62rem] text-copper-700">{s.tag}</span>
-                  <span className="mt-3 block font-display text-2xl leading-tight font-semibold">{s.short}</span>
+                  <span className="block font-display text-2xl leading-tight font-semibold">{s.short}</span>
                   <span className="mt-2 block text-ink-soft">{s.problem}</span>
                 </span>
                 <span className="flex items-center gap-2 text-sm font-semibold">

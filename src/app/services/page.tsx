@@ -44,10 +44,7 @@ export default function ServicesPage() {
               <li key={s.slug} data-reveal style={{ ["--reveal-i" as string]: i % 3 }}>
                 <Link href={`/services/${s.slug}`} className="group block">
                   <Photo id={s.image} sizes="(min-width: 1280px) 30vw, (min-width: 768px) 45vw, 100vw" ticks={false} />
-                  <p className="label-mono mt-5 text-copper-700">
-                    {String(i + 1).padStart(2, "0")} · {s.tag}
-                  </p>
-                  <h2 className="mt-2.5 text-2xl leading-tight font-bold group-hover:underline group-hover:decoration-volt-500 group-hover:decoration-2 group-hover:underline-offset-4">
+                  <h2 className="mt-5 text-2xl leading-tight font-bold group-hover:underline group-hover:decoration-volt-500 group-hover:decoration-2 group-hover:underline-offset-4">
                     {s.name}
                   </h2>
                   <p className="mt-2 text-ink-soft">{s.problem}</p>

@@ -76,7 +76,6 @@ export default async function AreaPage({ params }: Props) {
             {featured.map((s) => (
               <li key={s.slug} className="bg-night-900">
                 <Link href={`/services/${s.slug}`} className="group flex h-full flex-col gap-3 p-7 hover:bg-night-800">
-                  <span className="label-mono text-[0.62rem] text-volt-400">{s.tag}</span>
                   <span className="font-display text-2xl font-semibold">{s.short}</span>
                   <span className="text-mist-300">{s.problem}</span>
                   <span className="mt-auto pt-2 text-sm font-semibold text-volt-300">

@@ -26,8 +26,7 @@ export function FeaturedServices() {
                 <Photo id={s.image} sizes="(min-width: 1024px) 55vw, 100vw" className="border border-white/10" />
               </div>
               <div className={`lg:col-span-5 ${i % 2 ? "lg:order-1" : ""}`} data-reveal>
-                <p className="label-mono text-volt-400">{s.tag}</p>
-                <h3 className="mt-4 text-3xl leading-[1.05] font-bold sm:text-4xl">{s.short}</h3>
+                <h3 className="text-3xl leading-[1.05] font-bold sm:text-4xl">{s.short}</h3>
                 <p className="mt-5 text-lg leading-relaxed text-mist-300">{s.lede}</p>
                 <ul className="mt-6 space-y-2.5 text-mist-200">
                   {s.doneRight.points.slice(0, 3).map((p) => (

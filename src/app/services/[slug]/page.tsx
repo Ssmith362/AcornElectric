@@ -41,10 +41,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <Breadcrumbs trail={[{ name: "Services", path: "/services" }, { name: s.short, path }]} />
           <div className="mt-10 grid items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-6">
-              <p className="label-mono flex flex-wrap items-center gap-3 text-volt-400" data-reveal>
-                {s.tag}
-                {!s.confirmed ? <ReviewFlag tone="dark">Acorn offers this service</ReviewFlag> : null}
-              </p>
+              {!s.confirmed ? (
+                <p className="label-mono flex flex-wrap items-center gap-3 text-volt-400" data-reveal>
+                  <ReviewFlag tone="dark">Acorn offers this service</ReviewFlag>
+                </p>
+              ) : null}
               <h1 className="mt-5 text-[2.6rem] leading-[0.98] font-bold tracking-[0.01em] sm:text-6xl lg:text-[4.2rem]" data-reveal>
                 {s.h1}
               </h1>

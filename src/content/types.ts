@@ -10,7 +10,6 @@ export type Service = {
   /** Short label for nav and the panel-schedule index. */
   short: string;
   /** Tag printed on the panel-schedule index, like a breaker label. */
-  tag: string;
   /**
    * false = Acorn has not yet confirmed they offer this. The page still builds
    * for review, but is excluded from the sitemap and marked noindex until set.

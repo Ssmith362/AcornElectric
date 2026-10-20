@@ -280,3 +280,43 @@
   .marquee { mask-image: none; overflow-x: auto; }
   .marquee-track { animation: none !important; }
 }
+
+/* ==========================================================================
+   SERVICE-AREA MAP: bolt travels the trace, the town flashes like a bulb.
+   One 7s cycle. The bolt (a short dash on a 0-100 normalised path) reaches the
+   end at ~65% of the cycle; the bulb flashes from 65% and fades by ~82%.
+   ========================================================================== */
+@keyframes bolt-travel {
+  0% { stroke-dashoffset: 8; opacity: 1; }
+  70% { stroke-dashoffset: -100; opacity: 1; }
+  100% { stroke-dashoffset: -100; opacity: 0; }
+}
+@keyframes bulb-flash {
+  0%, 64% { fill: var(--color-night-900); stroke: var(--color-volt-400); stroke-opacity: .45; filter: none; }
+  66% { fill: var(--color-volt-300); stroke: var(--color-volt-200); stroke-opacity: 1; filter: drop-shadow(0 0 7px var(--color-volt-400)) drop-shadow(0 0 14px rgb(255 232 66 / .6)); }
+  76% { fill: var(--color-volt-400); stroke: var(--color-volt-300); stroke-opacity: 1; filter: drop-shadow(0 0 5px var(--color-volt-400)); }
+  88%, 100% { fill: var(--color-night-900); stroke: var(--color-volt-400); stroke-opacity: .45; filter: none; }
+}
+.map-bolt {
+  stroke-dasharray: 8 192;
+  stroke-dashoffset: 8;
+  animation: bolt-travel 7s linear infinite;
+  filter: drop-shadow(0 0 3px var(--color-volt-400));
+}
+.map-bulb {
+  fill: var(--color-night-900);
+  stroke: var(--color-volt-400);
+  stroke-opacity: .45;
+  stroke-width: 1.6;
+  animation: bulb-flash 7s linear infinite;
+}
+.map-hub {
+  fill: var(--color-volt-400);
+  stroke: var(--color-volt-200);
+  stroke-width: 1.6;
+  filter: drop-shadow(0 0 6px rgb(255 232 66 / .7));
+}
+@media (prefers-reduced-motion: reduce) {
+  .map-bolt { animation: none; opacity: 0; }
+  .map-bulb { animation: none; }
+}

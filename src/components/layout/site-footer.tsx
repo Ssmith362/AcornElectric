@@ -77,11 +77,6 @@ export function SiteFooter() {
           <p className="label-mono text-[0.65rem] text-mist-400">Licensing</p>
           <p className="mt-5 text-[0.95rem] text-white">Washington electrical contractor</p>
           <p className="label-mono mt-2 text-sm text-volt-300">Lic. {site.license.value}</p>
-          {!site.license.verified ? (
-            <p className="mt-3">
-              <ReviewFlag tone="dark">verify on L&I lookup</ReviewFlag>
-            </p>
-          ) : null}
           <p className="mt-6 text-sm leading-relaxed text-mist-400">
             You can check any Washington electrical contractor&apos;s license on the{" "}
             <a

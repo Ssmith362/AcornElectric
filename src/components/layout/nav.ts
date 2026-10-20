@@ -10,6 +10,5 @@ export const primaryNav = [
 export const serviceNav = services.map((s, i) => ({
   label: s.short,
   href: `/services/${s.slug}`,
-  tag: s.tag,
   pos: String(i + 1).padStart(2, "0"),
 }));

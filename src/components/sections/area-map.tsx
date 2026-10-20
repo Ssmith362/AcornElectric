@@ -38,28 +38,27 @@ export function AreaMap() {
           strokeWidth="6"
           strokeLinecap="round"
         />
-        <text x="404" y="262" textAnchor="end" className="fill-copper-300" fontSize="8" fontFamily="var(--font-mono)" letterSpacing="1.5">
-          SPOKANE RIVER
-        </text>
+        {/* dim traces */}
         <g fill="none" stroke="var(--color-mist-300)" strokeOpacity=".3" strokeWidth="1.2">
           {nodes.map((c) => <path key={c.name} d={route(pos[c.name])} />)}
         </g>
-        <g fill="none" stroke="var(--color-volt-400)" strokeWidth="1.6" className="flow">
-          {nodes.map((c) => <path key={c.name} d={route(pos[c.name])} />)}
+        {/* a bolt runs out to each town, and the town lights up like a bulb when it arrives */}
+        <g fill="none" stroke="var(--color-volt-400)" strokeWidth="1.8" strokeLinecap="round">
+          {nodes.map((c, i) => (
+            <path
+              key={c.name}
+              d={route(pos[c.name])}
+              pathLength={100}
+              className="map-bolt"
+              style={{ animationDelay: `${(i * 0.85).toFixed(2)}s` }}
+            />
+          ))}
         </g>
-        {nodes.map((c) => {
+        {nodes.map((c, i) => {
           const p = pos[c.name];
           const node = (
             <g className="group">
-              <rect
-                x={p.x - 6}
-                y={p.y - 6}
-                width={12}
-                height={12}
-                fill={c.page ? "var(--color-volt-400)" : "var(--color-night-900)"}
-                stroke="var(--color-volt-400)"
-                strokeWidth="1.6"
-              />
+              <circle cx={p.x} cy={p.y} r={7} className="map-bulb" style={{ animationDelay: `${(i * 0.85).toFixed(2)}s` }} />
               <text
                 x={p.x + (p.dx ?? 0)}
                 y={p.y + (p.dy ?? 0)}
@@ -81,7 +80,7 @@ export function AreaMap() {
         })}
         {/* hub */}
         <Link href="/areas">
-          <rect x={HUB.x - 10} y={HUB.y - 10} width={20} height={20} fill="var(--color-volt-400)" stroke="var(--color-volt-400)" strokeWidth="1.6" />
+          <circle cx={HUB.x} cy={HUB.y} r={10} className="map-hub" />
           <text x={HUB.x} y={HUB.y - 17} textAnchor="middle" fontSize={15} fill="white" className="font-display">
             Spokane
           </text>

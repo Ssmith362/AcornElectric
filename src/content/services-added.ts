@@ -28,7 +28,6 @@ export const addedServices: Service[] = [
     slug: "electrical-service-upgrade",
     name: "Electrical service upgrade",
     short: "Service upgrades",
-    tag: "100 → 200A · Meter · Utility",
     confirmed: true,
     image: "service-upgrade",
     meta: {
@@ -131,7 +130,6 @@ export const addedServices: Service[] = [
     slug: "knob-and-tube-rewiring",
     name: "Knob and tube rewiring",
     short: "Knob & tube rewire",
-    tag: "Older homes · Rewire",
     confirmed: true,
     image: "knob-tube",
     meta: {
@@ -230,7 +228,6 @@ export const addedServices: Service[] = [
     slug: "whole-home-surge-protection",
     name: "Whole-home surge protection",
     short: "Surge protection",
-    tag: "SPD · At the panel",
     confirmed: true,
     image: "surge",
     meta: {
@@ -312,7 +309,6 @@ export const addedServices: Service[] = [
     slug: "grounding-and-bonding-upgrades",
     name: "Grounding and bonding upgrades",
     short: "Grounding updates",
-    tag: "Ground rods · Bonding",
     confirmed: true,
     image: "grounding",
     meta: {
@@ -394,7 +390,6 @@ export const addedServices: Service[] = [
     slug: "dedicated-appliance-circuits",
     name: "Circuits for new appliances",
     short: "New appliance circuits",
-    tag: "240V · Heat pumps · Ranges",
     confirmed: true,
     image: "appliance",
     meta: {
@@ -477,7 +472,6 @@ export const addedServices: Service[] = [
     slug: "remodel-and-addition-wiring",
     name: "Remodel and addition electrical",
     short: "Remodels & additions",
-    tag: "Kitchens · Baths · Additions",
     confirmed: true,
     image: "remodel",
     meta: {
@@ -560,7 +554,6 @@ export const addedServices: Service[] = [
     slug: "new-home-electrical",
     name: "New custom home electrical",
     short: "New home wiring",
-    tag: "Custom homes · Shops · ADUs",
     confirmed: true,
     image: "new-construction",
     meta: {
@@ -643,7 +636,6 @@ export const addedServices: Service[] = [
     slug: "real-estate-electrical-repairs",
     name: "Electrical repairs for home sales",
     short: "Repairs to sell a home",
-    tag: "Inspection items · Closing",
     confirmed: true,
     image: "real-estate",
     meta: {
@@ -725,7 +717,6 @@ export const addedServices: Service[] = [
     slug: "commercial-electrical",
     name: "Small commercial electrical",
     short: "Commercial",
-    tag: "Small business · Service",
     confirmed: true,
     image: "commercial",
     meta: {

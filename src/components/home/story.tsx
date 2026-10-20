@@ -2,7 +2,7 @@ import Link from "next/link";
 import { publishedServices as services } from "@/content/services";
 
 /**
- * "Sound familiar?": the customer's problems, in their words, each wired to
+ * The customer's problems, in their words, each wired to
  * the page that solves it. Opens with the EV story from the brief.
  */
 export function Story() {
@@ -15,12 +15,7 @@ export function Story() {
       <div className="container-x grid gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-32" data-reveal>
-            <p className="label-mono flex items-center gap-3 text-copper-700">
-              <span className="text-copper-600">01</span>
-              <span aria-hidden="true" className="h-px w-8 bg-copper-500/60" />
-              Sound familiar?
-            </p>
-            <h2 id="story-title" className="mt-5 text-4xl leading-[1.02] font-bold sm:text-5xl lg:text-[3.4rem]">
+            <h2 id="story-title" className="text-4xl leading-[1.02] font-bold sm:text-5xl lg:text-[3.4rem]">
               Still charging the Tesla at Fred Meyer?
             </h2>
             <div className="mt-6 space-y-4 text-lg leading-relaxed text-ink-soft">

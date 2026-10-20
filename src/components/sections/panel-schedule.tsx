@@ -28,7 +28,6 @@ export function PanelSchedule({ exclude = [] as string[] }) {
                   <span className="font-sans text-lg leading-tight font-semibold text-white group-hover:text-volt-200">
                     {s.short}
                   </span>
-                  <span className="label-mono mt-1.5 truncate text-[0.6rem] text-mist-400">{s.tag}</span>
                 </span>
                 <span
                   aria-hidden="true"

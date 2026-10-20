@@ -23,7 +23,6 @@ const coreServices: Service[] = [
     slug: "ev-charger-installation",
     name: "EV charger installation",
     short: "EV chargers",
-    tag: "240V · Level 2",
     confirmed: true,
     image: "ev",
     meta: {
@@ -142,7 +141,6 @@ const coreServices: Service[] = [
     slug: "electrical-panel-upgrades",
     name: "Electrical panel upgrade",
     short: "Panel upgrades",
-    tag: "Replace · Breakers · Space",
     confirmed: true,
     image: "panel",
     meta: {
@@ -240,7 +238,6 @@ const coreServices: Service[] = [
     slug: "subpanel-installation",
     name: "Subpanel installation",
     short: "Subpanels",
-    tag: "Feeder · Shop · ADU",
     confirmed: true,
     image: "subpanel",
     meta: {
@@ -325,7 +322,6 @@ const coreServices: Service[] = [
     slug: "hot-tub-wiring",
     name: "Hot tub wiring",
     short: "Hot tub wiring",
-    tag: "240V · GFCI · Disconnect",
     confirmed: true,
     image: "hottub",
     meta: {
@@ -410,7 +406,6 @@ const coreServices: Service[] = [
     slug: "recessed-lighting",
     name: "Recessed lighting installation",
     short: "Recessed lighting",
-    tag: "LED · Dimmable · IC-rated",
     confirmed: true,
     image: "recessed",
     meta: {
@@ -495,7 +490,6 @@ const coreServices: Service[] = [
     slug: "service-mast-repair",
     name: "Service mast repair",
     short: "Service mast repair",
-    tag: "Mast · Weatherhead · Meter base",
     confirmed: true,
     image: "mast",
     meta: {
@@ -581,7 +575,6 @@ const coreServices: Service[] = [
     slug: "electrical-inspections",
     name: "Home electrical inspection",
     short: "Electrical inspections",
-    tag: "Safety · Buy · Sell",
     confirmed: true,
     image: "inspection",
     meta: {
@@ -667,7 +660,6 @@ const coreServices: Service[] = [
     slug: "attic-fan-installation",
     name: "Attic fan installation",
     short: "Attic fans",
-    tag: "Ventilation · Thermostat",
     confirmed: true,
     image: "atticfan",
     meta: {
@@ -748,7 +740,6 @@ const coreServices: Service[] = [
     slug: "exterior-lighting",
     name: "Exterior lighting installation",
     short: "Exterior lighting",
-    tag: "Wet-rated · Motion · Timer",
     confirmed: true,
     image: "exterior",
     meta: {
@@ -829,7 +820,6 @@ const coreServices: Service[] = [
     slug: "electrical-repair",
     name: "Electrical repair and troubleshooting",
     short: "Repairs & troubleshooting",
-    tag: "Diagnose · Repair",
     confirmed: true,
     image: "repair",
     meta: {
