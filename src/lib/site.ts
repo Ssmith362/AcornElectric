@@ -68,10 +68,12 @@ export const site = {
   /** Only genuine, confirmed Acorn profiles go here. Empty on purpose. */
   social: [] as { label: string; href: string }[],
 
-  /** Google Business Profile links. Fill in when Acorn shares them. */
+  /** Google Business Profile links (found Oct 19, 2026). */
   google: {
-    profileUrl: null as string | null,
-    reviewUrl: null as string | null,
+    // Public Maps link for the listing (3707 E Decatur Ave #2 shows on it; the
+    // address itself is still unresolved, see docs/client-facts-checklist.md).
+    profileUrl: "https://www.google.com/maps?cid=10070915066178567807" as string | null,
+    reviewUrl: "https://www.google.com/maps?cid=10070915066178567807" as string | null,
   },
 } as const;
 

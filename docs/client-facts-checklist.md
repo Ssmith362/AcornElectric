@@ -20,8 +20,8 @@ Status key: ✅ confirmed · 🟡 sourced but unconfirmed · ❌ unknown
 | Emergency / after-hours service | *not claimed anywhere* | ❌ | Old site mentions "emergency services". Don't add until confirmed, with real availability |
 | Official website URL | https://www.callacornelectric.com | 🟡 | Eric confirmed he bought callacornelectric.com on Wix. Confirm www vs non-www for the canonical host |
 | Social profiles | *none linked* | ❌ | Only add genuine Acorn accounts. Old site's social links reportedly point to wrong profiles |
-| **Google Business Profile URL + review link** | *none* | ❌ | Needed for reviews section + `sameAs` |
-| Review count / rating | *not shown* | ❌ | Audit said 70 five-star reviews; one aggregator shows 15. Don't show a number until verified at launch |
+| **Google Business Profile URL + review link** | `maps?cid=10070915066178567807` | ✅ | Found Oct 19, 2026. Listing shows 3707 E Decatur Ave #2, Spokane 99217, (509) 808-1925, callacornelectric.com |
+| Review count / rating | *not shown* | ✅ | Google showed 5.0 / 71 reviews on Oct 19, 2026. Site prints no count or stars (Therapy in Motion style); it points to Google instead. No review schema |
 
 ## Services (`src/content/services.ts`)
 
@@ -99,5 +99,5 @@ is not the same as ranking for it, so only three get a dedicated page.
 | Brand fonts | ✅ / 🟡 | Luckiest Guy (primary) installed. Secondary is Modica SemiBold, a licensed face: site uses Montserrat as a stand-in until Eric sends the web licence/file |
 | Photos | 🟡 | 14 real job photos from Eric (Oct 16 2026) placed in `src/content/images.ts`. Still on placeholders: hot tub, attic fan, repair, van, surge protector, home-sale repair, commercial |
 | Careers photo of Eric with two kids | 🟡 | Eric sent it; confirm he's happy with the kids on the public careers page |
-| Real customer reviews (text + name) | ❌ | `src/content/reviews.ts`. Copy from Google, word for word |
+| Real customer reviews (text + name) | ✅ | 10 Google reviews copied word for word into `src/content/reviews.ts` (Oct 19, 2026). Refresh from Google when new ones come in |
 | Owner bio / photo (optional) | ❌ | Would strengthen an About section later |
