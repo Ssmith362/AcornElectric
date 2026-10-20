@@ -99,5 +99,5 @@ is not the same as ranking for it, so only three get a dedicated page.
 | Brand fonts | ✅ / 🟡 | Luckiest Guy (primary) installed. Secondary is Modica SemiBold, a licensed face: site uses Montserrat as a stand-in until Eric sends the web licence/file |
 | Photos | 🟡 | 14 real job photos from Eric (Oct 16 2026) placed in `src/content/images.ts`. Still on placeholders: hot tub, attic fan, repair, van, surge protector, home-sale repair, commercial |
 | Careers photo of Eric with two kids | 🟡 | Eric sent it; confirm he's happy with the kids on the public careers page |
-| Real customer reviews (text + name) | ✅ | 10 Google reviews copied word for word into `src/content/reviews.ts` (Oct 19, 2026). Refresh from Google when new ones come in |
+| Real customer reviews (text + name) | ✅ | 20 Google reviews copied word for word into `src/content/reviews.ts` (Oct 19, 2026). Refresh from Google when new ones come in |
 | Owner bio / photo (optional) | ❌ | Would strengthen an About section later |

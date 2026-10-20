@@ -1,6 +1,6 @@
 /**
  * Customer reviews, copied word for word from Acorn's Google Business Profile
- * (read Oct 19, 2026; 5.0 stars, 71 reviews at that time). Names are exactly as
+ * (read Oct 19, 2026; 5.0 stars, 71 reviews at that time; 20 saved here). Names are exactly as
  * Google shows them.
  *
  * Rules: only add real reviews, never edit a review's meaning or wording, and
@@ -73,5 +73,65 @@ export const reviews: Review[] = [
     name: "Sandra Teal",
     source: "Google",
     quote: "Our experience with Eric’s work has been great! Great with our clients and wonderful to work with! Highly recommend.",
+  },
+  {
+    name: "Jennifer Boyd",
+    source: "Google",
+    quote:
+      "My 1967 home was not built with enough power for a whole family to have air conditioners running. Like many families just trying to make it work, we ran extension cords across the house during the summer so we could be comfortably cool and avoid blowing fuses. When I reached out to Eric at Acorn, he didn’t sell me on anything — he gave me options and designed a solution that met all of my goals. This was a significant project with multiple phases, and Eric stayed in communication throughout, showed up when he said he would, and did impeccable work. Even the city code inspector was singing Eric’s praises. If you need an electrician in Spokane, Eric is the only call you need to make. My whole family sleeps better at night because of Acorn.",
+  },
+  {
+    name: "Steve M",
+    source: "Google",
+    quote:
+      "Acorn Electric is my new go-to! I am so impressed by the experience and so pleased with their quality of craftsmanship and professionalism. Eric is a terrific communicator, he shows up on time, offers great suggestions on different options on ways to accomplish the goal AND he cleans up after himself! That’s all very refreshing to me. I had him bid several things around my property and he bid them individually so I could prioritize and then get them done when I was able. He’s a man of integrity and that’s saying a lot these days.",
+  },
+  {
+    name: "Christopher Lewis",
+    source: "Google",
+    quote:
+      "Acorn Electric was very professional and efficient. They were communicative and provided professional recommendations to solve complex electrical issues in an older house. They quickly upgraded a panel and worked with the electrical company to install a new meter. I Would use them again in the future.",
+  },
+  {
+    name: "JP Simmons",
+    source: "Google",
+    quote:
+      "I had a great experience with Eric, the owner of Acorn Electric. He was prompt at responding to my request for a quote, and when he arrived for our appointment, he was right on time and ready to get to work. I had a small problem after he left, but he cam back within two days to resolve the issue that was not related to the work he did for me. I will not hesitate to call Eric again when I need an electrician.",
+  },
+  {
+    name: "Mac Romney",
+    source: "Google",
+    quote:
+      "Eric and his team are the best of the best in Spokane! They’re always fair, honest, and recommend what’s best for the customer. I trust them with my electrical work and refer them to everyone I can because I know they’ll do a great job.",
+  },
+  {
+    name: "Elizabeth Pike",
+    source: "Google",
+    quote:
+      "The amazing thing about this company besides their quality work is that they showed up when they said they would! Showing up on time is the biggest challenge I’ve had with tradespeople and if I could give 10+ stars, I would.",
+  },
+  {
+    name: "Sean Eustis",
+    source: "Google",
+    quote:
+      "I thoroughly enjoyed my experience using Acorns Electric. Erik was professional and had great communication throughout the whole process. I will 100% be using acorns electric for my future needs and would recommend using them.",
+  },
+  {
+    name: "Rob Jeffrey",
+    source: "Google",
+    quote:
+      "Eric is a stand up guy. He and his team came and installed new bathroom services for my client. Outstanding work, clean and professional. You can trust this team in your home or the home of your client. Will definitely hire again!",
+  },
+  {
+    name: "Roland Frayne",
+    source: "Google",
+    quote:
+      "Acorn Electric provides top notch work! Eric always is on time, reliable and provides clean honest work. I definitely recommend Acorn Electric for your home electric installs.",
+  },
+  {
+    name: "Calli Behm",
+    source: "Google",
+    quote:
+      "Eric is an honest and hardworking guy, who runs a great crew! Always hearing good things whenever his name is mentioned. Trustworthy company.",
   },
 ];
