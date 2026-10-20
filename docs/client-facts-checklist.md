@@ -62,13 +62,20 @@ lighting, service mast repair, attic fans. Exterior lighting still
 
 ## Service areas (`src/content/areas.ts`)
 
-| Area | `confirmed` | Note |
+Eric supplied 12 communities (Oct 2026): Spokane, Spokane Valley, Liberty Lake,
+Cheney, Airway Heights, North Spokane, South Hill, Mead, Deer Park, Medical Lake,
+Greenacres, Otis Orchards. All 12 are listed accurately (`communities` in
+`areas.ts`) on /areas, the home map, footer, contact and schema. Listing a town
+is not the same as ranking for it, so only three get a dedicated page.
+
+| Area | Page | Note |
 |---|---|---|
-| Spokane | (home base) | |
-| **North Spokane** | false | Page built, hidden in production until confirmed |
-| **Mead** | false | Page built, hidden in production until confirmed. Utility (Avista vs Inland Power) varies by address |
-| **Spokane Valley** | false | Page built, hidden in production until confirmed |
-| Airway Heights, Cheney, Liberty Lake | false | No pages. Listed on /areas once confirmed |
+| Spokane | home / hub | City of Spokane permits and inspections |
+| **Spokane Valley** | yes | Washington L&I |
+| **North Spokane** | yes | Straddles the city limit; permit depends on address |
+| **Mead** | yes | L&I. Utility (Avista vs Inland Power) varies by address; not verified, language hedged |
+| South Hill | no | Inside Spokane city limits |
+| Liberty Lake, Cheney, Airway Heights, Deer Park, Medical Lake, Greenacres, Otis Orchards | no | L&I. Add a page only with genuinely distinct local content (real jobs, photos, local rules). Don't clone |
 
 ## Careers (`src/content/careers.ts`)
 
@@ -89,7 +96,7 @@ lighting, service mast repair, attic fans. Exterior lighting still
 |---|---|---|
 | Logo | ✅ | Real logo set from Eric (8 JPG exports, Oct 16 2026). Transparent cut-outs in `public/brand/`. Eric also has AI/EPS masters if we need vectors |
 | Brand colours | ✅ | Sampled from the logo: green #013328, cream #FEEFC6, yellow #FFFF01, orange #E0661D. In `src/app/globals.css` |
-| Brand fonts | 🟡 | Eric's "font and color guide" (.ai + screenshot) came as Gmail attachments we haven't opened yet. Site still uses Bricolage Grotesque + Geist; swap if the guide names a font |
+| Brand fonts | ✅ / 🟡 | Luckiest Guy (primary) installed. Secondary is Modica SemiBold, a licensed face: site uses Montserrat as a stand-in until Eric sends the web licence/file |
 | Photos | 🟡 | 14 real job photos from Eric (Oct 16 2026) placed in `src/content/images.ts`. Still on placeholders: hot tub, attic fan, repair, van, surge protector, home-sale repair, commercial |
 | Careers photo of Eric with two kids | 🟡 | Eric sent it; confirm he's happy with the kids on the public careers page |
 | Real customer reviews (text + name) | ❌ | `src/content/reviews.ts`. Copy from Google, word for word |
