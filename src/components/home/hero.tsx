@@ -15,9 +15,9 @@ export function Hero() {
       {/* soft filament light */}
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_60%_at_78%_35%,rgb(255_239_31/.13),transparent_70%),radial-gradient(ellipse_40%_40%_at_10%_90%,rgb(224_102_29/.16),transparent_70%)]" />
       {/* the trace that starts here and runs down the page edge */}
-      <svg aria-hidden="true" className="absolute top-0 left-0 -z-10 hidden h-full w-24 xl:block" viewBox="0 0 96 800" preserveAspectRatio="none">
-        <path d="M40 0v360l24 24v416" fill="none" stroke="rgb(255 255 255/.12)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-        <path d="M40 0v360l24 24v416" fill="none" stroke="var(--color-volt-400)" strokeWidth="1.5" className="flow" vectorEffect="non-scaling-stroke" />
+      <svg aria-hidden="true" className="absolute top-0 left-0 -z-10 h-full w-4 sm:w-6 lg:w-14 xl:w-24" viewBox="0 0 96 800" preserveAspectRatio="none">
+        <path d="M40 0v360l24 24v416" fill="none" stroke="rgb(255 255 255/.22)" strokeWidth="1.25" vectorEffect="non-scaling-stroke" />
+        <path d="M40 0v360l24 24v416" fill="none" stroke="var(--color-volt-400)" strokeWidth="2.25" strokeDasharray="16 184" className="flow drop-shadow-[0_0_4px_var(--color-volt-400)]" vectorEffect="non-scaling-stroke" />
       </svg>
 
       <div className="container-x grid items-center gap-12 pt-12 pb-16 sm:pt-16 lg:grid-cols-12 lg:gap-10 lg:pt-20 lg:pb-24">
