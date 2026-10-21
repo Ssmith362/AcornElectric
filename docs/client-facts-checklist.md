@@ -83,7 +83,7 @@ is not the same as ranking for it, so only three get a dedicated page.
 |---|---|---|
 | New work vans | ✅ | Meeting notes |
 | Fully stocked tools provided | ✅ | Meeting notes |
-| Book club reading *7 Habits* | ✅ | Meeting notes |
+| Team book club | ✅ | Meeting notes. The current book is deliberately NOT named on the site (it would go out of date) |
 | Leadership / management growth | ✅ | Meeting notes |
 | **Role title + licensing requirement** | 🟡 | "Residential Electrician (02)". Confirm exact requirement (02 only, or 01 also?) |
 | **Pay range** | ❌ | WA pay-transparency law (RCW 49.58.110) applies to employers with 15+ employees; confirm whether it applies. JobPosting schema stays off until pay, dates and type are set |

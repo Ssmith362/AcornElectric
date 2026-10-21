@@ -20,7 +20,7 @@ const offer = [
   { title: "Fully stocked tools", body: "The tools and materials to do the job right, provided. No buying your own to fill gaps." },
   {
     title: "A team that reads together",
-    body: "Our book club is working through The 7 Habits of Highly Effective People. We take personal growth as seriously as technical skill.",
+    body: "We have a team book club. We take personal growth as seriously as technical skill.",
   },
   {
     title: "Room to lead",
