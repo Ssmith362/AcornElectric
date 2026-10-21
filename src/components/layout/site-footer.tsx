@@ -105,7 +105,12 @@ export function SiteFooter() {
           <p>
             © {year} {site.name}. WA Lic. {site.license.value}.
           </p>
-          <p>Website by Flourish Now Digital</p>
+          <p>
+            Website by{" "}
+            <a href="https://flourishnowdigital.com" target="_blank" rel="noopener" className="underline underline-offset-4 hover:text-volt-300">
+              Flourish Now Digital
+            </a>
+          </p>
         </div>
       </div>
     </footer>
