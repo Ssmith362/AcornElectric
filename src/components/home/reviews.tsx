@@ -58,7 +58,7 @@ export function Reviews() {
   return (
     <section className="overflow-hidden bg-mist-100 py-12 sm:py-20" aria-labelledby="reviews-title">
       <div className="container-x">
-        <div className="grid items-end gap-5 lg:grid-cols-[1fr_auto] lg:gap-12">
+        <div>
           <div data-reveal>
             <p className="label-mono flex items-center gap-3 text-copper-700">
               <span aria-hidden="true" className="h-px w-8 bg-copper-500/60" />
@@ -68,16 +68,6 @@ export function Reviews() {
               In their own words
             </h2>
           </div>
-          {link ? (
-            <div className="flex flex-col items-start gap-2.5 lg:items-end">
-              <a href={link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-ink/25 px-6 py-3 font-semibold hover:bg-ink/5">
-                Read them on Google
-              </a>
-              <p className="max-w-[19rem] text-[0.84rem] leading-snug text-ink-mute lg:text-right">
-                Ratings and review counts live on the Google Business Profile, so they are always current there.
-              </p>
-            </div>
-          ) : null}
         </div>
       </div>
 

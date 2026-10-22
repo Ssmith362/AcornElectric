@@ -12,7 +12,10 @@ export function PausableMarquee({ children }: { children: React.ReactNode }) {
   const [paused, setPaused] = useState(false);
   return (
     <div className="mt-6 sm:mt-8">
-      <div className="container-x mb-3 flex justify-end motion-reduce:hidden">
+      <div className="marquee grid gap-4" data-paused={paused ? "true" : undefined}>
+        {children}
+      </div>
+      <div className="container-x mt-4 flex justify-end motion-reduce:hidden">
         <button
           type="button"
           onClick={() => setPaused((p) => !p)}
@@ -28,9 +31,6 @@ export function PausableMarquee({ children }: { children: React.ReactNode }) {
           </span>
           {paused ? "Play reviews" : "Pause reviews"}
         </button>
-      </div>
-      <div className="marquee grid gap-4" data-paused={paused ? "true" : undefined}>
-        {children}
       </div>
     </div>
   );

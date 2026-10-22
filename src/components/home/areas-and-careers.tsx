@@ -1,15 +1,10 @@
 import Link from "next/link";
 import { AreaMap } from "@/components/sections/area-map";
 import { ButtonLink } from "@/components/ui/button";
-import { Collapsible } from "@/components/ui/collapsible";
 import { Photo } from "@/components/ui/photo";
 import { SectionHead } from "@/components/ui/section-head";
 import { communities } from "@/content/areas";
 import { images } from "@/content/images";
-
-/** Spokane and the communities with their own page stay visible; the rest fold away. */
-const main = communities.filter((c) => c.name === "Spokane" || c.page);
-const rest = communities.filter((c) => !main.includes(c));
 
 function CommunityList({ items }: { items: typeof communities }) {
   return (
@@ -43,14 +38,9 @@ export function AreasBlock() {
             title={<span id="areas-title">Spokane and eleven communities around it.</span>}
             intro="Not sure if we cover your address? Put your ZIP code in the request form and we'll tell you straight away."
           />
-          <Collapsible
-            className="mt-6 sm:mt-8"
-            title={`${communities.length} communities`}
-            showLabel={`Show all ${communities.length}`}
-            always={<CommunityList items={main} />}
-          >
-            <CommunityList items={rest} />
-          </Collapsible>
+          <div className="mt-6 sm:mt-8">
+            <CommunityList items={communities} />
+          </div>
         </div>
         <div className="lg:col-span-7" data-reveal>
           <AreaMap />
