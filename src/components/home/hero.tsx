@@ -31,7 +31,7 @@ export function Hero() {
             className="mt-4 max-w-2xl text-[2.35rem] leading-[1.04] sm:mt-6 tracking-[0.01em] sm:text-6xl lg:text-[3.9rem] xl:text-[4.4rem]"
             data-reveal
           >
-            Electrical work that makes your home <span className="text-lit">work better.</span>
+            Your home runs on electricity. <span className="text-lit">Make sure it&rsquo;s in good hands.</span>
           </h1>
           <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed text-mist-200 sm:mt-7 sm:text-xl" data-reveal>
             Help for the upgrades, repairs, and electrical projects that make everyday life at home safer and easier.
