@@ -69,28 +69,50 @@ export function Process({ variant = "full" }: { variant?: "full" | "compact" }) 
 
   return (
     <section className="bg-grid-mist py-14 sm:py-20 lg:py-28" aria-labelledby="process-title">
-      <div className="container-x">
+      <div className="container-x grid items-center gap-8 sm:gap-12 lg:grid-cols-12 lg:gap-16">
         <SectionHead
+          className="lg:col-span-5"
           label="How we work"
           title={<span id="process-title">We&apos;d rather do it once.</span>}
+          intro="The same four steps on every job, big or small."
         />
-        <ol className="relative mt-10 grid gap-7 sm:mt-14 md:grid-cols-2 md:gap-x-10 md:gap-y-10 lg:grid-cols-4 lg:gap-6">
-          {/* the trace that connects the steps (one row of four, desktop only) */}
-          <span aria-hidden="true" className="absolute top-[0.6rem] right-0 left-0 hidden h-px bg-gradient-to-r from-copper-500/70 via-copper-500/40 to-volt-500 lg:block" />
-          {steps.map((s, i) => (
-            <li key={s.title} className="relative grid grid-cols-[2rem_1fr] gap-3 lg:block" data-reveal style={{ ["--reveal-i" as string]: i }}>
-              <span
-                aria-hidden="true"
-                className={`relative z-10 mt-1 block h-5 w-5 border-2 lg:mt-0 ${i === steps.length - 1 ? "animate-pulse-node border-volt-500 bg-volt-400" : "border-copper-500 bg-mist-50"}`}
-              />
-              <div>
-                <p className="label-mono text-copper-700 lg:mt-6">Step {i + 1}</p>
-                <h3 className="mt-2 text-xl leading-tight font-bold sm:text-2xl lg:mt-3">{s.title}</h3>
-                <p className="mt-2 leading-relaxed text-ink-soft lg:mt-3">{s.body}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+        {/* A job sheet that ticks itself off as it scrolls into view (CSS in
+            globals.css, "CHECKLIST"). Without JS or with reduced motion it
+            simply shows every step done. */}
+        <div className="checklist border border-ink/15 bg-white lg:col-span-7" data-reveal>
+          <div className="flex items-center justify-between gap-4 border-b border-ink/15 px-5 py-3.5 sm:px-7">
+            <p className="label-mono text-copper-700">Every job</p>
+            <p className="label-mono text-ink-mute">
+              <span className="checklist-count" aria-hidden="true" />
+              <span className="sr-only">Four steps</span>
+            </p>
+          </div>
+          <div aria-hidden="true" className="h-1 bg-ink/8">
+            <div className="checklist-bar h-full origin-left bg-volt-400" />
+          </div>
+          <ol className="divide-y divide-ink/10">
+            {steps.map((s, i) => (
+              <li
+                key={s.title}
+                className="checklist-row grid grid-cols-[1.75rem_1fr] gap-4 px-5 py-5 sm:px-7 sm:py-6"
+                style={{ ["--i" as string]: i }}
+              >
+                <span aria-hidden="true" className="checklist-box mt-0.5 flex h-7 w-7 items-center justify-center border-2">
+                  <svg viewBox="0 0 16 16" className="h-4 w-4">
+                    <path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="square" pathLength={1} />
+                  </svg>
+                </span>
+                <div>
+                  <h3 className="font-sans text-lg leading-snug font-bold sm:text-xl">
+                    <span className="sr-only">Step {i + 1}: </span>
+                    {s.title}
+                  </h3>
+                  <p className="mt-1.5 leading-relaxed text-ink-soft">{s.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );

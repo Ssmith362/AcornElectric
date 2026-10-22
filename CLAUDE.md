@@ -45,11 +45,14 @@ sampled from the logo (Oct 2026): night = forest green, volt = electric
 yellow, copper = squirrel orange, mist = light cream. Real logo and mascot
 live in `public/brand/` and render through `src/components/ui/logo.tsx`.
 
-Homepage "What we do most" has a phone/tablet variant below `lg` (1024px):
-the side-scrolling service deck in `home/service-deck.tsx` (a 3×2 grid on
-tablet). Desktop keeps the original feature blocks. "How we work" is one
-four-step section (`sections/process.tsx`), shared with service pages; the old
-separate principles list was merged into it.
+Homepage "What we do most" is a side-scrolling card deck at every width
+(`home/service-deck.tsx`: 1 card on phones, 2 on small tablets, 3 from 768px),
+with the "Everything on the panel" circuit list under it on desktop. "How we
+work" is one four-step section (`sections/process.tsx`), shared with service
+pages; on the homepage it is a job-sheet checklist that ticks itself off on
+scroll (CSS under "CHECKLIST" in globals.css; shows complete without JS or with
+reduced motion). "Where we work" shows Spokane and the towns with their own
+page; the rest sit behind `ui/collapsible.tsx` ("Show all 12").
 
 ## SEO rules
 

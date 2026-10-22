@@ -1,10 +1,36 @@
 import Link from "next/link";
 import { AreaMap } from "@/components/sections/area-map";
 import { ButtonLink } from "@/components/ui/button";
+import { Collapsible } from "@/components/ui/collapsible";
 import { Photo } from "@/components/ui/photo";
 import { SectionHead } from "@/components/ui/section-head";
 import { communities } from "@/content/areas";
 import { images } from "@/content/images";
+
+/** Spokane and the communities with their own page stay visible; the rest fold away. */
+const main = communities.filter((c) => c.name === "Spokane" || c.page);
+const rest = communities.filter((c) => !main.includes(c));
+
+function CommunityList({ items }: { items: typeof communities }) {
+  return (
+    <ul className="grid grid-cols-2 gap-x-6">
+      {items.map((c) => (
+        <li key={c.name} className="border-b border-white/10">
+          {c.page ? (
+            <Link href={`/areas/${c.page}`} className="flex items-center justify-between py-3 hover:text-volt-300">
+              {c.name}
+              <span aria-hidden="true">→</span>
+            </Link>
+          ) : (
+            <Link href={`/areas#${c.name.toLowerCase().replace(/\s+/g, "-")}`} className="block py-3 text-mist-200 hover:text-volt-300">
+              {c.name}
+            </Link>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function AreasBlock() {
   return (
@@ -17,22 +43,14 @@ export function AreasBlock() {
             title={<span id="areas-title">Spokane and eleven communities around it.</span>}
             intro="Not sure if we cover your address? Put your ZIP code in the request form and we'll tell you straight away."
           />
-          <ul className="mt-6 grid grid-cols-2 gap-x-6 border-t border-white/10 sm:mt-8" data-reveal>
-            {communities.map((c) => (
-              <li key={c.name} className="border-b border-white/10">
-                {c.page ? (
-                  <Link href={`/areas/${c.page}`} className="flex items-center justify-between py-3 hover:text-volt-300">
-                    {c.name}
-                    <span aria-hidden="true">→</span>
-                  </Link>
-                ) : (
-                  <Link href={`/areas#${c.name.toLowerCase().replace(/\s+/g, "-")}`} className="block py-3 text-mist-200 hover:text-volt-300">
-                    {c.name}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
+          <Collapsible
+            className="mt-6 sm:mt-8"
+            title={`${communities.length} communities`}
+            showLabel={`Show all ${communities.length}`}
+            always={<CommunityList items={main} />}
+          >
+            <CommunityList items={rest} />
+          </Collapsible>
         </div>
         <div className="lg:col-span-7" data-reveal>
           <AreaMap />

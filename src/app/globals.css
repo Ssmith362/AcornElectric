@@ -344,3 +344,83 @@
 .deck-track::-webkit-scrollbar {
   display: none;
 }
+
+/* ==========================================================================
+   CHECKLIST ("How we work" job sheet on the homepage)
+   Done state is the default, so it reads complete without JS. Only when the
+   reveal observer has armed the page does it start unchecked; once the card
+   scrolls in (.is-in) each row slides in, its box fills and the tick draws,
+   one after another, while the bar and the counter fill alongside.
+   ========================================================================== */
+@property --checklist-n {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 4;
+}
+.checklist {
+  --step: 0.45s;
+  --lead: 0.25s;
+}
+.checklist-box {
+  border-color: var(--color-volt-500);
+  background-color: var(--color-volt-400);
+  color: var(--color-night-950);
+  transition:
+    background-color 0.2s ease-out,
+    border-color 0.2s ease-out;
+  transition-delay: calc(var(--lead) + var(--i) * var(--step) + 0.2s);
+}
+.checklist-box path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.3s var(--ease-current);
+  transition-delay: calc(var(--lead) + var(--i) * var(--step) + 0.25s);
+}
+.checklist-row {
+  transition:
+    opacity 0.4s var(--ease-current),
+    transform 0.4s var(--ease-current);
+  transition-delay: calc(var(--lead) + var(--i) * var(--step));
+}
+.checklist-bar {
+  transition: transform calc(4 * var(--step)) linear;
+  transition-delay: calc(var(--lead) + 0.25s);
+}
+.checklist-count {
+  counter-reset: done var(--checklist-n);
+  transition: --checklist-n calc(4 * var(--step)) linear;
+  transition-delay: calc(var(--lead) + 0.25s);
+}
+.checklist-count::after {
+  content: counter(done) " / 4 done";
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .is-armed .checklist:not(.is-in) .checklist-row {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  .is-armed .checklist:not(.is-in) .checklist-box {
+    border-color: var(--color-copper-500);
+    background-color: transparent;
+  }
+  .is-armed .checklist:not(.is-in) .checklist-box path {
+    stroke-dashoffset: 1;
+  }
+  .is-armed .checklist:not(.is-in) .checklist-bar {
+    transform: scaleX(0);
+  }
+  .is-armed .checklist:not(.is-in) .checklist-count {
+    --checklist-n: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .checklist-row,
+  .checklist-box,
+  .checklist-box path,
+  .checklist-bar,
+  .checklist-count {
+    transition: none !important;
+  }
+}
