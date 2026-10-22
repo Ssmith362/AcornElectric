@@ -348,11 +348,12 @@
 /* ==========================================================================
    PROCESS CARDS ("How we work" on the homepage)
    From lg up each card sticks just under the header, a little lower than the
-   one before, so the next card slides up over the last and they stack.
+   one before (5.25rem apart, one full number + title row), so the next card slides up
+   over the last and each earlier card is left as a collapsed number + title strip.
    ========================================================================== */
 @media (min-width: 1024px) {
   .process-card {
     position: sticky;
-    top: calc(8rem + var(--i) * 0.9rem);
+    top: calc(8rem + var(--i) * 5.25rem);
   }
 }
