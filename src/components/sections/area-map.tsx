@@ -59,17 +59,31 @@ export function AreaMap() {
           const node = (
             <g className="group">
               <circle cx={p.x} cy={p.y} r={7} className="map-bulb" style={{ animationDelay: `${(i * 0.85).toFixed(2)}s` }} />
+              <text
+                x={p.x + (p.dx ?? 0)}
+                y={p.y + (p.dy ?? 0)}
+                textAnchor={p.anchor ?? "middle"}
+                fontSize={11}
+                fontWeight={600}
+                fill="white"
+                className={c.page ? "font-sans group-hover:fill-[var(--color-volt-300)]" : "font-sans"}
+              >
+                {c.name}
+              </text>
             </g>
           );
           return c.page ? (
-            <Link key={c.name} href={`/areas/${c.page}`} aria-label={c.name}>{node}</Link>
+            <Link key={c.name} href={`/areas/${c.page}`}>{node}</Link>
           ) : (
             <g key={c.name}>{node}</g>
           );
         })}
         {/* hub */}
-        <Link href="/areas" aria-label="Spokane">
+        <Link href="/areas">
           <circle cx={HUB.x} cy={HUB.y} r={10} className="map-hub" />
+          <text x={HUB.x} y={HUB.y - 17} textAnchor="middle" fontSize={15} fill="white" className="font-display">
+            Spokane
+          </text>
         </Link>
       </svg>
       <figcaption className="label-mono mt-2 text-right text-[0.6rem] text-mist-400">Diagram · not to scale</figcaption>

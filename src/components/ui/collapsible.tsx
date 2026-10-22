@@ -14,15 +14,15 @@ export function Collapsible({
   title,
   showLabel,
   hideLabel = "Show fewer",
-  always,
+  always = null,
   children,
   className = "",
 }: {
-  title: ReactNode;
+  title?: ReactNode;
   showLabel: string;
   hideLabel?: string;
   /** Always visible, above the collapsible part. */
-  always: ReactNode;
+  always?: ReactNode;
   children: ReactNode;
   className?: string;
 }) {
@@ -30,8 +30,8 @@ export function Collapsible({
   const [open, setOpen] = useState(false);
   return (
     <div className={className}>
-      <div className="flex items-center justify-between gap-4 border-b border-white/15 pb-2">
-        <p className="label-mono text-mist-300">{title}</p>
+      <div className={`flex items-center gap-4 border-b border-white/15 pb-2 ${title ? "justify-between" : "justify-start"}`}>
+        {title ? <p className="label-mono text-mist-300">{title}</p> : null}
         <button
           type="button"
           aria-expanded={open}

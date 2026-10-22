@@ -346,81 +346,82 @@
 }
 
 /* ==========================================================================
-   CHECKLIST ("How we work" job sheet on the homepage)
-   Done state is the default, so it reads complete without JS. Only when the
-   reveal observer has armed the page does it start unchecked; once the card
-   scrolls in (.is-in) each row slides in, its box fills and the tick draws,
-   one after another, while the bar and the counter fill alongside.
+   PROCESS DECK ("How we work" on the homepage)
+   Default: a plain list of four cards. Once process-deck.tsx marks the section
+   data-live (motion allowed, JS running) the section becomes tall, the content
+   pins, and --s (0 .. last card, set from scroll) drives everything:
+   --d = how far a card is from the front. d >= 0 sits in the stack behind the
+   front card; d < 0 has been flipped away (tilts up and fades).
    ========================================================================== */
-@property --checklist-n {
-  syntax: "<integer>";
-  inherits: false;
-  initial-value: 4;
+.pdeck-stack {
+  display: grid;
+  gap: 1rem;
 }
-.checklist {
-  --step: 0.45s;
-  --lead: 0.25s;
+.pdeck-card {
+  border: 1px solid rgb(0 0 0 / 0.12);
+  background: var(--color-mist-50);
+  padding: 1.5rem;
+  box-shadow: 0 18px 40px -18px rgb(0 0 0 / 0.55);
 }
-.checklist-box {
-  border-color: var(--color-volt-500);
-  background-color: var(--color-volt-400);
-  color: var(--color-night-950);
-  transition:
-    background-color 0.2s ease-out,
-    border-color 0.2s ease-out;
-  transition-delay: calc(var(--lead) + var(--i) * var(--step) + 0.2s);
-}
-.checklist-box path {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset 0.3s var(--ease-current);
-  transition-delay: calc(var(--lead) + var(--i) * var(--step) + 0.25s);
-}
-.checklist-row {
-  transition:
-    opacity 0.4s var(--ease-current),
-    transform 0.4s var(--ease-current);
-  transition-delay: calc(var(--lead) + var(--i) * var(--step));
-}
-.checklist-bar {
-  transition: transform calc(4 * var(--step)) linear;
-  transition-delay: calc(var(--lead) + 0.25s);
-}
-.checklist-count {
-  counter-reset: done var(--checklist-n);
-  transition: --checklist-n calc(4 * var(--step)) linear;
-  transition-delay: calc(var(--lead) + 0.25s);
-}
-.checklist-count::after {
-  content: counter(done) " / 4 done";
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .is-armed .checklist:not(.is-in) .checklist-row {
-    opacity: 0;
-    transform: translateX(-14px);
-  }
-  .is-armed .checklist:not(.is-in) .checklist-box {
-    border-color: var(--color-copper-500);
-    background-color: transparent;
-  }
-  .is-armed .checklist:not(.is-in) .checklist-box path {
-    stroke-dashoffset: 1;
-  }
-  .is-armed .checklist:not(.is-in) .checklist-bar {
-    transform: scaleX(0);
-  }
-  .is-armed .checklist:not(.is-in) .checklist-count {
-    --checklist-n: 0;
+@media (min-width: 640px) {
+  .pdeck-card {
+    padding: 2rem 2.25rem;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .checklist-row,
-  .checklist-box,
-  .checklist-box path,
-  .checklist-bar,
-  .checklist-count {
-    transition: none !important;
+.pdeck[data-live="true"] {
+  --s: 0;
+  height: calc(100svh + (var(--n) - 1) * 55svh);
+}
+.pdeck[data-live="true"] .pdeck-pin {
+  position: sticky;
+  top: 0;
+  display: flex;
+  height: 100svh;
+  align-items: center;
+  overflow: hidden;
+}
+.pdeck[data-live="true"] .pdeck-pin > div {
+  width: 100%;
+  padding-block: 4.5rem 2rem;
+}
+.pdeck[data-live="true"] .pdeck-dashes {
+  display: flex;
+}
+.pdeck-dash {
+  display: block;
+  width: 2rem;
+  height: 2px;
+  background: rgb(255 255 255 / 0.22);
+  overflow: hidden;
+}
+.pdeck-dash > span {
+  display: block;
+  height: 100%;
+  background: var(--color-volt-400);
+  transform-origin: left;
+  transform: scaleX(calc(clamp(0, var(--s) - var(--i) + 1, 1)));
+}
+.pdeck[data-live="true"] .pdeck-stack {
+  position: relative;
+  display: block;
+  height: 21rem;
+}
+@media (min-width: 640px) {
+  .pdeck[data-live="true"] .pdeck-stack {
+    height: 19rem;
   }
+}
+.pdeck[data-live="true"] .pdeck-card {
+  --d: calc(var(--i) - var(--s));
+  --out: clamp(0, var(--d) * -1, 1);
+  --depth: min(max(var(--d), 0), 3);
+  position: absolute;
+  inset: 0;
+  transform-origin: 0 100%;
+  transform: translateY(calc(var(--depth) * 16px - var(--out) * 110px)) scale(calc(1 - var(--depth) * 0.035))
+    rotate(calc(var(--out) * -7deg));
+  opacity: min(max(calc(1 - var(--out) * 1.7), 0), max(0, calc(3.4 - var(--d))));
+  filter: brightness(calc(1 - var(--depth) * 0.1));
+  will-change: transform, opacity;
 }

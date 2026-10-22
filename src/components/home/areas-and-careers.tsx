@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AreaMap } from "@/components/sections/area-map";
+import { Collapsible } from "@/components/ui/collapsible";
 import { ButtonLink } from "@/components/ui/button";
 import { Photo } from "@/components/ui/photo";
 import { SectionHead } from "@/components/ui/section-head";
@@ -38,9 +39,13 @@ export function AreasBlock() {
             title={<span id="areas-title">Spokane and eleven communities around it.</span>}
             intro="Not sure if we cover your address? Put your ZIP code in the request form and we'll tell you straight away."
           />
-          <div className="mt-6 sm:mt-8">
+          <Collapsible
+            className="mt-6 sm:mt-8"
+            showLabel={`Show all ${communities.length} communities`}
+            hideLabel="Hide communities"
+          >
             <CommunityList items={communities} />
-          </div>
+          </Collapsible>
         </div>
         <div className="lg:col-span-7" data-reveal>
           <AreaMap />
