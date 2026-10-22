@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PanelSchedule } from "@/components/sections/panel-schedule";
+import { Accordion } from "@/components/ui/accordion";
 import { SectionHead } from "@/components/ui/section-head";
 import { publishedServices as services } from "@/content/services";
 import { ServiceDeck } from "./service-deck";
