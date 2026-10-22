@@ -45,9 +45,12 @@ sampled from the logo (Oct 2026): night = forest green, volt = electric
 yellow, copper = squirrel orange, mist = light cream. Real logo and mascot
 live in `public/brand/` and render through `src/components/ui/logo.tsx`.
 
-Homepage "What we do most" is a side-scrolling card deck at every width
-(`home/service-deck.tsx`: 1 card on phones, 2 on small tablets, 3 from 768px),
-with the "Everything on the panel" circuit list under it on desktop. "How we
+Homepage "What we do most" (`home/featured-services.tsx`) is one cream
+section: the Tesla-at-Fred-Meyer story opens it (full story behind a "Read the
+full story" accordion), then the first six services as a side-scrolling rail
+(`home/service-deck.tsx`: always a peek of the next card; 1 on phones, 2 on
+tablets, 3 on desktop). Each card carries the service's `problem` line, so
+there is no separate problem list. "How we
 work" is one four-step section (`sections/process.tsx`), shared with service
 pages; on the homepage it is a job-sheet checklist that ticks itself off on
 scroll (CSS under "CHECKLIST" in globals.css; shows complete without JS or with

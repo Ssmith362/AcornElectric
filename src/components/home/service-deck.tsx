@@ -5,11 +5,12 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { Photo } from "@/components/ui/photo";
 import type { ImageKey } from "@/content/images";
 
-export type DeckItem = { slug: string; name: string; short: string; lede: string; image: ImageKey };
+export type DeckItem = { slug: string; name: string; short: string; problem: string; lede: string; image: ImageKey };
 
 /**
- * "What we do most": a side-scrolling card deck at every screen size.
- * One card (plus a peek) on phones, two on small tablets, three from 768px up.
+ * "What we do most": a side-scrolling card rail on the cream surface, at every
+ * screen size, always with a peek of the next card so it reads as scrollable:
+ * one card on phones, two on tablets, three on desktop.
  *
  * Built on CSS scroll-snap, so swiping, trackpads and shift+wheel all work
  * natively. Previous/Next buttons, dot buttons and a position readout drive
@@ -17,9 +18,10 @@ export type DeckItem = { slug: string; name: string; short: string; lede: string
  * with aria-roledescription="carousel", each card a "slide" group labelled
  * "n of N", a polite live region announcing the position after a button
  * press, and no auto-rotation. Each card's short detail is a disclosure
- * button (aria-expanded). Nothing depends on hover.
+ * button (aria-expanded); the detail stays in the HTML either way. Nothing
+ * depends on hover. `titleAs` sets the card heading level for the outline.
  */
-export function ServiceDeck({ items }: { items: DeckItem[] }) {
+export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[]; titleAs?: "h3" | "h4" }) {
   const id = useId();
   const track = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
@@ -47,9 +49,13 @@ export function ServiceDeck({ items }: { items: DeckItem[] }) {
       if (Math.abs(x - el.scrollLeft) < Math.abs(xs[best] - el.scrollLeft)) best = i;
     });
     const step = xs.length > 1 ? xs[1] - xs[0] : el.clientWidth;
+    // Whole cards in view; the peek of the next one doesn't count.
+    const css = getComputedStyle(el);
+    const inner = el.clientWidth - parseFloat(css.paddingLeft) - parseFloat(css.paddingRight) + parseFloat(css.columnGap || "0");
+    const whole = Math.max(1, Math.min(n, Math.floor(inner / step + 0.05)));
     const end = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
-    setIndex(end ? Math.max(best, n - Math.max(1, Math.round(el.clientWidth / step))) : best);
-    setVisible(Math.max(1, Math.min(n, Math.round(el.clientWidth / step))));
+    setIndex(end ? Math.max(best, n - whole) : best);
+    setVisible(whole);
     setAtStart(el.scrollLeft <= 4);
     setAtEnd(end);
   }, [n, starts]);
@@ -91,14 +97,14 @@ export function ServiceDeck({ items }: { items: DeckItem[] }) {
   const readout = visible > 1 && shown > index + 1 ? `${index + 1}–${shown} / ${n}` : `${index + 1} / ${n}`;
 
   const btn =
-    "flex h-11 w-11 items-center justify-center border border-white/25 text-white transition-colors hover:border-volt-400 hover:text-volt-300 disabled:opacity-35 disabled:hover:border-white/25 disabled:hover:text-white";
+    "flex h-11 w-11 items-center justify-center border border-ink/25 text-ink transition-colors hover:border-ink hover:bg-ink hover:text-volt-400 disabled:opacity-35 disabled:hover:border-ink/25 disabled:hover:bg-transparent disabled:hover:text-ink";
 
   return (
-    <div role="region" aria-roledescription="carousel" aria-label="Services we do most" className="mt-7 md:mt-10 lg:mt-14">
+    <div role="region" aria-roledescription="carousel" aria-label="Services we do most" className="mt-5 sm:mt-6">
       <div
         ref={track}
         id={`${id}-track`}
-        className="deck-track relative -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 pb-1 sm:-mx-6 sm:scroll-px-6 sm:px-6 md:mx-0 md:scroll-px-0 md:gap-4 md:px-0 lg:gap-6"
+        className="deck-track relative -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 pb-1 sm:-mx-6 sm:scroll-px-6 sm:px-6 md:gap-4 lg:mx-0 lg:scroll-px-0 lg:gap-5 lg:px-0"
       >
         {items.map((s, i) => {
           const isOpen = !!open[s.slug];
@@ -109,16 +115,17 @@ export function ServiceDeck({ items }: { items: DeckItem[] }) {
               role="group"
               aria-roledescription="slide"
               aria-label={`${i + 1} of ${n}: ${s.short}`}
-              className="relative flex w-[78%] shrink-0 snap-start flex-col border border-white/12 bg-night-950/60 sm:w-[46%] md:w-[calc((100%-2rem)/3)] lg:w-[calc((100%-3rem)/3)]"
+              className="relative flex w-[80%] shrink-0 snap-start flex-col border border-ink/15 bg-white sm:w-[44%] md:w-[calc((100%-2rem)/2.4)] lg:w-[calc((100%-2.5rem)/3.2)]"
             >
-              <Photo id={s.image} ticks={false} compactLabel sizes="(min-width: 768px) 32vw, 80vw" className="aspect-[16/10]!" />
+              <Photo id={s.image} ticks={false} compactLabel sizes="(min-width: 1024px) 30vw, (min-width: 640px) 44vw, 80vw" className="aspect-[16/10]!" />
               <div className="flex flex-1 flex-col p-4 lg:p-6">
-                <h3 className="font-sans text-lg leading-snug font-bold text-white lg:text-2xl">
-                  <Link href={`/services/${s.slug}`} className="hover:text-volt-300">
+                <Title className="font-sans text-lg leading-snug font-bold text-ink lg:text-xl">
+                  <Link href={`/services/${s.slug}`} className="block hover:text-copper-700">
                     {s.short}
                   </Link>
-                </h3>
-                <div id={detailId} className={isOpen ? "deck-detail mt-2 text-[0.92rem] leading-relaxed text-mist-300 lg:text-base" : "hidden"}>
+                </Title>
+                <p className="mt-1.5 text-[0.95rem] leading-relaxed text-ink-soft">{s.problem}</p>
+                <div id={detailId} className={isOpen ? "deck-detail mt-2 border-l-2 border-volt-500 pl-3 text-[0.92rem] leading-relaxed text-ink-soft" : "hidden"}>
                   {s.lede}
                 </div>
                 <div className="mt-auto flex items-center justify-between gap-3 pt-3">
@@ -127,7 +134,7 @@ export function ServiceDeck({ items }: { items: DeckItem[] }) {
                     aria-expanded={isOpen}
                     aria-controls={detailId}
                     onClick={() => setOpen((o) => ({ ...o, [s.slug]: !o[s.slug] }))}
-                    className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-volt-300 hover:text-volt-200"
+                    className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-copper-700 hover:text-ink"
                   >
                     <span
                       aria-hidden="true"
@@ -138,7 +145,7 @@ export function ServiceDeck({ items }: { items: DeckItem[] }) {
                   </button>
                   <Link
                     href={`/services/${s.slug}`}
-                    className="inline-flex min-h-11 items-center text-sm font-semibold text-white underline decoration-volt-400 underline-offset-4 hover:text-volt-300"
+                    className="inline-flex min-h-11 items-center text-sm font-semibold text-ink underline decoration-volt-500 decoration-2 underline-offset-4 hover:text-copper-700"
                   >
                     Details<span className="sr-only">: {s.name}</span> <span aria-hidden="true">&nbsp;→</span>
                   </Link>
@@ -172,14 +179,14 @@ export function ServiceDeck({ items }: { items: DeckItem[] }) {
                     <span className="sr-only">Show {s.short}</span>
                     <span
                       aria-hidden="true"
-                      className={`block h-2 transition-all duration-200 ${inView ? "w-5 bg-volt-400" : "w-2 bg-white/35"}`}
+                      className={`block h-2 transition-all duration-200 ${inView ? "w-5 bg-ink" : "w-2 bg-ink/25"}`}
                     />
                   </button>
                 </li>
               );
             })}
           </ol>
-          <p className="label-mono min-w-[3.6rem] text-right text-mist-300" aria-hidden="true">
+          <p className="label-mono min-w-[3.6rem] text-right text-ink-mute" aria-hidden="true">
             {readout}
           </p>
         </div>
