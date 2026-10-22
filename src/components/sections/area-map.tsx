@@ -22,27 +22,13 @@ const pos: Record<string, Pos> = {
   "Liberty Lake": { x: 395, y: 190, anchor: "end", dx: 0, dy: 24 },
 };
 
-export function AreaMap({
-  selected,
-  interactive = true,
-  titleId = "map-title",
-}: {
-  /** Community to highlight (the phone/tablet area selector). */
-  selected?: string;
-  /** false = a picture only: no links inside, labelled as an image. */
-  interactive?: boolean;
-  titleId?: string;
-} = {}) {
+export function AreaMap() {
   const nodes = communities.filter((c) => c.name !== "Spokane" && pos[c.name]);
   const route = (n: Pos) => `M${HUB.x} ${HUB.y}H${n.x}V${n.y}`;
   return (
     <figure className="relative">
-      <svg viewBox="0 0 420 270" className="h-auto w-full" role={interactive ? "group" : "img"} aria-labelledby={titleId}>
-        <title id={titleId}>
-          {selected
-            ? `Diagram of Acorn Electric's service area with ${selected} highlighted (not to scale)`
-            : "Diagram of Acorn Electric's service area: Spokane and eleven nearby communities (not to scale)"}
-        </title>
+      <svg viewBox="0 0 420 270" className="h-auto w-full" role="group" aria-labelledby="map-title">
+        <title id="map-title">Diagram of Acorn Electric&apos;s service area: Spokane and eleven nearby communities (not to scale)</title>
         {/* river */}
         <path
           d="M10 214c40-8 70-30 110-26s60 16 92 10 70-10 110-4 70 10 92 6"
@@ -68,71 +54,37 @@ export function AreaMap({
             />
           ))}
         </g>
-        {selected && selected !== "Spokane" && pos[selected] ? (
-          <path
-            d={route(pos[selected])}
-            fill="none"
-            stroke="var(--color-volt-300)"
-            strokeWidth="2.6"
-            strokeLinecap="round"
-            className="drop-shadow-[0_0_4px_var(--color-volt-400)]"
-          />
-        ) : null}
         {nodes.map((c, i) => {
           const p = pos[c.name];
-          const on = selected === c.name;
           const node = (
             <g className="group">
-              <circle
-                cx={p.x}
-                cy={p.y}
-                r={on ? 8.5 : 7}
-                className={on ? "map-bulb map-bulb-on" : "map-bulb"}
-                style={{ animationDelay: `${(i * 0.85).toFixed(2)}s` }}
-              />
+              <circle cx={p.x} cy={p.y} r={7} className="map-bulb" style={{ animationDelay: `${(i * 0.85).toFixed(2)}s` }} />
               <text
                 x={p.x + (p.dx ?? 0)}
                 y={p.y + (p.dy ?? 0)}
                 textAnchor={p.anchor ?? "middle"}
-                fontSize={on ? 13 : 11}
-                fontWeight={on ? 700 : 600}
-                fill={on ? "var(--color-volt-300)" : "white"}
-                opacity={selected && !on ? 0.75 : undefined}
-                className={c.page && interactive ? "font-sans group-hover:fill-[var(--color-volt-300)]" : "font-sans"}
+                fontSize={11}
+                fontWeight={600}
+                fill="white"
+                className={c.page ? "font-sans group-hover:fill-[var(--color-volt-300)]" : "font-sans"}
               >
                 {c.name}
               </text>
             </g>
           );
-          return c.page && interactive ? (
+          return c.page ? (
             <Link key={c.name} href={`/areas/${c.page}`}>{node}</Link>
           ) : (
             <g key={c.name}>{node}</g>
           );
         })}
         {/* hub */}
-        {interactive ? (
-          <Link href="/areas">
-            <circle cx={HUB.x} cy={HUB.y} r={10} className="map-hub" />
-            <text x={HUB.x} y={HUB.y - 17} textAnchor="middle" fontSize={15} fill="white" className="font-display">
-              Spokane
-            </text>
-          </Link>
-        ) : (
-          <g>
-            <circle cx={HUB.x} cy={HUB.y} r={selected === "Spokane" ? 12 : 10} className={selected === "Spokane" ? "map-hub map-hub-on" : "map-hub"} />
-            <text
-              x={HUB.x}
-              y={HUB.y - 17}
-              textAnchor="middle"
-              fontSize={selected === "Spokane" ? 17 : 15}
-              fill={selected === "Spokane" ? "var(--color-volt-300)" : "white"}
-              className="font-display"
-            >
-              Spokane
-            </text>
-          </g>
-        )}
+        <Link href="/areas">
+          <circle cx={HUB.x} cy={HUB.y} r={10} className="map-hub" />
+          <text x={HUB.x} y={HUB.y - 17} textAnchor="middle" fontSize={15} fill="white" className="font-display">
+            Spokane
+          </text>
+        </Link>
       </svg>
       <figcaption className="label-mono mt-2 text-right text-[0.6rem] text-mist-400">Diagram · not to scale</figcaption>
     </figure>

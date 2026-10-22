@@ -324,34 +324,3 @@
   .map-bolt { animation: none; opacity: 0; }
   .map-bulb { animation: none; }
 }
-
-/* ==========================================================================
-   PHONE / TABLET DECK + DISCLOSURES
-   Short, subtle reveals. The reduced-motion block above already cuts every
-   animation to ~0ms, so these are skipped for people who ask for less motion.
-   ========================================================================== */
-@keyframes reveal-in {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: none; }
-}
-.deck-detail,
-.acc-panel-open {
-  animation: reveal-in 0.18s ease-out;
-}
-.deck-track {
-  scrollbar-width: none;
-  overscroll-behavior-x: contain;
-}
-.deck-track::-webkit-scrollbar {
-  display: none;
-}
-.map-bulb-on {
-  animation: none;
-  fill: var(--color-volt-400);
-  stroke: var(--color-volt-200);
-  stroke-opacity: 1;
-  filter: drop-shadow(0 0 6px var(--color-volt-400));
-}
-.map-hub-on {
-  filter: drop-shadow(0 0 10px rgb(255 232 66 / .9));
-}

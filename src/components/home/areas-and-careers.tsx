@@ -5,12 +5,11 @@ import { Photo } from "@/components/ui/photo";
 import { SectionHead } from "@/components/ui/section-head";
 import { communities } from "@/content/areas";
 import { images } from "@/content/images";
-import { AreaSelector } from "./area-selector";
 
 export function AreasBlock() {
   return (
-    <section className="on-night bg-night-900 py-14 text-white max-lg:py-10! sm:py-20 md:max-lg:py-12! lg:py-28" aria-labelledby="areas-title">
-      <div className="container-x grid items-center gap-8 max-lg:gap-6! sm:gap-14 lg:grid-cols-12">
+    <section className="on-night bg-night-900 py-14 text-white sm:py-20 lg:py-28" aria-labelledby="areas-title">
+      <div className="container-x grid items-center gap-8 sm:gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionHead
             tone="night"
@@ -18,7 +17,7 @@ export function AreasBlock() {
             title={<span id="areas-title">Spokane and eleven communities around it.</span>}
             intro="Not sure if we cover your address? Put your ZIP code in the request form and we'll tell you straight away."
           />
-          <ul className="mt-6 grid grid-cols-2 gap-x-6 border-t border-white/10 max-lg:hidden sm:mt-8" data-reveal>
+          <ul className="mt-6 grid grid-cols-2 gap-x-6 border-t border-white/10 sm:mt-8" data-reveal>
             {communities.map((c) => (
               <li key={c.name} className="border-b border-white/10">
                 {c.page ? (
@@ -35,12 +34,8 @@ export function AreasBlock() {
             ))}
           </ul>
         </div>
-        <div className="max-lg:hidden lg:col-span-7" data-reveal>
+        <div className="lg:col-span-7" data-reveal>
           <AreaMap />
-        </div>
-        {/* Phones and tablets: chips to pick a community, the diagram beneath. */}
-        <div className="lg:hidden" data-reveal>
-          <AreaSelector />
         </div>
       </div>
     </section>

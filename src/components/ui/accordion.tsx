@@ -73,7 +73,7 @@ export function Accordion({
               id={panelId}
               role="region"
               aria-labelledby={btnId}
-              className={`${expanded ? "acc-panel-open block" : "hidden"} ${mobileOnly ? "lg:block" : ""} pb-5 ${mobileOnly ? "lg:pt-2" : ""}`}
+              className={`${expanded ? "block" : "hidden"} ${mobileOnly ? "lg:block" : ""} pb-5 ${mobileOnly ? "lg:pt-2" : ""}`}
             >
               <div className={bodyCls}>{item.body}</div>
             </div>

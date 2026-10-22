@@ -45,15 +45,6 @@ sampled from the logo (Oct 2026): night = forest green, volt = electric
 yellow, copper = squirrel orange, mist = light cream. Real logo and mascot
 live in `public/brand/` and render through `src/components/ui/logo.tsx`.
 
-Homepage phone/tablet layouts (below `lg`, 1024px) are separate variants of
-four sections: the FAQ accordion in `home/story.tsx`, the service deck
-(`home/service-deck.tsx`), the merged "How we work" steps in
-`home/principles.tsx` (the standalone Process section is desktop-only on the
-homepage) and the area selector (`home/area-selector.tsx`). Desktop markup is
-untouched: phone/tablet overrides use `max-lg:` (with `!` where an `sm:`/`md:`
-class would otherwise win) or `lg:hidden`. Keep it that way so desktop stays
-pixel-identical.
-
 ## SEO rules
 
 - Indexing is off (`NEXT_PUBLIC_ALLOW_INDEXING=false`) until launch.
