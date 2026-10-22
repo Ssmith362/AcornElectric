@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview: What we do, as an expandable dock</title>
+<style>
+@font-face{font-family:"Luckiest Guy";src:url("fonts/luckiest-guy-400.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"Montserrat";src:url("fonts/montserrat-variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Geist Mono";src:url("fonts/geist-mono-variable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+:root{
+ --night-950:#011d24;--night-900:#012730;--night-800:#0a3340;--night-700:#1a4350;
+ --volt-400:#ffe842;--volt-300:#fff76a;--copper-400:#ec8540;--copper-500:#e16521;
+ --mist-200:#efe3c4;--mist-300:#ddd0ad;--mist-400:#a99d7e;--ink:#082019;
+ --display:"Luckiest Guy",Impact,sans-serif;--sans:"Montserrat",system-ui,sans-serif;--mono:"Geist Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fdf9ef;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.bar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #0001;padding:.7rem 1rem;font:600 .8rem var(--mono);letter-spacing:.1em;text-transform:uppercase;display:flex;gap:1.2rem;flex-wrap:wrap}
+.plate{background:#111;color:#fff;padding:1.4rem 1rem}
+.plate-in,.wrap{max-width:84rem;margin:0 auto;padding-inline:1rem}
+.plate h2{margin:.2rem 0 .5rem;font:700 1.25rem var(--sans)}
+.plate p{margin:.2rem 0;max-width:60rem;color:#ccc;line-height:1.55;font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.chip{font:600 .75rem var(--sans);padding:.35rem .6rem}
+.win{background:#16a34a33;color:#86efac}.cost{background:#f59e0b33;color:#fcd34d}
+.tag{font:600 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#aaa}
+
+section.site{background:var(--night-900);color:#fff;padding:4.5rem 0 5rem;
+ background-image:linear-gradient(rgb(255 255 255/.035) 1px,transparent 1px),linear-gradient(90deg,rgb(255 255 255/.035) 1px,transparent 1px);background-size:48px 48px}
+.wrap{padding-inline:1rem}@media(min-width:40rem){.wrap{padding-inline:1.5rem}}@media(min-width:64rem){.wrap{padding-inline:2.5rem}}
+.kick{display:flex;align-items:center;gap:.75rem;font:500 .72rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mist-300)}
+.kick i{display:block;height:1px;width:2rem;background:rgb(255 232 66/.6)}
+h1.title{margin:1.2rem 0 0;max-width:48rem;font:400 2.1rem/1.04 var(--display);letter-spacing:.01em}
+@media(min-width:40rem){h1.title{font-size:3rem}}@media(min-width:64rem){h1.title{font-size:3.6rem}}
+.intro{margin:1.2rem 0 0;max-width:40rem;font-size:1.1rem;line-height:1.65;color:var(--mist-300)}
+
+/* ---- the dock ---- */
+.docks{margin-top:3rem;display:grid;gap:.75rem}
+.dock{border:1px solid rgb(255 255 255/.12);background:rgb(1 29 36/.55);transition:border-color .35s,background-color .35s,box-shadow .35s;position:relative}
+.dock::before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:3px;background:var(--volt-400);transform:scaleY(0);transform-origin:top;transition:transform .45s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 14px rgb(255 232 66/.6)}
+.dock[data-open=true]{border-color:rgb(255 232 66/.35);background:var(--night-950);box-shadow:0 18px 50px -20px #000a}
+.dock[data-open=true]::before{transform:scaleY(1)}
+.dock h3{margin:0}
+.dock-head{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1rem;padding:.8rem;cursor:pointer}
+@media(min-width:40rem){.dock-head{gap:1.4rem;padding:1rem 1.25rem 1rem 1rem}}
+.dock-head:hover .name{color:var(--volt-300)}
+.dock-head:focus-visible{outline:2px solid var(--volt-400);outline-offset:-2px}
+.thumb{display:block;width:3.5rem;height:3.5rem;overflow:hidden;background:var(--night-800);flex:none;border:1px solid rgb(255 255 255/.12);transition:width .45s cubic-bezier(.2,.8,.2,1),height .45s cubic-bezier(.2,.8,.2,1)}
+@media(min-width:40rem){.thumb{width:5rem;height:5rem}}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.dock-head:hover .thumb img{transform:scale(1.08)}
+.ph{display:grid;place-items:center;height:100%;font:500 .55rem/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mist-400);text-align:center;background:repeating-linear-gradient(45deg,#0a3340,#0a3340 6px,#0d3b49 6px,#0d3b49 12px)}
+.ph.big{aspect-ratio:4/3;gap:.4rem;font-size:.75rem;align-content:center}.ph.big small{font-size:.65rem;color:var(--mist-300);letter-spacing:.05em}
+.head-text{display:grid;gap:.3rem;min-width:0}
+.name{font:400 1.45rem/1.05 var(--display);letter-spacing:.01em;transition:color .25s}
+@media(min-width:40rem){.name{font-size:2rem}}
+.prob{color:var(--mist-300);font-size:.9rem;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media(min-width:40rem){.prob{font-size:1rem;-webkit-line-clamp:1}}
+.dock[data-open=true] .prob{-webkit-line-clamp:3}
+.chev{display:grid;place-items:center;width:2.6rem;height:2.6rem;border:1px solid rgb(255 255 255/.25);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .25s,border-color .25s}
+.chev svg{width:1.1rem;height:1.1rem;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round}
+.dock-head:hover .chev{border-color:var(--volt-400)}
+.dock[data-open=true] .chev{transform:rotate(45deg);background:var(--volt-400);border-color:var(--volt-400)}
+.dock[data-open=true] .chev svg{stroke:var(--night-950)}
+/* grid-rows 0fr -> 1fr animates height without measuring in JS */
+.dock-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
+.dock[data-open=true] .dock-body{grid-template-rows:1fr}
+.dock-clip{overflow:hidden;min-height:0}
+.dock-inner{display:grid;gap:1.5rem;padding:.25rem .8rem 1.4rem;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .5s cubic-bezier(.2,.8,.2,1)}
+.dock[data-open=true] .dock-inner{opacity:1;transform:none;transition-delay:.12s}
+@media(min-width:48rem){.dock-inner{grid-template-columns:5fr 6fr;gap:2.5rem;padding:.25rem 1.25rem 1.6rem 1rem;align-items:center}}
+.shot{margin:0;border:1px solid rgb(255 255 255/.1);overflow:hidden;aspect-ratio:4/3;background:var(--night-800)}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot .ph.big{height:100%}
+.lede{margin:0;font-size:1.1rem;line-height:1.65;color:var(--mist-300)}
+.copy ul{list-style:none;margin:1.2rem 0 0;padding:0;display:grid;gap:.6rem;color:var(--mist-200)}
+.copy li{display:flex;gap:.75rem;align-items:flex-start}.copy li span{margin-top:.8rem;height:1px;width:1rem;background:var(--copper-400);flex:none}
+.go{display:inline-flex;gap:.75rem;margin-top:1.5rem;color:#fff;font-weight:600;text-decoration:none;border-bottom:1px solid var(--volt-400);padding-bottom:.25rem}
+.go:hover{color:var(--volt-300)}
+.more{margin-top:2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center;border-top:1px solid rgb(255 255 255/.12);padding-top:1.4rem;color:var(--mist-300)}
+.more a{color:var(--volt-300);font-weight:600;text-decoration:none}
+@media(prefers-reduced-motion:reduce){.dock,.dock::before,.dock-body,.dock-inner,.chev,.thumb,.thumb img{transition:none!important}}
+.foot{background:#111;color:#ddd;padding:1.6rem 1rem;line-height:1.6;font-size:.95rem}.foot .plate-in{max-width:60rem}
+</style></head><body>
+<div class="bar"><span>Preview</span><span>Home → What we do most → Expandable dock</span></div>
+<div class="plate"><div class="plate-in">
+ <span class="tag">Option · from ScrollX UI "Expandable Dock"</span>
+ <h2>Each service is a dock: a header bar that opens to show the photo, what's involved and the link</h2>
+ <p>Click a header (or press Enter on it) to open or close it. The first one starts open. Real copy and photos from the site. Rebuilt in Acorn's colours and square corners, with the open one marked by a volt edge.</p>
+ <div class="chips">
+  <span class="chip win">Shows 6 services in the space 3 take now</span>
+  <span class="chip win">Photo + short title always visible</span>
+  <span class="chip win">Works on phones (stacks, big tap targets)</span>
+  <span class="chip cost">Hot tub has no real photo yet (shows a "Photo needed" block)</span>
+  <span class="chip cost">Closed docks hide detail until clicked</span>
+ </div>
+</div></div>
+
+<section class="site"><div class="wrap">
+ <p class="kick"><i></i>What we do most</p>
+ <h1 class="title">The jobs Spokane homes ask for most.</h1>
+ <p class="intro">Every service has its own page with what's involved, what affects it, and answers to the questions people actually ask.</p>
+ <div class="docks" id="docks">
+    <article class="dock" data-open="true">
+      <h3>
+        <button class="dock-head" aria-expanded="true" aria-controls="dock-0" id="dock-h-0">
+          <span class="thumb"><img src="../public/images/ev-charger-exterior-wall.webp" alt="" style="object-position:50% 55%"></span>
+          <span class="head-text"><span class="name">EV chargers</span><span class="prob">You want to charge your EV at home, not in a grocery store parking lot.</span></span>
+          <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+      </h3>
+      <div class="dock-body" id="dock-0" role="region" aria-labelledby="dock-h-0">
+        <div class="dock-clip"><div class="dock-inner">
+          <figure class="shot"><img src="../public/images/ev-charger-exterior-wall.webp" alt="" style="object-position:50% 55%"></figure>
+          <div class="copy">
+            <p class="lede">You bought an electric car so you could stop thinking about fuel. Now you&#x27;re planning your week around a public charger. We&#x27;ll get a Level 2 charger on your wall so the car is full every morning.</p>
+            <ul><li><span aria-hidden="true"></span>Sized for continuous load</li><li><span aria-hidden="true"></span>GFCI protection where it&#x27;s required</li><li><span aria-hidden="true"></span>Outdoor-rated where it lives outside</li></ul>
+            <a class="go" href="#">EV charger installation <span aria-hidden="true">→</span></a>
+          </div>
+        </div></div>
+      </div>
+    </article>
+    <article class="dock" data-open="false">
+      <h3>
+        <button class="dock-head" aria-expanded="false" aria-controls="dock-1" id="dock-h-1">
+          <span class="thumb"><img src="../public/images/panel-upgrade-breakers.webp" alt="" style="object-position:50% 45%"></span>
+          <span class="head-text"><span class="name">Panel upgrades</span><span class="prob">Your electrical panel is full, old, or can&#x27;t take what you want to add.</span></span>
+          <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+      </h3>
+      <div class="dock-body" id="dock-1" role="region" aria-labelledby="dock-h-1" inert>
+        <div class="dock-clip"><div class="dock-inner">
+          <figure class="shot"><img src="../public/images/panel-upgrade-breakers.webp" alt="" style="object-position:50% 45%"></figure>
+          <div class="copy">
+            <p class="lede">Your panel was sized for the house as it was built, not for the EV, hot tub, heat pump and shop you have now. We&#x27;ll tell you whether it needs replacing, and do it properly if it does.</p>
+            <ul><li><span aria-hidden="true"></span>Grounding and bonding</li><li><span aria-hidden="true"></span>A directory you can read</li><li><span aria-hidden="true"></span>Room to grow</li></ul>
+            <a class="go" href="#">Electrical panel upgrade <span aria-hidden="true">→</span></a>
+          </div>
+        </div></div>
+      </div>
+    </article>
+    <article class="dock" data-open="false">
+      <h3>
+        <button class="dock-head" aria-expanded="false" aria-controls="dock-2" id="dock-h-2">
+          <span class="thumb"><span class="ph" aria-hidden="true">Photo<br>needed</span></span>
+          <span class="head-text"><span class="name">Hot tub wiring</span><span class="prob">You&#x27;re installing a hot tub and want the electrical done properly.</span></span>
+          <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+      </h3>
+      <div class="dock-body" id="dock-2" role="region" aria-labelledby="dock-h-2" inert>
+        <div class="dock-clip"><div class="dock-inner">
+          <figure class="shot"><div class="ph big"><span>Photo needed</span><small>Hot tub + disconnect, from Eric</small></div></figure>
+          <div class="copy">
+            <p class="lede">The hot tub is on order and the pad is poured. What&#x27;s left is the part that has to be right: a dedicated circuit, a GFCI disconnect and outdoor wiring that holds up to Spokane winters.</p>
+            <ul><li><span aria-hidden="true"></span>Ground-fault protection</li><li><span aria-hidden="true"></span>Disconnect placement</li><li><span aria-hidden="true"></span>Bonding</li></ul>
+            <a class="go" href="#">Hot tub wiring <span aria-hidden="true">→</span></a>
+          </div>
+        </div></div>
+      </div>
+    </article>
+    <article class="dock" data-open="false">
+      <h3>
+        <button class="dock-head" aria-expanded="false" aria-controls="dock-3" id="dock-h-3">
+          <span class="thumb"><img src="../public/images/service-upgrade-meter-main.webp" alt="" style="object-position:50% 50%"></span>
+          <span class="head-text"><span class="name">Service upgrades</span><span class="prob">Your home can&#x27;t draw enough power for what you want to add.</span></span>
+          <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+      </h3>
+      <div class="dock-body" id="dock-3" role="region" aria-labelledby="dock-h-3" inert>
+        <div class="dock-clip"><div class="dock-inner">
+          <figure class="shot"><img src="../public/images/service-upgrade-meter-main.webp" alt="" style="object-position:50% 50%"></figure>
+          <div class="copy">
+            <p class="lede">Your house was built for the electrical load of its day. Add an EV, a heat pump, a hot tub or a shop and the main breaker becomes the bottleneck. A service upgrade gives the whole house more room to work with.</p>
+            <ul><li><span aria-hidden="true"></span>Sized for where you&#x27;re going</li><li><span aria-hidden="true"></span>Weather-tight</li><li><span aria-hidden="true"></span>One point of contact</li></ul>
+            <a class="go" href="#">Electrical service upgrade <span aria-hidden="true">→</span></a>
+          </div>
+        </div></div>
+      </div>
+    </article>
+    <article class="dock" data-open="false">
+      <h3>
+        <button class="dock-head" aria-expanded="false" aria-controls="dock-4" id="dock-h-4">
+          <span class="thumb"><img src="../public/images/kitchen-recessed-pendants.webp" alt="" style="object-position:50% 40%"></span>
+          <span class="head-text"><span class="name">Recessed lighting</span><span class="prob">Your rooms are dim, and one ceiling fixture isn&#x27;t cutting it.</span></span>
+          <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+      </h3>
+      <div class="dock-body" id="dock-4" role="region" aria-labelledby="dock-h-4" inert>
+        <div class="dock-clip"><div class="dock-inner">
+          <figure class="shot"><img src="../public/images/kitchen-recessed-pendants.webp" alt="" style="object-position:50% 40%"></figure>
+          <div class="copy">
+            <p class="lede">One ceiling light in the middle of the room leaves corners dim and shadows everywhere. Well-planned recessed lighting fixes that, and it starts with the layout, not the fixtures.</p>
+            <ul><li><span aria-hidden="true"></span>Rated for insulation</li><li><span aria-hidden="true"></span>Dimmers matched to the fixtures</li><li><span aria-hidden="true"></span>Circuit capacity checked</li></ul>
+            <a class="go" href="#">Recessed lighting installation <span aria-hidden="true">→</span></a>
+          </div>
+        </div></div>
+      </div>
+    </article>
+    <article class="dock" data-open="false">
+      <h3>
+        <button class="dock-head" aria-expanded="false" aria-controls="dock-5" id="dock-h-5">
+          <span class="thumb"><img src="../public/images/covered-deck-lighting.webp" alt="" style="object-position:50% 40%"></span>
+          <span class="head-text"><span class="name">Exterior lighting</span><span class="prob">Your yard, driveway or entry is dark once the sun goes down.</span></span>
+          <span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+      </h3>
+      <div class="dock-body" id="dock-5" role="region" aria-labelledby="dock-h-5" inert>
+        <div class="dock-clip"><div class="dock-inner">
+          <figure class="shot"><img src="../public/images/covered-deck-lighting.webp" alt="" style="object-position:50% 40%"></figure>
+          <div class="copy">
+            <p class="lede">A dark driveway, a porch light you can&#x27;t see by and a back yard nobody uses after sunset. Good exterior lighting makes the house safer and more usable, and it has to survive our winters.</p>
+            <ul><li><span aria-hidden="true"></span>Location-rated everything</li><li><span aria-hidden="true"></span>Sealed penetrations</li><li><span aria-hidden="true"></span>GFCI and in-use covers</li></ul>
+            <a class="go" href="#">Exterior lighting installation <span aria-hidden="true">→</span></a>
+          </div>
+        </div></div>
+      </div>
+    </article>
+ </div>
+ <div class="more"><span>Everything on the panel: the full list of residential work we take on.</span><a href="#">All services →</a></div>
+</div></section>
+
+<div class="foot"><div class="plate-in">
+ <b>My notes.</b> I couldn't pull ScrollX's exact source (their docs only describe it: a clickable header that toggles a collapsible content area, smooth animation), so this follows that behaviour and is built in plain CSS and a few lines of JS, with no new dependency. It's the same <i>idea</i>, not a copy of their styling.
+ The night section stays dark because it sits between two light sections; I didn't make a light version. <b>Tell me "build it"</b> and I'll put it in the site (keeping every service's text in the HTML for search engines, keyboard support and reduced motion), or tell me what to change: how many docks, which services, open one at a time vs. several.
+</div></div>
+
+<script>
+(function(){
+ var docks=document.querySelectorAll('.dock');
+ docks.forEach(function(d){
+  var b=d.querySelector('.dock-head'),body=d.querySelector('.dock-body');
+  b.addEventListener('click',function(){
+   var open=d.getAttribute('data-open')==='true';
+   d.setAttribute('data-open',String(!open));
+   b.setAttribute('aria-expanded',String(!open));
+   if(open) body.setAttribute('inert',''); else body.removeAttribute('inert');
+  });
+ });
+})();
+</script>
+</body></html>
