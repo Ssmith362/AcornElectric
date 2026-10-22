@@ -30,8 +30,8 @@ const principles = [
 
 export function Principles() {
   return (
-    <section className="bg-mist-100 py-20 lg:py-28" aria-labelledby="why-title">
-      <div className="container-x grid gap-14 lg:grid-cols-12">
+    <section className="bg-mist-100 py-14 sm:py-20 lg:py-28" aria-labelledby="why-title">
+      <div className="container-x grid gap-8 sm:gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionHead
             label="How we work"
@@ -44,11 +44,11 @@ export function Principles() {
         </div>
         <ol className="lg:col-span-7">
           {principles.map((p) => (
-            <li key={p.title} className="grid grid-cols-[3rem_1fr] gap-4 border-t border-ink/15 py-7 first:border-t-2 first:border-ink" data-reveal>
-              <span aria-hidden="true" className="mt-3 h-px w-8 bg-copper-500" />
+            <li key={p.title} className="grid grid-cols-[1.5rem_1fr] gap-3 border-t border-ink/15 py-5 first:border-t-2 first:border-ink sm:grid-cols-[3rem_1fr] sm:gap-4 sm:py-7" data-reveal>
+              <span aria-hidden="true" className="mt-3 h-px w-4 bg-copper-500 sm:w-8" />
               <div>
-                <h3 className="text-2xl leading-tight font-bold">{p.title}</h3>
-                <p className="mt-2.5 max-w-xl leading-relaxed text-ink-soft">{p.body}</p>
+                <h3 className="text-xl leading-tight font-bold sm:text-2xl">{p.title}</h3>
+                <p className="mt-2 max-w-xl leading-relaxed text-ink-soft">{p.body}</p>
               </div>
             </li>
           ))}

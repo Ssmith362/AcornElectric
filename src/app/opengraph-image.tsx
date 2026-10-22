@@ -30,7 +30,6 @@ export default async function OgImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={logoSrc} width={340} height={174} alt="" />
         </div>
         <div style={{ display: "flex", flexDirection: "column", fontSize: 84, fontWeight: 700, lineHeight: 1, letterSpacing: -3 }}>

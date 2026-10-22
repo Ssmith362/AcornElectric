@@ -3,7 +3,7 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { ButtonLink } from "@/components/ui/button";
 import { JsonLd } from "@/components/ui/json-ld";
 import { Photo } from "@/components/ui/photo";
-import { ReviewFlag } from "@/components/ui/review-flag";
+import { ReviewFlag, SHOW_REVIEW_FLAGS } from "@/components/ui/review-flag";
 import { isPostingComplete, openings } from "@/content/careers";
 import { jobPostingSchema } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
@@ -43,22 +43,22 @@ export default function CareersPage() {
     <>
       <section className="on-night relative isolate overflow-hidden bg-grid-night text-white">
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_60%_at_20%_40%,rgb(255_239_31/.10),transparent_70%)]" />
-        <div className="container-x pt-8 pb-16 lg:pt-10 lg:pb-24">
+        <div className="container-x pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-24">
           <Breadcrumbs trail={[{ name: "Careers", path: "/careers" }]} />
-          <div className="mt-10 grid items-center gap-12 lg:grid-cols-12">
+          <div className="mt-7 grid items-center gap-8 sm:mt-10 sm:gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <p className="label-mono text-volt-400">Careers at Acorn Electric</p>
-              <h1 className="mt-5 text-5xl leading-[0.95] font-bold tracking-[0.01em] sm:text-7xl lg:text-[5.2rem]">
+              <h1 className="mt-3 text-[2.75rem] leading-[0.95] sm:mt-5 sm:text-5xl font-bold tracking-[0.01em] sm:text-7xl lg:text-[5.2rem]">
                 Own your work.
                 <br />
                 <span className="text-lit">Grow your career.</span>
               </h1>
-              <p className="mt-7 max-w-xl text-lg leading-relaxed text-mist-200 sm:text-xl">
+              <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed text-mist-200 sm:mt-7 sm:text-xl">
                 Acorn is a small, fast-growing residential electrical company in Spokane. We&apos;re looking for an
                 experienced electrician who wants to take ownership, do work they&apos;re proud of, and grow into
                 leadership with us.
               </p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row">
                 <ButtonLink href="#apply" arrow>
                   Apply now
                 </ButtonLink>
@@ -74,27 +74,27 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="bg-mist-50 py-16 lg:py-24" aria-labelledby="offer-title">
+      <section className="bg-mist-50 py-12 sm:py-16 lg:py-24" aria-labelledby="offer-title">
         <div className="container-x">
-          <h2 id="offer-title" className="max-w-3xl text-4xl leading-tight font-bold sm:text-5xl">
+          <h2 id="offer-title" className="max-w-3xl text-[2rem] leading-tight font-bold sm:text-5xl">
             What working here looks like
           </h2>
-          <ul className="mt-12 grid gap-px border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-7 grid gap-px border border-ink/10 bg-ink/10 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
             {offer.map((o, i) => (
-              <li key={o.title} className="bg-mist-50 p-7" data-reveal style={{ ["--reveal-i" as string]: i }}>
+              <li key={o.title} className="bg-mist-50 px-5 py-5 sm:p-7" data-reveal style={{ ["--reveal-i" as string]: i }}>
                 <span aria-hidden="true" className="block h-px w-8 bg-copper-500" />
-                <h3 className="mt-4 text-xl font-bold">{o.title}</h3>
-                <p className="mt-2.5 leading-relaxed text-ink-soft">{o.body}</p>
+                <h3 className="mt-3 text-xl font-bold sm:mt-4">{o.title}</h3>
+                <p className="mt-2 leading-relaxed text-ink-soft">{o.body}</p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className="bg-mist-100 py-16 lg:py-24" aria-labelledby="fit-title">
-        <div className="container-x grid gap-12 lg:grid-cols-12">
+      <section className="bg-mist-100 py-12 sm:py-16 lg:py-24" aria-labelledby="fit-title">
+        <div className="container-x grid gap-7 sm:gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <h2 id="fit-title" className="text-4xl leading-tight font-bold sm:text-5xl">
+            <h2 id="fit-title" className="text-[2rem] leading-tight font-bold sm:text-5xl">
               You&apos;ll fit here if…
             </h2>
             <p className="prose-acorn mt-5">
@@ -104,7 +104,7 @@ export default function CareersPage() {
           </div>
           <ul className="lg:col-span-7">
             {fit.map((f) => (
-              <li key={f} className="flex gap-4 border-t border-ink/15 py-5 text-lg first:border-t-2 first:border-ink" data-reveal>
+              <li key={f} className="flex gap-4 border-t border-ink/15 py-4 text-[1.05rem] first:border-t-2 first:border-ink sm:py-5 sm:text-lg" data-reveal>
                 <span aria-hidden="true" className="mt-2.5 h-2 w-2 shrink-0 bg-volt-500" />
                 {f}
               </li>
@@ -113,14 +113,14 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section id="openings" className="on-night bg-night-900 py-16 text-white lg:py-24" aria-labelledby="openings-title">
+      <section id="openings" className="on-night bg-night-900 py-12 text-white sm:py-16 lg:py-24" aria-labelledby="openings-title">
         <div className="container-x">
-          <h2 id="openings-title" className="text-4xl leading-tight font-bold sm:text-5xl">
+          <h2 id="openings-title" className="text-[2rem] leading-tight font-bold sm:text-5xl">
             Current openings
           </h2>
-          <div className="mt-10 space-y-6">
+          <div className="mt-7 space-y-6 sm:mt-10">
             {visible.map((o) => (
-              <article key={o.id} className="grid gap-10 border border-white/12 bg-night-950/60 p-6 sm:p-10 lg:grid-cols-12">
+              <article key={o.id} className="grid gap-8 border border-white/12 bg-night-950/60 p-5 sm:gap-10 sm:p-10 lg:grid-cols-12">
                 <div className="lg:col-span-5">
                   <p className="label-mono flex items-center gap-2.5 text-[0.65rem]">
                     <span
@@ -133,38 +133,40 @@ export default function CareersPage() {
                   </p>
                   <h3 className="mt-4 text-3xl font-bold">{o.title}</h3>
                   <p className="mt-4 leading-relaxed text-mist-300">{o.summary}</p>
-                  <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-white/10 pt-5 text-sm">
-                    <div>
-                      <dt className="label-mono text-[0.6rem] text-mist-400">Location</dt>
-                      <dd className="mt-1.5">Spokane, WA</dd>
-                    </div>
-                    <div>
-                      <dt className="label-mono text-[0.6rem] text-mist-400">Type</dt>
-                      <dd className="mt-1.5">
-                        {o.posting.employmentType ? (o.posting.employmentType === "FULL_TIME" ? "Full-time" : "Part-time") : <ReviewFlag tone="dark">type</ReviewFlag>}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="label-mono text-[0.6rem] text-mist-400">Pay</dt>
-                      <dd className="mt-1.5">
-                        {o.posting.pay ? `$${o.posting.pay.min}–$${o.posting.pay.max} / ${o.posting.pay.unit === "HOUR" ? "hour" : "year"}` : <ReviewFlag tone="dark">pay range</ReviewFlag>}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="label-mono text-[0.6rem] text-mist-400">Schedule</dt>
-                      <dd className="mt-1.5">{o.posting.schedule ?? <ReviewFlag tone="dark">schedule</ReviewFlag>}</dd>
-                    </div>
-                    {o.posting.benefits?.length ? (
-                      <div className="col-span-2">
-                        <dt className="label-mono text-[0.6rem] text-mist-400">Benefits</dt>
-                        <dd className="mt-1.5">{o.posting.benefits.join(" · ")}</dd>
-                      </div>
-                    ) : (
-                      <div className="col-span-2">
-                        <dt className="label-mono text-[0.6rem] text-mist-400">Benefits</dt>
-                        <dd className="mt-1.5"><ReviewFlag tone="dark">benefits (none listed until confirmed)</ReviewFlag></dd>
-                      </div>
-                    )}
+                  {/* Unconfirmed details show a review flag in previews and are left out
+                      entirely in production, so no label ever renders empty. */}
+                  <dl className="mt-5 grid grid-cols-2 gap-4 border-t border-white/10 pt-5 text-sm sm:mt-6">
+                    {[
+                      { k: "Location", v: "Spokane, WA", flag: "", wide: false },
+                      {
+                        k: "Type",
+                        v: o.posting.employmentType ? (o.posting.employmentType === "FULL_TIME" ? "Full-time" : "Part-time") : null,
+                        flag: "type",
+                        wide: false,
+                      },
+                      {
+                        k: "Pay",
+                        v: o.posting.pay
+                          ? `$${o.posting.pay.min}–$${o.posting.pay.max} / ${o.posting.pay.unit === "HOUR" ? "hour" : "year"}`
+                          : null,
+                        flag: "pay range",
+                        wide: false,
+                      },
+                      { k: "Schedule", v: o.posting.schedule, flag: "schedule", wide: false },
+                      {
+                        k: "Benefits",
+                        v: o.posting.benefits?.length ? o.posting.benefits.join(" · ") : null,
+                        flag: "benefits (none listed until confirmed)",
+                        wide: true,
+                      },
+                    ]
+                      .filter((row) => row.v || SHOW_REVIEW_FLAGS)
+                      .map((row) => (
+                        <div key={row.k} className={row.wide ? "col-span-2" : undefined}>
+                          <dt className="label-mono text-[0.6rem] text-mist-400">{row.k}</dt>
+                          <dd className="mt-1.5">{row.v ?? <ReviewFlag tone="dark">{row.flag}</ReviewFlag>}</dd>
+                        </div>
+                      ))}
                   </dl>
                 </div>
                 <div className="lg:col-span-7">
@@ -189,13 +191,13 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section id="apply" className="on-night relative bg-night-950 py-16 text-white lg:py-24" aria-labelledby="apply-title">
-        <div className="container-x grid gap-12 lg:grid-cols-12">
+      <section id="apply" className="on-night relative bg-night-950 py-12 text-white sm:py-16 lg:py-24" aria-labelledby="apply-title">
+        <div className="container-x grid gap-8 sm:gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <h2 id="apply-title" className="text-4xl leading-tight font-bold sm:text-5xl">
+            <h2 id="apply-title" className="text-[2rem] leading-tight font-bold sm:text-5xl">
               How to apply
             </h2>
-            <ol className="mt-8 space-y-6">
+            <ol className="mt-6 space-y-4 sm:mt-8 sm:space-y-6">
               {[
                 ["Send the form", "A few questions about your certificate and experience. A resume helps but isn't required."],
                 ["We read every one", "A person at Acorn reviews your application, not a filter."],

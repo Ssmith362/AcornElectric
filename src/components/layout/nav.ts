@@ -1,4 +1,4 @@
-import { publishedServices as services } from "@/content/services";
+import { publishedServices as services, serviceGroups } from "@/content/services";
 
 export const primaryNav = [
   { label: "Services", href: "/services" },
@@ -10,4 +10,9 @@ export const primaryNav = [
 export const serviceNav = services.map((s) => ({
   label: s.short,
   href: `/services/${s.slug}`,
+}));
+
+export const serviceNavGroups = serviceGroups.map((g) => ({
+  title: g.title,
+  items: g.services.map((s) => ({ label: s.short, href: `/services/${s.slug}` })),
 }));

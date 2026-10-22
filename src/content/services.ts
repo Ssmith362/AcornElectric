@@ -938,6 +938,38 @@ if (services.length !== all.length) throw new Error("A service is missing from t
  */
 export const publishedServices = services.filter((s) => s.confirmed || SHOW_REVIEW_FLAGS);
 
+/**
+ * Groups for scanning the full list (/services and the mobile menu). Pure
+ * organisation: every service appears in exactly one group, in `order` order.
+ */
+const groupDefs: { id: string; title: string; slugs: string[] }[] = [
+  {
+    id: "power-and-panels",
+    title: "Power, panels and charging",
+    slugs: ["ev-charger-installation", "electrical-panel-upgrades", "electrical-service-upgrade", "subpanel-installation", "dedicated-appliance-circuits", "hot-tub-wiring"],
+  },
+  {
+    id: "safety-and-repairs",
+    title: "Safety, repairs and older homes",
+    slugs: ["electrical-repair", "electrical-inspections", "knob-and-tube-rewiring", "grounding-and-bonding-upgrades", "whole-home-surge-protection", "service-mast-repair", "real-estate-electrical-repairs"],
+  },
+  {
+    id: "projects-and-lighting",
+    title: "Remodels, new builds, lighting and commercial",
+    slugs: ["remodel-and-addition-wiring", "new-home-electrical", "recessed-lighting", "exterior-lighting", "attic-fan-installation", "commercial-electrical"],
+  },
+];
+
+export const serviceGroups = groupDefs.map((g) => ({
+  ...g,
+  services: publishedServices.filter((s) => g.slugs.includes(s.slug)),
+}));
+{
+  const grouped = new Set(groupDefs.flatMap((g) => g.slugs));
+  const missing = services.filter((s) => !grouped.has(s.slug)).map((s) => s.slug);
+  if (missing.length) throw new Error(`Add these services to a group in services.ts: ${missing.join(", ")}`);
+}
+
 export function getService(slug: string) {
   return publishedServices.find((s) => s.slug === slug);
 }

@@ -273,6 +273,10 @@
 }
 .marquee-track--slow { animation-duration: 110s; }
 .marquee-track--reverse { animation-name: marquee-right; animation-duration: 130s; }
+/* Paused with the button: stop, and let people swipe/scroll through instead. */
+.marquee[data-paused="true"] { overflow-x: auto; mask-image: none; }
+.marquee[data-paused="true"] .marquee-track { animation-play-state: paused; }
+.marquee:focus-within .marquee-track { animation-play-state: paused; }
 @media (hover: hover) {
   .marquee:hover .marquee-track { animation-play-state: paused; }
 }

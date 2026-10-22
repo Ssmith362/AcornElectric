@@ -21,7 +21,10 @@ Digital" on any client-facing output.
 
 - Business facts: `src/lib/site.ts` (each fact has a `verified` flag)
 - Services / areas / jobs / reviews / images: `src/content/*.ts`
-  (site order of services is the `order` list in `services.ts`)
+  (site order of services is the `order` list in `services.ts`; the three
+  scan groups for /services and the mobile menu are `serviceGroups` there too)
+- Accordion for secondary detail: `src/components/ui/accordion.tsx` (APG
+  pattern; collapses on phones only, open on desktop). Use it sparingly.
 - Design tokens: `src/app/globals.css` (`@theme`)
 - Structured data rules: `src/lib/schema.ts`
 - Handoff, launch checklist, roadmap: `docs/`

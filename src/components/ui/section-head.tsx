@@ -30,12 +30,12 @@ export function SectionHead({
         <span>{label}</span>
       </p>
       <Tag
-        className={`mt-5 text-[2.1rem] leading-[1.02] font-bold sm:text-5xl lg:text-[3.6rem] ${night ? "text-white" : "text-ink"}`}
+        className={`mt-3 text-[2.1rem] leading-[1.04] font-bold sm:mt-5 sm:text-5xl sm:leading-[1.02] lg:text-[3.6rem] ${night ? "text-white" : "text-ink"}`}
       >
         {title}
       </Tag>
       {intro ? (
-        <div className={`mt-5 max-w-2xl text-lg leading-relaxed ${night ? "text-mist-300" : "text-ink-soft"}`}>{intro}</div>
+        <div className={`mt-4 max-w-2xl text-[1.05rem] leading-relaxed sm:mt-5 sm:text-lg ${night ? "text-mist-300" : "text-ink-soft"}`}>{intro}</div>
       ) : null}
     </header>
   );

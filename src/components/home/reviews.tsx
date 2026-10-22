@@ -1,6 +1,7 @@
 import { ReviewFlag, SHOW_REVIEW_FLAGS } from "@/components/ui/review-flag";
 import { reviews, type Review } from "@/content/reviews";
 import { site } from "@/lib/site";
+import { PausableMarquee } from "./marquee";
 
 /**
  * Proof, shown like the Therapy in Motion site: two ribbons of compact review
@@ -38,8 +39,8 @@ function Ribbon({ items, reverse = false }: { items: Review[]; reverse?: boolean
               </blockquote>
               <figcaption className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[0.8rem]">
                 <span className="font-semibold text-ink">{r.name}</span>
-                {r.when ? <span className="text-ink/55">{r.when}</span> : null}
-                <span className="text-ink/45">via {r.source}</span>
+                {r.when ? <span className="text-ink-mute">{r.when}</span> : null}
+                <span className="text-ink-mute">via {r.source}</span>
               </figcaption>
             </figure>
           ))}
@@ -55,7 +56,7 @@ export function Reviews() {
   const half = Math.ceil(reviews.length / 2);
 
   return (
-    <section className="overflow-hidden bg-mist-100 py-14 sm:py-20" aria-labelledby="reviews-title">
+    <section className="overflow-hidden bg-mist-100 py-12 sm:py-20" aria-labelledby="reviews-title">
       <div className="container-x">
         <div className="grid items-end gap-5 lg:grid-cols-[1fr_auto] lg:gap-12">
           <div data-reveal>
@@ -72,7 +73,7 @@ export function Reviews() {
               <a href={link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-ink/25 px-6 py-3 font-semibold hover:bg-ink/5">
                 Read them on Google
               </a>
-              <p className="max-w-[19rem] text-[0.84rem] leading-snug text-ink/60 lg:text-right">
+              <p className="max-w-[19rem] text-[0.84rem] leading-snug text-ink-mute lg:text-right">
                 Ratings and review counts live on the Google Business Profile, so they are always current there.
               </p>
             </div>
@@ -81,10 +82,10 @@ export function Reviews() {
       </div>
 
       {reviews.length ? (
-        <div className="marquee mt-8 grid gap-4">
+        <PausableMarquee>
           <Ribbon items={reviews.slice(0, half)} />
           <Ribbon items={reviews.slice(half)} reverse />
-        </div>
+        </PausableMarquee>
       ) : (
         <div className="container-x mt-8">
           <ReviewFlag>add real Google reviews</ReviewFlag>
@@ -93,7 +94,7 @@ export function Reviews() {
 
       {link ? (
         <div className="container-x">
-          <p className="mt-7 text-[0.92rem] text-ink/70">
+          <p className="mt-6 text-[0.92rem] text-ink-soft sm:mt-7">
             <a href={link} target="_blank" rel="noopener noreferrer" className="font-semibold text-copper-700 underline underline-offset-4 hover:text-ink">
               Read or leave a Google review
             </a>

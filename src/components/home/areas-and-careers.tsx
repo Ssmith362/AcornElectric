@@ -4,11 +4,12 @@ import { ButtonLink } from "@/components/ui/button";
 import { Photo } from "@/components/ui/photo";
 import { SectionHead } from "@/components/ui/section-head";
 import { communities } from "@/content/areas";
+import { images } from "@/content/images";
 
 export function AreasBlock() {
   return (
-    <section className="on-night bg-night-900 py-20 text-white lg:py-28" aria-labelledby="areas-title">
-      <div className="container-x grid items-center gap-14 lg:grid-cols-12">
+    <section className="on-night bg-night-900 py-14 text-white sm:py-20 lg:py-28" aria-labelledby="areas-title">
+      <div className="container-x grid items-center gap-8 sm:gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionHead
             tone="night"
@@ -16,7 +17,7 @@ export function AreasBlock() {
             title={<span id="areas-title">Spokane and eleven communities around it.</span>}
             intro="Not sure if we cover your address? Put your ZIP code in the request form and we'll tell you straight away."
           />
-          <ul className="mt-8 grid grid-cols-2 gap-x-6 border-t border-white/10" data-reveal>
+          <ul className="mt-6 grid grid-cols-2 gap-x-6 border-t border-white/10 sm:mt-8" data-reveal>
             {communities.map((c) => (
               <li key={c.name} className="border-b border-white/10">
                 {c.page ? (
@@ -43,9 +44,10 @@ export function AreasBlock() {
 
 export function CareersTeaser() {
   return (
-    <section className="bg-mist-50 py-20 lg:py-24" aria-labelledby="careers-title">
-      <div className="container-x grid items-center gap-10 border-y-2 border-ink py-12 lg:grid-cols-12">
-        <div className="lg:col-span-4" data-reveal>
+    <section className="bg-mist-50 py-12 sm:py-20 lg:py-24" aria-labelledby="careers-title">
+      <div className="container-x grid items-center gap-6 border-y-2 border-ink py-8 sm:gap-10 sm:py-12 lg:grid-cols-12">
+        {/* Placeholder drawing until a real van photo exists: desktop only, so it doesn't cost phone scroll. */}
+        <div className={images.van.src ? "lg:col-span-4" : "hidden lg:col-span-4 lg:block"} data-reveal>
           <Photo id="van" sizes="(min-width: 1024px) 30vw, 100vw" ticks={false} />
         </div>
         <div className="lg:col-span-5" data-reveal>
@@ -53,7 +55,7 @@ export function CareersTeaser() {
             <span aria-hidden="true" className="h-px w-8 bg-copper-500/60" />
             For electricians
           </p>
-          <h2 id="careers-title" className="mt-4 text-3xl leading-tight font-bold sm:text-4xl">
+          <h2 id="careers-title" className="mt-3 text-[1.75rem] leading-tight font-bold sm:mt-4 sm:text-4xl">
             Experienced residential electrician? Grow with a company that invests in you.
           </h2>
           <p className="mt-4 text-ink-soft">

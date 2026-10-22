@@ -10,18 +10,18 @@ export function SiteFooter() {
   return (
     <footer className="on-night relative overflow-hidden bg-night-950 pb-20 text-mist-300 md:pb-0">
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-volt-400/50 to-transparent" />
-      <div className="container-x grid gap-12 py-16 lg:grid-cols-12 lg:py-20">
+      <div className="container-x grid gap-10 py-12 sm:py-16 lg:grid-cols-12 lg:gap-12 lg:py-20">
         <div className="lg:col-span-4">
           <Logo size="lg" />
-          <p className="mt-6 max-w-sm leading-relaxed">
+          <p className="mt-5 max-w-sm leading-relaxed sm:mt-6">
             Residential electrical work for Spokane homeowners. Understand the problem, do it properly, leave you
             with one less thing to worry about.
           </p>
-          <dl className="mt-8 space-y-3 text-sm">
+          <dl className="mt-6 space-y-3 text-sm sm:mt-8">
             <div>
               <dt className="label-mono text-[0.62rem] text-mist-400">Call</dt>
               <dd>
-                <a href={tel} className="font-display text-2xl font-semibold text-white hover:text-volt-300">
+                <a href={tel} className="inline-flex min-h-11 items-center font-display text-2xl font-semibold text-white hover:text-volt-300">
                   {site.phone.value.display}
                 </a>
               </dd>
@@ -29,7 +29,7 @@ export function SiteFooter() {
             <div>
               <dt className="label-mono text-[0.62rem] text-mist-400">Email</dt>
               <dd className="flex flex-wrap items-center gap-2">
-                <a href={mailto} className="text-white underline-offset-4 hover:underline">
+                <a href={mailto} className="inline-block py-1 text-white underline-offset-4 hover:underline">
                   {site.email.value}
                 </a>
                 {!site.email.verified ? <ReviewFlag tone="dark">lead inbox</ReviewFlag> : null}
@@ -40,10 +40,10 @@ export function SiteFooter() {
 
         <nav aria-label="Services" className="lg:col-span-3">
           <p className="label-mono text-[0.65rem] text-mist-400">Services</p>
-          <ul className="mt-5 space-y-2.5 text-[0.95rem]">
+          <ul className="mt-4 grid grid-cols-2 gap-x-4 text-[0.95rem] sm:mt-5 lg:grid-cols-1">
             {serviceNav.map((s) => (
               <li key={s.href}>
-                <Link href={s.href} className="hover:text-volt-300">
+                <Link href={s.href} className="inline-block py-1.5 leading-snug hover:text-volt-300">
                   {s.label}
                 </Link>
               </li>
@@ -53,35 +53,35 @@ export function SiteFooter() {
 
         <nav aria-label="Areas and company" className="lg:col-span-2">
           <p className="label-mono text-[0.65rem] text-mist-400">Areas</p>
-          <ul className="mt-5 space-y-2.5 text-[0.95rem]">
+          <ul className="mt-4 grid grid-cols-2 gap-x-4 text-[0.95rem] sm:mt-5 lg:grid-cols-1">
             {communities.map((c) => (
               <li key={c.name}>
                 <Link
                   href={c.page ? `/areas/${c.page}` : c.name === "Spokane" ? "/areas" : `/areas#${c.name.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="hover:text-volt-300"
+                  className="inline-block py-1.5 leading-snug hover:text-volt-300"
                 >
                   {c.name}
                 </Link>
               </li>
             ))}
           </ul>
-          <p className="label-mono mt-10 text-[0.65rem] text-mist-400">Company</p>
-          <ul className="mt-5 space-y-2.5 text-[0.95rem]">
-            <li><Link href="/careers" className="hover:text-volt-300">Careers</Link></li>
-            <li><Link href="/contact" className="hover:text-volt-300">Contact</Link></li>
-            <li><Link href="/privacy" className="hover:text-volt-300">Privacy</Link></li>
+          <p className="label-mono mt-8 text-[0.65rem] text-mist-400 lg:mt-10">Company</p>
+          <ul className="mt-4 flex flex-wrap gap-x-6 text-[0.95rem] sm:mt-5 lg:block">
+            <li><Link href="/careers" className="inline-block py-1.5 hover:text-volt-300">Careers</Link></li>
+            <li><Link href="/contact" className="inline-block py-1.5 hover:text-volt-300">Contact</Link></li>
+            <li><Link href="/privacy" className="inline-block py-1.5 hover:text-volt-300">Privacy</Link></li>
           </ul>
         </nav>
 
         <div className="lg:col-span-3">
           <p className="label-mono text-[0.65rem] text-mist-400">Licensing</p>
-          <p className="mt-5 text-[0.95rem] text-white">Washington electrical contractor</p>
+          <p className="mt-4 text-[0.95rem] text-white sm:mt-5">Washington electrical contractor</p>
           <p className="label-mono mt-2 text-sm text-volt-300">Lic. {site.license.value}</p>
-          <p className="mt-6 text-sm leading-relaxed text-mist-400">
+          <p className="mt-4 text-sm leading-relaxed text-mist-400 sm:mt-6">
             You can check any Washington electrical contractor&apos;s license on the{" "}
             <a
               href="https://secure.lni.wa.gov/verify/"
-              className="text-mist-200 underline underline-offset-4 hover:text-volt-300"
+              className="inline-block text-mist-200 underline underline-offset-4 hover:text-volt-300"
               rel="noopener"
             >
               L&amp;I Verify a Contractor tool
@@ -107,7 +107,7 @@ export function SiteFooter() {
           </p>
           <p>
             Website by{" "}
-            <a href="https://flourishnowdigital.com" target="_blank" rel="noopener" className="underline underline-offset-4 hover:text-volt-300">
+            <a href="https://flourishnowdigital.com" target="_blank" rel="noopener" className="inline-block py-1 underline underline-offset-4 hover:text-volt-300">
               Flourish Now Digital
             </a>
           </p>

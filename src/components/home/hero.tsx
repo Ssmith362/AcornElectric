@@ -20,7 +20,7 @@ export function Hero() {
         <path d="M40 0v360l24 24v416" fill="none" stroke="var(--color-volt-400)" strokeWidth="2.25" strokeDasharray="16 184" className="flow drop-shadow-[0_0_4px_var(--color-volt-400)]" vectorEffect="non-scaling-stroke" />
       </svg>
 
-      <div className="container-x grid items-center gap-12 pt-12 pb-16 sm:pt-16 lg:grid-cols-12 lg:gap-10 lg:pt-20 lg:pb-24">
+      <div className="container-x grid items-center gap-9 pt-8 pb-12 sm:gap-12 sm:pt-16 sm:pb-16 lg:grid-cols-12 lg:gap-10 lg:pt-20 lg:pb-24">
         <div className="lg:col-span-6 xl:col-span-6">
           <p className="label-mono flex items-center gap-3 text-mist-300" data-reveal>
             <span className="h-2 w-2 animate-pulse-node rounded-full bg-volt-400" aria-hidden="true" />
@@ -28,17 +28,17 @@ export function Hero() {
           </p>
           <h1
             id="hero-title"
-            className="mt-6 max-w-2xl text-[2.5rem] leading-[1.04] tracking-[0.01em] sm:text-6xl lg:text-[3.9rem] xl:text-[4.4rem]"
+            className="mt-4 max-w-2xl text-[2.35rem] leading-[1.04] sm:mt-6 tracking-[0.01em] sm:text-6xl lg:text-[3.9rem] xl:text-[4.4rem]"
             data-reveal
           >
             Electrical work that makes your home <span className="text-lit">work better.</span>
           </h1>
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-mist-200 sm:text-xl" data-reveal>
+          <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed text-mist-200 sm:mt-7 sm:text-xl" data-reveal>
             Help for the upgrades, repairs, and electrical projects that make everyday life at home safer and easier.
             Acorn Electric helps you understand what your home needs, explains your options, and gets the work done
             properly.
           </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row" data-reveal>
+          <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row" data-reveal>
             <ButtonLink href="/contact" arrow>
               Request service
             </ButtonLink>
@@ -47,7 +47,7 @@ export function Hero() {
               Call {site.phone.value.display}
             </ButtonAnchor>
           </div>
-          <ul className="mt-10 grid max-w-xl grid-cols-1 gap-3 border-t border-white/10 pt-6 text-sm text-mist-300 sm:grid-cols-3" data-reveal>
+          <ul className="mt-7 grid max-w-xl grid-cols-1 gap-2.5 border-t border-white/10 pt-5 sm:mt-10 sm:gap-3 sm:pt-6 text-sm text-mist-300 sm:grid-cols-3" data-reveal>
             {["Permits and inspections handled", "Explained before we start", "WA licensed contractor"].map((t) => (
               <li key={t} className="flex items-start gap-2.5">
                 <svg viewBox="0 0 12 12" className="mt-1 h-3 w-3 shrink-0 text-volt-400" aria-hidden="true">

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { site, tel } from "@/lib/site";
-import { primaryNav, serviceNav } from "./nav";
+import { primaryNav, serviceNavGroups } from "./nav";
 
 /**
  * Mobile menu. A native <dialog> gives focus trapping, Escape-to-close and
@@ -72,17 +72,20 @@ export function MobileNav() {
                 </li>
               ))}
             </ul>
-            <p className="label-mono mt-8 mb-3 text-mist-400">Services</p>
-            <ul className="grid grid-cols-1 border-t border-white/10">
-              {serviceNav.map((s) => (
-                <li key={s.href} className="border-b border-white/10">
-                  <Link href={s.href} onClick={hide} className="flex items-center gap-3 py-3 text-mist-100">
-                    <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-copper-400" />
-                    {s.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {serviceNavGroups.map((g) => (
+              <div key={g.title} className="mt-7">
+                <p className="label-mono mb-2 text-mist-400">{g.title}</p>
+                <ul className="grid grid-cols-2 gap-x-4 border-t border-white/10">
+                  {g.items.map((s) => (
+                    <li key={s.href} className="border-b border-white/10">
+                      <Link href={s.href} onClick={hide} className="flex min-h-11 items-center py-2 text-[0.95rem] leading-snug text-mist-100">
+                        {s.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </nav>
           <div className="container-x grid grid-cols-2 gap-2 border-t border-white/10 py-4">
             <a href={tel} className="flex min-h-12 items-center justify-center border border-white/25 font-semibold">

@@ -11,14 +11,14 @@ export function Story() {
     .filter((s) => !!s);
 
   return (
-    <section className="bg-mist-50 py-20 lg:py-28" aria-labelledby="story-title">
-      <div className="container-x grid gap-14 lg:grid-cols-12">
+    <section className="bg-mist-50 py-14 sm:py-20 lg:py-28" aria-labelledby="story-title">
+      <div className="container-x grid gap-8 sm:gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-32" data-reveal>
-            <h2 id="story-title" className="text-4xl leading-[1.02] font-bold sm:text-5xl lg:text-[3.4rem]">
+            <h2 id="story-title" className="text-[2.1rem] leading-[1.04] font-bold sm:text-5xl sm:leading-[1.02] lg:text-[3.4rem]">
               Still charging the Tesla at Fred Meyer?
             </h2>
-            <div className="mt-6 space-y-4 text-lg leading-relaxed text-ink-soft">
+            <div className="mt-4 space-y-3 text-[1.05rem] leading-relaxed text-ink-soft sm:mt-6 sm:space-y-4 sm:text-lg">
               <p>
                 You bought an electric car so you&apos;d never stop for fuel again. Now you&apos;re sitting in a grocery
                 store parking lot twice a week, wondering if your panel can even handle a home charger.
@@ -30,7 +30,7 @@ export function Story() {
             </div>
             <Link
               href="/services/ev-charger-installation"
-              className="group mt-8 inline-flex items-center gap-3 border-b-2 border-volt-500 pb-1 font-semibold"
+              className="group mt-6 inline-flex min-h-11 items-center gap-3 border-b-2 border-volt-500 pb-1 font-semibold sm:mt-8"
             >
               How a home charger install works
               <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
@@ -41,19 +41,19 @@ export function Story() {
         <ol className="border-t border-ink/15 lg:col-span-7">
           {picks.map((s) => (
             <li key={s.slug} className="border-b border-ink/15" data-reveal>
-              <Link href={`/services/${s.slug}`} className="group grid grid-cols-[2.5rem_1fr_auto] items-start gap-4 py-7 sm:py-8">
-                <span aria-hidden="true" className="mt-4 h-px w-6 bg-copper-500" />
+              <Link href={`/services/${s.slug}`} className="group grid grid-cols-[1.5rem_1fr_auto] items-start gap-3 py-4 sm:grid-cols-[2.5rem_1fr_auto] sm:gap-4 sm:py-8">
+                <span aria-hidden="true" className="mt-3.5 h-px w-4 bg-copper-500 sm:mt-4 sm:w-6" />
                 <span>
-                  <span className="block font-sans text-2xl leading-tight font-semibold tracking-[0.01em] sm:text-[1.9rem]">
+                  <span className="block font-sans text-[1.2rem] leading-snug font-semibold tracking-[0.01em] sm:text-[1.9rem] sm:leading-tight">
                     {s.problem}
                   </span>
-                  <span className="label-mono mt-3 block text-[0.65rem] text-ink-mute transition-colors group-hover:text-copper-700">
+                  <span className="label-mono mt-2 block text-[0.65rem] text-ink-mute sm:mt-3 transition-colors group-hover:text-copper-700">
                     → {s.short}
                   </span>
                 </span>
                 <span
                   aria-hidden="true"
-                  className="mt-1 flex h-10 w-10 items-center justify-center border border-ink/15 transition-colors group-hover:border-ink group-hover:bg-ink group-hover:text-volt-400"
+                  className="mt-0.5 flex h-9 w-9 items-center justify-center border sm:mt-1 sm:h-10 sm:w-10 border-ink/15 transition-colors group-hover:border-ink group-hover:bg-ink group-hover:text-volt-400"
                 >
                   →
                 </span>

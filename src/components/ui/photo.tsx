@@ -15,6 +15,7 @@ export function Photo({
   priority = false,
   ticks = true,
   label = "bottom",
+  compactLabel = false,
 }: {
   id: ImageKey;
   className?: string;
@@ -23,6 +24,8 @@ export function Photo({
   ticks?: boolean;
   /** Where the placeholder label sits; move it if something overlaps the frame. */
   label?: "top" | "bottom";
+  /** Hide the placeholder label below `md`, for small thumbnails. */
+  compactLabel?: boolean;
 }) {
   const img = images[id];
   return (
@@ -44,7 +47,7 @@ export function Photo({
         <>
           <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgb(255_239_31/.07),transparent_60%)]" />
           <PlaceholderArt art={img.art} />
-          <figcaption className={`absolute right-7 left-7 flex justify-end ${label === "top" ? "top-3" : "bottom-3"}`}>
+          <figcaption className={`absolute right-7 left-7 flex justify-end ${label === "top" ? "top-3" : "bottom-3"} ${compactLabel ? "max-md:hidden" : ""}`}>
             <span className="label-mono max-w-full truncate border border-white/15 bg-night-950/80 px-2.5 py-1.5 text-[0.6rem] text-mist-300 backdrop-blur-sm">
               Placeholder · {img.brief}
             </span>
