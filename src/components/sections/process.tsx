@@ -1,6 +1,6 @@
 import { SectionHead } from "@/components/ui/section-head";
 
-const steps = [
+export const steps = [
   {
     title: "Tell us what's going on",
     body: "Call, or send the form with a few details and photos. The more we know up front, the more useful the first conversation is.",

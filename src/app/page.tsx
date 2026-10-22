@@ -23,7 +23,10 @@ export default function HomePage() {
       <FeaturedServices />
       <Principles />
       <Reviews />
-      <Process />
+      {/* Phones/tablets get these steps merged into "How we work" above. */}
+      <div className="max-lg:hidden">
+        <Process />
+      </div>
       <AreasBlock />
       <CareersTeaser />
       <CtaSection

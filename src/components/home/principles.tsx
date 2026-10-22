@@ -1,5 +1,6 @@
 import { Mascot } from "@/components/ui/logo";
 import { SectionHead } from "@/components/ui/section-head";
+import { steps } from "@/components/sections/process";
 
 /**
  * Why Acorn: the brand's non-negotiables, as the customer experiences them.
@@ -30,8 +31,8 @@ const principles = [
 
 export function Principles() {
   return (
-    <section className="bg-mist-100 py-14 sm:py-20 lg:py-28" aria-labelledby="why-title">
-      <div className="container-x grid gap-8 sm:gap-14 lg:grid-cols-12">
+    <section className="bg-mist-100 py-14 max-lg:py-10! sm:py-20 md:max-lg:py-12! lg:py-28" aria-labelledby="why-title">
+      <div className="container-x grid gap-8 max-lg:gap-6! sm:gap-14 md:max-lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:max-lg:gap-10! lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionHead
             label="How we work"
@@ -42,7 +43,7 @@ export function Principles() {
             <Mascot className="h-auto w-56 drop-shadow-[0_18px_30px_rgb(8_32_25/.18)] xl:w-64" />
           </div>
         </div>
-        <ol className="lg:col-span-7">
+        <ol className="max-lg:hidden lg:col-span-7">
           {principles.map((p) => (
             <li key={p.title} className="grid grid-cols-[1.5rem_1fr] gap-3 border-t border-ink/15 py-5 first:border-t-2 first:border-ink sm:grid-cols-[3rem_1fr] sm:gap-4 sm:py-7" data-reveal>
               <span aria-hidden="true" className="mt-3 h-px w-4 bg-copper-500 sm:w-8" />
@@ -53,6 +54,53 @@ export function Principles() {
             </li>
           ))}
         </ol>
+
+        {/* Phones and tablets: "How we work" and "How it works" as one numbered
+            sequence. The principles sit under the step they belong to, word for
+            word. "You'll know what's happening" is left out here because steps 2
+            and 4 already say the same thing. The separate "How it works" section
+            is desktop-only (see app/page.tsx). */}
+        <div className="lg:hidden">
+          <p className="label-mono mb-4 flex items-center gap-3 text-copper-700">
+            <span aria-hidden="true" className="h-px w-8 bg-copper-500/60" />
+            How it works
+          </p>
+          <ol className="relative">
+            <span aria-hidden="true" className="absolute top-3 bottom-6 left-[0.875rem] w-px bg-copper-500/35" />
+            {steps.map((st, i) => {
+              const sub = i === 2 ? [principles[0], principles[1], principles[2]] : i === 3 ? [principles[4]] : [];
+              const last = i === steps.length - 1;
+              return (
+                <li key={st.title} className="relative grid grid-cols-[1.75rem_1fr] gap-3.5 pb-6 last:pb-0" data-reveal style={{ ["--reveal-i" as string]: i }}>
+                  <span
+                    aria-hidden="true"
+                    className={`relative z-10 flex h-7 w-7 items-center justify-center border-2 font-sans text-sm font-bold ${
+                      last ? "border-volt-500 bg-volt-400 text-night-950" : "border-copper-500 bg-mist-100 text-copper-700"
+                    }`}
+                  >
+                    {i + 1}
+                  </span>
+                  <div className="pt-0.5">
+                    <h3 className="font-sans text-lg leading-snug font-bold">
+                      <span className="sr-only">Step {i + 1}: </span>
+                      {st.title}
+                    </h3>
+                    <p className="mt-1 text-[0.95rem] leading-relaxed text-ink-soft">{st.body}</p>
+                    {sub.length ? (
+                      <ul className="mt-3 space-y-2 border-l-2 border-copper-500/40 pl-3.5 text-[0.9rem] leading-relaxed text-ink-soft">
+                        {sub.map((p) => (
+                          <li key={p.title}>
+                            <strong className="font-semibold text-ink">{p.title}.</strong> {p.body}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
       </div>
     </section>
   );
