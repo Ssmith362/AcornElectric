@@ -347,13 +347,21 @@
 
 /* ==========================================================================
    PROCESS CARDS ("How we work" on the homepage)
-   From lg up each card sticks just under the header, a little lower than the
+   Each card sticks just under the header (phones, tablets and desktop), a little lower than the
    one before (5.25rem apart, one full number + title row), so the next card slides up
    over the last and each earlier card is left as a collapsed number + title strip.
    ========================================================================== */
+.process-card {
+  position: sticky;
+  top: calc(5rem + var(--i) * 5rem);
+}
+@media (min-width: 640px) {
+  .process-card {
+    top: calc(7rem + var(--i) * 5rem);
+  }
+}
 @media (min-width: 1024px) {
   .process-card {
-    position: sticky;
     top: calc(8rem + var(--i) * 5.25rem);
   }
 }
