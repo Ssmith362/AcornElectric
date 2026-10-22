@@ -45,6 +45,12 @@ sampled from the logo (Oct 2026): night = forest green, volt = electric
 yellow, copper = squirrel orange, mist = light cream. Real logo and mascot
 live in `public/brand/` and render through `src/components/ui/logo.tsx`.
 
+Homepage "What we do most" has a phone/tablet variant below `lg` (1024px):
+the side-scrolling service deck in `home/service-deck.tsx` (a 3×2 grid on
+tablet). Desktop keeps the original feature blocks. "How we work" is one
+four-step section (`sections/process.tsx`), shared with service pages; the old
+separate principles list was merged into it.
+
 ## SEO rules
 
 - Indexing is off (`NEXT_PUBLIC_ALLOW_INDEXING=false`) until launch.
