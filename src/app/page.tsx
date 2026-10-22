@@ -1,7 +1,6 @@
 import { AreasBlock, CareersTeaser } from "@/components/home/areas-and-careers";
 import { FeaturedServices } from "@/components/home/featured-services";
 import { Hero } from "@/components/home/hero";
-import { Principles } from "@/components/home/principles";
 import { Reviews } from "@/components/home/reviews";
 import { Story } from "@/components/home/story";
 import { CtaSection } from "@/components/sections/cta-section";
@@ -21,9 +20,8 @@ export default function HomePage() {
       <Hero />
       <Story />
       <FeaturedServices />
-      <Principles />
-      <Reviews />
       <Process />
+      <Reviews />
       <AreasBlock />
       <CareersTeaser />
       <CtaSection

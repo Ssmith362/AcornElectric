@@ -1,21 +1,27 @@
 import { SectionHead } from "@/components/ui/section-head";
 
+/**
+ * "How we work": one four-step sequence. This replaced the separate "How we
+ * work" principles list and "How it works" steps on the homepage, which said
+ * much the same thing twice. Every line traces back to that original copy;
+ * nothing new is claimed.
+ */
 const steps = [
   {
     title: "Tell us what's going on",
-    body: "Call, or send the form with a few details and photos. The more we know up front, the more useful the first conversation is.",
+    body: "Call, or send the form with a few details and photos.",
   },
   {
-    title: "Get a straight explanation",
-    body: "We look at the situation and explain what it needs, what your options are and why, before any work starts.",
+    title: "Get a straight answer",
+    body: "We explain what it needs and what your options are, before any work starts.",
   },
   {
-    title: "The work, done properly",
-    body: "Permitted when the job requires it, installed to code, protected from the weather, and inspected.",
+    title: "Done properly",
+    body: "The right wire, breaker and fitting, even where nobody will see it. Permitted and inspected when the job needs it, and sealed against Spokane weather.",
   },
   {
     title: "One less thing to worry about",
-    body: "We walk you through what we did, clean up, and leave you with something that just works.",
+    body: "We walk you through it, clean up, and leave you with something that just works.",
   },
 ];
 
@@ -31,7 +37,7 @@ export function Process({ variant = "full" }: { variant?: "full" | "compact" }) 
         <div className="container-x grid gap-8 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-3">
             <h2 id="process-title" className="text-2xl leading-tight sm:text-3xl">
-              How it works
+              How we work
             </h2>
             <p className="mt-3 text-ink-soft">The same four steps on every job.</p>
           </div>
@@ -65,8 +71,8 @@ export function Process({ variant = "full" }: { variant?: "full" | "compact" }) 
     <section className="bg-grid-mist py-14 sm:py-20 lg:py-28" aria-labelledby="process-title">
       <div className="container-x">
         <SectionHead
-          label="How it works"
-          title={<span id="process-title">From “something&apos;s wrong” to done, in four steps.</span>}
+          label="How we work"
+          title={<span id="process-title">We&apos;d rather do it once.</span>}
         />
         <ol className="relative mt-10 grid gap-7 sm:mt-14 md:grid-cols-2 md:gap-x-10 md:gap-y-10 lg:grid-cols-4 lg:gap-6">
           {/* the trace that connects the steps (one row of four, desktop only) */}

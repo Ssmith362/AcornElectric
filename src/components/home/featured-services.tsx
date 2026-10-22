@@ -3,13 +3,14 @@ import { PanelSchedule } from "@/components/sections/panel-schedule";
 import { Photo } from "@/components/ui/photo";
 import { SectionHead } from "@/components/ui/section-head";
 import { getService, publishedServices as services } from "@/content/services";
+import { ServiceDeck } from "./service-deck";
 
 const featured = ["ev-charger-installation", "electrical-panel-upgrades", "hot-tub-wiring"];
 
 export function FeaturedServices() {
   const list = featured.map(getService).filter((s) => !!s);
   return (
-    <section className="on-night relative bg-night-900 py-14 text-white sm:py-20 lg:py-28" aria-labelledby="services-title">
+    <section className="on-night relative bg-night-900 py-14 text-white max-lg:py-10! sm:py-20 md:max-lg:py-12! lg:py-28" aria-labelledby="services-title">
       <div className="container-x">
         <SectionHead
           tone="night"
@@ -18,7 +19,7 @@ export function FeaturedServices() {
           intro="Every service has its own page with what's involved, what affects it, and answers to the questions people actually ask."
         />
 
-        <div className="mt-9 space-y-12 sm:mt-16 sm:space-y-20 lg:space-y-28">
+        <div className="mt-9 space-y-12 max-lg:hidden sm:mt-16 sm:space-y-20 lg:space-y-28">
           {list.map((s, i) => (
             <article key={s.slug} className="grid items-center gap-5 sm:gap-8 lg:grid-cols-12 lg:gap-14">
               <div className={`lg:col-span-7 ${i % 2 ? "lg:order-2" : ""}`} data-reveal>
@@ -47,7 +48,7 @@ export function FeaturedServices() {
           ))}
         </div>
 
-        <div className="mt-14 grid gap-6 sm:mt-24 sm:gap-10 lg:grid-cols-12">
+        <div className="mt-14 grid gap-6 max-lg:hidden sm:mt-24 sm:gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4" data-reveal>
             <h3 className="text-3xl leading-tight font-bold">Everything on the panel</h3>
             <p className="mt-3 text-mist-300 sm:mt-4">The full list of work we take on. Pick a circuit.</p>
@@ -63,6 +64,20 @@ export function FeaturedServices() {
           <div className="hidden md:block lg:col-span-8">
             <PanelSchedule />
           </div>
+        </div>
+
+        {/* Phones and tablets: a compact deck of the first six services (site order),
+            then the full list one tap away. Desktop keeps the blocks above. */}
+        <div className="lg:hidden">
+          <ServiceDeck
+            items={services.slice(0, 6).map((s) => ({ slug: s.slug, name: s.name, short: s.short, lede: s.lede, image: s.image }))}
+          />
+          <Link
+            href="/services"
+            className="mt-5 flex min-h-12 items-center justify-center gap-2 border border-volt-400/60 px-4 font-semibold text-volt-300 hover:border-volt-300 hover:text-volt-200 md:mt-6 md:inline-flex"
+          >
+            See all {services.length} services <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </div>
     </section>

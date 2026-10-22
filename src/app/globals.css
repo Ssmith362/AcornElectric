@@ -324,3 +324,23 @@
   .map-bolt { animation: none; opacity: 0; }
   .map-bulb { animation: none; }
 }
+
+/* ==========================================================================
+   SERVICE DECK (phone side-scroll in "What we do most")
+   Short, subtle reveal for the card detail; the reduced-motion block above
+   cuts it to ~0ms for people who ask for less motion.
+   ========================================================================== */
+@keyframes reveal-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+.deck-detail {
+  animation: reveal-in 0.18s ease-out;
+}
+.deck-track {
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.deck-track::-webkit-scrollbar {
+  display: none;
+}
