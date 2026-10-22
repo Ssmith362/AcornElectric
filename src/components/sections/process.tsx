@@ -1,4 +1,4 @@
-import { ProcessDeck } from "./process-deck";
+import { ButtonLink } from "@/components/ui/button";
 
 /**
  * "How we work": one four-step sequence. This replaced the separate "How we
@@ -67,5 +67,61 @@ export function Process({ variant = "full" }: { variant?: "full" | "compact" }) 
     );
   }
 
-  return <ProcessDeck steps={steps} />;
+  // Same layout as "Six steps, start to finish" on the Flourish Now Digital
+  // services page: the heading column stays put (lg+) while the step cards
+  // scroll up and stack over each other. Plain CSS (position: sticky), no JS;
+  // every step is ordinary HTML, so reduced motion and no-JS see the same thing.
+  return (
+    <section className="on-night bg-night-950 py-14 text-white sm:py-20 lg:py-28" aria-labelledby="process-title">
+      <div className="container-x grid gap-10 lg:grid-cols-12 lg:gap-16">
+        <header className="self-start lg:sticky lg:top-32 lg:col-span-5">
+          <p className="label-mono flex items-center gap-3 text-mist-300">
+            <span aria-hidden="true" className="h-px w-8 bg-volt-400/60" />
+            How we work
+          </p>
+          <h2 id="process-title" className="mt-3 text-[2.1rem] leading-[1.04] font-bold text-white sm:mt-5 sm:text-5xl lg:text-[3.6rem]">
+            We&apos;d rather do it once.
+          </h2>
+          <p className="mt-4 max-w-md text-[1.05rem] leading-relaxed text-mist-300 sm:text-lg">
+            The same four steps on every job, big or small.
+          </p>
+          <p className="mt-6 max-w-sm border-l-[3px] border-copper-500 pl-4 text-[0.98rem] leading-relaxed text-mist-200">
+            We explain what it needs and what your options are, before any work starts.
+          </p>
+          <div className="mt-8 hidden lg:block">
+            <ButtonLink href="/contact" arrow>
+              Request service
+            </ButtonLink>
+          </div>
+        </header>
+
+        <ol className="grid gap-5 lg:col-span-7">
+          {steps.map((s, i) => (
+            <li
+              key={s.title}
+              className="process-card border border-white/15 bg-night-800 p-6 shadow-[0_-14px_30px_-14px_rgb(0_0_0/.6)] sm:p-8"
+              style={{ ["--i" as string]: i }}
+            >
+              <div className="flex items-baseline gap-4">
+                <span aria-hidden="true" className="font-display text-4xl leading-none text-volt-400 sm:text-5xl">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-sans text-xl leading-snug font-bold text-white sm:text-2xl">
+                  <span className="sr-only">Step {i + 1}: </span>
+                  {s.title}
+                </h3>
+              </div>
+              <p className="mt-4 text-[1.02rem] leading-relaxed text-mist-300 sm:text-lg">{s.body}</p>
+            </li>
+          ))}
+        </ol>
+
+        <div className="lg:hidden">
+          <ButtonLink href="/contact" arrow>
+            Request service
+          </ButtonLink>
+        </div>
+      </div>
+    </section>
+  );
 }

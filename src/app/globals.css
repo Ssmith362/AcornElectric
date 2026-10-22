@@ -346,82 +346,13 @@
 }
 
 /* ==========================================================================
-   PROCESS DECK ("How we work" on the homepage)
-   Default: a plain list of four cards. Once process-deck.tsx marks the section
-   data-live (motion allowed, JS running) the section becomes tall, the content
-   pins, and --s (0 .. last card, set from scroll) drives everything:
-   --d = how far a card is from the front. d >= 0 sits in the stack behind the
-   front card; d < 0 has been flipped away (tilts up and fades).
+   PROCESS CARDS ("How we work" on the homepage)
+   From lg up each card sticks just under the header, a little lower than the
+   one before, so the next card slides up over the last and they stack.
    ========================================================================== */
-.pdeck-stack {
-  display: grid;
-  gap: 1rem;
-}
-.pdeck-card {
-  border: 1px solid rgb(0 0 0 / 0.12);
-  background: var(--color-mist-50);
-  padding: 1.5rem;
-  box-shadow: 0 18px 40px -18px rgb(0 0 0 / 0.55);
-}
-@media (min-width: 640px) {
-  .pdeck-card {
-    padding: 2rem 2.25rem;
+@media (min-width: 1024px) {
+  .process-card {
+    position: sticky;
+    top: calc(8rem + var(--i) * 0.9rem);
   }
-}
-
-.pdeck[data-live="true"] {
-  --s: 0;
-  height: calc(100svh + (var(--n) - 1) * 55svh);
-}
-.pdeck[data-live="true"] .pdeck-pin {
-  position: sticky;
-  top: 0;
-  display: flex;
-  height: 100svh;
-  align-items: center;
-  overflow: hidden;
-}
-.pdeck[data-live="true"] .pdeck-pin > div {
-  width: 100%;
-  padding-block: 4.5rem 2rem;
-}
-.pdeck[data-live="true"] .pdeck-dashes {
-  display: flex;
-}
-.pdeck-dash {
-  display: block;
-  width: 2rem;
-  height: 2px;
-  background: rgb(255 255 255 / 0.22);
-  overflow: hidden;
-}
-.pdeck-dash > span {
-  display: block;
-  height: 100%;
-  background: var(--color-volt-400);
-  transform-origin: left;
-  transform: scaleX(calc(clamp(0, var(--s) - var(--i) + 1, 1)));
-}
-.pdeck[data-live="true"] .pdeck-stack {
-  position: relative;
-  display: block;
-  height: 21rem;
-}
-@media (min-width: 640px) {
-  .pdeck[data-live="true"] .pdeck-stack {
-    height: 19rem;
-  }
-}
-.pdeck[data-live="true"] .pdeck-card {
-  --d: calc(var(--i) - var(--s));
-  --out: clamp(0, var(--d) * -1, 1);
-  --depth: min(max(var(--d), 0), 3);
-  position: absolute;
-  inset: 0;
-  transform-origin: 0 100%;
-  transform: translateY(calc(var(--depth) * 16px - var(--out) * 110px)) scale(calc(1 - var(--depth) * 0.035))
-    rotate(calc(var(--out) * -7deg));
-  opacity: min(max(calc(1 - var(--out) * 1.7), 0), max(0, calc(3.4 - var(--d))));
-  filter: brightness(calc(1 - var(--depth) * 0.1));
-  will-change: transform, opacity;
 }
