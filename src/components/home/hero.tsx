@@ -31,7 +31,7 @@ export function Hero() {
             className="mt-4 max-w-2xl text-[2.35rem] leading-[1.04] sm:mt-6 tracking-[0.01em] sm:text-6xl lg:text-[3.9rem] xl:text-[4.4rem]"
             data-reveal
           >
-            We&rsquo;re nuts about <span className="text-lit">getting it right.</span>
+            Powering Spokane. <span className="text-lit">Taking care of the people behind every project.</span>
           </h1>
           <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed text-mist-200 sm:mt-7 sm:text-xl" data-reveal>
             Electrical repairs, upgrades, and installations for Spokane homes and businesses. Tell us what you&apos;re
