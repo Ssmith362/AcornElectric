@@ -34,7 +34,7 @@ export function FeaturedServices() {
           href="/services"
           className="mt-5 flex min-h-12 items-center justify-center gap-2 border border-ink/25 px-4 font-semibold text-ink hover:border-ink hover:bg-ink hover:text-volt-400 sm:ml-auto sm:w-fit"
         >
-          See all {services.length} services <span aria-hidden="true">→</span>
+          Explore our services <span aria-hidden="true">→</span>
         </Link>
       </div>
     </section>
