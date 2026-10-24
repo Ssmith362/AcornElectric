@@ -35,7 +35,7 @@ export function Hero() {
           </h1>
           <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed text-mist-200 sm:mt-7 sm:text-xl" data-reveal>
             Electrical repairs, upgrades, and installations for Spokane homes and businesses. Tell us what you&apos;re
-            working on—we&apos;ll explain your options and get it done right.
+            working on. We&apos;ll explain your options and get it done right.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row" data-reveal>
             <ButtonLink href="/contact" arrow>
