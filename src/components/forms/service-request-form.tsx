@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
-import { publishedServices as services } from "@/content/services";
+import { publishedServiceIndex as services } from "@/content/service-index";
 import { CONTACT_METHODS, LIMITS, validateInquiry, type Errors } from "@/lib/forms/rules";
 import { mailto, site, tel } from "@/lib/site";
 import { Field, Honeypot, SendProblem, describedBy, inputCls } from "./fields";

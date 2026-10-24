@@ -23,7 +23,27 @@ Status key: ✅ confirmed · 🟡 sourced but unconfirmed · ❌ unknown
 | **Google Business Profile URL + review link** | `maps?cid=10070915066178567807` | ✅ | Found Oct 19, 2026. Listing shows 3707 E Decatur Ave #2, Spokane 99217, (509) 808-1925, callacornelectric.com |
 | Review count / rating | *not shown* | ✅ | Google showed 5.0 / 71 reviews on Oct 19, 2026. Site prints no count or stars (Therapy in Motion style); it points to Google instead. No review schema |
 
-## Services (`src/content/services.ts`)
+## Services: current structure (October 24, 2026)
+
+Spencer authorized ceiling fan installation/replacement, generator installation,
+and bathroom fan replacement on October 24. These entries are published as
+confirmed services based on that instruction. Generator copy covers the
+electrical/transfer scope and requires fuel, site and equipment responsibilities
+to be agreed; it does not claim dealer certification or all-inclusive site work.
+Bathroom fan copy similarly identifies ventilation, duct and roof scope before
+work begins. Ceiling fans use an existing Acorn covered-patio photo; the bathroom
+fan image remains a clearly labelled placeholder pending an Acorn photo.
+
+The live catalog now contains 16 focused pages. Panel/service upgrades,
+inspection/safety protection, repair/home-sale corrections and indoor/outdoor
+lighting have been combined. Attic fan electrical work is a supporting section
+on the ventilation fan page, not an additional main-menu service.
+See `service-consolidation-2026-10-24.md` for the current inventory and redirects.
+
+The tables below preserve the earlier brief and source history. They are not
+an instruction to restore separate pages that were deliberately consolidated.
+
+## Earlier service inventory (`src/content/services.ts`)
 
 | Service | `confirmed` | Note |
 |---|---|---|

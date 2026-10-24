@@ -20,6 +20,13 @@
 export const legacyRedirects = [
   { from: "/about", to: "/" },
   { from: "/book-online", to: "/contact" },
+  { from: "/services/electrical-service-upgrade", to: "/services/electrical-panel-upgrades#service-upgrades" },
+  { from: "/services/whole-home-surge-protection", to: "/services/electrical-inspections#surge-protection" },
+  { from: "/services/grounding-and-bonding-upgrades", to: "/services/electrical-inspections#grounding-and-bonding" },
+  { from: "/services/real-estate-electrical-repairs", to: "/services/electrical-repair#home-sale-repairs" },
+  { from: "/services/recessed-lighting", to: "/services/lighting-installation#recessed-lighting" },
+  { from: "/services/exterior-lighting", to: "/services/lighting-installation#exterior-lighting" },
+  { from: "/services/attic-fan-installation", to: "/services/bathroom-fan-replacement#attic-ventilation" },
 ];
 
 /** @type {import("next").NextConfig} */

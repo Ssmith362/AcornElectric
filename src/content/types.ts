@@ -23,6 +23,8 @@ export type Service = {
   /** Homepage "sound familiar" line, written from the customer's side. */
   problem: string;
   story: string[];
+  /** Related work covered here instead of creating another overlapping page. */
+  sections?: { id: string; title: string; body: string; items: string[]; image?: ImageKey }[];
   signs: { heading: string; items: string[] };
   work: { heading: string; intro: string; steps: Point[] };
   doneRight: { heading: string; intro: string; points: Point[] };

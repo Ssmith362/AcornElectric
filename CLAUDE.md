@@ -21,8 +21,9 @@ Digital" on any client-facing output.
 
 - Business facts: `src/lib/site.ts` (each fact has a `verified` flag)
 - Services / areas / jobs / reviews / images: `src/content/*.ts`
-  (site order of services is the `order` list in `services.ts`; the three
-  scan groups for /services and the mobile menu are `serviceGroups` there too)
+  (`service-index.ts` owns the 16 service names, order and three scan groups;
+  `services.ts` owns server-rendered page copy. Client navigation and forms
+  import only the small index. `services-added.ts` was consolidated and removed.)
 - Accordion for secondary detail: `src/components/ui/accordion.tsx` (APG
   pattern; collapses on phones only, open on desktop). Use it sparingly.
 - Design tokens: `src/app/globals.css` (`@theme`)
@@ -46,8 +47,8 @@ yellow, copper = squirrel orange, mist = light cream. Real logo and mascot
 live in `public/brand/` and render through `src/components/ui/logo.tsx`.
 
 Homepage "What we do most" (`home/featured-services.tsx`) is one cream
-section: the Tesla-at-Fred-Meyer story opens it (full story behind a "Read the
-full story" accordion), then the first six services as a side-scrolling rail
+section: a short Tesla-at-Fred-Meyer introduction opens it, then the first
+six services as a side-scrolling rail
 (`home/service-deck.tsx`: always a peek of the next card; 1 on phones, 2 on
 tablets, 3 on desktop). Each card carries the service's `problem` line, so
 there is no separate problem list. "How we
@@ -60,7 +61,11 @@ page; the rest sit behind `ui/collapsible.tsx` ("Show all 12").
 ## SEO rules
 
 - Indexing is off (`NEXT_PUBLIC_ALLOW_INDEXING=false`) until launch.
-- One service per page, one community per area page; no keyword-swapped clones.
+- One distinct search purpose per page; related small jobs can share sections.
+- Current service decisions and redirects: `docs/service-consolidation-2026-10-24.md`.
+- No em dashes in new customer-facing copy. No arbitrary service-count claims.
+- Homes and businesses are both served; listed services are common examples.
+- One community per area page; no keyword-swapped clones.
 - No aggregateRating/review schema for Acorn's own reviews.
 - WA contractor license number shown in header and footer.
 - Before launch, map every indexed URL of the old site in `legacyRedirects`.

@@ -2,7 +2,7 @@
   "name": "acorn-electric-website",
   "version": "0.1.0",
   "private": true,
-  "description": "Website for Acorn Electric, residential electrical contractor in Spokane, Washington. Built by Flourish Now Digital.",
+  "description": "Website for Acorn Electric, electrical contractor for Spokane homes and businesses. Built by Flourish Now Digital.",
   "engines": {
     "node": ">=20.9.0"
   },
@@ -14,6 +14,7 @@
     "typecheck": "tsc --noEmit",
     "check:case": "node scripts/check-case.mjs",
     "check:site": "node scripts/check-site.mjs",
+    "check:services": "node scripts/check-service-migration.mjs",
     "check": "npm run check:case && npm run typecheck && npm run lint && npm run build"
   },
   "dependencies": {

@@ -55,18 +55,24 @@ how we work (five non-negotiables) → reviews (hidden until real ones exist) �
 |---|---|
 | `/` | Homepage |
 | `/services` | Overview with panel schedule and summaries |
-| `/services/ev-charger-installation` | |
-| `/services/electrical-panel-upgrades` | |
-| `/services/subpanel-installation` | |
-| `/services/hot-tub-wiring` | |
-| `/services/recessed-lighting` | |
-| `/services/service-mast-repair` | |
-| `/services/electrical-inspections` | |
-| `/services/attic-fan-installation` | |
-| `/services/exterior-lighting` | **Unconfirmed**: preview only, noindex, not built in production |
-| `/services/electrical-repair` | Added: repair/troubleshooting intent (old site offers "demand calls") |
+| `/services/electrical-repair` | Focused service page |
+| `/services/electrical-panel-upgrades` | Focused service page |
+| `/services/ev-charger-installation` | Focused service page |
+| `/services/generator-installation` | Focused service page |
+| `/services/ceiling-fan-installation` | Focused service page |
+| `/services/commercial-electrical` | Focused service page |
+| `/services/bathroom-fan-replacement` | Focused service page |
+| `/services/lighting-installation` | Focused service page |
+| `/services/hot-tub-wiring` | Focused service page |
+| `/services/knob-and-tube-rewiring` | Focused service page |
+| `/services/electrical-inspections` | Focused service page |
+| `/services/dedicated-appliance-circuits` | Focused service page |
+| `/services/subpanel-installation` | Focused service page |
+| `/services/remodel-and-addition-wiring` | Focused service page |
+| `/services/new-home-electrical` | Focused service page |
+| `/services/service-mast-repair` | Focused service page |
 | `/areas` | Service-area overview with Spokane section |
-| `/areas/north-spokane`, `/areas/mead`, `/areas/spokane-valley` | **Unconfirmed**: preview only until Acorn confirms coverage |
+| `/areas/north-spokane`, `/areas/mead`, `/areas/spokane-valley` | Confirmed service-area pages |
 | `/careers` | Culture, opening, application form |
 | `/contact` | Request form, phone, email, hours, areas, license |
 | `/privacy` | Plain-language notice (noindex) |
@@ -219,3 +225,16 @@ on leads, booked jobs, clicks, GBP actions, reviews and applications.
 | Form tests (Playwright) | Empty submit shows 5 inline errors and focuses the first; valid submit without email config → 503 + "NOT sent" message; success state renders on 200; service pages pre-select their service; disguised `.pdf` rejected server-side (422); honeypot and too-fast bots get a silent 200; invalid → 422; malformed → 400 |
 | Redirects | `/about` → 301 `/`; `/book-online` → 301 `/contact` |
 | Visual review | Desktop 1440, tablet 768, phone 390: no horizontal overflow, no console errors; mobile menu opens and closes with Escape |
+
+## October 24 service consolidation
+
+The catalog is now 16 pages. See `service-consolidation-2026-10-24.md` for
+removed URLs, 301 destinations and the reasoning behind the merges. All menus,
+forms, related links and sitemap use the current catalog. `service-index.ts`
+is the small client-safe metadata list; full service copy stays in server pages.
+
+After building and starting the site, run `npm run check:services -- URL` as
+well as `npm run check:site -- URL`. The migration check covers the 16 sitemap
+URLs, all seven old service redirects and their fragment targets, new search
+titles, form selections, and exclusion of long service copy from loaded client
+JavaScript. It makes no live enquiry submissions.

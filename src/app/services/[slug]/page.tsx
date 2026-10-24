@@ -70,6 +70,25 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
+      {s.sections?.length ? (
+        <section className="border-t border-ink/10 bg-mist-50 py-10 sm:py-14" aria-label="Related work included in this service">
+          <div className="container-x grid gap-8 lg:grid-cols-2 lg:gap-12">
+            {s.sections.map((part) => (
+              <section key={part.id} id={part.id} aria-labelledby={`${part.id}-title`} className="scroll-mt-28" data-reveal>
+                {part.image ? <Photo id={part.image} ticks={false} sizes="(min-width: 1024px) 45vw, 100vw" className="mb-5" /> : null}
+                <h2 id={`${part.id}-title`} className="text-2xl leading-tight sm:text-3xl">{part.title}</h2>
+                <p className="mt-4 leading-relaxed text-ink-soft">{part.body}</p>
+                {part.items.length ? (
+                  <ul className="mt-4 space-y-2.5 text-ink-soft">
+                    {part.items.map((item) => <li key={item} className="border-l-2 border-volt-500 pl-3 leading-relaxed">{item}</li>)}
+                  </ul>
+                ) : null}
+              </section>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       {/* ------------------------------------------------- situation + signs */}
       <section className="bg-mist-50 py-12 sm:py-16 lg:py-24">
         <div className="container-x grid gap-8 sm:gap-12 lg:grid-cols-12">
@@ -140,7 +159,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <div className="lg:col-span-7" data-reveal>
             <h2 className="text-3xl leading-tight font-bold sm:text-4xl">{s.factors.heading}</h2>
             <p className="prose-acorn mt-4">
-              Every home is different, so we don&apos;t quote blind. These are the things that make the biggest
+              Every project is different, so we don&apos;t quote blind. These are the things that make the biggest
               difference to the job.
             </p>
             <div className="mt-6 sm:mt-8">

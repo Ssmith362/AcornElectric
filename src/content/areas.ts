@@ -125,7 +125,7 @@ export const areas: Area[] = [
       },
     ],
     permitNote: "Generally Washington L&I. Confirmed for each address.",
-    featured: ["electrical-panel-upgrades", "hot-tub-wiring", "recessed-lighting", "electrical-repair"],
+    featured: ["electrical-panel-upgrades", "hot-tub-wiring", "lighting-installation", "electrical-repair"],
     faqs: [
       {
         q: "Do you work throughout Spokane Valley?",
