@@ -36,8 +36,8 @@ fan image remains a clearly labelled placeholder pending an Acorn photo.
 
 The live catalog now contains 16 focused pages. Panel/service upgrades,
 inspection/safety protection, repair/home-sale corrections and indoor/outdoor
-lighting have been combined. Attic fan electrical work is a supporting section
-on the ventilation fan page, not an additional main-menu service.
+lighting have been combined. Attic fan installation and electrical work share the ceiling fan page, with
+a dedicated attic fan heading and scope. It is not a separate menu entry.
 See `service-consolidation-2026-10-24.md` for the current inventory and redirects.
 
 The tables below preserve the earlier brief and source history. They are not

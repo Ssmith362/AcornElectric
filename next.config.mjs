@@ -26,7 +26,7 @@ export const legacyRedirects = [
   { from: "/services/real-estate-electrical-repairs", to: "/services/electrical-repair#home-sale-repairs" },
   { from: "/services/recessed-lighting", to: "/services/lighting-installation#recessed-lighting" },
   { from: "/services/exterior-lighting", to: "/services/lighting-installation#exterior-lighting" },
-  { from: "/services/attic-fan-installation", to: "/services/bathroom-fan-replacement#attic-ventilation" },
+  { from: "/services/attic-fan-installation", to: "/services/ceiling-fan-installation#attic-fans" },
 ];
 
 /** @type {import("next").NextConfig} */

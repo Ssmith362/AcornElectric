@@ -31,8 +31,8 @@ export const serviceIndex: Pick<Service, "slug" | "name" | "short" | "confirmed"
   },
   {
     "slug": "ceiling-fan-installation",
-    "name": "Ceiling fan installation and replacement",
-    "short": "Ceiling fans",
+    "name": "Ceiling and attic fan installation",
+    "short": "Ceiling & attic fans",
     "confirmed": true
   },
   {

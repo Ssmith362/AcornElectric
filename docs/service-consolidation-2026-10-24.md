@@ -5,7 +5,7 @@ Approved by Spencer on October 24, 2026. Built by Flourish Now Digital.
 ## Decision
 
 Use 16 focused service pages rather than expanding the previous 19 into 21.
-Replace the attic fan main-menu entry with ceiling fan installation. Add
+Combine ceiling and attic fans on the ceiling-fan-installation page. Add
 generator installation and bathroom exhaust fan replacement. Five overlapping
 standalone entries become sections on stronger, related pages. Do not create
 another page for every keyword variant.
@@ -30,9 +30,9 @@ dealer status, pricing, guarantees or full roof/fuel-system capabilities.
 | `/services/electrical-panel-upgrades` | Panel replacement, load evaluation and electrical/200 amp service upgrades |
 | `/services/ev-charger-installation` | EV charging and installation options |
 | `/services/generator-installation` | Backup-power planning, generator electrical connection, transfer equipment and scope coordination |
-| `/services/ceiling-fan-installation` | Ceiling fan installation, replacement, support and controls |
+| `/services/ceiling-fan-installation` | Ceiling fan installation/replacement plus a dedicated attic fan installation, wiring and controls section |
 | `/services/commercial-electrical` | Small commercial electrical work, within the previously verified scope |
-| `/services/bathroom-fan-replacement` | Bathroom exhaust fan replacement and installation, with an attic ventilation electrical-work section |
+| `/services/bathroom-fan-replacement` | Bathroom exhaust fan replacement and installation |
 | `/services/lighting-installation` | Indoor/recessed and exterior/outdoor lighting, with separate named sections |
 | `/services/hot-tub-wiring` | Hot tub circuits and electrical connection |
 | `/services/knob-and-tube-rewiring` | Knob and tube replacement and rewiring |
@@ -68,10 +68,11 @@ queries, rankings, conversion results and the competing result types justify it.
 | `/services/real-estate-electrical-repairs` | `/services/electrical-repair#home-sale-repairs` |
 | `/services/recessed-lighting` | `/services/lighting-installation#recessed-lighting` |
 | `/services/exterior-lighting` | `/services/lighting-installation#exterior-lighting` |
-| `/services/attic-fan-installation` | `/services/bathroom-fan-replacement#attic-ventilation` |
+| `/services/attic-fan-installation` | `/services/ceiling-fan-installation#attic-fans` |
 
-The old attic URL redirects to a relevant ventilation section, not to a ceiling
-fan sales page that pretends the two are the same equipment. Removed routes
+The old attic URL redirects directly to the attic fan section on the shared
+ceiling and attic fan page. The copy explicitly distinguishes the equipment
+and installation requirements. Removed routes
 are excluded from the sitemap, navigation and related links.
 
 ## Efficiency and maintenance

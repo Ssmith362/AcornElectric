@@ -21,7 +21,7 @@ assert.equal(serviceUrls.length, 16, "The sitemap should expose 16 focused servi
 assert.equal(new Set(serviceUrls).size, 16, "Duplicate sitemap service");
 
 const expected = [
-  ["ceiling-fan-installation", "Ceiling Fan Installation in Spokane", "Ceiling fan installation and replacement"],
+  ["ceiling-fan-installation", "Ceiling & Attic Fan Installation in Spokane", "Ceiling and attic fan installation"],
   ["generator-installation", "Generator Installation in Spokane", "Generator installation and backup power"],
   ["bathroom-fan-replacement", "Bathroom Fan Replacement in Spokane", "Bathroom exhaust fan replacement and installation"],
   ["lighting-installation", "Lighting Installation in Spokane", "Indoor and outdoor lighting installation"],
@@ -33,12 +33,15 @@ for (const [slug, title, formChoice] of expected) {
   const html = await get(path);
   assert.ok(serviceUrls.includes(path), `Sitemap missing ${path}`);
   assert.ok(overview.includes(`href="${path}"`), `Overview missing ${path}`);
-  assert.ok(html.includes(`<title>${title}`), `Wrong search title: ${path}`);
+  assert.ok(html.replaceAll("&amp;", "&").includes(`<title>${title}`), `Wrong search title: ${path}`);
   assert.ok(html.includes(`"url":"https://www.callacornelectric.com${path}"`) || html.includes(`"url":"https://callacornelectric.com${path}"`), `Service schema missing canonical route: ${path}`);
   const selected = html.match(/<option\b[^>]*selected[^>]*>(.*?)<\/option>/s)?.[1];
   assert.equal(selected, formChoice, `Lead form should preselect the service on ${path}`);
   assert.ok(contact.includes(`>${formChoice}</option>`), `Contact form missing ${formChoice}`);
 }
+const fans = await get("/services/ceiling-fan-installation");
+assert.ok(fans.includes('id="attic-fans"'), "Attic fan search content missing from the shared fan page");
+assert.ok(fans.includes("Attic fan installation and replacement in Spokane"), "Attic fan section needs its own descriptive heading");
 const lighting = await get("/services/lighting-installation");
 for (const id of ["recessed-lighting", "exterior-lighting"]) assert.ok(lighting.includes(`id="${id}"`), `Lighting section missing ${id}`);
 

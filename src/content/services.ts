@@ -519,12 +519,12 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
   "ceiling-fan-installation": {
     "image": "ceilingfan",
     "meta": {
-      "title": "Ceiling Fan Installation in Spokane | Acorn Electric",
-      "description": "Ceiling fan installation and replacement in Spokane. Acorn Electric checks the ceiling support, wiring and controls for a secure, properly connected fan."
+      "title": "Ceiling & Attic Fan Installation in Spokane | Acorn Electric",
+      "description": "Ceiling and attic fan installation in Spokane. Ceiling fan replacement, attic fan wiring and controls, with support and ventilation scope explained first."
     },
-    "h1": "Ceiling fan installation in Spokane",
-    "lede": "Replacing a noisy fan, adding one where a light used to be, or finishing a covered patio? We check the support, wiring and controls so your fan is installed for the space.",
-    "problem": "You want a new ceiling fan installed or an old, noisy one replaced.",
+    "h1": "Ceiling and attic fan installation in Spokane",
+    "lede": "From a replacement ceiling fan to electrical work for attic ventilation, we check the wiring and controls and explain what your project needs.",
+    "problem": "You need a ceiling fan installed or replaced, or electrical work for an attic fan.",
     "story": [
       "A ceiling fan needs more than an available wire. Its mounting box must be rated to carry a fan, and the ceiling height, room size and controls all affect the installation.",
       "We can assess an existing location or plan wiring for a new one. For a porch or covered patio, the fan and electrical equipment need to be rated for the conditions."
@@ -616,12 +616,33 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       {
         "q": "Can you install a fan I already bought?",
         "a": "Send the model and installation location. We check its suitability and explain any additional support, wiring or controls the job needs."
+      },
+      {
+        "q": "Do you install or replace attic fans in Spokane?",
+        "a": "Yes. Tell us whether you are replacing an existing fan or planning a new installation. We review the wiring, controls and access, then agree on the electrical work and any ventilation or roof coordination the project needs."
+      },
+      {
+        "q": "Is an attic fan the same as a ceiling fan?",
+        "a": "No. A ceiling fan circulates air in an occupied room. An attic ventilation fan moves air in the attic. They need different equipment and installation planning, which we explain before recommending the work."
       }
     ],
     "related": [
       "lighting-installation",
       "electrical-repair",
       "bathroom-fan-replacement"
+    ],
+    "sections": [
+      {
+        "id": "attic-fans",
+        "title": "Attic fan installation and replacement in Spokane",
+        "body": "An attic fan moves air through the attic; a ceiling fan circulates air in the room below. For an attic fan installation or replacement, we assess the electrical connection, controls and equipment requirements. Ventilation suitability and any roof or gable work need to be agreed before installation.",
+        "items": [
+          "Electrical supply and wiring for a proposed attic fan, after the ventilation plan has been assessed.",
+          "Replacement of existing attic fan equipment, with access and mounting requirements checked first.",
+          "Thermostat or humidistat controls matched to the selected equipment.",
+          "Clear responsibility for intake ventilation, roof penetrations, flashing and other work beyond the electrical connection."
+        ]
+      }
     ]
   },
   "commercial-electrical": {
@@ -838,14 +859,6 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       {
         "q": "Can you add a fan where there is none?",
         "a": "Ask us about the location. A new installation needs a power supply and an exhaust route outdoors, with any ducting, roof or finish work included in the agreed scope."
-      }
-    ],
-    "sections": [
-      {
-        "id": "attic-ventilation",
-        "title": "Other ventilation fan projects",
-        "body": "An attic ventilation fan is different from a bathroom exhaust fan or a ceiling fan. If you need electrical work for an attic fan, tell us about the equipment and access. We will confirm the wiring work and who handles any ventilation, ducting or roof changes before planning the job.",
-        "items": []
       }
     ],
     "related": [
