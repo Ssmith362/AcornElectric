@@ -30,6 +30,11 @@ export function FeaturedServices() {
           items={top.map((s) => ({ slug: s.slug, name: s.name, short: s.short, problem: s.problem, lede: s.lede, image: s.image }))}
         />
 
+        <p className="mt-4 text-sm leading-relaxed text-ink-soft">
+          These are a few common requests. Have another project for your home or business?{" "}
+          <Link href="/contact" className="font-semibold underline underline-offset-4 hover:text-copper-700">Let&apos;s talk.</Link>
+        </p>
+
         <Link
           href="/services"
           className="mt-5 flex min-h-12 items-center justify-center gap-2 border border-ink/25 px-4 font-semibold text-ink hover:border-ink hover:bg-ink hover:text-volt-400 sm:ml-auto sm:w-fit"

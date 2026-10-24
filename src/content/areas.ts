@@ -26,11 +26,11 @@ export const areas: Area[] = [
     meta: {
       title: "Electrician in North Spokane, WA | Acorn Electric",
       description:
-        "Residential electrician for North Spokane: EV chargers, panel upgrades, shop subpanels, hot tub wiring and repairs, permitted for your address.",
+        "Electrical work for North Spokane homes and businesses: repairs, EV chargers, panel upgrades and shop power. Ask Acorn Electric about your project.",
     },
-    h1: "Residential electrician for North Spokane",
+    h1: "Electrician for North Spokane homes and businesses",
     lede:
-      "From older homes near the Garland District to newer neighbourhoods up toward the county line, North Spokane homes ask a lot of their electrical systems. We help homeowners here charge EVs, add shops and keep older wiring safe.",
+      "From older homes near the Garland District to newer neighbourhoods up toward the county line, North Spokane homes ask a lot of their electrical systems. We help homeowners here charge EVs, add shops and keep older wiring safe. Local businesses can also call us about lighting, circuits and electrical repairs.",
     local: [
       {
         title: "Two permitting authorities",
@@ -66,11 +66,11 @@ export const areas: Area[] = [
     meta: {
       title: "Electrician in Mead, WA | Acorn Electric",
       description:
-        "Electrician for Mead, WA homes: shop and garage subpanels, hot tub wiring, EV chargers and panel upgrades. Permitted through Washington L&I and done properly.",
+        "Electrical work for Mead homes and businesses: repairs, shop subpanels, panels and EV chargers. Other project? Ask Acorn Electric.",
     },
-    h1: "Electrician for Mead homes and shops",
+    h1: "Electrician for Mead homes and businesses",
     lede:
-      "Mead homes tend to sit on bigger lots, with shops, outbuildings, hot tubs and long driveways. That means longer runs, detached buildings and outdoor equipment, which is the work we like to do properly.",
+      "Mead homes tend to sit on bigger lots, with shops, outbuildings, hot tubs and long driveways. That means longer runs, detached buildings and outdoor equipment, which is the work we like to do properly. We also help Mead businesses with repairs, lighting and new circuits.",
     local: [
       {
         title: "Permitted through L&I",
@@ -105,11 +105,11 @@ export const areas: Area[] = [
     meta: {
       title: "Electrician in Spokane Valley, WA | Acorn Electric",
       description:
-        "Residential electrician for Spokane Valley: EV chargers, panel and service upgrades, hot tub wiring, recessed lighting and repairs, permitted and inspected.",
+        "Electrical repairs and installations for Spokane Valley homes and businesses. Panels, lighting, EV chargers and more. Ask Acorn Electric about your project.",
     },
-    h1: "Residential electrician for Spokane Valley",
+    h1: "Electrician for Spokane Valley homes and businesses",
     lede:
-      "Spokane Valley has everything from post-war ramblers to brand-new builds. Whatever the age of your home, we help you add what you need (an EV charger, a hot tub, better lighting) without overloading what's there.",
+      "Spokane Valley has everything from post-war ramblers to brand-new builds. Whatever the age of your home, we help you add what you need (an EV charger, a hot tub, better lighting) without overloading what's there. We also work with local businesses on electrical repairs, lighting and circuits.",
     local: [
       {
         title: "Permitting in the Valley",

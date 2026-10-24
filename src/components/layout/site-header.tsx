@@ -12,7 +12,7 @@ export function SiteHeader() {
       <div className="hidden border-b border-white/5 md:block">
         <div className="container-x flex h-8 items-center justify-between gap-4 text-mist-300">
           <p className="label-mono hidden text-[0.62rem] whitespace-nowrap lg:block">
-            Residential electrical · Spokane, WA
+            Electrical services · Spokane, WA
           </p>
           <p className="label-mono ml-auto flex items-center gap-3 text-[0.62rem] whitespace-nowrap">
             <span>WA Electrical Contractor Lic. {site.license.value}</span>
@@ -42,7 +42,7 @@ export function SiteHeader() {
                   {/* Opens on hover and on keyboard focus (focus-within), no JS. */}
                   <div className="invisible absolute top-full left-1/2 w-[34rem] -translate-x-1/2 pt-3 opacity-0 transition-[opacity,visibility] duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                     <div className="border border-white/10 bg-night-900 p-2 shadow-2xl shadow-black/50">
-                      <p className="label-mono px-3 pt-2 pb-3 text-[0.62rem] text-mist-400">Panel schedule · residential</p>
+                      <p className="label-mono px-3 pt-2 pb-3 text-[0.62rem] text-mist-400">Electrical services</p>
                       <ul className="grid grid-cols-2 gap-px bg-white/5">
                         {serviceNav.map((s) => (
                           <li key={s.href} className="bg-night-900">
@@ -60,6 +60,9 @@ export function SiteHeader() {
                           </li>
                         ))}
                       </ul>
+                      <Link href="/contact" className="block px-3 py-3 text-sm text-mist-200 underline underline-offset-4 hover:text-volt-300">
+                        Have a different project? Let&apos;s talk.
+                      </Link>
                     </div>
                   </div>
                 </li>

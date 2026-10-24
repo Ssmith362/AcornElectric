@@ -54,7 +54,7 @@ export default function CareersPage() {
                 <span className="text-lit">Grow your career.</span>
               </h1>
               <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed text-mist-200 sm:mt-7 sm:text-xl">
-                Acorn is a small, fast-growing residential electrical company in Spokane. We&apos;re looking for an
+                Acorn is a small, fast-growing electrical company serving Spokane homes and businesses. We&apos;re looking for an
                 experienced electrician who wants to take ownership, do work they&apos;re proud of, and grow into
                 leadership with us.
               </p>

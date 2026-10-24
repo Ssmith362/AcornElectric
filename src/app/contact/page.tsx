@@ -29,7 +29,8 @@ export default function ContactPage() {
               What&apos;s going on at your place?
             </h1>
             <p className="mt-5 text-[1.05rem] leading-relaxed text-mist-200 sm:mt-6 sm:text-lg">
-              Tell us about the problem or the project. A photo of your electrical panel and anything relevant
+              Home or business, listed service or something different, tell us about your project.
+              A photo of your electrical panel and anything relevant
               (charger model, hot tub spec sheet, the damage) helps us give you a useful answer the first time.
             </p>
             <p className="mt-4 text-mist-200 lg:hidden">

@@ -11,8 +11,8 @@ export function PanelSchedule({ exclude = [] as string[] }) {
   return (
     <div className="border border-white/12 bg-night-900/80 p-1.5 sm:p-3">
       <div className="flex items-center justify-between border-b border-white/10 px-3 pt-2 pb-3">
-        <span className="label-mono text-[0.62rem] text-mist-400">Circuit directory</span>
-        <span className="label-mono text-[0.62rem] text-mist-400">{list.length} circuits</span>
+        <span className="label-mono text-[0.62rem] text-mist-400">Common projects</span>
+        <span className="label-mono text-[0.62rem] text-mist-400">Homes &amp; businesses</span>
       </div>
       <ol className="grid grid-cols-2">
         {list.map((s) => {

@@ -7,9 +7,9 @@ import { serviceGroups } from "@/content/services";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Residential Electrical Services in Spokane | Acorn Electric",
+  title: "Electrical Services in Spokane | Acorn Electric",
   description:
-    "EV chargers, panel and service upgrades, hot tubs, knob and tube rewiring, surge protection, remodels, new homes, inspections and repairs for Spokane-area homes.",
+    "Electrical services for Spokane homes and businesses, including repairs, panels, EV chargers, lighting and remodels. Other project? Ask Acorn Electric.",
   path: "/services",
 });
 
@@ -24,11 +24,11 @@ export default function ServicesPage() {
           <div className="lg:col-span-5">
             <p className="label-mono text-volt-400">Electrical services</p>
             <h1 className="mt-3 text-[2.6rem] leading-[1] font-bold tracking-[0.01em] sm:mt-5 sm:text-6xl sm:leading-[0.98]">
-              What your home needs, done properly.
+              Your electrical project, done properly.
             </h1>
             <p className="mt-5 max-w-md text-[1.05rem] leading-relaxed text-mist-300 sm:mt-6 sm:text-lg">
-              Each service has its own page: what it involves, what affects the job, the code and permit side,
-              and straight answers to common questions.
+              These are some of the jobs we handle for Spokane homes and businesses. Each guide explains what
+              to expect. Don&apos;t see your project listed? Ask us about it.
             </p>
             {/* Phones get jump links to the groups below instead of the full circuit list. */}
             <nav aria-label="Service groups" className="mt-6 lg:hidden">
@@ -88,10 +88,10 @@ export default function ServicesPage() {
         source="/services"
         title={
           <>
-            Not sure which one you need? <span className="text-lit">Describe it.</span>
+            Don&apos;t see your project? <span className="text-lit">Let&apos;s talk.</span>
           </>
         }
-        body="Pick “Something else / not sure” and tell us what's going on. We'll work out the rest with you."
+        body="The services above are common requests, not everything we do. Choose “Something else / not sure” and tell us about your project."
       />
     </>
   );

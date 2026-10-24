@@ -5,7 +5,7 @@ import { ImageResponse } from "next/og";
 /**
  * Site-wide share card, generated at build time, with Acorn's real logo.
  */
-export const alt = "Acorn Electric, residential electrician in Spokane, WA";
+export const alt = "Acorn Electric, electrician for Spokane homes and businesses";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -38,7 +38,7 @@ export default async function OgImage() {
           <span>to worry about.</span>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 28, color: "#ddd0ad" }}>
-          <span>Residential electrician · Spokane, WA</span>
+          <span>Homes & businesses · Spokane, WA</span>
           <span style={{ color: "#ec8540" }}>callacornelectric.com</span>
         </div>
       </div>

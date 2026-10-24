@@ -37,11 +37,11 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Acorn Electric | Residential Electrician in Spokane, WA",
+    default: "Acorn Electric | Electrician in Spokane, WA",
     template: "%s | Acorn Electric",
   },
   description:
-    "Residential electrician in Spokane, WA. EV chargers, panel and service upgrades, hot tubs, knob and tube rewiring, remodels and repairs, done properly and explained clearly.",
+    "Electrical services for Spokane homes and businesses. Repairs, upgrades, lighting, EV chargers and more. Tell Acorn Electric about your project.",
   applicationName: site.name,
   // Belt and braces with robots.txt: preview builds are never indexable.
   ...(ALLOW_INDEXING ? {} : { robots: { index: false, follow: false } }),

@@ -52,7 +52,7 @@ export function businessSchema() {
       : {}),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Residential electrical services",
+      name: "Electrical services for homes and businesses",
       itemListElement: services
         .filter((s) => s.confirmed)
         .map((s) => ({

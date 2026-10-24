@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Electrician Service Areas: Spokane & Nearby | Acorn Electric",
   description:
-    "Residential electrician serving Spokane, Spokane Valley, Liberty Lake, Cheney, Airway Heights, Mead, Deer Park, Medical Lake and more.",
+    "Electrical work for homes and businesses in Spokane, Spokane Valley, Mead and nearby communities. Ask Acorn Electric about your location and project.",
   path: "/areas",
 });
 
@@ -26,7 +26,7 @@ export default function AreasPage() {
                 Electrician for Spokane and nearby.
               </h1>
               <p className="mt-5 text-[1.05rem] leading-relaxed text-mist-300 sm:mt-6 sm:text-lg">
-                Acorn Electric is a Spokane residential electrical contractor serving twelve communities. If you&apos;re
+                Acorn Electric works with homes and businesses across Spokane and nearby communities. If you&apos;re
                 nearby and not listed, ask; we&apos;ll tell you honestly whether we can help.
               </p>
             </div>

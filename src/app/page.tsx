@@ -7,9 +7,9 @@ import { Process } from "@/components/sections/process";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Acorn Electric | Residential Electrician in Spokane, WA",
+  title: "Acorn Electric | Electrician in Spokane, WA",
   description:
-    "Spokane residential electrician: EV chargers, panel and service upgrades, knob and tube rewiring, hot tubs, remodels and repairs. Permitted, explained plainly.",
+    "Electrical repairs, upgrades and installations for Spokane homes and businesses. Explore common services or tell Acorn Electric about your project.",
   path: "/",
 });
 
