@@ -24,19 +24,18 @@ export function Hero() {
         <div className="lg:col-span-6 xl:col-span-6">
           <p className="label-mono flex items-center gap-3 text-mist-300" data-reveal>
             <span className="h-2 w-2 animate-pulse-node rounded-full bg-volt-400" aria-hidden="true" />
-            Residential electrician · Spokane, WA
+            Electrician · Spokane, WA
           </p>
           <h1
             id="hero-title"
             className="mt-4 max-w-2xl text-[2.35rem] leading-[1.04] sm:mt-6 tracking-[0.01em] sm:text-6xl lg:text-[3.9rem] xl:text-[4.4rem]"
             data-reveal
           >
-            Your home runs on electricity. <span className="text-lit">Make sure it&rsquo;s in good hands.</span>
+            We&rsquo;re nuts about <span className="text-lit">getting it right.</span>
           </h1>
           <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed text-mist-200 sm:mt-7 sm:text-xl" data-reveal>
-            Help for the upgrades, repairs, and electrical projects that make everyday life at home safer and easier.
-            Acorn Electric helps you understand what your home needs, explains your options, and gets the work done
-            properly.
+            Electrical repairs, upgrades, and installations for Spokane homes and businesses. Tell us what you&apos;re
+            working on—we&apos;ll explain your options and get it done right.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row" data-reveal>
             <ButtonLink href="/contact" arrow>
