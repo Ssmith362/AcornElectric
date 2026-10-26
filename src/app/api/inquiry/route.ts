@@ -32,10 +32,10 @@ export async function POST(req: Request) {
 
   const result = await sendMail({
     to: "leads",
-    subject: `Website inquiry: ${data.service} (${data.name})`,
+    subject: `Website inquiry: ${data.service || "General request"} (${data.name})`,
     replyTo: data.email || undefined,
     rows: [
-      ["Service", data.service],
+      ["Service page", data.service || "none (general form)"],
       ["Name", data.name],
       ["Phone", data.phone],
       ["Email", data.email || "not given"],

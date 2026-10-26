@@ -290,7 +290,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     },
     "h1": "Home EV charger installation in Spokane",
     "lede": "You bought an electric car so you could stop thinking about fuel. Now you're planning your week around a public charger. We'll get a Level 2 charger on your wall so the car is full every morning.",
-    "problem": "You want to charge your EV at home, not in a grocery store parking lot.",
+    "problem": "You want to charge your EV where you park it, not in a grocery store parking lot.",
     "story": [
       "A lot of new EV owners in Spokane start out on a standard 120-volt outlet, which adds only a few miles of range per hour, or they sit at a public fast charger a couple of times a week. Neither is what you had in mind.",
       "A Level 2 charger runs on a dedicated 240-volt circuit and can typically refill an overnight commute's worth of range while you sleep. The questions most people get stuck on are whether the panel can handle it, which charger to buy, and where it should go. Those are exactly the things we sort out before any wire gets pulled."
@@ -411,23 +411,23 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
   "generator-installation": {
     "image": "generator",
     "meta": {
-      "title": "Generator Installation in Spokane | Acorn Electric",
-      "description": "Plan generator installation and backup power in Spokane. Acorn Electric reviews the circuits, connection method and electrical scope before work begins."
+      "title": "Generator Installation & Backup Power in Spokane | Acorn Electric",
+      "description": "Generator installation and backup power in Spokane. Acorn Electric hooks it up safely so your fridge, lights and heat stay on when the power is out."
     },
-    "h1": "Generator installation in Spokane",
-    "lede": "Keep the essentials in mind before the next outage. We help plan the electrical side of generator installation, from the loads you need to support to a suitable transfer setup.",
-    "problem": "You want a safe way to connect backup power when the utility supply goes out.",
+    "h1": "Generator installation and backup power in Spokane",
+    "lede": "When the power is out, a generator keeps your fridge, lights and heat running. We hook it up safely, whether you already own a generator or are just looking at backup power.",
+    "problem": "You want the lights, fridge and heat to stay on when the power is out.",
     "story": [
-      "A generator is only part of a backup-power system. The connection must keep generator power separated from the utility supply, and the equipment has to match the loads you plan to run.",
-      "Tell us whether you have a portable generator, are considering a standby system, or are still deciding. We review the electrical scope and identify any equipment, fuel-system or site work that needs coordination."
+      "A generator only helps if it's hooked up safely. The connection has to keep generator power from feeding back into the utility lines, and the setup has to match what you want to run.",
+      "Tell us what you have, or that you're still deciding. We'll go over the options and what the project involves, including any fuel or site work someone else would handle."
     ],
     "signs": {
-      "heading": "Start with what you need powered",
+      "heading": "What do you want to keep running?",
       "items": [
-        "Refrigeration, lighting and other selected essential circuits.",
-        "A well pump, heating controls or other equipment with starting loads.",
-        "An existing generator that needs a suitable inlet and transfer arrangement.",
-        "Backup power planning for a home or business."
+        "The fridge, freezer and lights.",
+        "Heat, a well pump or a sump pump.",
+        "A generator you already own that needs a safe way to connect.",
+        "Backup power for a home or business."
       ]
     },
     "work": {
@@ -524,7 +524,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     },
     "h1": "Ceiling and attic fan installation in Spokane",
     "lede": "From a replacement ceiling fan to electrical work for attic ventilation, we check the wiring and controls and explain what your project needs.",
-    "problem": "You need a ceiling fan installed or replaced, or electrical work for an attic fan.",
+    "problem": "You need a ceiling or attic fan installed or replaced.",
     "story": [
       "A ceiling fan needs more than an available wire. Its mounting box must be rated to carry a fan, and the ceiling height, room size and controls all affect the installation.",
       "We can assess an existing location or plan wiring for a new one. For a porch or covered patio, the fan and electrical equipment need to be rated for the conditions."
@@ -648,18 +648,18 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
   "commercial-electrical": {
     "image": "commercial",
     "meta": {
-      "title": "Small Commercial Electrician in Spokane, WA | Acorn Electric",
-      "description": "Electrical service for small businesses in the Spokane area: lighting, new circuits, panels and troubleshooting. Acorn Electric keeps your doors open."
+      "title": "Commercial Electrician in Spokane, WA | Acorn Electric",
+      "description": "Commercial electrical service in Spokane: lighting, new circuits, panels and repairs for shops, offices and other business spaces. Call Acorn Electric."
     },
-    "h1": "Electrical services for small businesses in Spokane",
-    "lede": "When something electrical goes wrong at your business, it's not just an inconvenience, it's lost hours. We help small businesses with lighting, new circuits, panels and repairs, and we show up when we say we will.",
-    "problem": "Your small business needs a reliable electrician for lighting, circuits or repairs.",
+    "h1": "Commercial electrician in Spokane",
+    "lede": "When something electrical goes wrong at your business, it's lost hours. We handle lighting, new circuits, panels and repairs for shops, offices and other commercial spaces, and we show up when we say we will.",
+    "problem": "Your business needs a reliable electrician for lighting, circuits or repairs.",
     "story": [
-      "Small businesses often fall between the cracks: too small for the big commercial contractors, too important to wait a week for a callback. You need someone who answers, explains what's going on, and does the job properly the first time.",
-      "We bring the same approach we use in people's homes: listen first, explain the options, do it right, clean up. We focus on small commercial service work, not industrial or large-scale construction."
+      "When the lights flicker or a circuit trips at work, you can't wait a week for a callback. You need someone who answers, explains what's going on, and does the job properly the first time.",
+      "We bring the same approach we use in people's homes: listen first, explain the options, do it right, clean up. We focus on commercial service and installation work, not industrial or large-scale construction."
     ],
     "signs": {
-      "heading": "What we help small businesses with",
+      "heading": "What we help businesses with",
       "items": [
         "Lighting upgrades and repairs, including LED retrofits.",
         "New circuits for equipment, signage or a new layout.",

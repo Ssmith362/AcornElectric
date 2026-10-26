@@ -29,7 +29,7 @@ export default function HomePage() {
             Tell us what&apos;s going on. <span className="text-lit">We&apos;ll take it from there.</span>
           </>
         }
-        body="A few details and, if you can, a photo of your panel. We'll come back to you to talk it through."
+        body="A few details and we'll come back to you to talk it through."
       />
     </>
   );

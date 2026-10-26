@@ -10,11 +10,7 @@ export function FeaturedServices() {
       <div className="container-x">
         <div className="grid gap-5 sm:gap-6 lg:grid-cols-12 lg:items-end lg:gap-14">
           <header className="lg:col-span-7" data-reveal>
-            <p className="label-mono flex items-center gap-3 text-copper-700">
-              <span aria-hidden="true" className="h-px w-8 bg-copper-500/60" />
-              What we do most
-            </p>
-            <h2 id="story-title" className="mt-3 text-[1.85rem] leading-[1.02] font-bold sm:mt-4 sm:text-5xl lg:text-[3.4rem]">
+            <h2 id="story-title" className="text-[1.85rem] leading-[1.02] font-bold sm:text-5xl lg:text-[3.4rem]">
               Still charging the Tesla at Fred Meyer?
             </h2>
           </header>
@@ -25,8 +21,13 @@ export function FeaturedServices() {
           </div>
         </div>
 
+        <h3 className="label-mono mt-8 flex items-center gap-3 text-copper-700 sm:mt-10" data-reveal>
+          <span aria-hidden="true" className="h-px w-8 bg-copper-500/60" />
+          What we do most
+        </h3>
+
         <ServiceDeck
-          titleAs="h3"
+          titleAs="h4"
           items={top.map((s) => ({ slug: s.slug, name: s.name, short: s.short, problem: s.problem, lede: s.lede, image: s.image }))}
         />
 

@@ -59,7 +59,6 @@ export function validateInquiry(raw: Record<string, unknown>): { data: Inquiry; 
     errors.email = "That email address doesn't look right.";
   if (data.contactMethod === "Email" && !data.email) errors.email = "Add an email address so we can reply by email.";
   if (data.location.length < 5) errors.location = "Please enter your address or ZIP code.";
-  if (!data.service) errors.service = "Pick the closest option, or “Something else”.";
   if (data.message.length < 10) errors.message = "Tell us a little about the problem or project.";
   return { data, errors };
 }

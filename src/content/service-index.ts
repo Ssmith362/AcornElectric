@@ -26,7 +26,7 @@ export const serviceIndex: Pick<Service, "slug" | "name" | "short" | "confirmed"
   {
     "slug": "generator-installation",
     "name": "Generator installation and backup power",
-    "short": "Generator installation",
+    "short": "Backup power & generators",
     "confirmed": true
   },
   {
@@ -37,7 +37,7 @@ export const serviceIndex: Pick<Service, "slug" | "name" | "short" | "confirmed"
   },
   {
     "slug": "commercial-electrical",
-    "name": "Small commercial electrical",
+    "name": "Commercial electrical",
     "short": "Commercial",
     "confirmed": true
   },

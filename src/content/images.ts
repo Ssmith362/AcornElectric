@@ -191,7 +191,7 @@ export const images = {
   },
   surge: { src: null, alt: "", ...landscape, art: "panel", brief: "Whole-home surge protector installed at the panel" },
   "real-estate": { src: null, alt: "", ...landscape, art: "inspection", brief: "Repair called out on a home inspection, fixed" },
-  commercial: { src: null, alt: "", ...landscape, art: "repair", brief: "Small commercial space, lighting or circuits" },
+  commercial: { src: null, alt: "", ...landscape, art: "repair", brief: "Commercial space, lighting or circuits" },
 } satisfies Record<string, ImageEntry>;
 
 export type ImageKey = keyof typeof images;

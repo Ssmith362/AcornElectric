@@ -2,13 +2,9 @@
 
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
-import { publishedServiceIndex as services } from "@/content/service-index";
 import { CONTACT_METHODS, LIMITS, validateInquiry, type Errors } from "@/lib/forms/rules";
 import { mailto, site, tel } from "@/lib/site";
 import { Field, Honeypot, SendProblem, describedBy, inputCls } from "./fields";
-
-const OTHER = "Something else / not sure";
-const options = [...services.map((s) => s.name), OTHER];
 
 type State = "idle" | "sending" | "sent" | "unconfigured" | "failed" | "ratelimited";
 
@@ -26,7 +22,7 @@ export function ServiceRequestForm({
   heading = "Request service",
   headingLevel = 3,
 }: {
-  /** Pre-selects the service when the form sits on a service page. */
+  /** Service page the form sits on. Sent with the request as context; the form itself has no service picker. */
   defaultService?: string;
   /** Page path, so Acorn can see which page produced the lead. */
   source: string;
@@ -43,7 +39,7 @@ export function ServiceRequestForm({
     phone: "",
     email: "",
     location: "",
-    service: defaultService && options.includes(defaultService) ? defaultService : "",
+    service: defaultService ?? "",
     message: "",
     contactMethod: "Phone call",
   });
@@ -89,8 +85,8 @@ export function ServiceRequestForm({
         </p>
         <H className="mt-4 text-3xl font-bold">Thanks{first ? `, ${first}` : ""}. It&apos;s in.</H>
         <p className="mt-3 text-ink-soft">
-          Your request about <strong>{values.service.toLowerCase()}</strong> went straight to the Acorn team. We&apos;ll
-          get back to you by {values.contactMethod.toLowerCase()} to talk it through.
+          Your request went straight to the Acorn team. We&apos;ll get back to you by {values.contactMethod.toLowerCase()} to
+          talk it through.
         </p>
         <p className="mt-4 text-sm text-ink-mute">
           If anything is sparking, smoking or smells like burning, don&apos;t wait for us: turn off the circuit if
@@ -101,7 +97,7 @@ export function ServiceRequestForm({
   }
 
   const fallbackBody = encodeURIComponent(
-    `Service: ${values.service}\nName: ${values.name}\nPhone: ${values.phone}\nAddress/ZIP: ${values.location}\n\n${values.message}`,
+    `Name: ${values.name}\nPhone: ${values.phone}\nAddress/ZIP: ${values.location}\n\n${values.message}`,
   );
 
   return (
@@ -175,30 +171,10 @@ export function ServiceRequestForm({
             className={inputCls}
           />
         </Field>
-        <Field id="sr-service" label="What do you need?" error={errors.service} className="sm:col-span-2">
-          <select
-            id="sr-service"
-            name="service"
-            value={values.service}
-            onChange={set("service")}
-            aria-invalid={!!errors.service}
-            aria-describedby={describedBy("sr-service", errors.service)}
-            className={`${inputCls} appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 6%22><path d=%22M1 1l4 4 4-4%22 fill=%22none%22 stroke=%22%230a110f%22 stroke-width=%221.4%22/></svg>')] bg-[length:12px_8px] bg-[right_1rem_center] bg-no-repeat pr-10`}
-          >
-            <option value="" disabled>
-              Choose a service
-            </option>
-            {options.map((o) => (
-              <option key={o} value={o}>
-                {o}
-              </option>
-            ))}
-          </select>
-        </Field>
         <Field
           id="sr-message"
           label="Tell us what's going on"
-          hint="What's happening or what you'd like done. Panel age, equipment model or distances all help."
+          hint="What's happening or what you'd like done. A sentence or two is plenty."
           error={errors.message}
           className="sm:col-span-2"
         >
@@ -213,7 +189,7 @@ export function ServiceRequestForm({
             aria-describedby={describedBy(
               "sr-message",
               errors.message,
-              "What's happening or what you'd like done. Panel age, equipment model or distances all help.",
+              "What's happening or what you'd like done. A sentence or two is plenty.",
             )}
             className={inputCls}
           />

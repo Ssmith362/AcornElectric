@@ -91,7 +91,7 @@ export default function ServicesPage() {
             Don&apos;t see your project? <span className="text-lit">Let&apos;s talk.</span>
           </>
         }
-        body="The services above are common requests, not everything we do. Choose “Something else / not sure” and tell us about your project."
+        body="The services above are common requests, not everything we do. Tell us about your project and we'll let you know how we can help."
       />
     </>
   );
