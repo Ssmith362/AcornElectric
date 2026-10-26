@@ -257,6 +257,10 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       {
         "q": "My insurer flagged my panel brand. Is it really a problem?",
         "a": "Some older panel lines, such as Federal Pacific Stab-Lok and Zinsco, have well-documented reliability concerns, and many insurers and home inspectors flag them. We'll look at yours and tell you honestly what we see."
+      },
+      {
+        "q": "Is replacing a panel the same as upgrading the electrical service?",
+        "a": "No. Replacing the panel changes the equipment that distributes power. A service upgrade changes the capacity supplied to the property and can also involve the meter, conductors and utility connection. We check the load and explain which work is needed."
       }
     ],
     "related": [

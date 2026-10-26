@@ -3,6 +3,7 @@ import { ServiceRequestForm } from "@/components/forms/service-request-form";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { PhoneGlyph } from "@/components/ui/button";
 import { ReviewFlag, SHOW_REVIEW_FLAGS } from "@/components/ui/review-flag";
+import { communities } from "@/content/areas";
 import { pageMetadata } from "@/lib/seo";
 import { mailto, site, tel } from "@/lib/site";
 
@@ -86,7 +87,7 @@ export default function ContactPage() {
               <div>
                 <dt className="label-mono text-[0.62rem] text-mist-400">Service area</dt>
                 <dd className="mt-1.5 text-mist-200 sm:mt-2">
-                  Spokane and nearby communities.{" "}
+                  Spokane and nearby: {communities.slice(1).map((c) => c.name).join(", ").replace(/, ([^,]+)$/, ", and $1")}.{" "}
                   <Link href="/areas" className="inline-block text-white underline underline-offset-4 hover:text-volt-300">
                     See service areas
                   </Link>

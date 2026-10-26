@@ -48,7 +48,16 @@ export const areas: Area[] = [
     permitNote:
       "Inside Spokane city limits: City of Spokane. Outside, in unincorporated Spokane County: generally Washington L&I.",
     featured: ["ev-charger-installation", "electrical-panel-upgrades", "subpanel-installation", "electrical-inspections"],
-    faqs: [],
+    faqs: [
+      {
+        q: "Do you serve North Spokane?",
+        a: "Yes. North Spokane is part of our service area. Send your address or ZIP code with your request and we'll confirm yours.",
+      },
+      {
+        q: "Who issues the permit for my North Spokane address?",
+        a: "If you're inside Spokane city limits, the City of Spokane. If you're in unincorporated Spokane County, usually Washington L&I. We check the address and handle it either way.",
+      },
+    ],
   },
   {
     slug: "mead",
@@ -79,6 +88,10 @@ export const areas: Area[] = [
     permitNote: "Unincorporated Spokane County: generally Washington L&I.",
     featured: ["subpanel-installation", "hot-tub-wiring", "ev-charger-installation", "service-mast-repair"],
     faqs: [
+      {
+        q: "Do you serve Mead?",
+        a: "Yes. Mead is part of our service area. Send your address or ZIP code with your request and we'll confirm yours.",
+      },
       {
         q: "Can you run power to a shop at the back of the property?",
         a: "Yes, that's a common Mead project. Tell us the distance and what's between the house and the shop, and we'll plan the route.",
@@ -113,7 +126,12 @@ export const areas: Area[] = [
     ],
     permitNote: "Generally Washington L&I. Confirmed for each address.",
     featured: ["electrical-panel-upgrades", "hot-tub-wiring", "lighting-installation", "electrical-repair"],
-    faqs: [],
+    faqs: [
+      {
+        q: "Do you serve Spokane Valley?",
+        a: "Yes. Spokane Valley is part of our service area. Send your address or ZIP code with your request and we'll confirm yours.",
+      },
+    ],
   },
 ];
 

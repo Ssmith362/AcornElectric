@@ -55,8 +55,8 @@ there is no separate problem list. "How we
 work" is one four-step section (`sections/process.tsx`), homepage only
 (service pages have their own steps); it is a job-sheet checklist that ticks itself off on
 scroll (CSS under "CHECKLIST" in globals.css; shows complete without JS or with
-reduced motion). "Where we work" is the circuit-diagram map only; the full town list lives
-on `/areas` and in the footer (one list per page, no duplicate list under the map).
+reduced motion). "Where we work" shows Spokane and the towns with their own
+page; the rest sit behind `ui/collapsible.tsx` ("Show all 12").
 
 ## SEO rules
 

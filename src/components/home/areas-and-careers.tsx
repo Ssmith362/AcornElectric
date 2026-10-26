@@ -1,8 +1,32 @@
+import Link from "next/link";
 import { AreaMap } from "@/components/sections/area-map";
+import { Collapsible } from "@/components/ui/collapsible";
 import { ButtonLink } from "@/components/ui/button";
 import { Photo } from "@/components/ui/photo";
 import { SectionHead } from "@/components/ui/section-head";
+import { communities } from "@/content/areas";
 import { images } from "@/content/images";
+
+function CommunityList({ items }: { items: typeof communities }) {
+  return (
+    <ul className="grid grid-cols-2 gap-x-6">
+      {items.map((c) => (
+        <li key={c.name} className="border-b border-white/10">
+          {c.page ? (
+            <Link href={`/areas/${c.page}`} className="flex items-center justify-between py-3 hover:text-volt-300">
+              {c.name}
+              <span aria-hidden="true">→</span>
+            </Link>
+          ) : (
+            <Link href={`/areas#${c.name.toLowerCase().replace(/\s+/g, "-")}`} className="block py-3 text-mist-200 hover:text-volt-300">
+              {c.name}
+            </Link>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function AreasBlock() {
   return (
@@ -15,6 +39,13 @@ export function AreasBlock() {
             title={<span id="areas-title">Spokane and eleven communities around it.</span>}
             intro="Not sure we cover your address? Add your ZIP code to the request form and we'll confirm."
           />
+          <Collapsible
+            className="mt-6 sm:mt-8"
+            showLabel={`Show all ${communities.length} communities`}
+            hideLabel="Hide communities"
+          >
+            <CommunityList items={communities} />
+          </Collapsible>
         </div>
         <div className="lg:col-span-7" data-reveal>
           <AreaMap />
