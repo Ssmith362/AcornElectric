@@ -59,26 +59,25 @@ export function Hero() {
         </div>
 
         <div className="relative lg:col-span-6 xl:col-span-6" data-reveal>
-          <Photo id="home-hero" label="top" priority sizes="(min-width: 1024px) 48vw, 100vw" className="border border-white/10 max-lg:aspect-[16/10]!" />
+          <Photo id="home-hero" label="top" priority sizes="(min-width: 1024px) 48vw, 100vw" className="border border-white/10" />
           {/* The process every job follows; not a claim about a specific job.
-              Below lg it sits under the photo as a plain 2x2 / 4-up strip so it
-              never covers the work. From lg up it floats over the photo corner. */}
-          <div className="relative border border-t-0 border-white/15 bg-night-950 p-4 lg:absolute lg:-bottom-8 lg:-left-10 lg:w-80 lg:border-t lg:bg-night-950/92 lg:shadow-2xl lg:shadow-black/60 lg:backdrop-blur-md">
+              Sits directly under the photo at every size so it never covers the work. */}
+          <div className="relative border border-t-0 border-white/15 bg-night-950 p-4 sm:p-5">
             <p className="label-mono flex items-center justify-between text-[0.6rem] text-mist-400">
               <span>How every job runs</span>
               <span className="text-volt-400">Done right</span>
             </p>
-            <ul className="mt-3 grid grid-cols-2 gap-x-5 gap-y-3 sm:grid-cols-4 lg:grid-cols-1 lg:gap-y-2">
+            <ul className="mt-3 grid grid-cols-2 gap-x-5 gap-y-3 sm:grid-cols-4 lg:grid-cols-2">
               {ticket.map((t) => (
                 <li
                   key={t.k}
-                  className="flex flex-col gap-0.5 border-t border-white/10 pt-2 text-sm lg:flex-row lg:items-center lg:justify-between lg:gap-4"
+                  className="flex flex-col gap-0.5 border-t border-white/10 pt-2 text-sm"
                 >
                   <span className="flex items-center gap-2.5 text-white">
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-volt-400 shadow-[0_0_6px_var(--color-volt-400)]" aria-hidden="true" />
                     {t.k}
                   </span>
-                  <span className="pl-4 text-mist-400 lg:pl-0">{t.v}</span>
+                  <span className="pl-4 text-mist-400">{t.v}</span>
                 </li>
               ))}
             </ul>
