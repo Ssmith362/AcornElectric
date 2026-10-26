@@ -88,18 +88,20 @@ export default async function AreaPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="bg-mist-50 py-12 sm:py-16 lg:py-24" aria-labelledby="faq-title">
-        <div className="container-x grid gap-6 sm:gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <h2 id="faq-title" className="text-3xl leading-tight font-bold sm:text-4xl">
-              {a.name} questions
-            </h2>
+      {a.faqs.length ? (
+        <section className="bg-mist-50 py-12 sm:py-16 lg:py-24" aria-labelledby="faq-title">
+          <div className="container-x grid gap-6 sm:gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <h2 id="faq-title" className="text-3xl leading-tight font-bold sm:text-4xl">
+                {a.name} questions
+              </h2>
+            </div>
+            <div className="lg:col-span-8">
+              <FaqList faqs={a.faqs} />
+            </div>
           </div>
-          <div className="lg:col-span-8">
-            <FaqList faqs={a.faqs} />
-          </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <CtaSection
         source={path}

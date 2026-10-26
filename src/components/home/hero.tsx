@@ -46,16 +46,6 @@ export function Hero() {
               Call {site.phone.value.display}
             </ButtonAnchor>
           </div>
-          <ul className="mt-6 flex max-w-xl flex-wrap gap-x-5 gap-y-2 border-t border-white/10 pt-4 text-sm text-mist-300 sm:mt-10 sm:grid sm:grid-cols-3 sm:gap-3 sm:pt-6" data-reveal>
-            {["Permits and inspections handled", "Explained before we start", "WA licensed contractor"].map((t) => (
-              <li key={t} className="flex items-start gap-2.5">
-                <svg viewBox="0 0 12 12" className="mt-1 h-3 w-3 shrink-0 text-volt-400" aria-hidden="true">
-                  <path d="M1 6.5l3 3 7-8" fill="none" stroke="currentColor" strokeWidth="1.8" />
-                </svg>
-                {t}
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div className="relative lg:col-span-6 xl:col-span-6" data-reveal>

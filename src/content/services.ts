@@ -13,7 +13,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       "description": "Dead outlets, GFCI problems, flickering lights or tripping breakers in Spokane homes and businesses? Acorn Electric finds the cause and explains the repair."
     },
     "h1": "Electrical repair and troubleshooting in Spokane",
-    "lede": "An outlet went dead, a breaker keeps tripping or the lights flicker when the furnace kicks on. You don't need a guess and a new part. You need someone to find the actual cause.",
+    "lede": "An outlet went dead, a breaker keeps tripping or the lights flicker when the furnace kicks on. We find the actual cause before replacing anything.",
     "problem": "Something electrical stopped working, or is acting strange.",
     "story": [
       "Most electrical problems in a house are symptoms. A dead outlet might be a tripped GFCI two rooms away, a loose connection in a box, or a failed device. A breaker that trips might be overloaded, or warning you about a real fault.",
@@ -25,7 +25,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         "Outlets or a whole room have gone dead.",
         "A breaker trips again and again.",
         "Lights flicker or dim when appliances start.",
-        "A switch, outlet or cover plate feels warm or discoloured.",
+        "A switch, outlet or cover plate feels warm or discolored.",
         "Something smells hot or like burning plastic near an outlet or panel."
       ]
     },
@@ -126,7 +126,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       {
         "id": "outlets-and-gfci",
         "title": "Outlet installation, GFCI protection and breaker repairs",
-        "body": "A dead outlet, a GFCI that keeps tripping and a circuit that cannot carry its load are different problems. We test the cause before recommending a repair or replacement.",
+        "body": "A dead outlet, a GFCI that keeps tripping and a circuit that can't carry its load are different problems. We test the cause before recommending a repair or replacement.",
         "items": [
           "New and replacement outlets where the circuit can support them.",
           "GFCI protection for locations that require it, with the cause of repeated trips checked.",
@@ -138,7 +138,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         "title": "Electrical repairs before a home sale",
         "body": "The buyer's inspection came back and there's an electrical list. You've got a closing date and no time for a runaround. Send us the report: we'll tell you what each item really means and get the repairs done properly.",
         "items": [
-          "Double-tapped breakers or a cluttered, unlabelled panel.",
+          "Double-tapped breakers or a cluttered, unlabeled panel.",
           "Missing GFCI protection in kitchens, baths, garages or outside.",
           "Open grounds or reversed polarity at outlets.",
           "Missing cover plates, open junction boxes or loose fixtures.",
@@ -184,7 +184,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         },
         {
           "title": "Replace and reconnect",
-          "body": "The new panel goes in, existing circuits are reconnected and labelled clearly, and grounding and bonding are brought up to what the job requires."
+          "body": "The new panel goes in, existing circuits are reconnected and labeled clearly, and grounding and bonding are brought up to what the job requires."
         },
         {
           "title": "Inspection and power-up",
@@ -194,7 +194,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     },
     "doneRight": {
       "heading": "What a careful panel job looks like",
-      "intro": "Most of what separates a good panel upgrade from a bad one is invisible once the cover is on. These are the parts we don't skip.",
+      "intro": "Most of a panel upgrade is out of sight once the cover is on. These are the parts we don't skip.",
       "points": [
         {
           "title": "Grounding and bonding",
@@ -202,7 +202,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         },
         {
           "title": "A directory you can read",
-          "body": "Every breaker labelled with what it actually feeds, so the next time something trips, you know which one."
+          "body": "Every breaker labeled with what it actually feeds, so the next time something trips, you know which one."
         },
         {
           "title": "Room to grow",
@@ -248,7 +248,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       },
       {
         "q": "Do panel upgrades in Spokane need a permit?",
-        "a": "Yes. Panel and service work requires an electrical permit and inspection. Inside Spokane city limits, electrical permits and inspections go through the City of Spokane. Most other addresses in the area, including unincorporated Spokane County, are permitted and inspected by Washington L&I. We check which applies to your address."
+        "a": "Yes. Panel and service work needs an electrical permit and inspection: through the City of Spokane inside the city, and usually Washington L&I elsewhere. We pull the permit."
       },
       {
         "q": "Will my power be off during the upgrade?",
@@ -257,10 +257,6 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       {
         "q": "My insurer flagged my panel brand. Is it really a problem?",
         "a": "Some older panel lines, such as Federal Pacific Stab-Lok and Zinsco, have well-documented reliability concerns, and many insurers and home inspectors flag them. We'll look at yours and tell you honestly what we see."
-      },
-      {
-        "q": "Is replacing a panel the same as upgrading the electrical service?",
-        "a": "No. Replacing the panel changes the equipment that distributes power. A service upgrade changes the capacity supplied to the property and can also involve the meter, conductors and utility connection. We check the load and explain which work is needed."
       }
     ],
     "related": [
@@ -383,7 +379,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     "faqs": [
       {
         "q": "Do I need a permit to install an EV charger in Spokane?",
-        "a": "Installing a new 240-volt circuit for a Level 2 charger needs an electrical permit. Inside Spokane city limits, electrical permits and inspections go through the City of Spokane. Most other addresses in the area, including unincorporated Spokane County, are permitted and inspected by Washington L&I. We check which applies to your address."
+        "a": "Yes. A new 240-volt circuit for a Level 2 charger needs an electrical permit and inspection: through the City of Spokane inside the city, and usually Washington L&I elsewhere. We pull the permit."
       },
       {
         "q": "Hardwired charger or a NEMA 14-50 outlet?",
@@ -443,12 +439,12 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
           "body": "We assess the panel and a suitable transfer switch or listed interlock where appropriate."
         },
         {
-          "title": "Agree on the full project",
-          "body": "We explain the electrical work, permit requirements and any fuel, pad or other contractor coordination."
+          "title": "Plan the whole project",
+          "body": "We explain the electrical work, the permit and anything others need to handle, like fuel lines or a pad."
         },
         {
           "title": "Install and check",
-          "body": "We complete the agreed electrical installation and check the transfer arrangement and selected circuits."
+          "body": "We do the electrical work, then check the transfer switch and the circuits you chose."
         }
       ]
     },
@@ -503,11 +499,11 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       },
       {
         "q": "Can I power the whole property?",
-        "a": "That depends on the loads, generator and transfer equipment. We work through the requirements before recommending a system or electrical scope."
+        "a": "That depends on the loads, generator and transfer equipment. We work through the requirements before recommending a system."
       },
       {
         "q": "Does a standby generator project include fuel and site work?",
-        "a": "The project can involve more than electrical work. We identify who handles fuel connections, equipment supply, placement and any pad or site work, and agree on those responsibilities before work starts."
+        "a": "The project can involve more than electrical work. We identify who handles fuel connections, equipment supply, placement and any pad or site work, and settle who does what before work starts."
       }
     ],
     "related": [
@@ -520,7 +516,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     "image": "ceilingfan",
     "meta": {
       "title": "Ceiling & Attic Fan Installation in Spokane | Acorn Electric",
-      "description": "Ceiling and attic fan installation in Spokane. Ceiling fan replacement, attic fan wiring and controls, with support and ventilation scope explained first."
+      "description": "Ceiling and attic fan installation in Spokane. Ceiling fan replacement, attic fan wiring and controls, with support, wiring and ventilation needs explained first."
     },
     "h1": "Ceiling and attic fan installation in Spokane",
     "lede": "From a replacement ceiling fan to electrical work for attic ventilation, we check the wiring and controls and explain what your project needs.",
@@ -552,7 +548,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         },
         {
           "title": "Mount and connect",
-          "body": "We install suitable support and wiring for the agreed scope."
+          "body": "We install fan-rated support and the wiring."
         },
         {
           "title": "Test the operation",
@@ -566,7 +562,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       "points": [
         {
           "title": "Fan-rated support",
-          "body": "A light-only box is not automatically suitable for a ceiling fan."
+          "body": "A light-only box isn't automatically suitable for a ceiling fan."
         },
         {
           "title": "Controls that match",
@@ -577,7 +573,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
           "body": "Covered patios still need appropriately rated equipment."
         },
         {
-          "title": "Clear scope",
+          "title": "No surprises",
           "body": "New wiring, a high ceiling or difficult access is discussed before work starts."
         }
       ]
@@ -619,7 +615,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       },
       {
         "q": "Do you install or replace attic fans in Spokane?",
-        "a": "Yes. Tell us whether you are replacing an existing fan or planning a new installation. We review the wiring, controls and access, then agree on the electrical work and any ventilation or roof coordination the project needs."
+        "a": "Yes. Tell us whether you are replacing an existing fan or planning a new installation. We review the wiring, controls and access, then tell you what the electrical work involves and who handles any roof or ventilation work."
       },
       {
         "q": "Is an attic fan the same as a ceiling fan?",
@@ -635,7 +631,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       {
         "id": "attic-fans",
         "title": "Attic fan installation and replacement in Spokane",
-        "body": "An attic fan moves air through the attic; a ceiling fan circulates air in the room below. For an attic fan installation or replacement, we assess the electrical connection, controls and equipment requirements. Ventilation suitability and any roof or gable work need to be agreed before installation.",
+        "body": "For an attic fan installation or replacement, we check the electrical connection, controls and equipment. Roof or gable work and intake ventilation need to be settled before installation.",
         "items": [
           "Electrical supply and wiring for a proposed attic fan, after the ventilation plan has been assessed.",
           "Replacement of existing attic fan equipment, with access and mounting requirements checked first.",
@@ -656,7 +652,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     "problem": "Your business needs a reliable electrician for lighting, circuits or repairs.",
     "story": [
       "When the lights flicker or a circuit trips at work, you can't wait a week for a callback. You need someone who answers, explains what's going on, and does the job properly the first time.",
-      "We bring the same approach we use in people's homes: listen first, explain the options, do it right, clean up. We focus on commercial service and installation work, not industrial or large-scale construction."
+      "We bring the same approach we use in people's homes: listen first, explain the options, do it right, clean up. We focus on commercial service and installation work."
     ],
     "signs": {
       "heading": "What we help businesses with",
@@ -707,13 +703,13 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
           "body": "Permitted work is inspected and documented."
         },
         {
-          "title": "Honest about scope",
+          "title": "We say if it's not a fit",
           "body": "If a job is outside what we do, we'll tell you up front."
         }
       ]
     },
     "factors": {
-      "heading": "What shapes the job",
+      "heading": "What affects a commercial job",
       "items": [
         {
           "title": "Building type",
@@ -741,16 +737,8 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     ],
     "faqs": [
       {
-        "q": "What commercial work don't you do?",
-        "a": "We don't do industrial work, large-scale construction, commercial fire alarm systems, or sound and audio systems. If that's what you need, we'll tell you so up front."
-      },
-      {
-        "q": "Do you do solar installations?",
-        "a": "No, we don't install solar."
-      },
-      {
         "q": "Do commercial jobs need permits?",
-        "a": "Most do. Inside Spokane city limits, electrical permits and inspections go through the City of Spokane. Most other addresses in the area, including unincorporated Spokane County, are permitted and inspected by Washington L&I. We check which applies to your address."
+        "a": "Most do. Permits go through the City of Spokane inside the city, and usually Washington L&I elsewhere. We pull them and schedule the inspections."
       }
     ],
     "related": [
@@ -767,15 +755,15 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     },
     "h1": "Bathroom fan replacement in Spokane",
     "lede": "A loud fan, a dead motor or a bathroom that stays steamy? We assess the fan, electrical connection and ventilation setup before recommending a replacement.",
-    "problem": "Your bathroom fan is noisy, has stopped working or is not clearing moisture.",
+    "problem": "Your bathroom fan is noisy, has stopped working or isn't clearing moisture.",
     "story": [
-      "Replacing a bathroom fan can improve noise and operation, but a new motor cannot fix a blocked or poorly routed exhaust duct. The fan and the path outdoors need to be considered together.",
-      "We check the electrical work and agree on the installation scope. If the project needs duct changes, a new exterior opening or roof work, we identify who will handle those parts before you commit."
+      "Replacing a bathroom fan can improve noise and operation, but a new motor can't fix a blocked or poorly routed exhaust duct. The fan and the path outdoors need to be considered together.",
+      "We check the electrical work and tell you what the installation involves. If the project needs duct changes, a new exterior opening or roof work, we identify who will handle those parts before you commit."
     ],
     "signs": {
       "heading": "Reasons to replace or check a bathroom fan",
       "items": [
-        "The fan rattles, grinds or will not start.",
+        "The fan rattles, grinds or won't start.",
         "The bathroom stays damp after the fan has run.",
         "You want quieter operation or a timer control.",
         "A remodel needs a different fan or a new location."
@@ -790,12 +778,12 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
           "body": "We review the fan opening, access, power and visible exhaust routing."
         },
         {
-          "title": "Agree on the scope",
+          "title": "Confirm the plan",
           "body": "We discuss a suitable replacement and any duct, ceiling or roof coordination needed."
         },
         {
           "title": "Install and connect",
-          "body": "We complete the agreed fan wiring, mounting and controls."
+          "body": "We wire, mount and connect the fan and its controls."
         },
         {
           "title": "Check operation",
@@ -820,8 +808,8 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
           "body": "Timers, humidity controls and switches must suit the selected equipment."
         },
         {
-          "title": "No hidden scope",
-          "body": "Roofing, ducting and finish repairs are agreed before work starts."
+          "title": "No surprises",
+          "body": "We settle roofing, ducting and finish repairs before work starts."
         }
       ]
     },
@@ -838,7 +826,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         },
         {
           "title": "Exhaust routing",
-          "body": "Duct condition and outdoor termination can change the scope beyond the fan itself."
+          "body": "Duct condition and outdoor termination can add work beyond the fan itself."
         }
       ]
     },
@@ -858,7 +846,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       },
       {
         "q": "Can you add a fan where there is none?",
-        "a": "Ask us about the location. A new installation needs a power supply and an exhaust route outdoors, with any ducting, roof or finish work included in the agreed scope."
+        "a": "Ask us about the location. A new installation needs a power supply and an exhaust route outdoors, with any ducting, roof or finish work settled beforehand."
       }
     ],
     "related": [
@@ -885,14 +873,14 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       "items": [
         "Your kitchen counters are in your own shadow.",
         "A basement or bonus room relies on lamps.",
-        "You're remodelling and the ceiling is open anyway.",
+        "You're remodeling and the ceiling is open anyway.",
         "Your existing can lights are old, hot, or flicker on the dimmer.",
         "You want lighting on dimmers you can set by room."
       ]
     },
     "work": {
       "heading": "How a recessed lighting project comes together",
-      "intro": "Most of the craft is in the plan. Installation follows it.",
+      "intro": "",
       "steps": [
         {
           "title": "Lay it out",
@@ -900,7 +888,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         },
         {
           "title": "Pick the right fixtures",
-          "body": "Canless LED wafers or housings, colour temperature, brightness, and trims. Fixtures in an insulated ceiling must be rated for it."
+          "body": "Canless LED wafers or housings, color temperature, brightness, and trims. Fixtures in an insulated ceiling must be rated for it."
         },
         {
           "title": "Wire and switch",
@@ -913,7 +901,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       ]
     },
     "doneRight": {
-      "heading": "Details that separate good lighting from a ceiling full of holes",
+      "heading": "Details that make recessed lighting work",
       "intro": "",
       "points": [
         {
@@ -935,7 +923,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       ]
     },
     "factors": {
-      "heading": "What shapes the scope",
+      "heading": "What affects a lighting project",
       "items": [
         {
           "title": "Attic access",
@@ -981,10 +969,6 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       {
         "q": "Can you add lights where there's no existing wiring?",
         "a": "Usually, yes. We'll find the best way to get power to the new location with the least disruption."
-      },
-      {
-        "q": "Do you install low-voltage landscape lighting?",
-        "a": "Ask us about your project and we'll tell you whether it's something we take on."
       }
     ],
     "related": [
@@ -996,13 +980,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         "id": "recessed-lighting",
         "title": "Recessed lighting installation",
         "body": "One ceiling light in the middle of the room leaves corners dim and shadows everywhere. Well-planned recessed lighting fixes that, and it starts with the layout, not the fixtures.",
-        "items": [
-          "Your kitchen counters are in your own shadow.",
-          "A basement or bonus room relies on lamps.",
-          "You're remodelling and the ceiling is open anyway.",
-          "Your existing can lights are old, hot, or flicker on the dimmer.",
-          "You want lighting on dimmers you can set by room."
-        ]
+        "items": []
       },
       {
         "id": "exterior-lighting",
@@ -1010,7 +988,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         "title": "Exterior and outdoor lighting installation",
         "body": "A dark driveway, a porch light you can't see by and a back yard nobody uses after sunset. Good exterior lighting makes the house safer and more usable, and it has to survive our winters.",
         "items": [
-          "Plan the light: Where you need to see, what should be lit for security, and keeping light aimed down, not into neighbours' windows.",
+          "Plan the light: Where you need to see, what should be lit for security, and keeping light aimed down, not into neighbors' windows.",
           "Pick rated fixtures and controls: Wet- or damp-location rated fixtures, plus motion sensors, photocells or timers.",
           "Wire it weather-tight: Sealed boxes and entries, in-use covers on outlets, GFCI protection where required.",
           "Test and aim: We aim fixtures and set sensors so they do what you want."
@@ -1024,7 +1002,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       "title": "Hot Tub Wiring & Spa Electrical in Spokane | Acorn Electric",
       "description": "Hot tub and spa wiring in Spokane: dedicated 240V circuit, GFCI disconnect, bonding and weather-tight outdoor work. Sized to your spa's spec and inspected."
     },
-    "h1": "Hot tub wiring in Spokane, done right the first time",
+    "h1": "Hot tub wiring in Spokane",
     "lede": "The hot tub is on order and the pad is poured. What's left is the part that has to be right: a dedicated circuit, a GFCI disconnect and outdoor wiring that holds up to Spokane winters.",
     "problem": "You're installing a hot tub and want the electrical done properly.",
     "story": [
@@ -1065,7 +1043,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     },
     "doneRight": {
       "heading": "What makes it safe around water",
-      "intro": "This is the work you don't see once the tub is running, and it's the work that protects your family.",
+      "intro": "Most of this is out of sight once the tub is running.",
       "points": [
         {
           "title": "Ground-fault protection",
@@ -1086,7 +1064,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       ]
     },
     "factors": {
-      "heading": "What shapes the scope",
+      "heading": "What affects hot tub wiring",
       "items": [
         {
           "title": "Your spa's amperage",
@@ -1119,7 +1097,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       },
       {
         "q": "Does hot tub wiring need a permit in Spokane?",
-        "a": "Yes. A new circuit for a spa requires an electrical permit and inspection. Inside Spokane city limits, electrical permits and inspections go through the City of Spokane. Most other addresses in the area, including unincorporated Spokane County, are permitted and inspected by Washington L&I. We check which applies to your address."
+        "a": "Yes. A new spa circuit needs an electrical permit and inspection: through the City of Spokane inside the city, and usually Washington L&I elsewhere. We pull the permit."
       },
       {
         "q": "What about plug-and-play 120-volt hot tubs?",
@@ -1146,8 +1124,8 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     "lede": "You love the old house. The original wiring, not so much. Maybe an inspector flagged it, maybe your insurer asked, or maybe you just want to stop wondering. We'll find out what's really in the walls and replace it without wrecking the character you bought the house for.",
     "problem": "Your older home still has knob and tube wiring and you want it dealt with.",
     "story": [
-      "Knob and tube was the standard way to wire a house in the early 1900s, and Spokane has whole neighbourhoods built in that era. It isn't automatically dangerous, but it was never designed for today's loads, it has no ground, and after a century of remodels it has often been spliced, extended or buried in insulation it was never meant to be covered by.",
-      "The hard part isn't knowing it should go. It's knowing how much is still live, what's safe to leave for now, and how to get new wire through finished plaster walls without turning the house upside down. That's the part we do the thinking on."
+      "Knob and tube was the standard way to wire a house in the early 1900s, and Spokane has whole neighborhoods built in that era. It isn't automatically dangerous, but it was never designed for today's loads, it has no ground, and after a century of remodels it has often been spliced, extended or buried in insulation it was never meant to be covered by.",
+      "The harder questions are how much is still live, what can safely wait, and how to get new wire through finished plaster without tearing the house apart. We work those out first."
     ],
     "signs": {
       "heading": "It's time to deal with it when…",
@@ -1183,7 +1161,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     },
     "doneRight": {
       "heading": "Respect for the house",
-      "intro": "Rewiring an older home is as much about care as it is about wire.",
+      "intro": "",
       "points": [
         {
           "title": "Old circuits properly retired",
@@ -1245,7 +1223,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       },
       {
         "q": "Do I need a permit to replace knob and tube?",
-        "a": "Yes. Rewiring is permitted and inspected work. Inside Spokane city limits, electrical permits and inspections go through the City of Spokane. Most other addresses in the area, including unincorporated Spokane County, are permitted and inspected by Washington L&I. We check which applies to your address."
+        "a": "Yes. Rewiring is permitted and inspected work: through the City of Spokane inside the city, and usually Washington L&I elsewhere. We pull the permit."
       }
     ],
     "related": [
@@ -1264,7 +1242,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     "problem": "You want to know your home's wiring is safe and up to code.",
     "story": [
       "A general home inspection looks at a house broadly. An electrical inspection by a licensed electrician goes deeper: the panel, grounding and bonding, ground-fault and arc-fault protection, visible wiring, and the outlets and switches you use every day.",
-      "Spokane has plenty of older homes with a few generations of electrical work layered inside them. The point isn't to find problems for the sake of it. It's to give you a clear, prioritised picture so you can decide what to do and when."
+      "Spokane has plenty of older homes with a few generations of electrical work layered inside them. You get a clear, prioritized list so you can decide what to do and when."
     ],
     "signs": {
       "heading": "People usually book an inspection when…",
@@ -1278,11 +1256,11 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     },
     "work": {
       "heading": "What we look at",
-      "intro": "Scope depends on the house and your concerns, but an inspection typically covers:",
+      "intro": "What we cover depends on the house and your concerns. An inspection typically includes:",
       "steps": [
         {
           "title": "Service and panel",
-          "body": "Panel condition, breaker sizing against wire size, signs of overheating, double taps and labelling."
+          "body": "Panel condition, breaker sizing against wire size, signs of overheating, double taps and labeling."
         },
         {
           "title": "Grounding and bonding",
@@ -1311,7 +1289,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
           "body": "If something is fine, we say so. If something is unsafe, we say that too, and why."
         },
         {
-          "title": "Prioritised findings",
+          "title": "Prioritized findings",
           "body": "Safety issues first, then code and reliability issues, then nice-to-haves."
         },
         {
@@ -1370,7 +1348,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       },
       {
         "q": "Can I ask about surge protection or grounding without booking an inspection?",
-        "a": "Yes. Tell us what you want checked or installed. These services share this page because they concern electrical safety, but you can request just the work you need."
+        "a": "Yes. Tell us what you want checked or installed and we'll quote just that."
       }
     ],
     "related": [
@@ -1470,7 +1448,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       ]
     },
     "factors": {
-      "heading": "What shapes the job",
+      "heading": "What affects a dedicated circuit",
       "items": [
         {
           "title": "Size of the load",
@@ -1507,7 +1485,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       },
       {
         "q": "Does a new circuit need a permit?",
-        "a": "Yes, new circuits are permitted work. Inside Spokane city limits, electrical permits and inspections go through the City of Spokane. Most other addresses in the area, including unincorporated Spokane County, are permitted and inspected by Washington L&I. We check which applies to your address."
+        "a": "Yes. New circuits are permitted work: through the City of Spokane inside the city, and usually Washington L&I elsewhere. We pull the permit and schedule the inspection."
       }
     ],
     "related": [
@@ -1583,7 +1561,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       ]
     },
     "factors": {
-      "heading": "What shapes the scope",
+      "heading": "What affects a subpanel install",
       "items": [
         {
           "title": "Distance and route",
@@ -1616,7 +1594,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       },
       {
         "q": "Do I need a permit for a subpanel in Spokane?",
-        "a": "Yes. A new feeder and subpanel need an electrical permit and inspection. Inside Spokane city limits, electrical permits and inspections go through the City of Spokane. Most other addresses in the area, including unincorporated Spokane County, are permitted and inspected by Washington L&I. We check which applies to your address."
+        "a": "Yes. A new feeder and subpanel need an electrical permit and inspection: through the City of Spokane inside the city, and usually Washington L&I elsewhere. We pull the permit."
       },
       {
         "q": "Can a subpanel fix a full main panel?",
@@ -1704,7 +1682,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       "heading": "What shapes a remodel job",
       "items": [
         {
-          "title": "Size and scope",
+          "title": "Size of the project",
           "body": "A bathroom refresh is a different job from a full kitchen or addition."
         },
         {
@@ -1738,7 +1716,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       },
       {
         "q": "Does a remodel need an electrical permit?",
-        "a": "Almost always. Rough-in is inspected before the walls close, then a final once fixtures are in. Inside Spokane city limits, electrical permits and inspections go through the City of Spokane. Most other addresses in the area, including unincorporated Spokane County, are permitted and inspected by Washington L&I. We check which applies to your address."
+        "a": "Almost always. Rough-in is inspected before the walls close, then again once fixtures are in. Permits go through the City of Spokane inside the city, and usually Washington L&I elsewhere. We pull the permit."
       }
     ],
     "related": [
@@ -1802,7 +1780,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         },
         {
           "title": "A clear panel directory",
-          "body": "Every circuit labelled for what it actually feeds."
+          "body": "Every circuit labeled for what it actually feeds."
         },
         {
           "title": "No corners cut",
@@ -1847,12 +1825,8 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         "a": "That's between you and your builder. We're glad to bid the electrical on a custom home when the builder or owner invites us."
       },
       {
-        "q": "Do you do large subdivisions or commercial construction?",
-        "a": "No. We focus on custom homes, shops and ADUs, not large-scale construction."
-      },
-      {
         "q": "Who handles the permit?",
-        "a": "We pull the electrical permit for our work and schedule its inspections. Inside Spokane city limits, electrical permits and inspections go through the City of Spokane. Most other addresses in the area, including unincorporated Spokane County, are permitted and inspected by Washington L&I. We check which applies to your address."
+        "a": "We pull the electrical permit for our work and schedule its inspections. Permits go through the City of Spokane inside the city, and usually Washington L&I elsewhere."
       }
     ],
     "related": [
@@ -1872,7 +1846,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     "problem": "A storm or a falling limb damaged where the power connects to your house.",
     "story": [
       "The service mast is the metal pipe on your roof or wall that holds up the utility's service drop and carries the wires down to your meter. The weatherhead is the cap at the top that keeps water out. The meter base is the box the meter plugs into.",
-      "The wires running from the pole belong to the utility. The mast, weatherhead and meter base belong to the homeowner. When those are damaged, Avista has said a licensed electrician needs to make the repair before it can safely restore power. That's where we come in."
+      "When the mast, weatherhead or meter base is damaged, the utility needs a licensed electrician to repair it before power can be safely restored. That's where we come in."
     ],
     "signs": {
       "heading": "Signs your mast needs attention",
@@ -1933,7 +1907,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       ]
     },
     "factors": {
-      "heading": "What shapes the scope",
+      "heading": "What affects a mast repair",
       "items": [
         {
           "title": "Extent of damage",
@@ -1974,7 +1948,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       },
       {
         "q": "Does a mast repair need a permit?",
-        "a": "Yes. Service entrance work requires a permit and inspection before reconnection. Inside Spokane city limits, electrical permits and inspections go through the City of Spokane. Most other addresses in the area, including unincorporated Spokane County, are permitted and inspected by Washington L&I. We check which applies to your address."
+        "a": "Yes. Service entrance work needs a permit and inspection before the utility reconnects: through the City of Spokane inside the city, and usually Washington L&I elsewhere. We pull the permit."
       }
     ],
     "related": [

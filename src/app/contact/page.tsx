@@ -3,7 +3,6 @@ import { ServiceRequestForm } from "@/components/forms/service-request-form";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { PhoneGlyph } from "@/components/ui/button";
 import { ReviewFlag, SHOW_REVIEW_FLAGS } from "@/components/ui/review-flag";
-import { communities } from "@/content/areas";
 import { pageMetadata } from "@/lib/seo";
 import { mailto, site, tel } from "@/lib/site";
 
@@ -29,9 +28,9 @@ export default function ContactPage() {
               What&apos;s going on at your place?
             </h1>
             <p className="mt-5 text-[1.05rem] leading-relaxed text-mist-200 sm:mt-6 sm:text-lg">
-              Home or business, listed service or something different, tell us about your project.
-              A photo of your electrical panel and anything relevant
-              (charger model, hot tub spec sheet, the damage) helps us give you a useful answer the first time.
+              Tell us about your project, whether it&apos;s one of our listed services or something different.
+              A photo of your electrical panel helps, along with anything relevant: the charger model, the hot tub
+              spec sheet or the damage.
             </p>
             <p className="mt-4 text-mist-200 lg:hidden">
               Rather talk?{" "}
@@ -87,7 +86,7 @@ export default function ContactPage() {
               <div>
                 <dt className="label-mono text-[0.62rem] text-mist-400">Service area</dt>
                 <dd className="mt-1.5 text-mist-200 sm:mt-2">
-                  Spokane and nearby: {communities.slice(1).map((c) => c.name).join(", ").replace(/, ([^,]+)$/, ", and $1")}.{" "}
+                  Spokane and nearby communities.{" "}
                   <Link href="/areas" className="inline-block text-white underline underline-offset-4 hover:text-volt-300">
                     See service areas
                   </Link>

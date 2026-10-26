@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Acorn Electric | Electrician in Spokane, WA",
   description:
-    "Electrical repairs, upgrades and installations for Spokane homes and businesses. Explore common services or tell Acorn Electric about your project.",
+    "Electrical repairs, upgrades and installations for Spokane homes and businesses. Call or send a request to Acorn Electric.",
   path: "/",
 });
 
@@ -26,10 +26,10 @@ export default function HomePage() {
         source="/"
         title={
           <>
-            Tell us what&apos;s going on. <span className="text-lit">We&apos;ll take it from there.</span>
+            Tell us about <span className="text-lit">your project.</span>
           </>
         }
-        body="A few details and we'll come back to you to talk it through."
+        body="A few details and a photo or two is plenty. We'll come back to you to talk it through."
       />
     </>
   );

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaSection } from "@/components/sections/cta-section";
-import { Process } from "@/components/sections/process";
 import { RelatedServices } from "@/components/sections/related-services";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { ButtonAnchor, ButtonLink, PhoneGlyph } from "@/components/ui/button";
@@ -158,10 +157,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <div className="container-x grid gap-10 sm:gap-14 lg:grid-cols-12">
           <div className="lg:col-span-7" data-reveal>
             <h2 className="text-3xl leading-tight font-bold sm:text-4xl">{s.factors.heading}</h2>
-            <p className="prose-acorn mt-4">
-              Every project is different, so we don&apos;t quote blind. These are the things that make the biggest
-              difference to the job.
-            </p>
             <div className="mt-6 sm:mt-8">
               <Accordion items={s.factors.items.map((f) => ({ title: f.title, body: <p>{f.body}</p> }))} />
             </div>
@@ -190,8 +185,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      <Process variant="compact" />
-
       {/* ------------------------------------------------------------ FAQ */}
       <section className="bg-mist-50 py-12 sm:py-16 lg:py-24" aria-labelledby="faq-title">
         <div className="container-x grid gap-6 sm:gap-10 lg:grid-cols-12">
@@ -213,7 +206,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         defaultService={s.name}
         title={
           <>
-            Tell us what&apos;s going on. <span className="text-lit">We&apos;ll take it from there.</span>
+            Tell us about <span className="text-lit">your project.</span>
           </>
         }
         body={`Send the details and any photos you have about ${inSentence(s.name)}. We'll come back to you to talk through what it needs.`}

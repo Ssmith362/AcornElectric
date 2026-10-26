@@ -1,32 +1,8 @@
-import Link from "next/link";
 import { AreaMap } from "@/components/sections/area-map";
-import { Collapsible } from "@/components/ui/collapsible";
 import { ButtonLink } from "@/components/ui/button";
 import { Photo } from "@/components/ui/photo";
 import { SectionHead } from "@/components/ui/section-head";
-import { communities } from "@/content/areas";
 import { images } from "@/content/images";
-
-function CommunityList({ items }: { items: typeof communities }) {
-  return (
-    <ul className="grid grid-cols-2 gap-x-6">
-      {items.map((c) => (
-        <li key={c.name} className="border-b border-white/10">
-          {c.page ? (
-            <Link href={`/areas/${c.page}`} className="flex items-center justify-between py-3 hover:text-volt-300">
-              {c.name}
-              <span aria-hidden="true">→</span>
-            </Link>
-          ) : (
-            <Link href={`/areas#${c.name.toLowerCase().replace(/\s+/g, "-")}`} className="block py-3 text-mist-200 hover:text-volt-300">
-              {c.name}
-            </Link>
-          )}
-        </li>
-      ))}
-    </ul>
-  );
-}
 
 export function AreasBlock() {
   return (
@@ -37,15 +13,8 @@ export function AreasBlock() {
             tone="night"
             label="Where we work"
             title={<span id="areas-title">Spokane and eleven communities around it.</span>}
-            intro="Not sure if we cover your address? Put your ZIP code in the request form and we'll tell you straight away."
+            intro="Not sure we cover your address? Add your ZIP code to the request form and we'll confirm."
           />
-          <Collapsible
-            className="mt-6 sm:mt-8"
-            showLabel={`Show all ${communities.length} communities`}
-            hideLabel="Hide communities"
-          >
-            <CommunityList items={communities} />
-          </Collapsible>
         </div>
         <div className="lg:col-span-7" data-reveal>
           <AreaMap />
@@ -69,11 +38,10 @@ export function CareersTeaser() {
             For electricians
           </p>
           <h2 id="careers-title" className="mt-3 text-[1.75rem] leading-tight font-bold sm:mt-4 sm:text-4xl">
-            Experienced residential electrician? Grow with a company that invests in you.
+            Experienced residential electrician? We&apos;re hiring.
           </h2>
           <p className="mt-4 text-ink-soft">
-            New vans, fully stocked tools, and a team that reads together. We&apos;re looking for someone ready to own
-            their work and grow into leadership.
+            New vans, fully stocked tools and a team book club. We want someone who can run their own jobs.
           </p>
         </div>
         <div className="lg:col-span-3 lg:text-right" data-reveal>

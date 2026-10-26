@@ -60,12 +60,8 @@ export function Reviews() {
       <div className="container-x">
         <div>
           <div data-reveal>
-            <p className="label-mono flex items-center gap-3 text-copper-700">
-              <span aria-hidden="true" className="h-px w-8 bg-copper-500/60" />
+            <h2 id="reviews-title" className="text-[1.9rem] leading-[1.1] sm:text-3xl lg:text-4xl">
               What customers say
-            </p>
-            <h2 id="reviews-title" className="mt-4 text-[1.9rem] leading-[1.1] sm:text-3xl lg:text-4xl">
-              In their own words
             </h2>
           </div>
         </div>

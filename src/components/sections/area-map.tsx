@@ -63,7 +63,7 @@ export function AreaMap() {
                 x={p.x + (p.dx ?? 0)}
                 y={p.y + (p.dy ?? 0)}
                 textAnchor={p.anchor ?? "middle"}
-                fontSize={11}
+                fontSize={12.5}
                 fontWeight={600}
                 fill="white"
                 className={c.page ? "font-sans group-hover:fill-[var(--color-volt-300)]" : "font-sans"}

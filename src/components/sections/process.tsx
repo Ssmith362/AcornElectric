@@ -20,8 +20,8 @@ const steps = [
     body: "The right wire, breaker and fitting, even where nobody will see it. Permitted and inspected when the job needs it, and sealed against Spokane weather.",
   },
   {
-    title: "One less thing to worry about",
-    body: "We walk you through it, clean up, and leave you with something that just works.",
+    title: "Cleaned up and explained",
+    body: "We walk you through the finished work, clean up and make sure everything works.",
   },
 ];
 
@@ -84,9 +84,6 @@ export function Process({ variant = "full" }: { variant?: "full" | "compact" }) 
           </h2>
           <p className="mt-4 max-w-md text-[1.05rem] leading-relaxed text-mist-300 sm:text-lg">
             The same four steps on every job, big or small.
-          </p>
-          <p className="mt-6 max-w-sm border-l-[3px] border-copper-500 pl-4 text-[0.98rem] leading-relaxed text-mist-200">
-            We explain what it needs and what your options are, before any work starts.
           </p>
           <div className="mt-8 hidden lg:block">
             <ButtonLink href="/contact" arrow>

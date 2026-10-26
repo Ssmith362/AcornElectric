@@ -28,7 +28,7 @@ export default function ServicesPage() {
             </h1>
             <p className="mt-5 max-w-md text-[1.05rem] leading-relaxed text-mist-300 sm:mt-6 sm:text-lg">
               These are some of the jobs we handle for Spokane homes and businesses. Each guide explains what
-              to expect. Don&apos;t see your project listed? Ask us about it.
+              to expect.
             </p>
             {/* Phones get jump links to the groups below instead of the full circuit list. */}
             <nav aria-label="Service groups" className="mt-6 lg:hidden">

@@ -11,7 +11,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Electrician Jobs in Spokane: Careers at Acorn Electric",
   description:
-    "Experienced residential electrician in Spokane? Acorn Electric is growing. New vans, fully stocked tools, a team book club and a real path into leadership.",
+    "Acorn Electric is hiring an experienced residential electrician in Spokane. New vans, fully stocked tools, a team book club and room to move into leadership.",
   path: "/careers",
 });
 
@@ -32,7 +32,6 @@ const fit = [
   "You can walk into a house, find the problem and fix it without someone looking over your shoulder.",
   "You explain things to homeowners clearly and treat their home with respect.",
   "You'd rather do it right than do it twice, and code compliance is a point of pride, not a hassle.",
-  "You want more than a paycheck: you want to get better, and maybe lead.",
 ];
 
 export default function CareersPage() {
@@ -48,15 +47,14 @@ export default function CareersPage() {
           <div className="mt-7 grid items-center gap-8 sm:mt-10 sm:gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <p className="label-mono text-volt-400">Careers at Acorn Electric</p>
-              <h1 className="mt-3 text-[2.75rem] leading-[0.95] sm:mt-5 sm:text-5xl font-bold tracking-[0.01em] sm:text-7xl lg:text-[5.2rem]">
-                Own your work.
+              <h1 className="mt-3 text-[2.75rem] leading-[0.95] sm:mt-5 sm:text-5xl font-bold tracking-[0.01em] sm:text-6xl lg:text-7xl">
+                Residential electrician
                 <br />
-                <span className="text-lit">Grow your career.</span>
+                <span className="text-lit">wanted in Spokane.</span>
               </h1>
               <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed text-mist-200 sm:mt-7 sm:text-xl">
-                Acorn is a small, fast-growing electrical company serving Spokane homes and businesses. We&apos;re looking for an
-                experienced electrician who wants to take ownership, do work they&apos;re proud of, and grow into
-                leadership with us.
+                Acorn is a small electrical company serving Spokane homes and businesses. We&apos;re hiring an experienced
+                residential electrician.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row">
                 <ButtonLink href="#apply" arrow>
@@ -200,7 +198,7 @@ export default function CareersPage() {
             <ol className="mt-6 space-y-4 sm:mt-8 sm:space-y-6">
               {[
                 ["Send the form", "A few questions about your certificate and experience. A resume helps but isn't required."],
-                ["We read every one", "A person at Acorn reviews your application, not a filter."],
+                ["We read every one", "Someone at Acorn reads each application."],
                 ["A conversation", "If it looks like a fit, we'll set up a call and then a meeting."],
               ].map(([t, b], i) => (
                 <li key={t} className="grid grid-cols-[3.5rem_1fr] gap-3">

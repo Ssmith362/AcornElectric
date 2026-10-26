@@ -52,11 +52,11 @@ six services as a side-scrolling rail
 (`home/service-deck.tsx`: always a peek of the next card; 1 on phones, 2 on
 tablets, 3 on desktop). Each card carries the service's `problem` line, so
 there is no separate problem list. "How we
-work" is one four-step section (`sections/process.tsx`), shared with service
-pages; on the homepage it is a job-sheet checklist that ticks itself off on
+work" is one four-step section (`sections/process.tsx`), homepage only
+(service pages have their own steps); it is a job-sheet checklist that ticks itself off on
 scroll (CSS under "CHECKLIST" in globals.css; shows complete without JS or with
-reduced motion). "Where we work" shows Spokane and the towns with their own
-page; the rest sit behind `ui/collapsible.tsx` ("Show all 12").
+reduced motion). "Where we work" is the circuit-diagram map only; the full town list lives
+on `/areas` and in the footer (one list per page, no duplicate list under the map).
 
 ## SEO rules
 

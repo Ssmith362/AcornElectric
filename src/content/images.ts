@@ -66,7 +66,7 @@ export const images = {
   },
   panel: {
     src: "/images/panel-upgrade-breakers.webp",
-    alt: "New electrical panel with neatly landed, labelled breakers",
+    alt: "New electrical panel with neatly landed, labeled breakers",
     ...landscape,
     focus: "50% 45%",
     art: "panel",
@@ -134,7 +134,7 @@ export const images = {
   van: { src: null, alt: "", ...landscape, art: "van", brief: "One of the new Acorn work vans" },
   crew: {
     src: "/images/eric-beisley-service-pedestal.webp",
-    alt: "Eric Beisley, owner of Acorn Electric, with two young kids beside a newly installed meter pedestal",
+    alt: "Eric Beisley, owner of Acorn Electric, beside a newly installed meter pedestal",
     width: 1200,
     height: 1500,
     focus: "50% 60%",

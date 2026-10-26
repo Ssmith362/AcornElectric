@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     template: "%s | Acorn Electric",
   },
   description:
-    "Electrical services for Spokane homes and businesses. Repairs, upgrades, lighting, EV chargers and more. Tell Acorn Electric about your project.",
+    "Electrical services for Spokane homes and businesses. Repairs, upgrades, lighting, EV chargers and more. Call Acorn Electric.",
   applicationName: site.name,
   // Belt and braces with robots.txt: preview builds are never indexable.
   ...(ALLOW_INDEXING ? {} : { robots: { index: false, follow: false } }),

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { AreaMap } from "@/components/sections/area-map";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { ButtonAnchor, ButtonLink, PhoneGlyph } from "@/components/ui/button";
 import { communities } from "@/content/areas";
@@ -19,19 +18,15 @@ export default function AreasPage() {
       <section className="on-night bg-grid-night text-white">
         <div className="container-x pt-6 pb-10 sm:pt-8 sm:pb-12 lg:pb-16">
           <Breadcrumbs trail={[{ name: "Service areas", path: "/areas" }]} />
-          <div className="mt-6 grid items-center gap-8 sm:mt-8 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-6">
-              <p className="label-mono text-volt-400">Close to home. Ready to help.</p>
+          <div className="mt-6 sm:mt-8">
+            <div>
+              <p className="label-mono text-volt-400">Service areas</p>
               <h1 className="mt-3 max-w-2xl text-[2.2rem] leading-[1.04] sm:mt-4 sm:text-5xl lg:text-6xl">
                 Electrical services in Spokane and nearby.
               </h1>
               <p className="mt-4 max-w-xl text-[1.05rem] leading-relaxed text-mist-200 sm:mt-5 sm:text-lg">
-                We help homes and businesses across the Spokane area with electrical repairs, upgrades and new
-                projects. Wherever you call home or get to work, tell us what you need.
+                We work on homes and businesses across the Spokane area. Tell us where you are and what you need.
               </p>
-            </div>
-            <div className="hidden lg:col-span-6 lg:block">
-              <AreaMap />
             </div>
           </div>
         </div>
@@ -42,7 +37,6 @@ export default function AreasPage() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
             <div>
               <h2 id="communities-title" className="text-3xl leading-tight sm:text-4xl">Where we work</h2>
-              <p className="mt-2 max-w-xl leading-relaxed text-ink-soft">Spokane and the surrounding communities we serve.</p>
             </div>
             <Link href="/services" className="inline-flex min-h-11 items-center gap-2 self-start font-semibold text-copper-700 underline underline-offset-4 hover:text-ink">
               Explore our services <span aria-hidden="true">→</span>

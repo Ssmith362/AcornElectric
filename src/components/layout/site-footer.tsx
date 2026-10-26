@@ -14,8 +14,7 @@ export function SiteFooter() {
         <div className="lg:col-span-4">
           <Logo size="lg" />
           <p className="mt-5 max-w-sm leading-relaxed sm:mt-6">
-            Electrical work for Spokane homes and businesses. The services listed are a starting point.
-            Have a different project? Tell us what you need.
+            Electrical work for Spokane homes and businesses.
           </p>
           <dl className="mt-6 space-y-3 text-sm sm:mt-8">
             <div>
