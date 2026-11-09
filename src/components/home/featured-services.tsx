@@ -3,12 +3,19 @@ import { images } from "@/content/images";
 import { publishedServices as services } from "@/content/services";
 import { ServiceDeck } from "./service-deck";
 
+/** The jobs that show the most (bigger scope, real photos) come first in the rail. */
+const FEATURED = [
+  "ev-charger-installation",
+  "electrical-panel-upgrades",
+  "remodel-and-addition-wiring",
+  "new-home-electrical",
+  "generator-installation",
+  "knob-and-tube-rewiring",
+] as const;
+
 /** A short introduction leads directly into the swipeable service cards. */
 export function FeaturedServices() {
-  const top = [
-    ...services.filter((service) => service.slug === "ev-charger-installation"),
-    ...services.filter((service) => service.slug !== "ev-charger-installation"),
-  ].slice(0, 6);
+  const top = FEATURED.map((slug) => services.find((s) => s.slug === slug)).filter((s) => s !== undefined);
   return (
     <section className="bg-mist-50 py-12 sm:py-16 lg:py-24" aria-labelledby="story-title">
       <div className="container-x">
