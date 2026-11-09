@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { images } from "@/content/images";
 import { publishedServices as services } from "@/content/services";
 import { ServiceDeck } from "./service-deck";
 
@@ -21,14 +22,18 @@ export function FeaturedServices() {
           </div>
         </div>
 
-        <h3 className="label-mono mt-8 flex items-center gap-3 text-copper-700 sm:mt-10" data-reveal>
-          <span aria-hidden="true" className="h-px w-8 bg-copper-500/60" />
-          What we do most
-        </h3>
+        {/* One section for the services and the proof: each card's photo is a real Acorn job where we have one. */}
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 sm:mt-10" data-reveal>
+          <h3 className="label-mono flex items-center gap-3 text-copper-700">
+            <span aria-hidden="true" className="h-px w-8 bg-copper-500/60" />
+            What we do most
+          </h3>
+          <p className="label-mono text-ink-mute">Shown with photos from real Acorn jobs</p>
+        </div>
 
         <ServiceDeck
           titleAs="h4"
-          items={top.map((s) => ({ slug: s.slug, name: s.name, short: s.short, problem: s.problem, lede: s.lede, image: s.image }))}
+          items={top.map((s) => ({ slug: s.slug, name: s.name, short: s.short, problem: s.problem, lede: s.lede, image: s.image, real: Boolean(images[s.image].src) }))}
         />
 
         <p className="mt-4 text-sm leading-relaxed text-ink-soft">

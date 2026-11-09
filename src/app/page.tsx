@@ -2,7 +2,6 @@ import { AreasBlock, CareersTeaser } from "@/components/home/areas-and-careers";
 import { FeaturedServices } from "@/components/home/featured-services";
 import { Hero } from "@/components/home/hero";
 import { Reviews } from "@/components/home/reviews";
-import { Showcase } from "@/components/home/showcase";
 import { CtaSection } from "@/components/sections/cta-section";
 import { Process } from "@/components/sections/process";
 import { pageMetadata } from "@/lib/seo";
@@ -19,7 +18,6 @@ export default function HomePage() {
     <>
       <Hero />
       <FeaturedServices />
-      <Showcase />
       <Process />
       <Reviews />
       <AreasBlock />
