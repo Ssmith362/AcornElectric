@@ -115,7 +115,7 @@ export default async function HomepageDirectionsPage({
 
   const inheritedTheme = Object.entries(direction.colors)
     .map(([name, value]) => `${name}: ${value};`)
-    .join("\\n");
+    .join(" ");
 
   return (
     <>
