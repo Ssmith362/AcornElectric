@@ -70,8 +70,8 @@ export function Process({ variant = "full" }: { variant?: "full" | "compact" }) 
   // Option 4 layout: the title column on the left, the four steps as a ruled
   // list on the right. Plain HTML, nothing depends on JS or motion.
   return (
-    <section className="bg-mist-50 py-16 sm:py-24 lg:py-32" aria-labelledby="process-title">
-      <div className="container-x grid gap-9 lg:grid-cols-[0.9fr_1.1fr] lg:gap-[clamp(2.6rem,8vw,7.5rem)]">
+    <section className="border-t border-line bg-mist-100 py-12 sm:py-16 lg:py-20" aria-labelledby="process-title">
+      <div className="container-x grid gap-9 lg:grid-cols-[0.9fr_1.1fr] lg:gap-[clamp(2rem,5vw,4.5rem)]">
         <header data-reveal>
           <p className="label-mono text-copper-600">How we work</p>
           <h2 id="process-title" className="mt-3 max-w-[9ch] text-[3rem] leading-[0.99] text-night-900 sm:text-[4rem] lg:text-[clamp(3rem,6vw,5.1rem)]">
