@@ -19,41 +19,41 @@ export function Hero() {
   return (
     <>
       <section
-        className="on-night relative isolate flex flex-col overflow-hidden bg-night-950 text-white lg:min-h-[clamp(42rem,57vw,52rem)] lg:flex-row lg:items-end"
+        className="on-night relative isolate flex flex-col overflow-hidden bg-night-950 text-white md:min-h-[clamp(42rem,57vw,52rem)] md:flex-row md:items-end"
         aria-labelledby="hero-title"
       >
         {/* Phones and tablets: the truck sits above the copy so it's never hidden. Desktop: full bleed behind it. */}
-        <div className="relative aspect-[16/10] w-full lg:absolute lg:inset-0 lg:-z-20 lg:aspect-auto">
+        <div className="relative aspect-[16/10] w-full md:absolute md:inset-0 md:-z-20 md:aspect-auto">
           <Image
             src={truck.src}
             alt={truck.alt}
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[60%_55%] saturate-[.9] lg:object-[54%_57%]"
+            className="object-cover object-[60%_55%] saturate-[.9] md:object-[54%_57%]"
           />
-          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(transparent,var(--color-night-950))] lg:hidden" />
+          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(transparent,var(--color-night-950))] md:hidden" />
         </div>
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 hidden lg:block lg:bg-[linear-gradient(90deg,rgb(8_26_18/.86)_0%,rgb(8_26_18/.68)_33%,rgb(8_26_18/.16)_72%,rgb(8_26_18/.1)_100%),linear-gradient(0deg,rgb(8_26_18/.5),transparent_38%)]"
+          className="absolute inset-0 -z-10 hidden md:block md:bg-[linear-gradient(90deg,rgb(8_26_18/.86)_0%,rgb(8_26_18/.68)_33%,rgb(8_26_18/.16)_72%,rgb(8_26_18/.1)_100%),linear-gradient(0deg,rgb(8_26_18/.5),transparent_38%)]"
         />
 
-        <div className="container-x relative -mt-6 pb-10 sm:-mt-10 sm:pb-14 lg:mt-0 lg:pt-28 lg:pb-24">
+        <div className="container-x relative -mt-6 pb-10 sm:-mt-10 sm:pb-14 md:mt-0 md:pt-28 md:pb-24">
           <div className="max-w-[38rem]">
             <p className="label-mono text-volt-300" data-reveal>
               Electrician · Spokane, WA
             </p>
             <h1
               id="hero-title"
-              className="mt-4 text-[4rem] leading-[0.84] font-semibold tracking-[-0.045em] sm:mt-5 sm:text-[6rem] lg:text-[clamp(6rem,9vw,8.75rem)]"
+              className="mt-4 text-[4rem] leading-[0.84] font-semibold tracking-[-0.045em] sm:mt-5 sm:text-[6rem] md:text-[clamp(5rem,9vw,8.75rem)]"
               data-reveal
             >
               Powering
               <br />
               <span className="text-volt-400">Spokane.</span>
             </h1>
-            <p className="mt-5 max-w-[27ch] font-display text-[1.4rem] leading-[1.13] font-semibold sm:mt-6 sm:text-[1.75rem] lg:text-[1.9rem]" data-reveal>
+            <p className="mt-5 max-w-[27ch] font-display text-[1.4rem] leading-[1.13] font-semibold sm:mt-6 sm:text-[1.75rem] md:text-[1.9rem]" data-reveal>
               Taking care of the people behind every project.
             </p>
             <p className="mt-3 max-w-[48ch] text-[0.95rem] leading-[1.72] text-white/85 sm:mt-4" data-reveal>
