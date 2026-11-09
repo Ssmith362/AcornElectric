@@ -17,48 +17,48 @@
    ========================================================================== */
 
 @theme {
-  --color-night-950: #11271e;
-  --color-night-900: #19372a;
-  --color-night-850: #1d4030;
-  --color-night-800: #244a37;
-  --color-night-700: #315a43;
-  --color-night-600: #426d53;
-  --color-night-500: #5b8065;
+  --color-night-950: #08261a;
+  --color-night-900: #0f3a24;
+  --color-night-850: #134529;
+  --color-night-800: #1a5233;
+  --color-night-700: #246c3c;
+  --color-night-600: #3a8452;
+  --color-night-500: #58a06d;
 
   /* Orange accent on DARK surfaces (was the electric yellow). */
-  --color-volt-200: #f8e2ca;
-  --color-volt-300: #e9b184;
-  --color-volt-400: #d88b55;
-  --color-volt-500: #c76a36;
-  --color-volt-600: #a65329;
+  --color-volt-200: #fcdcc0;
+  --color-volt-300: #f7a468;
+  --color-volt-400: #f0822e;
+  --color-volt-500: #e46c24;
+  --color-volt-600: #c4561a;
   /* Only for volt-family text on LIGHT surfaces (passes AA on mist-50). */
-  --color-volt-ink: #844222;
+  --color-volt-ink: #9a3f10;
 
-  --color-copper-200: #f4d9c1;
-  --color-copper-300: #e7b08a;
-  --color-copper-400: #d98c5d;
-  --color-copper-500: #c76a36;
-  --color-copper-600: #9e4f2c; /* AA on paper and cream */
-  --color-copper-700: #7c3c22;
+  --color-copper-200: #f9d6b8;
+  --color-copper-300: #f4ab74;
+  --color-copper-400: #ee8236;
+  --color-copper-500: #e46c24;
+  --color-copper-600: #b04a12; /* AA on paper and cream */
+  --color-copper-700: #8a3a0e;
 
-  --color-mist-50: #fbf6eb;
-  --color-mist-100: #f3ead8;
-  --color-mist-200: #e8dcc5;
-  --color-mist-300: #d5c8b1;
-  --color-mist-400: #a89b86;
+  --color-mist-50: #fdf8ec;
+  --color-mist-100: #f8eed7;
+  --color-mist-200: #f0e2c3;
+  --color-mist-300: #e0cfa8;
+  --color-mist-400: #b3a283;
 
   /* Brand accents used as-is */
-  --color-brand-green: #11271e;
-  --color-brand-cream: #f3ead8;
-  --color-brand-yellow: #d9b257;
-  --color-brand-orange: #c76a36;
-  --color-brand-ember: #b85631;
-  --color-brand-leaf: #315a43;
+  --color-brand-green: #0c3c24;
+  --color-brand-cream: #fce4b4;
+  --color-brand-yellow: #f8e81c;
+  --color-brand-orange: #e46c24;
+  --color-brand-ember: #cc3c0c;
+  --color-brand-leaf: #246c3c;
 
-  --color-ink: #242a22;
-  --color-ink-soft: #50574d;
-  --color-ink-mute: #62665b;
-  --color-line: #d5c8b1;
+  --color-ink: #14231a;
+  --color-ink-soft: #46544a;
+  --color-ink-mute: #5a6459;
+  --color-line: #e0cfa8;
 
   --color-danger: #b42318;
   --color-ok: #2f7a3e;
@@ -77,10 +77,10 @@
 @keyframes pulse-node {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgb(216 139 85 / 0.45);
+    box-shadow: 0 0 0 0 rgb(240 130 46 / 0.45);
   }
   50% {
-    box-shadow: 0 0 0 6px rgb(216 139 85 / 0);
+    box-shadow: 0 0 0 6px rgb(240 130 46 / 0);
   }
 }
 
@@ -292,7 +292,7 @@
 }
 @keyframes bulb-flash {
   0%, 64% { fill: var(--color-night-900); stroke: var(--color-volt-400); stroke-opacity: .45; filter: none; }
-  66% { fill: var(--color-volt-300); stroke: var(--color-volt-200); stroke-opacity: 1; filter: drop-shadow(0 0 7px var(--color-volt-400)) drop-shadow(0 0 14px rgb(216 139 85 / .6)); }
+  66% { fill: var(--color-brand-yellow); stroke: var(--color-volt-200); stroke-opacity: 1; filter: drop-shadow(0 0 7px var(--color-volt-400)) drop-shadow(0 0 14px rgb(240 130 46 / .6)); }
   76% { fill: var(--color-volt-400); stroke: var(--color-volt-300); stroke-opacity: 1; filter: drop-shadow(0 0 5px var(--color-volt-400)); }
   88%, 100% { fill: var(--color-night-900); stroke: var(--color-volt-400); stroke-opacity: .45; filter: none; }
 }
@@ -311,9 +311,9 @@
 }
 .map-hub {
   fill: var(--color-volt-400);
-  stroke: var(--color-volt-200);
+  stroke: var(--color-brand-yellow);
   stroke-width: 1.6;
-  filter: drop-shadow(0 0 6px rgb(216 139 85 / .7));
+  filter: drop-shadow(0 0 6px rgb(240 130 46 / .7));
 }
 @media (prefers-reduced-motion: reduce) {
   .map-bolt { animation: none; opacity: 0; }

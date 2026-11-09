@@ -22,7 +22,7 @@ export default async function OgImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "56px 80px 64px",
-          background: "#012730",
+          background: "#0a2d1b",
           backgroundImage:
             "linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
@@ -34,12 +34,12 @@ export default async function OgImage() {
         </div>
         <div style={{ display: "flex", flexDirection: "column", fontSize: 84, fontWeight: 700, lineHeight: 1, letterSpacing: -3 }}>
           <span>Wired right.</span>
-          <span style={{ color: "#ffef1f" }}>One less thing</span>
+          <span style={{ color: "#f8e81c" }}>One less thing</span>
           <span>to worry about.</span>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 28, color: "#ddd0ad" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 28, color: "#e8dcc0" }}>
           <span>Homes & businesses · Spokane, WA</span>
-          <span style={{ color: "#ec8540" }}>callacornelectric.com</span>
+          <span style={{ color: "#f0822e" }}>callacornelectric.com</span>
         </div>
       </div>
     ),
