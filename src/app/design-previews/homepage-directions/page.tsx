@@ -121,7 +121,7 @@ export default async function HomepageDirectionsPage({
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap"
       />
-      <div className="homepage-directions" style={direction.colors as CSSProperties}>
+      <div className="homepage-directions" style={direction.colors as unknown as CSSProperties}>
         <div className="container-x py-4 sm:py-6">
           <div className="border-y border-line py-4 sm:flex sm:items-center sm:justify-between sm:gap-6">
             <div>
