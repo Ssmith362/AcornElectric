@@ -11,7 +11,7 @@
                 component picked the new colour up without a rewrite.
      - Copper = the same orange, darker steps for text on light surfaces.
      - Mist   = paper and cream surfaces.
-   Type: Manrope for headings, Inter for everything else.
+   Type: Barlow Semi Condensed for headings, Inter for everything else.
    Website fonts differ from the logo lettering on purpose (Eric approved,
    Nov 2026). Square corners and 1px rules stay.
    ========================================================================== */
@@ -63,7 +63,7 @@
   --color-danger: #b42318;
   --color-ok: #2f7a3e;
 
-  --font-display: var(--font-manrope), ui-sans-serif, sans-serif;
+  --font-display: var(--font-barlow), "Arial Narrow", ui-sans-serif, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
@@ -119,7 +119,7 @@
   h4 {
     font-family: var(--font-display);
     font-weight: 600;
-    font-synthesis: none; /* Use the shipped Manrope weights without synthetic styles. */
+    font-synthesis: none; /* Barlow ships 500/600/700 only; never fake a weight */
     letter-spacing: -0.02em;
     text-wrap: balance;
   }
