@@ -1,27 +1,54 @@
+import Link from "next/link";
 import Image from "next/image";
+import { AreaMap } from "@/components/sections/area-map";
+import { Collapsible } from "@/components/ui/collapsible";
+import { SectionHead } from "@/components/ui/section-head";
 import { ButtonLink } from "@/components/ui/button";
-import { Photo } from "@/components/ui/photo";
 import { communities } from "@/content/areas";
 import { images } from "@/content/images";
-import { ServiceArea } from "./service-area";
+
+function CommunityList({ items }: { items: typeof communities }) {
+  return (
+    <ul className="grid grid-cols-2 gap-x-6">
+      {items.map((c) => (
+        <li key={c.name} className="border-b border-white/10">
+          {c.page ? (
+            <Link href={`/areas/${c.page}`} className="flex items-center justify-between py-3 hover:text-volt-300">
+              {c.name}
+              <span aria-hidden="true">→</span>
+            </Link>
+          ) : (
+            <Link href={`/areas#${c.name.toLowerCase().replace(/\s+/g, "-")}`} className="block py-3 text-mist-200 hover:text-volt-300">
+              {c.name}
+            </Link>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function AreasBlock() {
   return (
-    <section className="bg-mist-100 py-16 sm:py-24 lg:py-28" aria-labelledby="areas-title">
-      <div className="container-x">
-        <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:gap-12" data-reveal>
-          <div>
-            <p className="label-mono text-copper-600">Service areas</p>
-            <h2 id="areas-title" className="mt-3 max-w-[18ch] text-[2.5rem] leading-[0.99] text-night-900 sm:text-[3.4rem] lg:text-[clamp(2.4rem,4.2vw,3.6rem)]">
-              Spokane and eleven communities around it.
-            </h2>
-          </div>
-          <p className="max-w-[42ch] text-[0.9rem] leading-relaxed text-ink-mute">
-            Point at a town to see who issues its permit. Not sure we cover your address? Add your ZIP code to the request form and we&apos;ll confirm.
-          </p>
+    <section className="on-night bg-night-900 py-14 text-white sm:py-20 lg:py-28" aria-labelledby="areas-title">
+      <div className="container-x grid items-center gap-8 sm:gap-14 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <SectionHead
+            tone="night"
+            label="Where we work"
+            title={<span id="areas-title">Spokane and eleven communities around it.</span>}
+            intro="Not sure we cover your address? Add your ZIP code to the request form and we'll confirm."
+          />
+          <Collapsible
+            className="mt-6 sm:mt-8"
+            showLabel={`Show all ${communities.length} communities`}
+            hideLabel="Hide communities"
+          >
+            <CommunityList items={communities} />
+          </Collapsible>
         </div>
-        <div className="mt-8 sm:mt-10" data-reveal>
-          <ServiceArea communities={communities} />
+        <div className="lg:col-span-7" data-reveal>
+          <AreaMap />
         </div>
       </div>
     </section>
