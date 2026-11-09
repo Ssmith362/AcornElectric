@@ -1,14 +1,13 @@
 # Fonts
 
 Self-hosted so the build never needs network access to Google Fonts.
-Brand fonts come from Eric Beisley's guide (Oct 2026).
 
-- `luckiest-guy-400.woff2`: PRIMARY / display headings (Luckiest Guy Regular, latin). Apache 2.0, see `LICENSE-luckiest-guy-apache-2.0.txt`. Fontsource.
-- `montserrat-variable.woff2`: SECONDARY / body (Montserrat, latin, wght 100-900). SIL OFL 1.1, see `OFL.txt`. Fontsource.
-  **Stand-in for Modica SemiBold**, the secondary face in Eric's guide. Modica is a licensed
-  face; ask Eric for the web licence/file, then swap this file and the `montserrat`
-  `localFont` call in `src/app/layout.tsx`.
-- `geist-mono-variable.woff2`: small technical labels only (Geist Mono). OFL.
+- `barlow-semi-condensed-latin-{500,600,700}-normal.woff2`: headings (Barlow Semi Condensed, latin). SIL OFL 1.1, see `OFL-barlow-semi-condensed.txt`. Fontsource.
+- `inter-variable.woff2`: body copy, labels and buttons (Inter, latin, wght 100-900). SIL OFL 1.1, see `OFL-inter.txt`. Fontsource.
 
-Luckiest Guy has a single weight (400). `font-synthesis` is off so it never fakes bold.
-`bricolage-grotesque-variable.woff2` and `geist-variable.woff2` are no longer used and can be deleted.
+Both are loaded in `src/app/layout.tsx` and wired to `--font-display` / `--font-sans` in `src/app/globals.css`.
+
+The logo keeps its own lettering (Luckiest Guy style). Eric approved using different
+website fonts from the logo in Nov 2026, so the brand-guide faces (Luckiest Guy, Modica)
+are no longer loaded. `font-synthesis` is off for headings so Barlow never fakes a weight
+it doesn't ship.

@@ -131,7 +131,24 @@ export const images = {
     brief: "House at dusk with new exterior lights",
   },
   repair: { src: null, alt: "", ...landscape, art: "repair", brief: "Electrician tracing a fault at a switch or outlet" },
-  van: { src: null, alt: "", ...landscape, art: "van", brief: "One of the new Acorn work vans" },
+  // Acorn's wrapped truck outside the Washington Water Power building (Option 4 hero, Nov 2026).
+  truck: {
+    src: "/images/acorn-truck-washington-water-power.webp",
+    alt: "Acorn Electric's green branded truck parked outside the brick Washington Water Power building in Spokane",
+    width: 1672,
+    height: 941,
+    focus: "54% 57%",
+    art: "van",
+    brief: "Acorn truck on a job",
+  },
+  van: {
+    src: "/images/acorn-truck-washington-water-power.webp",
+    alt: "Acorn Electric's green branded work truck",
+    ...landscape,
+    focus: "72% 60%",
+    art: "van",
+    brief: "One of the new Acorn work vans",
+  },
   crew: {
     src: "/images/eric-beisley-service-pedestal.webp",
     alt: "Eric Beisley, owner of Acorn Electric, beside a newly installed meter pedestal",

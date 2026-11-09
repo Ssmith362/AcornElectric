@@ -41,7 +41,7 @@ export default function CareersPage() {
   return (
     <>
       <section className="on-night relative isolate overflow-hidden bg-grid-night text-white">
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_60%_at_20%_40%,rgb(255_239_31/.10),transparent_70%)]" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_60%_at_20%_40%,rgb(240_161_91/.10),transparent_70%)]" />
         <div className="container-x pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-24">
           <Breadcrumbs trail={[{ name: "Careers", path: "/careers" }]} />
           <div className="mt-7 grid items-center gap-8 sm:mt-10 sm:gap-12 lg:grid-cols-12">

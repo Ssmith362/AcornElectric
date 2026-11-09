@@ -102,8 +102,8 @@ export function ServiceRequestForm({
 
   return (
     <form onSubmit={onSubmit} noValidate className="relative bg-mist-50 p-5 text-ink sm:p-8" aria-labelledby="sr-heading">
-      <div className="flex items-center justify-between gap-4 border-b border-ink/10 pb-4">
-        <H id="sr-heading" className="text-2xl font-bold">
+      <div className="flex items-center justify-between gap-4 border-b border-line pb-4">
+        <H id="sr-heading" className="text-[1.6rem] leading-tight text-night-900">
           {heading}
         </H>
         <span className="label-mono hidden text-[0.6rem] text-ink-mute sm:inline">Work order · 2 min</span>
@@ -237,10 +237,10 @@ export function ServiceRequestForm({
         <button
           type="submit"
           disabled={state === "sending"}
-          className="inline-flex min-h-12 items-center justify-center gap-3 bg-ink px-6 font-semibold text-mist-50 transition-colors hover:bg-night-700 disabled:opacity-60"
+          className="inline-flex min-h-12 items-center justify-between gap-8 bg-volt-500 px-6 font-semibold text-night-950 transition-colors hover:bg-night-900 hover:text-mist-100 disabled:opacity-60"
         >
           {state === "sending" ? "Sending…" : "Send request"}
-          <span aria-hidden="true" className="h-2 w-2 rounded-full bg-volt-400 shadow-[0_0_8px_var(--color-volt-400)]" />
+          <span aria-hidden="true" className="text-base">↗</span>
         </button>
         <p className="text-sm text-ink-mute">
           Prefer to talk?{" "}

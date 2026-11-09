@@ -39,24 +39,23 @@ leave it null, and the site shows a "To confirm" flag in preview builds.
 
 ## Design
 
-Deliberately NOT the Everclean/EREP template: no rounded cards, no Archivo/Inter.
-Square corners, 1px rules, panel-schedule and circuit-trace motifs.
-Token names night/volt/copper/mist now carry Acorn's real brand colours,
-sampled from the logo (Oct 2026): night = forest green, volt = electric
-yellow, copper = squirrel orange, mist = light cream. Real logo and mascot
-live in `public/brand/` and render through `src/components/ui/logo.tsx`.
+"Option 4" theme (Nov 2026): calm, professional, built around the real Acorn
+truck photo. Barlow Semi Condensed headings, Inter body (self-hosted, see
+`src/app/fonts/README.md`); the logo keeps its own lettering (Eric approved).
+Square corners, 1px rules, paper/cream surfaces, deep forest green, Acorn
+orange as the only accent. Token NAMES are historical: night = forest green,
+volt = orange accent for DARK surfaces, copper = orange for text on LIGHT
+surfaces, mist = paper/cream. Orange buttons carry dark text (white fails AA).
 
-Homepage "What we do most" (`home/featured-services.tsx`) is one cream
-section: a short Tesla-at-Fred-Meyer introduction opens it, then the first
-six services as a side-scrolling rail
-(`home/service-deck.tsx`: always a peek of the next card; 1 on phones, 2 on
-tablets, 3 on desktop). Each card carries the service's `problem` line, so
-there is no separate problem list. "How we
-work" is one four-step section (`sections/process.tsx`), homepage only
-(service pages have their own steps); it is a job-sheet checklist that ticks itself off on
-scroll (CSS under "CHECKLIST" in globals.css; shows complete without JS or with
-reduced motion). "Where we work" shows Spokane and the towns with their own
-page; the rest sit behind `ui/collapsible.tsx` ("Show all 12").
+Homepage order: truck hero + "Done right." process strip (`home/hero.tsx`),
+the Tesla-at-Fred-Meyer intro and "What we do most" side-scroll rail
+(`home/featured-services.tsx`, `home/service-deck.tsx`: always a peek of the
+next card; 1 on phones, 2 on tablets, 3 on desktop), project showcase
+(`home/showcase.tsx`), "We'd rather do it once." four steps
+(`sections/process.tsx`), review ribbons on forest green with the squirrel
+(`home/reviews.tsx`), the service-area map (`home/service-area.tsx`: towns at
+approximate real positions, rings at 5/10/20 mi, pointing at a town shows its
+permit authority and note), careers teaser, and the request form CTA.
 
 ## SEO rules
 

@@ -10,7 +10,7 @@ export function MobileCallBar() {
         <PhoneGlyph className="h-5 w-5 text-volt-400" />
         Call now
       </a>
-      <Link href="/contact" className="flex min-h-14 items-center justify-center bg-volt-400 font-semibold text-night-950">
+      <Link href="/contact" className="flex min-h-14 items-center justify-center bg-volt-500 font-semibold text-night-950">
         Request service
       </Link>
     </nav>

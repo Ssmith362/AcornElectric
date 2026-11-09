@@ -1,55 +1,51 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   ACORN ELECTRIC: DESIGN SYSTEM (brand kit applied Oct 2026)
+   ACORN ELECTRIC: DESIGN SYSTEM ("Option 4" theme, Nov 2026)
    --------------------------------------------------------------------------
-   Colours are sampled from Acorn's own logo files (Eric, Oct 16 2026):
-     - Night  = the forest green behind the ACORN wordmark (#013328), deepened
-                into a scale for dark sections.
-     - Volt   = the electric yellow of "ELECTRIC" and the lightning tails.
-                The current: thin lines, lit words, status lights, buttons.
-     - Copper = the squirrel's orange fur and the acorn in the "O".
-     - Mist   = the cream of the wordmark letters, kept very light as the
-                page surface so it reads as cream, not sand.
-   Token NAMES are unchanged from the temporary system, so components didn't
-   need rewriting. Square corners and 1px rules stay.
-
-   Signature motifs (see src/components/ui):
-     - Trace: a circuit-trace line that runs down the page edge and bends 45°
-       into each section, with a node where it lands.
-     - Panel schedule: the services index styled like a breaker directory.
-     - Registration ticks: corner marks on photo frames.
+   A calmer, more professional pass on Acorn's colours, built around the real
+   Acorn truck photo:
+     - Night  = deep forest green (dark sections, header text, footer).
+     - Volt   = warm Acorn orange as the ACCENT on dark surfaces (lit words,
+                labels, small marks). Kept under its old name so every
+                component picked the new colour up without a rewrite.
+     - Copper = the same orange, darker steps for text on light surfaces.
+     - Mist   = paper and cream surfaces.
+   Type: Barlow Semi Condensed for headings, Inter for everything else.
+   Website fonts differ from the logo lettering on purpose (Eric approved,
+   Nov 2026). Square corners and 1px rules stay.
    ========================================================================== */
 
 @theme {
-  --color-night-950: #011d24;
-  --color-night-900: #012730;
-  --color-night-850: #072b22;
-  --color-night-800: #0a3340;
-  --color-night-700: #1a4350;
-  --color-night-600: #1c5646;
-  --color-night-500: #346b5a;
+  --color-night-950: #0b2118;
+  --color-night-900: #102b20;
+  --color-night-850: #133225;
+  --color-night-800: #173a2b;
+  --color-night-700: #214733;
+  --color-night-600: #2c5a40;
+  --color-night-500: #3f6e52;
 
-  --color-volt-200: #fffbb8;
-  --color-volt-300: #fff76a;
-  --color-volt-400: #ffe842;
-  --color-volt-500: #f5df00;
-  --color-volt-600: #cdb700;
+  /* Orange accent on DARK surfaces (was the electric yellow). */
+  --color-volt-200: #fbe4c9;
+  --color-volt-300: #f2bd79;
+  --color-volt-400: #f0a15b;
+  --color-volt-500: #dc7626;
+  --color-volt-600: #b85f1c;
   /* Only for volt-family text on LIGHT surfaces (passes AA on mist-50). */
-  --color-volt-ink: #6a5c00;
+  --color-volt-ink: #8a4512;
 
-  --color-copper-200: #fcd7b8;
-  --color-copper-300: #f6aa72;
-  --color-copper-400: #ec8540;
-  --color-copper-500: #e16521;
-  --color-copper-600: #b83d08; /* AA on cream; guide orange #d74d21 is --color-brand-ember */
-  --color-copper-700: #9c3509;
+  --color-copper-200: #f7d6b6;
+  --color-copper-300: #eeae76;
+  --color-copper-400: #e48c45;
+  --color-copper-500: #dc7626;
+  --color-copper-600: #a84e16; /* AA on paper and cream */
+  --color-copper-700: #93440f;
 
-  --color-mist-50: #fdf9ef;
-  --color-mist-100: #f9f0dc;
-  --color-mist-200: #efe3c4;
-  --color-mist-300: #ddd0ad;
-  --color-mist-400: #a99d7e;
+  --color-mist-50: #fcfaf5;
+  --color-mist-100: #f5f0e5;
+  --color-mist-200: #eae5d9;
+  --color-mist-300: #d4d0c5;
+  --color-mist-400: #a7a597;
 
   /* Brand accents used as-is */
   --color-brand-green: #012730;
@@ -59,16 +55,17 @@
   --color-brand-ember: #d74d21;
   --color-brand-leaf: #295b3b;
 
-  --color-ink: #082019;
-  --color-ink-soft: #34463d;
-  --color-ink-mute: #56665c;
+  --color-ink: #1b2921;
+  --color-ink-soft: #45544a;
+  --color-ink-mute: #56635b;
+  --color-line: #d4d0c5;
 
   --color-danger: #b42318;
   --color-ok: #2f7a3e;
 
-  --font-display: var(--font-luckiest), Impact, "Arial Black", ui-sans-serif, sans-serif;
-  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: var(--font-barlow), "Arial Narrow", ui-sans-serif, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   --radius-sq: 2px;
 
@@ -80,10 +77,10 @@
 @keyframes pulse-node {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgb(255 232 66 / 0.55);
+    box-shadow: 0 0 0 0 rgb(240 161 91 / 0.45);
   }
   50% {
-    box-shadow: 0 0 0 6px rgb(255 232 66 / 0);
+    box-shadow: 0 0 0 6px rgb(240 161 91 / 0);
   }
 }
 
@@ -121,9 +118,9 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 400;
-    font-synthesis: none; /* Luckiest Guy has one weight; never fake bold */
-    letter-spacing: 0.01em;
+    font-weight: 600;
+    font-synthesis: none; /* Barlow ships 500/600/700 only; never fake a weight */
+    letter-spacing: -0.02em;
     text-wrap: balance;
   }
 
@@ -164,21 +161,19 @@
   }
 }
 
-/* Small technical label: "01 / EV CHARGERS" */
+/* Small uppercase label: "HOW EVERY JOB RUNS" */
 @utility label-mono {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
-  line-height: 1;
+  font-weight: 600;
+  line-height: 1.2;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-/* A word that is "live": volt with a soft filament glow. Dark surfaces only. */
+/* The accent word in a heading on a dark surface. */
 @utility text-lit {
   color: var(--color-volt-400);
-  text-shadow:
-    0 0 18px rgb(255 232 66 / 0.35),
-    0 0 2px rgb(255 232 66 / 0.6);
 }
 
 /* Fine grid, like the back of a breaker panel or a drafting sheet. */
@@ -286,43 +281,17 @@
 }
 
 /* ==========================================================================
-   SERVICE-AREA MAP: bolt travels the trace, the town flashes like a bulb.
-   One 7s cycle. The bolt (a short dash on a 0-100 normalised path) reaches the
-   end at ~65% of the cycle; the bulb flashes from 65% and fades by ~82%.
+   SERVICE-AREA MAP: one slow sweep around Spokane. Stopped for reduced motion.
    ========================================================================== */
-@keyframes bolt-travel {
-  0% { stroke-dashoffset: 8; opacity: 1; }
-  70% { stroke-dashoffset: -100; opacity: 1; }
-  100% { stroke-dashoffset: -100; opacity: 0; }
+@keyframes area-sweep {
+  to { transform: rotate(-360deg); }
 }
-@keyframes bulb-flash {
-  0%, 64% { fill: var(--color-night-900); stroke: var(--color-volt-400); stroke-opacity: .45; filter: none; }
-  66% { fill: var(--color-volt-300); stroke: var(--color-volt-200); stroke-opacity: 1; filter: drop-shadow(0 0 7px var(--color-volt-400)) drop-shadow(0 0 14px rgb(255 232 66 / .6)); }
-  76% { fill: var(--color-volt-400); stroke: var(--color-volt-300); stroke-opacity: 1; filter: drop-shadow(0 0 5px var(--color-volt-400)); }
-  88%, 100% { fill: var(--color-night-900); stroke: var(--color-volt-400); stroke-opacity: .45; filter: none; }
-}
-.map-bolt {
-  stroke-dasharray: 8 192;
-  stroke-dashoffset: 8;
-  animation: bolt-travel 7s linear infinite;
-  filter: drop-shadow(0 0 3px var(--color-volt-400));
-}
-.map-bulb {
-  fill: var(--color-night-900);
-  stroke: var(--color-volt-400);
-  stroke-opacity: .45;
-  stroke-width: 1.6;
-  animation: bulb-flash 7s linear infinite;
-}
-.map-hub {
-  fill: var(--color-volt-400);
-  stroke: var(--color-volt-200);
-  stroke-width: 1.6;
-  filter: drop-shadow(0 0 6px rgb(255 232 66 / .7));
+.area-sweep {
+  transform-box: view-box;
+  animation: area-sweep 14s linear infinite;
 }
 @media (prefers-reduced-motion: reduce) {
-  .map-bolt { animation: none; opacity: 0; }
-  .map-bulb { animation: none; }
+  .area-sweep { animation: none; opacity: 0; }
 }
 
 /* ==========================================================================
@@ -343,25 +312,4 @@
 }
 .deck-track::-webkit-scrollbar {
   display: none;
-}
-
-/* ==========================================================================
-   PROCESS CARDS ("How we work" on the homepage)
-   Each card sticks just under the header (phones, tablets and desktop), a little lower than the
-   one before (5.25rem apart, one full number + title row), so the next card slides up
-   over the last and each earlier card is left as a collapsed number + title strip.
-   ========================================================================== */
-.process-card {
-  position: sticky;
-  top: calc(5rem + var(--i) * 5rem);
-}
-@media (min-width: 640px) {
-  .process-card {
-    top: calc(7rem + var(--i) * 5rem);
-  }
-}
-@media (min-width: 1024px) {
-  .process-card {
-    top: calc(8rem + var(--i) * 5.25rem);
-  }
 }

@@ -34,7 +34,7 @@ export function MobileNav() {
         onClick={show}
         aria-haspopup="dialog"
         aria-expanded={open}
-        className="flex h-11 w-11 items-center justify-center border border-white/15 text-white"
+        className="flex h-11 w-11 items-center justify-center border border-ink/20 text-ink"
       >
         <span className="sr-only">Open menu</span>
         <svg viewBox="0 0 20 14" className="h-3.5 w-5" aria-hidden="true">
@@ -66,7 +66,7 @@ export function MobileNav() {
             <ul className="space-y-1">
               {primaryNav.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} onClick={hide} className="block py-2 font-display text-3xl font-semibold tracking-[0.01em]">
+                  <Link href={item.href} onClick={hide} className="block py-2 font-display text-3xl font-semibold tracking-[-0.02em]">
                     {item.label}
                   </Link>
                 </li>
@@ -94,7 +94,7 @@ export function MobileNav() {
             <Link
               href="/contact"
               onClick={hide}
-              className="flex min-h-12 items-center justify-center bg-volt-400 font-semibold text-night-950"
+              className="flex min-h-12 items-center justify-center bg-volt-500 font-semibold text-night-950"
             >
               Request service
             </Link>

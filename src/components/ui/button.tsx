@@ -3,20 +3,22 @@ import type { ComponentProps, ReactNode } from "react";
 
 type Variant = "volt" | "outline-night" | "outline-mist" | "ink";
 
+// Orange buttons carry dark text: white on this orange doesn't reach 4.5:1.
 const styles: Record<Variant, string> = {
-  volt: "bg-volt-400 text-night-950 hover:bg-volt-300 shadow-[0_0_0_1px_rgb(255_239_31/.4),0_8px_30px_-8px_rgb(255_239_31/.45)]",
-  "outline-night": "border border-white/25 text-white hover:border-volt-400 hover:text-volt-300",
-  "outline-mist": "border border-ink/20 text-ink hover:border-ink hover:bg-ink hover:text-mist-50",
-  ink: "bg-ink text-mist-50 hover:bg-night-700",
+  volt: "bg-volt-500 text-night-950 hover:bg-mist-100 hover:text-night-900",
+  "outline-night": "border border-white/60 text-white hover:border-white hover:bg-white hover:text-night-950",
+  "outline-mist": "border border-ink/25 text-ink hover:border-night-900 hover:bg-night-900 hover:text-mist-100",
+  ink: "bg-night-900 text-mist-100 hover:bg-volt-500 hover:text-night-950",
 };
 
 const base =
-  "group inline-flex min-h-12 items-center justify-center gap-3 rounded-sq px-5 py-3 text-[0.95rem] font-semibold tracking-[-0.005em] transition-[background-color,border-color,color,box-shadow] duration-200";
+  "group inline-flex min-h-12 items-center justify-center gap-5 px-5 py-3 text-[0.9rem] font-semibold transition-[background-color,border-color,color] duration-200";
 
+/** The diagonal "go" arrow from the Option 4 design. */
 export function Arrow() {
   return (
-    <svg viewBox="0 0 20 12" className="h-3 w-5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
-      <path d="M0 6h17M12 1l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.6" />
+    <svg viewBox="0 0 12 12" className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">
+      <path d="M2.5 9.5l7-7M4 2.5h5.5V8" fill="none" stroke="currentColor" strokeWidth="1.6" />
     </svg>
   );
 }

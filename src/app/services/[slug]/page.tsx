@@ -37,7 +37,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     <>
       {/* ---------------------------------------------------------- hero */}
       <section className="on-night relative isolate overflow-hidden bg-grid-night text-white">
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_60%_at_80%_40%,rgb(255_239_31/.11),transparent_70%)]" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_45%_60%_at_80%_40%,rgb(240_161_91/.11),transparent_70%)]" />
         <div className="container-x pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-20">
           <Breadcrumbs trail={[{ name: "Services", path: "/services" }, { name: s.short, path }]} />
           <div className="mt-7 grid items-center gap-8 sm:mt-10 lg:grid-cols-12 lg:gap-12">

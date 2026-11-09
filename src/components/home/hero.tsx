@@ -1,5 +1,6 @@
-import { ButtonAnchor, ButtonLink, PhoneGlyph } from "@/components/ui/button";
-import { Photo } from "@/components/ui/photo";
+import Image from "next/image";
+import { ButtonAnchor, ButtonLink } from "@/components/ui/button";
+import { images } from "@/content/images";
 import { site, tel } from "@/lib/site";
 
 const ticket = [
@@ -9,71 +10,99 @@ const ticket = [
   { k: "Inspection", v: "Signed off" },
 ];
 
+/**
+ * Option 4 hero: the real Acorn truck, full bleed, with the copy on a forest
+ * shade on the left (bottom on phones so the truck stays visible above it).
+ */
 export function Hero() {
+  const truck = images.truck;
   return (
-    <section className="on-night relative isolate overflow-hidden bg-grid-night text-white" aria-labelledby="hero-title">
-      {/* soft filament light */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_50%_60%_at_78%_35%,rgb(255_239_31/.13),transparent_70%),radial-gradient(ellipse_40%_40%_at_10%_90%,rgb(224_102_29/.16),transparent_70%)]" />
-      {/* the trace that starts here and runs down the page edge */}
-      <svg aria-hidden="true" className="absolute top-0 left-0 -z-10 h-full w-4 sm:w-6 lg:w-14 xl:w-24" viewBox="0 0 96 800" preserveAspectRatio="none">
-        <path d="M40 0v360l24 24v416" fill="none" stroke="rgb(255 255 255/.22)" strokeWidth="1.25" vectorEffect="non-scaling-stroke" />
-        <path d="M40 0v360l24 24v416" fill="none" stroke="var(--color-volt-400)" strokeWidth="2.25" strokeDasharray="16 184" className="flow drop-shadow-[0_0_4px_var(--color-volt-400)]" vectorEffect="non-scaling-stroke" />
-      </svg>
-
-      <div className="container-x grid items-center gap-7 pt-7 pb-10 sm:gap-12 sm:pt-16 sm:pb-16 lg:grid-cols-12 lg:gap-10 lg:pt-20 lg:pb-24">
-        <div className="lg:col-span-6 xl:col-span-6">
-          <p className="label-mono flex items-center gap-3 text-mist-300" data-reveal>
-            <span className="h-2 w-2 animate-pulse-node rounded-full bg-volt-400" aria-hidden="true" />
-            Electrician · Spokane, WA
-          </p>
-          <h1
-            id="hero-title"
-            className="mt-4 max-w-2xl text-[2.35rem] leading-[1.04] sm:mt-6 tracking-[0.01em] sm:text-6xl lg:text-[3.9rem] xl:text-[4.4rem]"
-            data-reveal
-          >
-            Powering Spokane. <span className="text-lit">Taking care of the people behind every project.</span>
-          </h1>
-          <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed text-mist-200 sm:mt-7 sm:text-xl" data-reveal>
-            Electrical repairs, upgrades, and installations for Spokane homes and businesses. Tell us what you&apos;re
-            working on. We&apos;ll explain your options and get it done right.
-          </p>
-          <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row" data-reveal>
-            <ButtonLink href="/contact" arrow>
-              Request service
-            </ButtonLink>
-            <ButtonAnchor href={tel} variant="outline-night">
-              <PhoneGlyph className="h-4 w-4 text-volt-400" />
-              Call {site.phone.value.display}
-            </ButtonAnchor>
-          </div>
+    <>
+      <section
+        className="on-night relative isolate flex flex-col overflow-hidden bg-night-950 text-white lg:min-h-[clamp(42rem,57vw,52rem)] lg:flex-row lg:items-end"
+        aria-labelledby="hero-title"
+      >
+        {/* Phones and tablets: the truck sits above the copy so it's never hidden. Desktop: full bleed behind it. */}
+        <div className="relative aspect-[16/10] w-full lg:absolute lg:inset-0 lg:-z-20 lg:aspect-auto">
+          <Image
+            src={truck.src}
+            alt={truck.alt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[60%_55%] saturate-[.9] lg:object-[54%_57%]"
+          />
+          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(transparent,var(--color-night-950))] lg:hidden" />
         </div>
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 hidden lg:block lg:bg-[linear-gradient(90deg,rgb(8_26_18/.86)_0%,rgb(8_26_18/.68)_33%,rgb(8_26_18/.16)_72%,rgb(8_26_18/.1)_100%),linear-gradient(0deg,rgb(8_26_18/.5),transparent_38%)]"
+        />
 
-        <div className="relative lg:col-span-6 xl:col-span-6" data-reveal>
-          <Photo id="home-hero" label="top" priority sizes="(min-width: 1024px) 48vw, 100vw" className="border border-white/10" />
-          {/* The process every job follows; not a claim about a specific job.
-              Sits directly under the photo at every size so it never covers the work. */}
-          <div className="relative border border-t-0 border-white/15 bg-night-950 p-4 sm:p-5">
-            <p className="label-mono flex items-center justify-between text-[0.6rem] text-mist-400">
-              <span>How every job runs</span>
-              <span className="text-volt-400">Done right</span>
+        <div className="container-x relative -mt-6 pb-10 sm:-mt-10 sm:pb-14 lg:mt-0 lg:pt-28 lg:pb-24">
+          <div className="max-w-[38rem]">
+            <p className="label-mono text-volt-300" data-reveal>
+              Electrician · Spokane, WA
             </p>
-            <ul className="mt-3 grid grid-cols-2 gap-x-5 gap-y-3 sm:grid-cols-4 lg:grid-cols-2">
-              {ticket.map((t) => (
-                <li
-                  key={t.k}
-                  className="flex flex-col gap-0.5 border-t border-white/10 pt-2 text-sm"
-                >
-                  <span className="flex items-center gap-2.5 text-white">
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-volt-400 shadow-[0_0_6px_var(--color-volt-400)]" aria-hidden="true" />
-                    {t.k}
-                  </span>
-                  <span className="pl-4 text-mist-400">{t.v}</span>
-                </li>
-              ))}
-            </ul>
+            <h1
+              id="hero-title"
+              className="mt-4 text-[4rem] leading-[0.84] font-semibold tracking-[-0.045em] sm:mt-5 sm:text-[6rem] lg:text-[clamp(6rem,9vw,8.75rem)]"
+              data-reveal
+            >
+              Powering
+              <br />
+              <span className="text-volt-400">Spokane.</span>
+            </h1>
+            <p className="mt-5 max-w-[27ch] font-display text-[1.4rem] leading-[1.13] font-semibold sm:mt-6 sm:text-[1.75rem] lg:text-[1.9rem]" data-reveal>
+              Taking care of the people behind every project.
+            </p>
+            <p className="mt-3 max-w-[48ch] text-[0.95rem] leading-[1.72] text-white/85 sm:mt-4" data-reveal>
+              Electrical repairs, upgrades, and installations for Spokane homes and businesses. Tell us what you&apos;re
+              working on. We&apos;ll explain your options and get it done right.
+            </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row" data-reveal>
+              <ButtonLink href="/contact" arrow className="justify-between sm:justify-center">
+                Request service
+              </ButtonLink>
+              <ButtonAnchor href={tel} variant="outline-night">
+                Call {site.phone.value.display}
+              </ButtonAnchor>
+            </div>
+            <p className="mt-6 flex flex-wrap gap-x-3.5 gap-y-1 text-[0.72rem] text-white/70" data-reveal>
+              <span>Washington electrical contractor</span>
+              <span className="font-medium text-white">WA Electrical Contractor Lic. {site.license.value}</span>
+            </p>
           </div>
         </div>
-      </div>
-    </section>
+
+        <p aria-hidden="true" className="label-mono absolute right-10 bottom-7 hidden gap-5 text-[0.66rem] tracking-[0.07em] text-white lg:flex">
+          <span>Acorn Electric</span>
+          <span>Spokane, Washington</span>
+        </p>
+      </section>
+
+      {/* The process every job follows; a promise about the process, not a specific job. */}
+      <section className="on-night bg-night-900 text-mist-100" aria-labelledby="ticket-title">
+        <div className="container-x grid gap-5 py-6 lg:grid-cols-[minmax(11rem,0.55fr)_minmax(0,1.45fr)] lg:items-center lg:gap-9 lg:py-7">
+          <div>
+            <p className="label-mono text-volt-400">How every job runs</p>
+            <h2 id="ticket-title" className="mt-1 text-[2.1rem] leading-none font-semibold">
+              Done right.
+            </h2>
+          </div>
+          <ol className="grid grid-cols-2 gap-x-5 gap-y-4 sm:grid-cols-4">
+            {ticket.map((t, i) => (
+              <li key={t.k} className="flex flex-col gap-1 border-l border-volt-500 pl-3.5">
+                <span className="text-[0.7rem] font-medium tracking-[0.08em] text-volt-400" aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="font-display text-[1.06rem] leading-tight font-semibold">{t.k}</span>
+                <span className="text-[0.72rem] text-mist-100/75">{t.v}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    </>
   );
 }

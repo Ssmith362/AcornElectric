@@ -11,27 +11,24 @@ import { ALLOW_INDEXING, BASE_URL } from "@/lib/seo";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-// Brand fonts per Eric's guide: Luckiest Guy (primary), Modica SemiBold (secondary;
-// Montserrat is the free stand-in until a Modica web licence/file arrives).
-// Self-hosted (see ./fonts/README.md) so builds never fetch from Google.
-const luckiest = localFont({
-  src: "./fonts/luckiest-guy-400.woff2",
-  variable: "--font-luckiest",
-  weight: "400",
+// Website type (Nov 2026 "Option 4" theme): Barlow Semi Condensed for headings,
+// Inter for body and labels. The logo keeps its own lettering; Eric approved
+// different website fonts. Self-hosted (see ./fonts/README.md) so builds never
+// fetch from Google.
+const barlow = localFont({
+  src: [
+    { path: "./fonts/barlow-semi-condensed-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/barlow-semi-condensed-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/barlow-semi-condensed-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-barlow",
   display: "swap",
 });
-const montserrat = localFont({
-  src: "./fonts/montserrat-variable.woff2",
-  variable: "--font-montserrat",
+const inter = localFont({
+  src: "./fonts/inter-variable.woff2",
+  variable: "--font-inter",
   weight: "100 900",
   display: "swap",
-});
-const geistMono = localFont({
-  src: "./fonts/geist-mono-variable.woff2",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-  display: "swap",
-  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -49,13 +46,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#012730",
+  themeColor: "#102b20",
   colorScheme: "light",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-US" className={`${luckiest.variable} ${montserrat.variable} ${geistMono.variable}`}>
+    <html lang="en-US" className={`${barlow.variable} ${inter.variable}`}>
       <body>
         <a
           href="#main"

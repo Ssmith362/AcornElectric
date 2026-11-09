@@ -45,7 +45,7 @@ export function Photo({
         />
       ) : (
         <>
-          <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgb(255_239_31/.07),transparent_60%)]" />
+          <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgb(240_161_91/.07),transparent_60%)]" />
           <PlaceholderArt art={img.art} />
           <figcaption className={`absolute right-7 left-7 flex justify-end ${label === "top" ? "top-3" : "bottom-3"} ${compactLabel ? "max-md:hidden" : ""}`}>
             <span className="label-mono max-w-full truncate border border-white/15 bg-night-950/80 px-2.5 py-1.5 text-[0.6rem] text-mist-300 backdrop-blur-sm">
