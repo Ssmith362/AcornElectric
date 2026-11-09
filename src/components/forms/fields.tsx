@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
  */
 
 export const inputCls =
-  "block w-full rounded-sq border border-ink/20 bg-white px-3.5 py-3 text-base text-ink placeholder:text-ink-mute/70 transition-colors focus:border-copper-500 focus:outline-2 focus:outline-offset-0 focus:outline-copper-500/30 aria-[invalid=true]:border-danger";
+  "block w-full rounded-sq border border-ink/20 bg-peach-50 px-3.5 py-3 text-base text-ink placeholder:text-ink-mute/70 transition-colors focus:border-copper-500 focus:outline-2 focus:outline-offset-0 focus:outline-copper-500/30 aria-[invalid=true]:border-danger";
 
 export function Field({
   id,
@@ -84,7 +84,7 @@ export function RadioPair({
         {["Yes", "No"].map((opt) => (
           <label
             key={opt}
-            className="flex min-h-11 flex-1 cursor-pointer items-center justify-center gap-2 border border-ink/20 bg-white text-sm font-medium has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:text-mist-50 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-copper-500"
+            className="flex min-h-11 flex-1 cursor-pointer items-center justify-center gap-2 border border-ink/20 bg-peach-50 text-sm font-medium has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:text-mist-50 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-copper-500"
           >
             <input
               type="radio"

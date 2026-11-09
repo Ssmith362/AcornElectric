@@ -100,7 +100,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
           <div className="lg:col-span-6" data-reveal>
-            <div className="border-l-2 border-copper-500 bg-white p-5 sm:p-8">
+            <div className="border-l-2 border-copper-500 bg-peach-50 p-5 sm:p-8">
               <h2 className="text-2xl leading-tight font-bold">{s.signs.heading}</h2>
               <ul className="mt-4 space-y-2.5 sm:mt-5 sm:space-y-3">
                 {s.signs.items.map((item) => (

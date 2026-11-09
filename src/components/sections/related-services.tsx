@@ -11,7 +11,7 @@ export function RelatedServices({ slugs, title = "Often part of the same project
         <ul className="mt-6 grid gap-px sm:mt-8 border border-ink/10 bg-ink/10 md:grid-cols-3">
           {list.map((s) => (
             <li key={s.slug} className="bg-mist-50">
-              <Link href={`/services/${s.slug}`} className="group flex h-full flex-col justify-between gap-3 p-5 hover:bg-white sm:gap-6 sm:p-6">
+              <Link href={`/services/${s.slug}`} className="group flex h-full flex-col justify-between gap-3 p-5 hover:bg-peach-50 sm:gap-6 sm:p-6">
                 <span>
                   <span className="block font-display text-xl leading-tight font-semibold sm:text-2xl">{s.short}</span>
                   <span className="mt-2 block text-ink-soft">{s.problem}</span>

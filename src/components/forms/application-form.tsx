@@ -155,7 +155,7 @@ export function ApplicationForm() {
             onChange={() => setErrors((e) => ({ ...e, resume: checkFile() || "" }))}
             aria-invalid={!!errors.resume}
             aria-describedby={describedBy("ap-resume", errors.resume, RESUME.label)}
-            className="block w-full border border-dashed border-ink/25 bg-white p-3 text-sm file:mr-4 file:border-0 file:bg-ink file:px-4 file:py-2 file:font-semibold file:text-mist-50"
+            className="block w-full border border-dashed border-ink/25 bg-peach-50 p-3 text-sm file:mr-4 file:border-0 file:bg-ink file:px-4 file:py-2 file:font-semibold file:text-mist-50"
           />
         </Field>
       </div>

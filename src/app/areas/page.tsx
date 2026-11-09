@@ -49,7 +49,7 @@ export default function AreasPage() {
               return (
                 <li key={c.name} id={c.name.toLowerCase().replace(/\s+/g, "-")} className="scroll-mt-28 bg-mist-50">
                   {href ? (
-                    <Link href={href} className={`${cls} group underline decoration-ink/25 underline-offset-4 hover:bg-white hover:text-copper-700`}>
+                    <Link href={href} className={`${cls} group underline decoration-ink/25 underline-offset-4 hover:bg-peach-50 hover:text-copper-700`}>
                       {c.name}<span aria-hidden="true" className="shrink-0 transition-transform group-hover:translate-x-1">→</span>
                     </Link>
                   ) : (

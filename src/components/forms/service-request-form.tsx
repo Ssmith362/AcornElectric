@@ -200,7 +200,7 @@ export function ServiceRequestForm({
             {CONTACT_METHODS.map((m) => (
               <label
                 key={m}
-                className="flex min-h-11 cursor-pointer items-center justify-center border border-ink/20 bg-white px-2 text-center text-sm font-medium has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:text-mist-50 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-copper-500"
+                className="flex min-h-11 cursor-pointer items-center justify-center border border-ink/20 bg-peach-50 px-2 text-center text-sm font-medium has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:text-mist-50 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-copper-500"
               >
                 <input
                   type="radio"

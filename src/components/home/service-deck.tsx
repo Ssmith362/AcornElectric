@@ -115,7 +115,7 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
               role="group"
               aria-roledescription="slide"
               aria-label={`${i + 1} of ${n}: ${s.short}`}
-              className="relative flex w-[80%] shrink-0 snap-start flex-col border border-ink/15 bg-white sm:w-[44%] md:w-[calc((100%-2rem)/2.4)] lg:w-[calc((100%-2.5rem)/3.2)]"
+              className="relative flex w-[80%] shrink-0 snap-start flex-col border border-ink/15 bg-peach-50 sm:w-[44%] md:w-[calc((100%-2rem)/2.4)] lg:w-[calc((100%-2.5rem)/3.2)]"
             >
               <div className="relative">
                 <Photo id={s.image} ticks={false} compactLabel sizes="(min-width: 1024px) 30vw, (min-width: 640px) 44vw, 80vw" className="aspect-[16/10]!" />
