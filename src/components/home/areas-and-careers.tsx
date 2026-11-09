@@ -1,7 +1,6 @@
 import { ButtonLink } from "@/components/ui/button";
 import { Photo } from "@/components/ui/photo";
 import { communities } from "@/content/areas";
-import { images } from "@/content/images";
 import { ServiceArea } from "./service-area";
 
 export function AreasBlock() {
@@ -29,25 +28,36 @@ export function AreasBlock() {
 
 export function CareersTeaser() {
   return (
-    <section className="bg-mist-50 py-12 sm:py-20 lg:py-24" aria-labelledby="careers-title">
-      <div className="container-x grid items-center gap-6 border-y border-line py-8 sm:gap-10 sm:py-12 lg:grid-cols-12">
-        {/* Placeholder drawing until a real van photo exists: desktop only, so it doesn't cost phone scroll. */}
-        <div className={images.van.src ? "lg:col-span-4" : "hidden lg:col-span-4 lg:block"} data-reveal>
-          <Photo id="van" sizes="(min-width: 1024px) 30vw, 100vw" ticks={false} />
+    <section className="on-night bg-night-900 py-14 text-mist-100 sm:py-20 lg:py-24" aria-labelledby="careers-title">
+      <div className="container-x grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
+        <div className="relative lg:col-span-7" data-reveal>
+          <Photo id="exterior" sizes="(min-width: 1024px) 58vw, 100vw" ticks={false} className="aspect-[4/3]! sm:aspect-[16/10]! lg:aspect-[4/3]!" />
+          <span className="label-mono absolute bottom-0 left-0 bg-volt-500 px-3 py-2 text-[0.62rem] text-night-950">Acorn job</span>
         </div>
         <div className="lg:col-span-5" data-reveal>
-          <p className="label-mono text-copper-600">For electricians</p>
-          <h2 id="careers-title" className="mt-3 text-[2rem] leading-[1.02] text-night-900 sm:mt-4 sm:text-[2.6rem]">
+          <p className="label-mono flex items-center gap-3 text-volt-400">
+            <span aria-hidden="true" className="h-px w-8 bg-volt-400/60" />
+            Careers
+          </p>
+          <h2 id="careers-title" className="mt-4 text-[2.1rem] leading-[1.02] text-white sm:text-[2.8rem]">
             Experienced residential electrician? We&apos;re hiring.
           </h2>
-          <p className="mt-4 text-ink-soft">
-            New vans, fully stocked tools and a team book club. We want someone who can run their own jobs.
+          <p className="mt-4 max-w-[44ch] text-mist-200">
+            We want someone who can run their own jobs, and we&apos;ll back them with the right gear.
           </p>
-        </div>
-        <div className="lg:col-span-3 lg:text-right" data-reveal>
-          <ButtonLink href="/careers" variant="ink" arrow>
-            See careers
-          </ButtonLink>
+          <ul className="mt-6 border-t border-white/15">
+            {["New vans", "Fully stocked tools", "A team book club"].map((perk) => (
+              <li key={perk} className="flex items-center gap-3 border-b border-white/15 py-3 text-[0.98rem]">
+                <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-volt-500" />
+                {perk}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-7">
+            <ButtonLink href="/careers" arrow>
+              See careers
+            </ButtonLink>
+          </div>
         </div>
       </div>
     </section>
