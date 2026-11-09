@@ -5,7 +5,10 @@ import { ServiceDeck } from "./service-deck";
 
 /** A short introduction leads directly into the swipeable service cards. */
 export function FeaturedServices() {
-  const top = services.slice(0, 6);
+  const top = [
+    ...services.filter((service) => service.slug === "ev-charger-installation"),
+    ...services.filter((service) => service.slug !== "ev-charger-installation"),
+  ].slice(0, 6);
   return (
     <section className="bg-mist-50 py-12 sm:py-16 lg:py-24" aria-labelledby="story-title">
       <div className="container-x">
