@@ -97,10 +97,10 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
   const readout = visible > 1 && shown > index + 1 ? `${index + 1}–${shown} / ${n}` : `${index + 1} / ${n}`;
 
   const btn =
-    "flex h-11 w-11 items-center justify-center border border-line text-night-900 transition-colors hover:border-night-900 hover:bg-night-900 hover:text-mist-100 disabled:opacity-35 disabled:hover:border-line disabled:hover:bg-transparent disabled:hover:text-night-900";
+    "flex h-11 w-11 items-center justify-center border border-ink/25 text-ink transition-colors hover:border-ink hover:bg-ink hover:text-volt-400 disabled:opacity-35 disabled:hover:border-ink/25 disabled:hover:bg-transparent disabled:hover:text-ink";
 
   return (
-    <div role="region" aria-roledescription="carousel" aria-label="Services we do most" className="mt-8 sm:mt-11">
+    <div role="region" aria-roledescription="carousel" aria-label="Services we do most" className="mt-5 sm:mt-6">
       <div
         ref={track}
         id={`${id}-track`}
@@ -115,32 +115,26 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
               role="group"
               aria-roledescription="slide"
               aria-label={`${i + 1} of ${n}: ${s.short}`}
-              className="group/card relative flex w-[82%] shrink-0 snap-start flex-col border border-line bg-mist-50 transition-colors hover:border-night-900/40 sm:w-[44%] md:w-[calc((100%-2rem)/2.4)] lg:w-[calc((100%-2.5rem)/3.2)]"
+              className="relative flex w-[80%] shrink-0 snap-start flex-col border border-ink/15 bg-white sm:w-[44%] md:w-[calc((100%-2rem)/2.4)] lg:w-[calc((100%-2.5rem)/3.2)]"
             >
-              <div className="relative overflow-hidden">
-                <Photo id={s.image} ticks={false} compactLabel sizes="(min-width: 1024px) 30vw, (min-width: 640px) 44vw, 82vw" className="aspect-[16/10]! [&_img]:transition-transform [&_img]:duration-500 group-hover/card:[&_img]:scale-[1.025]" />
-                <span aria-hidden="true" className="absolute top-0 left-0 bg-night-900 px-3 py-2 text-[0.7rem] font-medium tracking-[0.08em] text-volt-300">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </div>
-              <div className="flex flex-1 flex-col px-5 pt-5 pb-3 lg:px-6 lg:pt-6">
-                <Title className="font-display text-[1.65rem] leading-[1.02] font-semibold text-night-900">
-                  <Link href={`/services/${s.slug}`} className="block hover:text-copper-600">
+              <Photo id={s.image} ticks={false} compactLabel sizes="(min-width: 1024px) 30vw, (min-width: 640px) 44vw, 80vw" className="aspect-[16/10]!" />
+              <div className="flex flex-1 flex-col p-4 lg:p-6">
+                <Title className="font-sans text-lg leading-snug font-bold text-ink lg:text-xl">
+                  <Link href={`/services/${s.slug}`} className="block hover:text-copper-700">
                     {s.short}
                   </Link>
                 </Title>
-                <p className="mt-2.5 text-[0.9rem] leading-relaxed font-medium text-[#2f3f34]">{s.problem}</p>
-                <div id={detailId} className={isOpen ? "deck-detail mt-3 border-l border-volt-500 pl-3 text-[0.85rem] leading-relaxed text-ink-mute" : "hidden"}>
+                <p className="mt-1.5 text-[0.95rem] leading-relaxed text-ink-soft">{s.problem}</p>
+                <div id={detailId} className={isOpen ? "deck-detail mt-2 border-l-2 border-volt-500 pl-3 text-[0.92rem] leading-relaxed text-ink-soft" : "hidden"}>
                   {s.lede}
                 </div>
-                <div className="flex-1" aria-hidden="true" />
-                <div className="mt-4 flex items-center justify-between gap-3 border-t border-line pt-1.5">
+                <div className="mt-auto flex items-center justify-between gap-3 pt-3">
                   <button
                     type="button"
                     aria-expanded={isOpen}
                     aria-controls={detailId}
                     onClick={() => setOpen((o) => ({ ...o, [s.slug]: !o[s.slug] }))}
-                    className="inline-flex min-h-11 items-center gap-2 text-[0.8rem] font-semibold text-ink-mute hover:text-night-900"
+                    className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-copper-700 hover:text-ink"
                   >
                     <span
                       aria-hidden="true"
@@ -151,9 +145,9 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
                   </button>
                   <Link
                     href={`/services/${s.slug}`}
-                    className="inline-flex min-h-11 items-center gap-2.5 text-[0.8rem] font-semibold text-copper-600 hover:text-night-900"
+                    className="inline-flex min-h-11 items-center text-sm font-semibold text-ink underline decoration-volt-500 decoration-2 underline-offset-4 hover:text-copper-700"
                   >
-                    Details<span className="sr-only">: {s.name}</span> <span aria-hidden="true" className="text-base">↗</span>
+                    Details<span className="sr-only">: {s.name}</span> <span aria-hidden="true">&nbsp;→</span>
                   </Link>
                 </div>
               </div>
@@ -162,7 +156,7 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
         })}
       </div>
 
-      <div className="mt-5 flex items-center justify-between gap-3 lg:mt-7">
+      <div className="mt-4 flex items-center justify-between gap-3 lg:mt-6">
         <button type="button" onClick={() => go(index - 1)} disabled={atStart} aria-controls={`${id}-track`} className={btn}>
           <span className="sr-only">Previous service</span>
           <svg viewBox="0 0 12 12" className="h-3 w-3" aria-hidden="true">
@@ -185,7 +179,7 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
                     <span className="sr-only">Show {s.short}</span>
                     <span
                       aria-hidden="true"
-                      className={`block h-[3px] transition-all duration-200 ${inView ? "w-6 bg-copper-500" : "w-3 bg-night-900/20"}`}
+                      className={`block h-2 transition-all duration-200 ${inView ? "w-5 bg-ink" : "w-2 bg-ink/25"}`}
                     />
                   </button>
                 </li>
