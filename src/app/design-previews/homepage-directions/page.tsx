@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { CSSProperties } from "react";
 import { FeaturedServices } from "@/components/home/featured-services";
 import { Hero } from "@/components/home/hero";
@@ -127,31 +126,6 @@ export default async function HomepageDirectionsPage({
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap"
       />
       <div className="homepage-directions" data-direction={key} style={direction.colors as unknown as CSSProperties}>
-        <div className="container-x py-4 sm:py-6">
-          <div className="border-y border-line py-4 sm:flex sm:items-center sm:justify-between sm:gap-6">
-            <div>
-              <p className="label-mono text-copper-700">Homepage design directions</p>
-              <p className="mt-1 text-sm text-ink-soft">Same Acorn content and layout · different palettes and type</p>
-            </div>
-            <nav aria-label="Choose a homepage style" className="mt-4 flex flex-wrap gap-2 sm:mt-0">
-              {(Object.keys(directions) as Direction[]).map((option, index) => (
-                <Link
-                  key={option}
-                  href={option === "acorn" ? "?direction=acorn" : `?direction=${option}`}
-                  aria-current={key === option ? "page" : undefined}
-                  className={`min-h-11 border px-3 py-2 text-sm font-semibold transition-colors ${key === option ? "border-night-900 bg-night-900 text-mist-50" : "border-line text-ink hover:border-night-900"}`}
-                >
-                  {index + 1}. {directions[option].name}
-                </Link>
-              ))}
-            </nav>
-          </div>
-          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink-mute">
-            <span className="font-semibold text-ink">{direction.note}</span>
-            <span>Headings: {direction.headingFont}</span>
-            <span>Body: {direction.bodyFont}</span>
-          </div>
-        </div>
         <Hero />
         <FeaturedServices />
         <Process />
