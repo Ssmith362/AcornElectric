@@ -113,15 +113,20 @@ export default async function HomepageDirectionsPage({
   const key: Direction = params.direction === "warm" || params.direction === "modern" ? params.direction : "acorn";
   const direction = directions[key];
 
+  const inheritedTheme = Object.entries(direction.colors)
+    .map(([name, value]) => `${name}: ${value};`)
+    .join("\\n");
+
   return (
     <>
+      <style>{`html:has(.homepage-directions[data-direction="${key}"]) { ${inheritedTheme} }`}</style>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap"
       />
-      <div className="homepage-directions" style={direction.colors as unknown as CSSProperties}>
+      <div className="homepage-directions" data-direction={key} style={direction.colors as unknown as CSSProperties}>
         <div className="container-x py-4 sm:py-6">
           <div className="border-y border-line py-4 sm:flex sm:items-center sm:justify-between sm:gap-6">
             <div>
