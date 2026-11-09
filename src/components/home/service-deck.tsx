@@ -5,7 +5,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { Photo } from "@/components/ui/photo";
 import type { ImageKey } from "@/content/images";
 
-export type DeckItem = { slug: string; name: string; short: string; problem: string; lede: string; image: ImageKey; /** a real Acorn job photo (not a placeholder) */ real?: boolean };
+export type DeckItem = { slug: string; name: string; short: string; problem: string; lede: string; image: ImageKey };
 
 /**
  * "What we do most": a side-scrolling card rail on the cream surface, at every
@@ -117,14 +117,7 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
               aria-label={`${i + 1} of ${n}: ${s.short}`}
               className="relative flex w-[80%] shrink-0 snap-start flex-col border border-ink/15 bg-peach-50 sm:w-[44%] md:w-[calc((100%-2rem)/2.4)] lg:w-[calc((100%-2.5rem)/3.2)]"
             >
-              <div className="relative">
-                <Photo id={s.image} ticks={false} compactLabel sizes="(min-width: 1024px) 30vw, (min-width: 640px) 44vw, 80vw" className="aspect-[16/10]!" />
-                {s.real ? (
-                  <span className="label-mono absolute bottom-0 left-0 bg-night-900 px-2.5 py-1.5 text-[0.6rem] text-mist-100">
-                    Acorn job
-                  </span>
-                ) : null}
-              </div>
+              <Photo id={s.image} ticks={false} compactLabel sizes="(min-width: 1024px) 30vw, (min-width: 640px) 44vw, 80vw" className="aspect-[16/10]!" />
               <div className="flex flex-1 flex-col p-4 lg:p-6">
                 <Title className="font-sans text-lg leading-snug font-bold text-ink lg:text-xl">
                   <Link href={`/services/${s.slug}`} className="block hover:text-copper-700">
