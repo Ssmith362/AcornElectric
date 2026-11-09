@@ -30,7 +30,7 @@ export function AreasBlock() {
 
 /** Dark panel with the text, and a portrait that overhangs its top and right edges. */
 export function CareersTeaser() {
-  const eric = images.crew;
+  const eric = images.careers;
   return (
     <section className="bg-mist-50 py-14 sm:py-20 lg:py-28" aria-labelledby="careers-title">
       <div className="container-x">

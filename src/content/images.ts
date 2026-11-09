@@ -158,6 +158,16 @@ export const images = {
     art: "crew",
     brief: "Acorn electrician at work (portrait)",
   },
+  // AI-generated stand-in (Nov 2026): replace with a real photo of the Acorn crew before launch.
+  careers: {
+    src: "/images/electrician-at-panel-careers.webp",
+    alt: "An electrician working inside an open breaker panel in a garage",
+    width: 1400,
+    height: 933,
+    focus: "62% 45%",
+    art: "crew",
+    brief: "Acorn electrician at work (careers)",
+  },
   "service-upgrade": {
     src: "/images/service-upgrade-meter-main.webp",
     alt: "New meter and main disconnect with conduit runs on the side of a home, next to a standby generator",
