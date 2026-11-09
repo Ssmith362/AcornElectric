@@ -50,13 +50,12 @@ surfaces, mist = paper/cream. Orange buttons carry dark text (white fails AA).
 Homepage order: truck hero + "Done right." process strip (`home/hero.tsx`),
 the Tesla-at-Fred-Meyer intro and "What we do most" side-scroll rail
 (`home/featured-services.tsx`, `home/service-deck.tsx`: always a peek of the
-next card; 1 on phones, 2 on tablets, 3 on desktop; real job photos carry an
-"photos; the separate project showcase was merged into it), "We'd rather
+next card; 1 on phones, 2 on tablets, 3 on desktop; the cards use real
+job photos, and the separate project showcase was merged into the rail), "We'd rather
 do it once." four steps
 (`sections/process.tsx`), review ribbons on forest green with the squirrel
-(`home/reviews.tsx`), the service-area map (`home/service-area.tsx`: towns at
-approximate real positions, rings at 5/10/20 mi, pointing at a town shows its
-permit authority and note), careers teaser, and the request form CTA.
+(`home/reviews.tsx`), the service-area map (`sections/area-map.tsx`, the original
+circuit-trace diagram restyled to Option 4), careers teaser, and the request form CTA.
 
 ## SEO rules
 
