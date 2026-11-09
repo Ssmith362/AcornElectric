@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { Manrope } from "next/font/google";
 import { MobileCallBar } from "@/components/layout/mobile-call-bar";
 import { RevealObserver } from "@/components/layout/reveal-observer";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -11,17 +12,12 @@ import { ALLOW_INDEXING, BASE_URL } from "@/lib/seo";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-// Website type (Nov 2026 "Option 4" theme): Barlow Semi Condensed for headings,
-// Inter for body and labels. The logo keeps its own lettering; Eric approved
-// different website fonts. Self-hosted (see ./fonts/README.md) so builds never
-// fetch from Google.
-const barlow = localFont({
-  src: [
-    { path: "./fonts/barlow-semi-condensed-latin-500-normal.woff2", weight: "500", style: "normal" },
-    { path: "./fonts/barlow-semi-condensed-latin-600-normal.woff2", weight: "600", style: "normal" },
-    { path: "./fonts/barlow-semi-condensed-latin-700-normal.woff2", weight: "700", style: "normal" },
-  ],
-  variable: "--font-barlow",
+// Website type: Manrope for headings and Inter for body copy and labels.
+// The logo keeps its original lettering.
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 const inter = localFont({
@@ -52,7 +48,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-US" className={`${barlow.variable} ${inter.variable}`}>
+    <html lang="en-US" className={`${manrope.variable} ${inter.variable}`}>
       <body>
         <a
           href="#main"
