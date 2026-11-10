@@ -70,7 +70,7 @@ export function Process({ variant = "full" }: { variant?: "full" | "compact" }) 
   // Option 4 layout: the title column on the left, the four steps as a ruled
   // list on the right. Plain HTML, nothing depends on JS or motion.
   return (
-    <section className="border-t border-line bg-mist-100 py-12 sm:py-16 lg:py-20" aria-labelledby="process-title">
+    <section className="surface-paper-deep border-t border-line py-12 sm:py-16 lg:py-20" aria-labelledby="process-title">
       <div className="container-x grid gap-9 lg:grid-cols-[0.9fr_1.1fr] lg:gap-[clamp(2rem,5vw,4.5rem)]">
         <header data-reveal>
           <p className="label-mono text-copper-600">How we work</p>
