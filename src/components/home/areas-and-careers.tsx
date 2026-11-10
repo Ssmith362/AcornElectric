@@ -30,7 +30,7 @@ function CommunityList({ items }: { items: typeof communities }) {
 
 export function AreasBlock() {
   return (
-    <section className="on-night bg-night-900 py-14 text-white sm:py-20 lg:py-28" aria-labelledby="areas-title">
+    <section className="on-night surface-forest py-14 text-white sm:py-20 lg:py-28" aria-labelledby="areas-title">
       <div className="container-x grid items-center gap-8 sm:gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionHead
@@ -59,9 +59,9 @@ export function AreasBlock() {
 export function CareersTeaser() {
   const eric = images.careers;
   return (
-    <section className="bg-mist-50 py-14 sm:py-20 lg:py-28" aria-labelledby="careers-title">
+    <section className="surface-paper py-14 sm:py-20 lg:py-28" aria-labelledby="careers-title">
       <div className="container-x">
-        <div className="on-night relative flex flex-col bg-night-900 text-mist-100 lg:block lg:min-h-[36rem]">
+        <div className="on-night surface-forest relative flex flex-col text-mist-100 lg:block lg:min-h-[36rem]">
           <div className="relative z-10 px-6 pt-8 pb-10 sm:px-10 lg:w-[46%] lg:py-20 lg:pr-0 lg:pl-14" data-reveal>
             <p className="label-mono flex items-center gap-3 text-volt-400">
               <span aria-hidden="true" className="h-px w-8 bg-volt-400/60" />
