@@ -80,7 +80,16 @@ export const images = {
     art: "subpanel",
     brief: "Subpanel in a detached shop or garage",
   },
-  hottub: { src: null, alt: "", ...landscape, art: "hottub", brief: "Hot tub with its disconnect mounted on the house" },
+  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  hottub: {
+    src: "/images/hot-tub-disconnect.webp",
+    alt: "Hot tub on a deck with its disconnect box mounted on the house wall and conduit running to the tub",
+    width: 1536,
+    height: 1024,
+    focus: "60% 50%",
+    art: "hottub",
+    brief: "Hot tub with its disconnect mounted on the house",
+  },
   recessed: {
     src: "/images/kitchen-recessed-pendants.webp",
     alt: "Kitchen with recessed ceiling lights and three glass pendant lights over the island",
