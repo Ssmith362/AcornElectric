@@ -16,7 +16,7 @@ const FEATURED = [
 export function FeaturedServices() {
   const top = FEATURED.map((slug) => services.find((s) => s.slug === slug)).filter((s) => s !== undefined);
   return (
-    <section className="bg-mist-50 pt-12 pb-10 sm:pt-16 sm:pb-12 lg:pt-24 lg:pb-14" aria-labelledby="story-title">
+    <section className="surface-paper pt-12 pb-10 sm:pt-16 sm:pb-12 lg:pt-24 lg:pb-14" aria-labelledby="story-title">
       <div className="container-x">
         <div className="grid gap-5 sm:gap-6 lg:grid-cols-12 lg:items-end lg:gap-14">
           <header className="lg:col-span-7" data-reveal>
