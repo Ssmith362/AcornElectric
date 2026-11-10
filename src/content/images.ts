@@ -122,7 +122,16 @@ export const images = {
     art: "recessed",
     brief: "Ceiling fan on a covered patio",
   },
-  bathroomfan: { src: null, alt: "", ...landscape, art: "repair", brief: "Bathroom exhaust fan and its controls" },
+  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  bathroomfan: {
+    src: "/images/bathroom-fan-controls.webp",
+    alt: "Bathroom exhaust fan and light in the ceiling with the wall switch and fan control beside the door",
+    width: 1536,
+    height: 1024,
+    focus: "50% 50%",
+    art: "repair",
+    brief: "Bathroom exhaust fan and its controls",
+  },
   generator: {
     src: "/images/service-upgrade-meter-main.webp",
     alt: "Standby generator next to a meter and main disconnect on the side of a home",
@@ -139,7 +148,16 @@ export const images = {
     art: "exterior",
     brief: "House at dusk with new exterior lights",
   },
-  repair: { src: null, alt: "", ...landscape, art: "repair", brief: "Electrician tracing a fault at a switch or outlet" },
+  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  repair: {
+    src: "/images/outlet-fault-tracing.webp",
+    alt: "Electrician in work gloves testing an open wall outlet with a voltage tester",
+    width: 1536,
+    height: 1024,
+    focus: "50% 50%",
+    art: "repair",
+    brief: "Electrician tracing a fault at a switch or outlet",
+  },
   // Acorn's wrapped truck outside the Washington Water Power building (Option 4 hero, Nov 2026).
   truck: {
     src: "/images/acorn-truck-washington-water-power.webp",
@@ -225,9 +243,36 @@ export const images = {
     art: "inspection",
     brief: "Older home after a rewire",
   },
-  surge: { src: null, alt: "", ...landscape, art: "panel", brief: "Whole-home surge protector installed at the panel" },
-  "real-estate": { src: null, alt: "", ...landscape, art: "inspection", brief: "Repair called out on a home inspection, fixed" },
-  commercial: { src: null, alt: "", ...landscape, art: "repair", brief: "Commercial space, lighting or circuits" },
+  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  surge: {
+    src: "/images/surge-protector-panel.webp",
+    alt: "Whole-home surge protector mounted beside an open breaker panel",
+    width: 1536,
+    height: 1024,
+    focus: "50% 50%",
+    art: "panel",
+    brief: "Whole-home surge protector installed at the panel",
+  },
+  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  "real-estate": {
+    src: "/images/inspection-repair-fix.webp",
+    alt: "Corrected junction box and outlet on a basement wall with an inspection report nearby",
+    width: 1536,
+    height: 1024,
+    focus: "50% 50%",
+    art: "inspection",
+    brief: "Repair called out on a home inspection, fixed",
+  },
+  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  commercial: {
+    src: "/images/commercial-led-lighting.webp",
+    alt: "Commercial space with new LED linear lighting and an electrical panel on the wall",
+    width: 1536,
+    height: 1024,
+    focus: "50% 50%",
+    art: "repair",
+    brief: "Commercial space, lighting or circuits",
+  },
 } satisfies Record<string, ImageEntry>;
 
 export type ImageKey = keyof typeof images;
