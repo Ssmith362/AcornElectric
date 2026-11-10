@@ -186,6 +186,29 @@
   background-color: var(--color-mist-50);
 }
 
+/* Soft depth for homepage section surfaces. Keeps the same brand colors and layout. */
+.surface-paper {
+  background-color: var(--color-mist-50);
+  background-image:
+    radial-gradient(ellipse at 12% 0%, rgb(255 255 255 / 0.82), transparent 42%),
+    linear-gradient(140deg, #fff9f0 0%, var(--color-mist-50) 52%, var(--color-mist-100) 100%);
+}
+
+.surface-paper-deep {
+  background-color: var(--color-mist-100);
+  background-image:
+    radial-gradient(ellipse at 92% 8%, rgb(255 255 255 / 0.72), transparent 38%),
+    linear-gradient(135deg, #fffaf3 0%, var(--color-mist-100) 58%, #f1e4ca 100%);
+}
+
+.surface-forest {
+  background-color: var(--color-night-900);
+  background-image:
+    radial-gradient(ellipse at 88% 12%, rgb(58 132 82 / 0.2), transparent 38%),
+    radial-gradient(ellipse at 4% 100%, rgb(8 38 26 / 0.46), transparent 42%),
+    linear-gradient(125deg, var(--color-night-850), var(--color-night-900) 58%, var(--color-night-950));
+}
+
 /* Animated current along an SVG path. Paused for reduced motion (below). */
 @utility flow {
   stroke-dasharray: 6 194;
