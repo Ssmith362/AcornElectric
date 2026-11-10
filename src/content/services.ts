@@ -10,7 +10,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     "image": "repair",
     "meta": {
       "title": "Electrical Repair & Troubleshooting in Spokane | Acorn Electric",
-      "description": "Dead outlets, GFCI problems, flickering lights or tripping breakers in Spokane homes and businesses? Acorn Electric finds the cause and explains the repair."
+      "description": "Dead outlets, GFCI safety-outlet problems, flickering lights or tripping breakers in Spokane homes and businesses? Acorn Electric finds the cause and explains the repair."
     },
     "h1": "Electrical repair and troubleshooting in Spokane",
     "lede": "An outlet went dead, a breaker keeps tripping or the lights flicker when the furnace kicks on. We find the actual cause before replacing anything.",
@@ -126,7 +126,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       {
         "id": "outlets-and-gfci",
         "title": "Outlet installation, GFCI protection and breaker repairs",
-        "body": "A dead outlet, a GFCI that keeps tripping and a circuit that can't carry its load are different problems. We test the cause before recommending a repair or replacement.",
+        "body": "A dead outlet, a GFCI (a safety outlet that shuts off power when it detects a problem) that keeps tripping and a circuit that can't carry its load are different problems. We test the cause before recommending a repair or replacement.",
         "items": [
           "New and replacement outlets where the circuit can support them.",
           "GFCI protection for locations that require it, with the cause of repeated trips checked.",
@@ -184,7 +184,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         },
         {
           "title": "Replace and reconnect",
-          "body": "The new panel goes in, existing circuits are reconnected and labeled clearly, and grounding and bonding are brought up to what the job requires."
+          "body": "The new panel goes in, existing circuits are reconnected and labeled clearly, and the grounding system is checked so electricity has a safe path if something goes wrong."
         },
         {
           "title": "Inspection and power-up",
@@ -198,7 +198,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       "points": [
         {
           "title": "Grounding and bonding",
-          "body": "The new panel is only as safe as its connection to ground. We verify the grounding electrode system and bonding as part of the job."
+          "body": "The new panel needs a safe path for electricity during a fault. We check the grounding rods or other connection to earth and the metal parts that must be connected together."
         },
         {
           "title": "A directory you can read",
@@ -244,7 +244,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     "faqs": [
       {
         "q": "How do I know whether I need a new panel or a service upgrade?",
-        "a": "A panel replacement swaps the box and breakers. A service upgrade increases how much power your home can draw from the utility. If you're out of space but not capacity, you may only need the first. A load calculation tells us which."
+        "a": "A panel replacement swaps the box and breakers. A service upgrade increases how much power your home can draw from the utility. If you're out of space but not capacity, you may only need the first. A load calculation (a check of how much power your home uses and can safely handle) tells us which."
       },
       {
         "q": "Do panel upgrades in Spokane need a permit?",
@@ -1007,7 +1007,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       "description": "Hot tub and spa wiring in Spokane: dedicated 240V circuit, GFCI disconnect, bonding and weather-tight outdoor work. Sized to your spa's spec and inspected."
     },
     "h1": "Hot tub wiring in Spokane",
-    "lede": "The hot tub is on order and the pad is poured. What's left is the part that has to be right: a dedicated circuit, a GFCI disconnect and outdoor wiring that holds up to Spokane winters.",
+    "lede": "The hot tub is on order and the pad is poured. What's left is the part that has to be right: its own circuit, a nearby safety shutoff that cuts power if it detects a fault, and outdoor wiring that holds up to Spokane winters.",
     "problem": "You're installing a hot tub and want the electrical done properly.",
     "story": [
       "Most full-size hot tubs need their own 240-volt circuit, sized to the manufacturer's spec, with ground-fault protection and a disconnect near the tub. Water, electricity and a lot of snow make this one of the jobs where details really matter.",
@@ -1522,11 +1522,11 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     },
     "work": {
       "heading": "What a subpanel installation involves",
-      "intro": "The main decisions are how much power the subpanel needs and how the feeder gets there.",
+      "intro": "The main decisions are how much power the smaller panel needs and how the supply wire gets there.",
       "steps": [
         {
           "title": "Plan the load",
-          "body": "We list what will run in the space now and later, and size the feeder and subpanel to suit, after confirming the main panel can supply it."
+          "body": "We list what will run in the space now and later, then size the supply wire and smaller panel to match. First, we confirm the main panel can provide enough power."
         },
         {
           "title": "Route the feeder",
