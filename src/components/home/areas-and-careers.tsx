@@ -71,7 +71,7 @@ export function CareersTeaser() {
               Experienced residential electrician? We&apos;re hiring.
             </h2>
             <p className="mt-5 max-w-[40ch] text-[1.05rem] leading-relaxed text-mist-200">
-              New vans, fully stocked tools and a team book club. We want someone who can run their own jobs.
+              Run your own jobs, build your skills and grow with a team backed by new vans and fully stocked tools.
             </p>
             <div className="mt-8">
               <ButtonLink href="/careers" variant="outline-night" arrow>
