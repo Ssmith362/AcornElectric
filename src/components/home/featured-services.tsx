@@ -37,7 +37,6 @@ export function FeaturedServices() {
             <span aria-hidden="true" className="h-px w-8 bg-copper-500/60" />
             What we do most
           </h3>
-          <p className="label-mono text-ink-mute">Project showcase</p>
         </div>
 
         <ServiceDeck
