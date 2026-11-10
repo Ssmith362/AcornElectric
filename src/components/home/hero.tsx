@@ -82,7 +82,7 @@ export function Hero() {
       </section>
 
       {/* The process every job follows; a promise about the process, not a specific job. */}
-      <section className="on-night bg-night-900 text-mist-100" aria-labelledby="ticket-title">
+      <section className="on-night surface-forest text-mist-100" aria-labelledby="ticket-title">
         <div className="container-x grid gap-5 py-6 lg:grid-cols-[minmax(11rem,0.55fr)_minmax(0,1.45fr)] lg:items-center lg:gap-9 lg:py-7">
           <div>
             <p className="label-mono text-volt-400">How every job runs</p>
