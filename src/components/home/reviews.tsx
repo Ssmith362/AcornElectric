@@ -60,7 +60,7 @@ export function Reviews() {
   const half = Math.ceil(reviews.length / 2);
 
   return (
-    <section className="on-night relative overflow-hidden bg-night-900 pt-14 pb-12 text-mist-100 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20" aria-labelledby="reviews-title">
+    <section className="on-night surface-forest relative overflow-hidden pt-14 pb-12 text-mist-100 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20" aria-labelledby="reviews-title">
       <div className="container-x relative">
         <div className="flex items-end justify-between gap-6" data-reveal>
           <div>
