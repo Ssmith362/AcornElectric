@@ -64,10 +64,12 @@ export const images = {
     art: "ev",
     brief: "Wall-mounted Level 2 charger, tidy conduit run to the panel",
   },
+  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
   panel: {
-    src: "/images/panel-upgrade-breakers.webp",
-    alt: "New electrical panel with neatly landed, labeled breakers",
-    ...landscape,
+    src: "/images/new-200-amp-panel.webp",
+    alt: "New main breaker panel with the door open showing neatly organized breakers, beside the meter on a garage wall",
+    width: 1536,
+    height: 1024,
     focus: "50% 45%",
     art: "panel",
     brief: "Open panel after an upgrade, neat labelled breakers",
@@ -235,13 +237,15 @@ export const images = {
     art: "recessed",
     brief: "New build, wired and lit",
   },
+  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
   "knob-tube": {
-    src: "/images/older-home-updated-service.webp",
-    alt: "Older stone house with an updated meter and electrical panel on the outside wall",
-    ...landscape,
-    focus: "50% 60%",
+    src: "/images/knob-and-tube-basement.webp",
+    alt: "Original knob and tube wiring on basement joists, cloth-covered wires running through white porcelain knobs and tubes",
+    width: 1536,
+    height: 1024,
+    focus: "50% 50%",
     art: "inspection",
-    brief: "Older home after a rewire",
+    brief: "Knob and tube wiring in a basement, attic or crawlspace",
   },
   // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
   surge: {

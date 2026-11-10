@@ -6,10 +6,10 @@ import { ServiceDeck } from "./service-deck";
 const FEATURED = [
   "ev-charger-installation",
   "electrical-panel-upgrades",
+  "generator-installation",
+  "hot-tub-wiring",
   "remodel-and-addition-wiring",
   "new-home-electrical",
-  "generator-installation",
-  "knob-and-tube-rewiring",
 ] as const;
 
 /** A short introduction leads directly into the swipeable service cards. */
