@@ -1,6 +1,161 @@
 # Acorn Electric website: handoff
 
-Flourish Now Digital · October 2026
+Flourish Now Digital · October 2026, updated November 13, 2026
+
+## November 13, 2026: final quality pass (branch `final-quality-fixes`)
+
+Built on `main` at `f0cf4d3`, the commit serving acornelectric.vercel.app.
+Owner decisions applied: confirmed services, areas and careers perks (new work
+vans, provided tools and materials, team book club); Google Business Profile
+hours; requests and applications, with attachments, go to
+eric@callacornelectric.com; some photos are stock or AI-generated and must not
+be presented as Acorn's projects.
+
+### What changed
+
+- **No drafting notes on the site.** "To confirm" markers are now off unless
+  `NEXT_PUBLIC_SHOW_REVIEW_FLAGS` is exactly `"true"`. Hours, careers and
+  privacy no longer need them. Open owner questions are tracked below and in
+  `client-facts-checklist.md`.
+- **Hours:** Monday–Saturday 8 a.m.–5 p.m., Sunday closed (`site.hours`), on
+  the contact page, in the footer and as `openingHoursSpecification` in the
+  Electrician schema.
+- **Careers:** the title no longer names a certificate class; the requirement
+  reads "a current Washington electrician certificate for residential work".
+  Unconfirmed terms are left off, and one line says employment type, pay,
+  schedule and benefits aren't listed yet. JobPosting schema stays off.
+- **Service request attachments** (every page with the shared form): up to 5
+  JPG/PNG/WebP photos or PDFs, 4 MB total. Photos are resized in the browser
+  (2000 px long edge, JPEG, metadata stripped). The server checks count, size,
+  extension and file signature, makes filenames safe and attaches the files to
+  the Resend email. Upload progress, per-file removal, clear errors, and
+  entered text and files survive a failed send.
+- **Careers resume limit 5 MB → 4 MB.** Vercel refuses request bodies over
+  4.5 MB before our code runs, so a 4.6 MB resume used to fail with no useful
+  message. Same signature checks as before.
+- **Form validation:** phone is required for a call or text, email for email;
+  whatever is typed is still checked. Required fields carry `aria-required`
+  (radios use native `required`), errors and hints are both announced, focus
+  moves to the first problem (also after a server 422), and the honeypot is
+  `inert`.
+- **Mail:** recipients default to eric@callacornelectric.com (`LEADS_TO`,
+  `CAREERS_TO` override). Logs carry status codes and counts only; Resend's
+  error text is no longer logged because it can echo addresses.
+  `MAIL_TRANSPORT=log|fail` is a local/preview test mode, ignored on Vercel
+  production.
+- **Privacy notice** rewritten from the actual code: what's collected, Resend
+  delivery, no website storage, photo resizing, Vercel hosting logs, the
+  in-memory IP rate limit, no analytics/ads/cookies (verified in the browser:
+  no cookies, no third-party requests).
+- **Images:** eight photos re-encoded from Eric's larger originals
+  (1536 or 2048 px, EXIF stripped). New-home page uses the finished kitchen
+  instead of the empty garage. Alt text no longer claims a location ("Spokane-
+  area home") or exact counts ("three pendants"). "Project showcase" →
+  "Common electrical projects". Provenance rules are in `src/content/images.ts`.
+- **Copy:** the five requested rewrites; "when required" on the homepage
+  permit and inspection steps; commercial opener and scope line; a duplicated
+  panel FAQ merged; unconfirmed "dust controlled, floors protected" claims
+  replaced with cleanup (which reviews support); generic "The situation"
+  heading → "About {service}"; area CTA wording aligned. Review quotes are
+  untouched.
+- **Motion:** a visible Pause/Play button for the review ribbons (keyboard,
+  touch, mouse). Paused or under reduced motion, reviews show in full and the
+  row scrolls. Review dates removed (Google's relative dates go stale).
+  Print never leaves unrevealed sections blank. Scroll padding now clears the
+  120 px desktop header and the phone call bar.
+- **SEO / production:** see "Indexing and domains" below. Every page now has
+  an explicit share image (the page-level Open Graph object had been replacing
+  the generated card, so no page had one). Share card refreshed to the Option 4
+  look. `/design-previews/homepage-directions` now 404s outside `next dev` (it
+  loaded Google Fonts).
+- **Tests:** `npm test` (Node's runner, no new dependencies): 31 tests for
+  attachment rules, conditional contact rules, both endpoints with a stubbed
+  Resend (delivery payload, recipients, signatures, limits, 413/415/422/502/503,
+  honeypot, log hygiene, test transport) and the indexing rules per
+  environment. `npm run check` now includes the tests.
+
+### Indexing and domains
+
+| Build | Base URL | Indexable |
+|---|---|---|
+| Local | https://www.callacornelectric.com | No |
+| Vercel preview | the preview's own branch URL | Never, even with the flag |
+| Vercel production before launch | acornelectric.vercel.app (`VERCEL_PROJECT_PRODUCTION_URL`) | No |
+| Launch (`NEXT_PUBLIC_SITE_URL=https://www.callacornelectric.com`, `NEXT_PUBLIC_ALLOW_INDEXING=true`) | www | Yes, on the www host only |
+
+Non-indexable builds allow crawling and answer `noindex` (meta + header), so
+search engines can see the noindex. Any host other than www gets
+`X-Robots-Tag: noindex, nofollow` from `next.config.mjs`, which keeps the
+vercel.app alias out of search after launch. Checked with a launch-mode build:
+www robots.txt allows `/` except `/api/` and lists the www sitemap; no noindex
+on www pages except `/privacy`; alias and `/api` send noindex; the share image
+and a real 404 resolve.
+
+### Verified in this pass
+
+- `npm run check` (case, types, lint, 31 tests, build): pass.
+- `npm run check:site`: 25 pages, no problems. `npm run check:services`: pass
+  (two assertions were stale on `main` and were updated: the form never had a
+  service dropdown, and the generator title had changed).
+- All 25 public pages at 390, 820 and 1440 px through Chrome device emulation,
+  scrolled top to bottom: no horizontal overflow, broken images, console
+  errors, multiple h1s or em dashes outside quotes; reveal content all shown.
+- Forms in the browser with `MAIL_TRANSPORT=log`: empty submit, conditional
+  phone/email, an 11 MB photo resized to 1.1 MB, PDF accepted, .docx rejected,
+  simulated network failure (text and files kept, mailto fallback filled),
+  retry succeeded and the server built the email with 2 attachments.
+- Widgets: service carousel, quick look, community toggle, desktop dropdown on
+  keyboard focus, mobile menu (Escape closes, focus inside), FAQs, phone
+  accordions, review pause by keyboard.
+
+### Still open (owner input or launch work)
+
+**Live delivery is not verified.** The Vercel project has no environment
+variables, so the forms there correctly say "NOT sent, please call". Nothing
+was sent to Eric. To finish: create the Resend account, verify a sending
+domain (e.g. send.callacornelectric.com) in DNS, set `RESEND_API_KEY` and
+`MAIL_FROM` in Vercel, then, with Eric expecting it, send one request with two
+photos and a PDF and one application with a resume, and confirm both arrive
+with attachments and that Reply goes to the sender.
+
+**Job details from Eric:** employment type, pay range, schedule, benefits,
+the exact certificate requirement (02 only, or 01 as well), posting and
+closing dates (needed before JobPosting schema can turn on), and whether
+Washington's pay-transparency rule (RCW 49.58.110, 15+ employees) applies.
+Also confirm he's happy with the photo of him and two children on /careers.
+
+**Privacy facts for Eric to confirm:** that Acorn doesn't sell or share
+contact details for marketing; how long request and application emails are
+kept, and that deletion requests are handled from the inbox; who else can
+read eric@callacornelectric.com; whether privacy requests should go to a
+different address. Have the notice reviewed if anything else (CRM, analytics,
+file storage) is added.
+
+**Images needing better originals** (exact files in `public/images/`):
+
+| File | Where it shows | Problem | What to send |
+|---|---|---|---|
+| `acorn-truck-washington-water-power.webp` (1672×941) | Homepage hero, full width | Soft on large and high-density screens; no larger original found | The original photo at ≥3200 px wide, same framing (truck right of centre). Confirm it's an unedited photo of Acorn's truck |
+| `eric-beisley-service-pedestal.webp` (960×1280) | /careers hero | Original IMG_5165 is also 960×1280 | Full-size camera original, ≥1600 px tall |
+| `service-mast-weatherhead.webp`, `panel-upgrade-breakers.webp`, `covered-deck-lighting.webp` (1200×1600) | Mast and inspections page heroes, lighting page | Originals in the share are also 1200×1600; fine on phones, soft on high-density desktops | Full-size camera originals of IMG_0750, IMG_5036, IMG_0714 |
+| `kitchen-remodel-lighting.webp` (now the new-home image) | New custom home page | Stronger than the garage, but not established as a new build | A real Acorn new-build photo (finished exterior or interior) |
+| AI stand-ins: `new-200-amp-panel`, `hot-tub-disconnect`, `outlet-fault-tracing`, `knob-and-tube-basement`, `commercial-led-lighting`, `bathroom-fan-controls`, `electrician-at-panel-careers` | Service pages, homepage rail, careers teaser | Plausible on inspection, illustrative only | Real Acorn photos of: a new panel, a hot tub disconnect, an electrician testing an outlet, knob and tube, a commercial space, a bathroom fan, the crew at work |
+| `surge-protector-panel.webp`, `inspection-repair-fix.webp` | Not shown anywhere | AI artifacts (conductors across the breaker cover; unreadable report text) | Don't use; a real surge-protector photo if that slot is ever shown |
+
+**Launch steps:** set `NEXT_PUBLIC_SITE_URL=https://www.callacornelectric.com`
+and `NEXT_PUBLIC_ALLOW_INDEXING=true` on the Production environment only;
+add www.callacornelectric.com and callacornelectric.com in Vercel Domains with
+the apex redirecting to www (not the reverse); move DNS off Wix; then check
+https://www.callacornelectric.com/robots.txt, `/sitemap.xml`,
+`/opengraph-image`, a 404 URL and the page source for no `noindex`, and that
+acornelectric.vercel.app still sends `X-Robots-Tag: noindex`. The older items
+below (license verification, address decision, full Wix redirect map, Search
+Console, Rich Results test) still apply.
+
+---
+
+The sections below are the October 2026 handoff, kept for history. Where they
+disagree with the November section above, the November section is current.
 
 ## 1. Architecture and design
 
@@ -90,7 +245,7 @@ request form pre-set to that service.
   every page; a generated 1200×630 share image.
 - `BASE_URL` from `NEXT_PUBLIC_SITE_URL`, so previews never claim to be the
   live site.
-- Indexing locked until launch: `robots.txt` disallows all and every page is
+- Indexing locked until launch (Nov 2026: crawl allowed, every page noindex; see above): every page is
   `noindex` while `NEXT_PUBLIC_ALLOW_INDEXING` isn't `"true"`.
 - Sitemap lists only confirmed, indexable pages.
 - Structured data: `Electrician` (verified facts only: no address until
@@ -125,7 +280,7 @@ experience (yes/no), driver's license (yes/no), about your work, optional
 resume.
 
 **Delivery:** submissions are emailed via [Resend](https://resend.com)'s HTTP
-API (no SDK dependency). Resumes are checked for size (≤ 5 MB), extension
+API (no SDK dependency). Resumes are checked for size (≤ 4 MB since Nov 2026), extension
 **and** file signature (real PDF/DOC/DOCX), then attached to the email: never
 written to the server's disk.
 
@@ -145,7 +300,7 @@ success message only appears after the email provider accepts the message.
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | all | Canonical base URL. Preview URL on previews |
 | `NEXT_PUBLIC_ALLOW_INDEXING` | prod only | `"true"` only on the launch deploy |
-| `NEXT_PUBLIC_SHOW_REVIEW_FLAGS` | prod only | `"false"` hides "To confirm" markers **and** removes unconfirmed services/areas. Only after the checklist is done |
+| `NEXT_PUBLIC_SHOW_REVIEW_FLAGS` | internal only | Off unless exactly `"true"` (Nov 2026). `"true"` shows "To confirm" markers and unconfirmed services/areas in a private review build |
 | `RESEND_API_KEY` | server secret | Resend API key |
 | `MAIL_FROM` | server | Verified sender, e.g. `Acorn Electric website <website@send.callacornelectric.com>` |
 | `LEADS_TO` | server | Inbox(es) for service requests (comma-separated) |
@@ -196,7 +351,7 @@ brand kit, and real photos (13 slots with briefs in `src/content/images.ts`).
 - [ ] Resend configured; live test of both forms (including a resume) received
 - [ ] Old site crawled; every URL in `legacyRedirects`; tested with `curl -I`
 - [ ] `NEXT_PUBLIC_SITE_URL` set to the final canonical host (www or not, matching DNS redirects)
-- [ ] Production env: `NEXT_PUBLIC_ALLOW_INDEXING=true`, `NEXT_PUBLIC_SHOW_REVIEW_FLAGS=false`
+- [ ] Production env: `NEXT_PUBLIC_SITE_URL=https://www.callacornelectric.com`, `NEXT_PUBLIC_ALLOW_INDEXING=true` (leave `NEXT_PUBLIC_SHOW_REVIEW_FLAGS` unset)
 - [ ] `npm run check` passes; `npm run check:site -- <production URL>` passes
 - [ ] Structured data spot-checked in Google's Rich Results Test and schema.org validator
 - [ ] Search Console verified, sitemap submitted; analytics + call/form conversions set up

@@ -243,8 +243,8 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     ],
     "faqs": [
       {
-        "q": "How do I know whether I need a new panel or a service upgrade?",
-        "a": "A panel replacement swaps the box and breakers. A service upgrade increases how much power your home can draw from the utility. If you're out of space but not capacity, you may only need the first. A load calculation tells us which."
+        "q": "Do I need a new panel or a service upgrade?",
+        "a": "A panel replacement swaps the box and breakers that distribute power. A service upgrade increases how much power the property can draw from the utility, and can also involve the meter, service conductors and utility connection. If you're out of breaker space but not capacity, you may only need the first. A load calculation tells us which."
       },
       {
         "q": "Do panel upgrades in Spokane need a permit?",
@@ -258,10 +258,6 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         "q": "My insurer flagged my panel brand. Is it really a problem?",
         "a": "Some older panel lines, such as Federal Pacific Stab-Lok and Zinsco, have well-documented reliability concerns, and many insurers and home inspectors flag them. We'll look at yours and tell you honestly what we see."
       },
-      {
-        "q": "Is replacing a panel the same as upgrading the electrical service?",
-        "a": "No. Replacing the panel changes the equipment that distributes power. A service upgrade changes the capacity supplied to the property and can also involve the meter, conductors and utility connection. We check the load and explain which work is needed."
-      }
     ],
     "related": [
       "electrical-inspections",
@@ -289,11 +285,11 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       "description": "Level 2 EV charger installation for Spokane homes: Tesla Wall Connector, NEMA 14-50 and more. Load check, permit, install and inspection."
     },
     "h1": "Home EV charger installation in Spokane",
-    "lede": "You bought an electric car so you could stop thinking about fuel. Now you're planning your week around a public charger. We'll get a Level 2 charger on your wall so the car is full every morning.",
+    "lede": "You bought an electric car so you could stop thinking about fuel. Now you're planning your week around a public charger. We'll install a Level 2 charger so you can charge at home overnight.",
     "problem": "You want to charge your EV where you park it, not in a grocery store parking lot.",
     "story": [
       "A lot of new EV owners in Spokane start out on a standard 120-volt outlet, which adds only a few miles of range per hour, or they sit at a public fast charger a couple of times a week. Neither is what you had in mind.",
-      "A Level 2 charger runs on a dedicated 240-volt circuit and can typically refill an overnight commute's worth of range while you sleep. The questions most people get stuck on are whether the panel can handle it, which charger to buy, and where it should go. Those are exactly the things we sort out before any wire gets pulled."
+      "A Level 2 charger runs on a dedicated 240-volt circuit and can replenish a typical day's driving overnight. The questions most people get stuck on are whether the panel can handle it, which charger to buy, and where it should go. Those are exactly the things we sort out before any wire gets pulled."
     ],
     "signs": {
       "heading": "You're probably ready for a Level 2 charger if…",
@@ -349,7 +345,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         },
         {
           "title": "Options before a service upgrade",
-          "body": "If your panel is tight, a full service upgrade isn't the only answer. Load-management devices and chargers with power-sharing can sometimes avoid it. We'll tell you honestly which applies."
+          "body": "A tight panel doesn't automatically mean a service upgrade. Load management or a power-sharing charger can sometimes avoid one."
         }
       ]
     },
@@ -652,11 +648,11 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       "description": "Commercial electrical service in Spokane: lighting, new circuits, panels and repairs for shops, offices and other business spaces. Call Acorn Electric."
     },
     "h1": "Commercial electrician in Spokane",
-    "lede": "When something electrical goes wrong at your business, it's lost hours. We handle lighting, new circuits, panels and repairs for shops, offices and other commercial spaces, and we show up when we say we will.",
+    "lede": "When something electrical goes wrong at your business, it costs you hours. We handle lighting, new circuits, panels and repairs for shops, offices and other commercial spaces, and we show up when we say we will.",
     "problem": "Your business needs a reliable electrician for lighting, circuits or repairs.",
     "story": [
       "When the lights flicker or a circuit trips at work, you can't wait a week for a callback. You need someone who answers, explains what's going on, and does the job properly the first time.",
-      "We bring the same approach we use in people's homes: listen first, explain the options, do it right, clean up. We focus on commercial service and installation work."
+      "We bring the same approach we use in people's homes: listen first, explain the options, do it right, clean up. On commercial jobs we focus on service and installation work, not large-scale construction."
     ],
     "signs": {
       "heading": "What we help businesses with",
@@ -900,7 +896,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         },
         {
           "title": "Test and tidy",
-          "body": "Every light, every dimmer setting, checked. Dust controlled while we work and cleaned up after."
+          "body": "Every light and every dimmer setting checked, and the work area cleaned up after."
         }
       ]
     },
@@ -1246,7 +1242,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     "problem": "You want to know your home's wiring is safe and up to code.",
     "story": [
       "A general home inspection looks at a house broadly. An electrical inspection by a licensed electrician goes deeper: the panel, grounding and bonding, ground-fault and arc-fault protection, visible wiring, and the outlets and switches you use every day.",
-      "Spokane has plenty of older homes with a few generations of electrical work layered inside them. You get a clear, prioritized list so you can decide what to do and when."
+      "Spokane has plenty of older homes with a few generations of electrical work layered inside them. You get a clear, prioritized explanation so you can decide what to do and when."
     ],
     "signs": {
       "heading": "People usually book an inspection when…",
@@ -1674,7 +1670,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         },
         {
           "title": "Your home treated like a home",
-          "body": "Dust controlled, floors protected, and we clean up every day."
+          "body": "We respect the space you live in and clean up after ourselves."
         },
         {
           "title": "Good partners",
@@ -1740,7 +1736,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     "problem": "You're building a custom home and want the electrical planned around you.",
     "story": [
       "On a new build, the electrical plan often gets decided fast, by default, from a standard layout. That's how you end up with no outlet where the desk goes, a garage that can't take an EV charger, or lights that switch from the wrong end of the hall.",
-      "We work with you and your builder from the plan stage: temporary power, the service, lighting and outlet layout, and the circuits you'll need later, like an EV charger, hot tub or shop. Then we wire it cleanly, keep the inspections on schedule, and hand you a home that works the way you expected."
+      "We work with you and your builder from the plan stage: temporary power, the service, lighting and outlet layout, and the circuits you'll need later, like an EV charger, hot tub or shop. Then we wire it cleanly and coordinate rough-in and inspections with your builder's schedule."
     ],
     "signs": {
       "heading": "We wire…",
@@ -1770,7 +1766,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         },
         {
           "title": "Trim-out, final and walkthrough",
-          "body": "Fixtures and devices installed, everything tested, final inspection passed, and a walkthrough of your panel with you."
+          "body": "Fixtures and devices installed, everything tested, the final inspection, and a walkthrough of your panel with you."
         }
       ]
     },
@@ -1792,7 +1788,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         },
         {
           "title": "On the builder's schedule",
-          "body": "We keep the inspections moving so we're never the reason the drywall waits."
+          "body": "We coordinate rough-in and inspections with your builder's schedule."
         }
       ]
     },
@@ -1846,7 +1842,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
       "description": "Storm-bent or pulled-away service mast? We repair and replace masts, weatherheads and meter bases in Spokane and coordinate with your utility."
     },
     "h1": "Service mast repair and replacement in Spokane",
-    "lede": "A windstorm, a heavy snow slide or a tree limb bent the pipe on your roof where the power lines connect. Your utility won't reconnect until a licensed electrician repairs it. We can help.",
+    "lede": "A windstorm, a heavy snow slide or a tree limb bent the pipe on your roof where the power lines connect. Your utility won't reconnect until a licensed electrician repairs it. We make the repair and coordinate the reconnect.",
     "problem": "A storm or a falling limb damaged where the power connects to your house.",
     "story": [
       "The service mast is the metal pipe on your roof or wall that holds up the utility's service drop and carries the wires down to your meter. The weatherhead is the cap at the top that keeps water out. The meter base is the box the meter plugs into.",
@@ -1864,7 +1860,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
     },
     "work": {
       "heading": "What a mast repair involves",
-      "intro": "Mast work is done with the utility, because it's on their side of the meter until they disconnect.",
+      "intro": "We coordinate with your utility so power can be disconnected safely before mast repairs begin.",
       "steps": [
         {
           "title": "Safety first",
@@ -1906,7 +1902,7 @@ const details: Record<string, Omit<Service, "slug" | "name" | "short" | "confirm
         },
         {
           "title": "Coordinated with the utility",
-          "body": "So you're not left waiting between the repair and the reconnect."
+          "body": "We line up the disconnect, inspection and reconnect with your utility, so the steps happen in order."
         }
       ]
     },

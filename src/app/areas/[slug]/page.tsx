@@ -109,7 +109,7 @@ export default async function AreaPage({ params }: Props) {
             Electrical work in {a.name}? <span className="text-lit">Let&apos;s talk.</span>
           </>
         }
-        body="Send your address and what's going on. We'll confirm coverage and talk it through."
+        body="Send your address and what's going on. We'll confirm coverage and get back to you to discuss the project."
       />
     </>
   );

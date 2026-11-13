@@ -41,6 +41,12 @@ export type Inquiry = {
   source: string;
 };
 
+/** Which contact details a given preferred method makes required. */
+export function contactRequirements(method: string) {
+  const byEmail = method === "Email";
+  return { phone: !byEmail, email: byEmail };
+}
+
 export function validateInquiry(raw: Record<string, unknown>): { data: Inquiry; errors: Errors } {
   const data: Inquiry = {
     name: clean(raw.name, LIMITS.name),
@@ -53,11 +59,28 @@ export function validateInquiry(raw: Record<string, unknown>): { data: Inquiry; 
     source: clean(raw.source, LIMITS.short),
   };
   const errors: Errors = {};
+  if (!(CONTACT_METHODS as readonly string[]).includes(data.contactMethod)) data.contactMethod = "Phone call";
+  const need = contactRequirements(data.contactMethod);
+
   if (data.name.length < 2 || hasBreak(data.name)) errors.name = "Please enter your name.";
-  if (!phoneOk(data.phone)) errors.phone = "Please enter a phone number with area code.";
-  if (data.email && (!EMAIL_RE.test(data.email) || hasBreak(data.email)))
-    errors.email = "That email address doesn't look right.";
-  if (data.contactMethod === "Email" && !data.email) errors.email = "Add an email address so we can reply by email.";
+
+  // Phone: required for a call or text; checked whenever one is given.
+  if (data.phone) {
+    if (!phoneOk(data.phone)) errors.phone = "Please enter a phone number with area code.";
+  } else if (need.phone) {
+    errors.phone =
+      data.contactMethod === "Text"
+        ? "Add a mobile number so we can text you back."
+        : "Add a phone number so we can call you back.";
+  }
+
+  // Email: required when email is the chosen method; checked whenever given.
+  if (data.email) {
+    if (!EMAIL_RE.test(data.email) || hasBreak(data.email)) errors.email = "That email address doesn't look right.";
+  } else if (need.email) {
+    errors.email = "Add an email address so we can reply by email.";
+  }
+
   if (data.location.length < 5) errors.location = "Please enter your address or ZIP code.";
   if (data.message.length < 10) errors.message = "Tell us a little about the problem or project.";
   return { data, errors };
@@ -110,13 +133,4 @@ export function validateApplication(raw: Record<string, unknown>): { data: Appli
 }
 
 /* ------------------------------------------------------------------- resume */
-
-export const RESUME = {
-  maxBytes: 5 * 1024 * 1024,
-  accept: ".pdf,.doc,.docx",
-  label: "PDF or Word, up to 5 MB",
-} as const;
-
-export function resumeNameOk(name: string) {
-  return /\.(pdf|docx?)$/i.test(name);
-}
+// Resume limits live in ./attachments (RESUME_FILE) with the other file rules.

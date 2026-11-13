@@ -29,6 +29,18 @@ export const legacyRedirects = [
   { from: "/services/attic-fan-installation", to: "/services/ceiling-fan-installation#attic-fans" },
 ];
 
+/**
+ * The one host that may be indexed. Every other host (vercel.app aliases,
+ * branch previews, localhost) gets X-Robots-Tag: noindex on every response,
+ * including after launch, when the same deployment also answers on
+ * acornelectric.vercel.app. Pages also carry a robots meta tag unless the
+ * build is the launch build (see src/lib/seo.ts).
+ *
+ * Domain redirects (apex callacornelectric.com -> www, http -> https) are set
+ * in Vercel's Domains settings, not here; see docs/handoff.md, "Launch".
+ */
+const CANONICAL_HOST = "www.callacornelectric.com";
+
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   images: { formats: ["image/avif", "image/webp"] },
@@ -53,6 +65,15 @@ const nextConfig = {
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
         ],
+      },
+      {
+        source: "/:path*",
+        missing: [{ type: "host", value: CANONICAL_HOST }],
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/api/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
       {
         source: "/:all*(svg|jpg|jpeg|png|webp|avif|ico|woff2)",

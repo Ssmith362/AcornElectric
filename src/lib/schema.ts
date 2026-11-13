@@ -11,7 +11,7 @@ import { site } from "./site";
  *   - No street address until Acorn resolves which one is real.
  *   - No aggregateRating / review markup for Acorn's own reviews. Google
  *     treats self-serving review markup on a LocalBusiness as ineligible.
- *   - No opening hours, prices or emergency claims unless confirmed.
+ *   - Opening hours only when confirmed; no prices or emergency claims.
  */
 
 export const BUSINESS_ID = `${BASE_URL}/#business`;
@@ -47,6 +47,13 @@ export function businessSchema() {
         }
       : {}),
     areaServed: served(),
+    ...(site.hours.verified
+      ? {
+          openingHoursSpecification: site.hours.value
+            .filter((h) => h.opens && h.closes)
+            .map((h) => ({ "@type": "OpeningHoursSpecification", dayOfWeek: h.dayCodes, opens: h.opens, closes: h.closes })),
+        }
+      : {}),
     ...(site.social.length || site.google.profileUrl
       ? { sameAs: [...site.social.map((s) => s.href), ...(site.google.profileUrl ? [site.google.profileUrl] : [])] }
       : {}),

@@ -99,10 +99,21 @@
    ========================================================================== */
 
 @layer base {
+  /* Keep anchor targets and focused fields clear of the sticky header (72px on
+     phones, 120px with the license strip on desktop) and of the fixed call
+     bar on phones (56px + safe area). */
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 5.5rem;
+    scroll-padding-bottom: 5rem;
     -webkit-text-size-adjust: 100%;
+    @media (width >= 48rem) {
+      scroll-padding-top: 7rem;
+      scroll-padding-bottom: 1rem;
+    }
+    @media (width >= 64rem) {
+      scroll-padding-top: 8.5rem;
+    }
   }
 
   body {
@@ -220,6 +231,14 @@
   transform: none;
 }
 
+/* Printing or saving a page never leaves unrevealed sections blank. */
+@media print {
+  .is-armed [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -261,16 +280,27 @@
 }
 .marquee-track--slow { animation-duration: 110s; }
 .marquee-track--reverse { animation-name: marquee-right; animation-duration: 130s; }
-/* Paused with the button: stop, and let people swipe/scroll through instead. */
-.marquee[data-paused="true"] { overflow-x: auto; mask-image: none; }
+/* Paused with the button: stop, show whole reviews, and let people swipe,
+   scroll or arrow through instead. */
+.marquee[data-paused="true"] { overflow-x: auto; mask-image: none; scrollbar-color: var(--color-volt-500) transparent; }
 .marquee[data-paused="true"] .marquee-track { animation-play-state: paused; }
+.marquee[data-paused="true"] .marquee-track > div,
+.marquee:focus-within .marquee-track > div { align-items: flex-start; }
+.marquee[data-paused="true"] .review-quote,
+.marquee:focus-within .review-quote { -webkit-line-clamp: unset; line-clamp: unset; display: block; overflow: visible; }
+.marquee:focus-within { overflow-x: auto; mask-image: none; }
 .marquee:focus-within .marquee-track { animation-play-state: paused; }
+.marquee:focus-visible { outline: 2px solid var(--color-volt-400); outline-offset: 4px; }
 @media (hover: hover) {
   .marquee:hover .marquee-track { animation-play-state: paused; }
 }
 @media (prefers-reduced-motion: reduce) {
   .marquee { mask-image: none; overflow-x: auto; }
   .marquee-track { animation: none !important; }
+  .marquee-track > div { align-items: flex-start; }
+  .marquee .review-quote { -webkit-line-clamp: unset; line-clamp: unset; display: block; overflow: visible; }
+  /* Nothing moves, so there's nothing to pause. */
+  .marquee-toggle { display: none; }
 }
 
 /* ==========================================================================

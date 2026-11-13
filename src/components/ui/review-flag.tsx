@@ -1,11 +1,12 @@
 /**
- * Visible "needs client confirmation" marker for preview builds.
+ * Visible "needs client confirmation" marker for internal review builds.
  *
- * Shown while NEXT_PUBLIC_SHOW_REVIEW_FLAGS is not "false". Set it to "false"
- * on the production deploy ONLY after every flag has been resolved; the
- * launch checklist in docs/handoff.md walks through them.
+ * OFF unless NEXT_PUBLIC_SHOW_REVIEW_FLAGS is exactly "true". Drafting notes
+ * must never reach visitors by default, including on shared previews; open
+ * owner questions live in docs/client-facts-checklist.md. Turn it on only in
+ * a local or private build when you want to see where unconfirmed facts sit.
  */
-export const SHOW_REVIEW_FLAGS = process.env.NEXT_PUBLIC_SHOW_REVIEW_FLAGS !== "false";
+export const SHOW_REVIEW_FLAGS = process.env.NEXT_PUBLIC_SHOW_REVIEW_FLAGS === "true";
 
 export function ReviewFlag({ children, tone = "light" }: { children: React.ReactNode; tone?: "light" | "dark" }) {
   if (!SHOW_REVIEW_FLAGS) return null;

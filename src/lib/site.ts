@@ -57,8 +57,25 @@ export const site = {
     note: "From a third-party license listing. Verify on the WA L&I contractor lookup before launch.",
   } as Fact<string>,
 
-  /** Unknown. Leave null until Acorn confirms; nothing shows hours until then. */
-  hours: null as null | { days: string; open: string; close: string }[],
+  /**
+   * Office hours, matching the Google Business Profile (confirmed by Acorn,
+   * Nov 2026). Shown on the contact page and in the Electrician schema.
+   * `dayCodes` are schema.org day names; `opens`/`closes` are 24-hour times.
+   */
+  hours: {
+    value: [
+      {
+        label: "Monday–Saturday",
+        dayCodes: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        display: "8 a.m.–5 p.m.",
+        opens: "08:00",
+        closes: "17:00",
+      },
+      { label: "Sunday", dayCodes: ["Sunday"], display: "Closed", opens: null, closes: null },
+    ],
+    verified: true,
+    note: "Google Business Profile hours, confirmed by the owner (Nov 2026).",
+  } as Fact<{ label: string; dayCodes: string[]; display: string; opens: string | null; closes: string | null }[]>,
 
   /** No 24/7 or emergency promise anywhere on the site until this is confirmed. */
   emergencyService: { value: false, verified: false } as Fact<boolean>,

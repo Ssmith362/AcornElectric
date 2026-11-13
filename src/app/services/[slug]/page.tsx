@@ -62,7 +62,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               </div>
             </div>
             <div className="lg:col-span-6" data-reveal>
-              <Photo id={s.image} priority sizes="(min-width: 1024px) 48vw, 100vw" className="border border-white/10" />
+              <Photo id={s.image} priority sizes="(min-width: 1344px) 632px, (min-width: 1024px) 47vw, 100vw" className="border border-white/10" />
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <section className="border-t border-ink/10 bg-mist-50 py-10 sm:py-14" aria-label="Related work included in this service">
           <div className="container-x grid gap-8 lg:grid-cols-2 lg:gap-12">
             {s.sections.map((part) => (
-              <section key={part.id} id={part.id} aria-labelledby={`${part.id}-title`} className="scroll-mt-28" data-reveal>
+              <section key={part.id} id={part.id} aria-labelledby={`${part.id}-title`} data-reveal>
                 {part.image ? <Photo id={part.image} ticks={false} sizes="(min-width: 1024px) 45vw, 100vw" className="mb-5" /> : null}
                 <h2 id={`${part.id}-title`} className="text-2xl leading-tight sm:text-3xl">{part.title}</h2>
                 <p className="mt-4 leading-relaxed text-ink-soft">{part.body}</p>
@@ -91,7 +91,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <section className="bg-mist-50 py-12 sm:py-16 lg:py-24">
         <div className="container-x grid gap-8 sm:gap-12 lg:grid-cols-12">
           <div className="lg:col-span-6" data-reveal>
-            <h2 className="text-3xl leading-tight font-bold sm:text-4xl">The situation</h2>
+            <h2 className="text-3xl leading-tight font-bold sm:text-4xl">About {inSentence(s.short)}</h2>
             <div className="prose-acorn mt-5 space-y-4">
               {s.story.map((p) => (
                 <p key={p.slice(0, 24)}>{p}</p>
@@ -164,7 +164,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <div className="bg-ink p-5 text-mist-100 sm:p-8">
               <p className="label-mono text-volt-400">Speeds things up</p>
               <h2 id="prep-title" className="mt-3 text-2xl font-bold text-white">
-                What to send us
+                What to send with your request
               </h2>
               <ul className="mt-4 space-y-2.5 sm:mt-5 sm:space-y-3">
                 {s.prepare.map((p) => (
@@ -176,8 +176,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   </li>
                 ))}
               </ul>
-              <Link href="#request" className="mt-7 inline-flex items-center gap-2 font-semibold text-volt-300 hover:text-volt-200">
-                Send it with your request <span aria-hidden="true">↓</span>
+              <p className="mt-6 text-sm text-mist-300">Photos and PDFs can be attached to the form below.</p>
+              <Link href="#request" className="mt-3 inline-flex min-h-11 items-center gap-2 font-semibold text-volt-300 hover:text-volt-200">
+                Go to the request form <span aria-hidden="true">↓</span>
               </Link>
             </div>
           </aside>
@@ -208,7 +209,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             Tell us about <span className="text-lit">your project.</span>
           </>
         }
-        body={`Send the details and any photos you have about ${inSentence(s.name)}. We'll come back to you to talk through what it needs.`}
+        body={`Send the details and any photos you have about ${inSentence(s.name)}. We'll get back to you to discuss the project.`}
       />
 
       <JsonLd data={serviceSchema(s)} />

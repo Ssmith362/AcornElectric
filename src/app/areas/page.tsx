@@ -47,7 +47,7 @@ export default function AreasPage() {
               const href = c.page ? `/areas/${c.page}` : c.name === "Spokane" ? "/" : null;
               const cls = "flex h-full min-h-16 items-center justify-between gap-2 px-4 py-4 text-[0.95rem] leading-snug font-semibold sm:px-5 sm:text-base";
               return (
-                <li key={c.name} id={c.name.toLowerCase().replace(/\s+/g, "-")} className="scroll-mt-28 bg-mist-50">
+                <li key={c.name} id={c.name.toLowerCase().replace(/\s+/g, "-")} className="bg-mist-50">
                   {href ? (
                     <Link href={href} className={`${cls} group underline decoration-ink/25 underline-offset-4 hover:bg-peach-50 hover:text-copper-700`}>
                       {c.name}<span aria-hidden="true" className="shrink-0 transition-transform group-hover:translate-x-1">→</span>

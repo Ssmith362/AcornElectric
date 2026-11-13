@@ -8,8 +8,11 @@ import { PausableMarquee } from "./marquee";
  * Proof, shown like the Therapy in Motion site: two ribbons of compact review
  * cards drifting in opposite directions. Real Google reviews only, word for
  * word (src/content/reviews.ts). Each card shows the stars the reviewer gave,
- * the quote (clamped visually, full text stays in the HTML), the name, Google's
- * own "5 months ago" wording and "via Google".
+ * the quote (clamped to three lines while moving; full text when paused, with
+ * reduced motion, and always in the HTML), the name and "via Google".
+ *
+ * No review dates: Google only shows relative ones ("6 months ago"), which go
+ * stale on a static page, and exact dates aren't available to verify.
  *
  * No overall rating or review count is printed (they'd go stale; Google shows
  * the live numbers), and no review structured data (Google ignores it on a
@@ -38,12 +41,11 @@ function Ribbon({ items, reverse = false }: { items: Review[]; reverse?: boolean
                 <Stars rating={r.rating} />
                 <span aria-hidden="true" className="h-5 font-serif text-[2.6rem] leading-[0.9] text-volt-500">“</span>
               </div>
-              <blockquote className="mt-2.5 line-clamp-3 font-display text-[1.12rem] leading-[1.25] font-medium whitespace-normal text-mist-100 sm:text-[1.2rem]">
+              <blockquote className="review-quote mt-2.5 line-clamp-3 font-display text-[1.12rem] leading-[1.25] font-medium whitespace-normal text-mist-100 sm:text-[1.2rem]">
                 {r.quote}
               </blockquote>
               <figcaption className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[0.75rem]">
                 <span className="font-semibold text-white">{r.name}</span>
-                {r.when ? <span className="text-mist-100/60">{r.when}</span> : null}
                 <span className="text-mist-100/60">· via {r.source}</span>
               </figcaption>
             </figure>
@@ -76,7 +78,7 @@ export function Reviews() {
       </div>
 
       {reviews.length ? (
-        <PausableMarquee>
+        <PausableMarquee label="Customer reviews from Google">
           <Ribbon items={reviews.slice(0, half)} />
           <Ribbon items={reviews.slice(half)} reverse />
         </PausableMarquee>

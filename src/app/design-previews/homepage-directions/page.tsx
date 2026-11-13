@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { notFound } from "next/navigation";
 import { FeaturedServices } from "@/components/home/featured-services";
 import { Hero } from "@/components/home/hero";
 import { Reviews } from "@/components/home/reviews";
@@ -108,6 +109,9 @@ export default async function HomepageDirectionsPage({
 }: {
   searchParams: Promise<{ direction?: string }>;
 }) {
+  // Internal design comparison: local `next dev` only. It loads Google Fonts,
+  // which the public site deliberately doesn't, so production builds 404.
+  if (process.env.NODE_ENV === "production") notFound();
   const params = await searchParams;
   const key: Direction = params.direction === "warm" || params.direction === "modern" ? params.direction : "acorn";
   const direction = directions[key];
@@ -135,7 +139,7 @@ export default async function HomepageDirectionsPage({
         <CtaSection
           source="/"
           title={<>Tell us about<br />your project.</>}
-          body="A few details and a photo or two is plenty. We'll come back to you to talk it through."
+          body="A few details and a photo or two is plenty. We'll get back to you to discuss the project."
         />
       </div>
     </>

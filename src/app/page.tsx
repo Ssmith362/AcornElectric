@@ -31,7 +31,7 @@ export default function HomePage() {
             your project.
           </>
         }
-        body="A few details and a photo or two is plenty. We'll come back to you to talk it through."
+        body="A few details and a photo or two is plenty. We'll get back to you to discuss the project."
       />
     </>
   );

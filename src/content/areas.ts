@@ -70,7 +70,7 @@ export const areas: Area[] = [
     },
     h1: "Electrician for Mead homes and businesses",
     lede:
-      "Mead homes tend to sit on bigger lots, with shops, outbuildings, hot tubs and long driveways. That means longer runs, detached buildings and outdoor equipment, which is the work we like to do properly. We also help Mead businesses with repairs, lighting and new circuits.",
+      "Mead homes tend to sit on bigger lots, with shops, outbuildings, hot tubs and long driveways. That means longer runs, detached buildings and outdoor equipment, the kind of work that needs careful planning. We also help Mead businesses with repairs, lighting and new circuits.",
     local: [
       {
         title: "Permitted through L&I",

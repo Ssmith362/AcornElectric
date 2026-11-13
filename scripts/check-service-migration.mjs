@@ -22,7 +22,7 @@ assert.equal(new Set(serviceUrls).size, 16, "Duplicate sitemap service");
 
 const expected = [
   ["ceiling-fan-installation", "Ceiling & Attic Fan Installation in Spokane", "Ceiling and attic fan installation"],
-  ["generator-installation", "Generator Installation in Spokane", "Generator installation and backup power"],
+  ["generator-installation", "Generator Installation & Backup Power in Spokane", "Generator installation and backup power"],
   ["bathroom-fan-replacement", "Bathroom Fan Replacement in Spokane", "Bathroom exhaust fan replacement and installation"],
   ["lighting-installation", "Lighting Installation in Spokane", "Indoor and outdoor lighting installation"],
 ];
@@ -35,9 +35,10 @@ for (const [slug, title, formChoice] of expected) {
   assert.ok(overview.includes(`href="${path}"`), `Overview missing ${path}`);
   assert.ok(html.replaceAll("&amp;", "&").includes(`<title>${title}`), `Wrong search title: ${path}`);
   assert.ok(html.includes(`"url":"https://www.callacornelectric.com${path}"`) || html.includes(`"url":"https://callacornelectric.com${path}"`), `Service schema missing canonical route: ${path}`);
-  const selected = html.match(/<option\b[^>]*selected[^>]*>(.*?)<\/option>/s)?.[1];
-  assert.equal(selected, formChoice, `Lead form should preselect the service on ${path}`);
-  assert.ok(contact.includes(`>${formChoice}</option>`), `Contact form missing ${formChoice}`);
+  // The form has no service picker; each service page sends its service as context.
+  const sent = html.match(/<input[^>]*type="hidden"[^>]*name="service"[^>]*value="([^"]*)"/)?.[1];
+  assert.equal(sent, formChoice, `Lead form should carry the service on ${path}`);
+  assert.ok(contact.includes('name="service" value=""'), "Contact form should send no service context");
 }
 const fans = await get("/services/ceiling-fan-installation");
 assert.ok(fans.includes('id="attic-fans"'), "Attic fan search content missing from the shared fan page");
