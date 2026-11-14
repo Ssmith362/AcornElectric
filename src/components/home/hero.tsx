@@ -23,7 +23,7 @@ export function Hero() {
         aria-labelledby="hero-title"
       >
         {/* Phones and tablets: the truck sits above the copy so it's never hidden. Desktop: full bleed behind it. */}
-        <div className="relative aspect-[16/10] w-full md:absolute md:inset-0 md:-z-20 md:aspect-auto">
+        <div className="hero-photo relative aspect-[16/10] w-full md:absolute md:inset-0 md:-z-20 md:aspect-auto">
           <Image
             src={truck.src}
             alt={truck.alt}
@@ -32,11 +32,10 @@ export function Hero() {
             sizes="100vw"
             className="object-cover object-[60%_55%] saturate-[.9] md:object-[54%_57%]"
           />
-          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(transparent,var(--color-night-950))] md:hidden" />
         </div>
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 hidden md:block md:bg-[linear-gradient(90deg,rgb(8_26_18/.86)_0%,rgb(8_26_18/.68)_33%,rgb(8_26_18/.16)_72%,rgb(8_26_18/.1)_100%),linear-gradient(0deg,rgb(8_26_18/.5),transparent_38%)]"
+          className="hero-shade absolute inset-0 -z-10 hidden md:block"
         />
 
         <div className="container-x relative -mt-6 pb-10 sm:-mt-10 sm:pb-14 md:mt-0 md:pt-28 md:pb-24">

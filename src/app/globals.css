@@ -197,13 +197,22 @@
   background-color: var(--color-mist-50);
 }
 
-/* Homepage forest surfaces: sculpted panels, directional light and matte grain.
-   Broad diagonal seams have a dark cast shadow and a lit bevel. Everything is
-   painted behind content; no extra elements, scripts or moving backgrounds. */
+/* Shared matte grain, drawn behind content with no extra network request. */
 :where(
+  section[aria-labelledby="hero-title"],
   section[aria-labelledby="ticket-title"],
   section[aria-labelledby="reviews-title"],
   section[aria-labelledby="areas-title"],
+  section[aria-labelledby="careers-title"] .on-night
+) {
+  --forest-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='grain' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' seed='12' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='.10'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Cpath fill='white' filter='url(%23grain)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+}
+
+/* Reviews and careers keep their sculpted panels and dimensional cards.
+   Broad diagonal seams have a dark cast shadow and a lit bevel. Everything is
+   painted behind content; no extra elements, scripts or moving backgrounds. */
+:where(
+  section[aria-labelledby="reviews-title"],
   section[aria-labelledby="careers-title"] .on-night
 ) {
   --forest-light: radial-gradient(
@@ -214,7 +223,7 @@
   );
   background-color: var(--color-night-900);
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='grain' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' seed='12' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='.10'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Cpath fill='white' filter='url(%23grain)' d='M0 0h180v180H0z'/%3E%3C/svg%3E"),
+    var(--forest-grain),
     repeating-linear-gradient(
       118deg,
       transparent 0 310px,
@@ -240,13 +249,68 @@
     inset 0 -1px 0 rgb(0 0 0 / 0.6);
 }
 
-section[aria-labelledby="areas-title"] {
+/* The map and process strip use bold light and shade without decorative seams. */
+:where(
+  section[aria-labelledby="ticket-title"],
+  section[aria-labelledby="areas-title"]
+) {
   --forest-light: radial-gradient(
-    ellipse at 48% 85%,
-    rgb(57 112 76 / 0.9) 0%,
-    rgb(34 83 53 / 0.65) 35%,
+    ellipse at 18% 0%,
+    #39704c 0%,
+    #235237 28%,
+    rgb(18 59 38 / 0.65) 52%,
     transparent 78%
   );
+  background-color: #08261a;
+  background-image:
+    var(--forest-grain),
+    var(--forest-light),
+    linear-gradient(110deg, #123d28, #071f14 58%, #020c08);
+  background-size: 180px 180px, 100% 100%, 100% 100%;
+  background-repeat: repeat, no-repeat, no-repeat;
+  box-shadow: inset 0 1px 0 rgb(206 235 204 / 0.18);
+}
+
+section[aria-labelledby="areas-title"] {
+  --forest-light: radial-gradient(
+    ellipse at 70% 38%,
+    #39704c 0%,
+    rgb(35 82 55 / 0.9) 26%,
+    rgb(18 59 38 / 0.4) 54%,
+    transparent 80%
+  );
+}
+
+/* On phones the photo fades directly into the illuminated green copy area. */
+section[aria-labelledby="hero-title"] {
+  background-image:
+    var(--forest-grain),
+    radial-gradient(ellipse at 12% 62%, #1d5136, #103824 38%, transparent 70%),
+    linear-gradient(108deg, #08261a, #020c08);
+  background-size: 180px 180px, 100% 100%, 100% 100%;
+  background-repeat: repeat, no-repeat, no-repeat;
+}
+
+.hero-photo {
+  mask-image: linear-gradient(#000 68%, transparent 100%);
+}
+
+@media (width >= 48rem) {
+  .hero-photo {
+    mask-image: none;
+  }
+
+  /* Keep the truck clear while lighting the green shade behind the copy. */
+  .hero-shade {
+    background-image:
+      var(--forest-grain),
+      radial-gradient(ellipse at 10% 0%, rgb(57 112 76 / 0.78), transparent 56%),
+      linear-gradient(90deg, rgb(2 15 9 / 0.96), rgb(5 27 17 / 0.84) 32%, rgb(5 25 16 / 0.22) 68%, transparent 86%),
+      linear-gradient(0deg, rgb(2 15 9 / 0.58), transparent 44%);
+    background-size: 180px 180px, 100% 100%, 100% 100%, 100% 100%;
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+    mask-image: linear-gradient(90deg, #000 54%, rgb(0 0 0 / 0.35) 82%, transparent);
+  }
 }
 
 /* The reviews sit above the wall, with a lit top edge and a visible cast shadow. */
@@ -275,31 +339,7 @@ section[aria-labelledby="reviews-title"] figure svg.text-volt-400 {
   color: var(--color-volt-300);
 }
 
-/* Raised process tiles make the material treatment visible directly below the hero. */
-section[aria-labelledby="ticket-title"] ol > li {
-  padding: 14px 16px;
-  border: 1px solid rgb(124 177 135 / 0.32);
-  border-top-color: rgb(192 224 181 / 0.55);
-  border-bottom-color: rgb(0 0 0 / 0.65);
-  background: linear-gradient(145deg, #2b6543, #163f2a 72%);
-  box-shadow:
-    0 12px 18px -7px rgb(0 0 0 / 0.8),
-    inset 1px 1px 0 rgb(183 220 170 / 0.16);
-}
-
-/* The diagram is recessed into its own panel; the careers panel floats over paper. */
-section[aria-labelledby="areas-title"] > .container-x > [data-reveal] {
-  padding: clamp(0px, 1.5vw, 20px);
-  border: 1px solid rgb(138 182 140 / 0.3);
-  border-top-color: rgb(0 0 0 / 0.9);
-  border-bottom-color: rgb(166 204 156 / 0.45);
-  background: linear-gradient(145deg, #041b10, #123d29);
-  box-shadow:
-    inset 0 14px 24px -9px rgb(0 0 0 / 0.85),
-    inset 0 0 24px rgb(0 0 0 / 0.3),
-    0 1px 0 rgb(202 229 187 / 0.2);
-}
-
+/* The careers panel floats over paper. */
 section[aria-labelledby="careers-title"] .on-night {
   border: 1px solid rgb(150 190 140 / 0.28);
   border-top-color: rgb(184 216 166 / 0.55);
@@ -311,6 +351,7 @@ section[aria-labelledby="careers-title"] .on-night {
 
 /* Brighter labels and supporting text keep their contrast in the lit areas. */
 :where(
+  section[aria-labelledby="hero-title"],
   section[aria-labelledby="ticket-title"],
   section[aria-labelledby="reviews-title"],
   section[aria-labelledby="areas-title"],
@@ -323,12 +364,6 @@ section[aria-labelledby="ticket-title"] ol > li > span:first-child {
 #reviews-title + p,
 section[aria-labelledby="ticket-title"] ol > li > span:last-child {
   color: var(--color-mist-100);
-}
-
-@media (width < 48rem) {
-  section[aria-labelledby="areas-title"] > .container-x > [data-reveal] {
-    padding: 0;
-  }
 }
 
 /* Animated current along an SVG path. Paused for reduced motion (below). */

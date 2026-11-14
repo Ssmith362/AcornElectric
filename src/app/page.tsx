@@ -18,8 +18,8 @@ export default function HomePage() {
     <>
       <Hero />
       <FeaturedServices />
-      <Process />
       <Reviews />
+      <Process />
       <AreasBlock />
       <CareersTeaser />
       <CtaSection
