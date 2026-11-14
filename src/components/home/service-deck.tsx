@@ -5,7 +5,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { Photo } from "@/components/ui/photo";
 import type { ImageKey } from "@/content/images";
 
-export type DeckItem = { slug: string; name: string; short: string; problem: string; lede: string; image: ImageKey };
+export type DeckItem = { slug: string; name: string; short: string; problem: string; image: ImageKey };
 
 /**
  * "What we do most": a side-scrolling card rail on the cream surface, at every
@@ -17,9 +17,9 @@ export type DeckItem = { slug: string; name: string; short: string; problem: str
  * it too. Accessibility follows the APG carousel pattern: a labelled region
  * with aria-roledescription="carousel", each card a "slide" group labelled
  * "n of N", a polite live region announcing the position after a button
- * press, and no auto-rotation. Each card's short detail is a disclosure
- * button (aria-expanded); the detail stays in the HTML either way. Nothing
- * depends on hover. `titleAs` sets the card heading level for the outline.
+ * press, and no auto-rotation. Headings and Details link directly to the full
+ * service pages. Nothing depends on hover. `titleAs` sets the card heading
+ * level for the outline.
  */
 export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[]; titleAs?: "h3" | "h4" }) {
   const id = useId();
@@ -29,7 +29,6 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
   const [announce, setAnnounce] = useState("");
-  const [open, setOpen] = useState<Record<string, boolean>>({});
   const n = items.length;
 
   /** Card start positions measured from the first card, so padding doesn't matter. */
@@ -94,7 +93,8 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
   }
 
   const shown = Math.min(n, index + visible);
-  const readout = visible > 1 && shown > index + 1 ? `${index + 1}–${shown} / ${n}` : `${index + 1} / ${n}`;
+  const number = (value: number) => String(value).padStart(2, "0");
+  const readout = visible > 1 && shown > index + 1 ? `${number(index + 1)}–${number(shown)} / ${number(n)}` : `${number(index + 1)} / ${number(n)}`;
 
   const btn =
     "flex h-11 w-11 items-center justify-center border border-ink/25 text-ink transition-colors hover:border-ink hover:bg-ink hover:text-volt-400 disabled:opacity-35 disabled:hover:border-ink/25 disabled:hover:bg-transparent disabled:hover:text-ink";
@@ -104,59 +104,45 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
       <div
         ref={track}
         id={`${id}-track`}
-        className="deck-track relative -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 pb-1 sm:-mx-6 sm:scroll-px-6 sm:px-6 md:gap-4 lg:mx-0 lg:scroll-px-0 lg:gap-5 lg:px-0"
+        className="deck-track relative -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pt-2 pb-6 sm:-mx-6 sm:scroll-px-6 sm:px-6 lg:mx-0 lg:scroll-px-0 lg:gap-6 lg:px-0"
       >
-        {items.map((s, i) => {
-          const isOpen = !!open[s.slug];
-          const detailId = `${id}-d${i}`;
-          return (
+        {items.map((s, i) => (
             <div
               key={s.slug}
               role="group"
               aria-roledescription="slide"
               aria-label={`${i + 1} of ${n}: ${s.short}`}
-              className="relative flex w-[80%] shrink-0 snap-start flex-col border border-ink/15 bg-peach-50 sm:w-[44%] md:w-[calc((100%-2rem)/2.4)] lg:w-[calc((100%-2.5rem)/3.2)]"
+              className="service-card group relative flex w-[84%] shrink-0 snap-start flex-col border border-ink/12 bg-[#fffaf2] sm:w-[44%] md:w-[calc((100%-2rem)/2.4)] lg:w-[calc((100%-3rem)/3.2)]"
             >
-              <Photo id={s.image} ticks={false} compactLabel sizes="(min-width: 1024px) 30vw, (min-width: 640px) 44vw, 80vw" className="aspect-[16/10]!" />
-              <div className="flex flex-1 flex-col p-4 lg:p-6">
-                <Title className="font-sans text-lg leading-snug font-bold text-ink lg:text-xl">
+              <Link href={`/services/${s.slug}`} className="service-card-image relative block overflow-hidden" aria-label={`Explore ${s.name}`} tabIndex={-1}>
+                <Photo id={s.image} ticks={false} compactLabel sizes="(min-width: 1024px) 30vw, (min-width: 640px) 44vw, 84vw" className="aspect-[16/11]!" />
+                <span aria-hidden="true" className="absolute right-4 bottom-4 flex h-10 w-10 items-center justify-center border border-white/40 bg-night-950/70 text-white backdrop-blur-sm">
+                  <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none"><path d="M4 16 16 4M4 4h12v12" stroke="currentColor" strokeWidth="1.4" /></svg>
+                </span>
+              </Link>
+              <div className="flex flex-1 flex-col p-5 lg:p-6">
+                <p aria-hidden="true" className="label-mono mb-3 text-copper-600">{number(i + 1)}</p>
+                <Title className="text-[1.7rem] leading-[1.08] font-semibold text-night-900 lg:text-[1.85rem]">
                   <Link href={`/services/${s.slug}`} className="block hover:text-copper-700">
                     {s.short}
                   </Link>
                 </Title>
-                <p className="mt-1.5 text-[0.95rem] leading-relaxed text-ink-soft">{s.problem}</p>
-                <div id={detailId} className={isOpen ? "deck-detail mt-2 border-l-2 border-volt-500 pl-3 text-[0.92rem] leading-relaxed text-ink-soft" : "hidden"}>
-                  {s.lede}
-                </div>
-                <div className="mt-auto flex items-center justify-between gap-3 pt-3">
-                  <button
-                    type="button"
-                    aria-expanded={isOpen}
-                    aria-controls={detailId}
-                    onClick={() => setOpen((o) => ({ ...o, [s.slug]: !o[s.slug] }))}
-                    className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-copper-700 hover:text-ink"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className={`relative h-3 w-3 before:absolute before:top-1/2 before:left-0 before:h-px before:w-3 before:bg-current after:absolute after:top-0 after:left-1/2 after:h-3 after:w-px after:bg-current after:transition-transform ${isOpen ? "after:scale-y-0" : ""}`}
-                    />
-                    {isOpen ? "Hide" : "Quick look"}
-                    <span className="sr-only"> at {s.short}</span>
-                  </button>
+                <p className="mt-3 text-[0.9rem] leading-relaxed text-ink-soft">{s.problem}</p>
+                <div className="mt-auto pt-6">
                   <Link
                     href={`/services/${s.slug}`}
-                    className="inline-flex min-h-11 items-center text-sm font-semibold text-ink underline decoration-volt-500 decoration-2 underline-offset-4 hover:text-copper-700"
+                    className="flex min-h-11 items-center justify-between border-t border-ink/15 pt-3 text-[0.8rem] font-semibold text-night-900 hover:text-copper-700"
                   >
-                    Details<span className="sr-only">: {s.name}</span> <span aria-hidden="true">&nbsp;→</span>
+                    View service<span className="sr-only">: {s.name}</span>
+                    <svg viewBox="0 0 20 20" className="h-4 w-4" aria-hidden="true" fill="none"><path d="M3 10h14m-5-5 5 5-5 5" stroke="currentColor" strokeWidth="1.3" /></svg>
                   </Link>
                 </div>
               </div>
             </div>
-          );
-        })}
+        ))}
       </div>
 
-      <div className="mt-4 flex items-center justify-between gap-3 lg:mt-6">
+      <div className="flex items-center justify-between gap-3">
         <button type="button" onClick={() => go(index - 1)} disabled={atStart} aria-controls={`${id}-track`} className={btn}>
           <span className="sr-only">Previous service</span>
           <svg viewBox="0 0 12 12" className="h-3 w-3" aria-hidden="true">
@@ -174,12 +160,12 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
                     onClick={() => go(i)}
                     aria-controls={`${id}-track`}
                     aria-current={i === index ? "true" : undefined}
-                    className="flex h-6 w-6 items-center justify-center"
+                    className="flex h-11 w-6 items-center justify-center sm:w-9"
                   >
                     <span className="sr-only">Show {s.short}</span>
                     <span
                       aria-hidden="true"
-                      className={`block h-2 transition-all duration-200 ${inView ? "w-5 bg-ink" : "w-2 bg-ink/25"}`}
+                      className={`block h-px w-5 transition-colors duration-200 sm:w-8 ${inView ? "bg-copper-600" : "bg-ink/20"}`}
                     />
                   </button>
                 </li>

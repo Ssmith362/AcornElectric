@@ -296,20 +296,22 @@ section[aria-labelledby="hero-title"] {
 }
 
 @media (width >= 48rem) {
+  section[aria-labelledby="hero-title"] {
+    background-color: #111;
+    background-image: none;
+  }
+
   .hero-photo {
     mask-image: none;
   }
 
-  /* Keep the truck clear while lighting the green shade behind the copy. */
+  /* Neutral shading preserves the photo's colours and keeps copy readable. */
   .hero-shade {
     background-image:
-      var(--forest-grain),
-      radial-gradient(ellipse at 10% 0%, rgb(57 112 76 / 0.78), transparent 56%),
-      linear-gradient(90deg, rgb(2 15 9 / 0.96), rgb(5 27 17 / 0.84) 32%, rgb(5 25 16 / 0.22) 68%, transparent 86%),
-      linear-gradient(0deg, rgb(2 15 9 / 0.58), transparent 44%);
-    background-size: 180px 180px, 100% 100%, 100% 100%, 100% 100%;
-    background-repeat: repeat, no-repeat, no-repeat, no-repeat;
-    mask-image: linear-gradient(90deg, #000 54%, rgb(0 0 0 / 0.35) 82%, transparent);
+      linear-gradient(90deg, rgb(0 0 0 / 0.82), rgb(0 0 0 / 0.64) 32%, rgb(0 0 0 / 0.12) 68%, transparent 86%),
+      linear-gradient(0deg, rgb(0 0 0 / 0.38), transparent 44%);
+    background-size: 100% 100%, 100% 100%;
+    background-repeat: no-repeat, no-repeat;
   }
 }
 
@@ -513,21 +515,88 @@ section[aria-labelledby="ticket-title"] ol > li > span:last-child {
 }
 
 /* ==========================================================================
-   SERVICE DECK (phone side-scroll in "What we do most")
-   Short, subtle reveal for the card detail; the reduced-motion block above
-   cuts it to ~0ms for people who ask for less motion.
+   SERVICE DECK (native side-scroll in "What we do most")
    ========================================================================== */
-@keyframes reveal-in {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: none; }
-}
-.deck-detail {
-  animation: reveal-in 0.18s ease-out;
-}
 .deck-track {
   scrollbar-width: none;
   overscroll-behavior-x: contain;
 }
 .deck-track::-webkit-scrollbar {
   display: none;
+}
+
+.service-card {
+  box-shadow: 0 8px 16px -14px rgb(8 38 26 / .35);
+  transition: transform .4s var(--ease-current), box-shadow .4s var(--ease-current), border-color .4s;
+}
+.service-card-image img {
+  transition: transform .7s var(--ease-current);
+}
+@media (hover: hover) {
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-color: rgb(138 58 14 / .35);
+    box-shadow: 0 16px 26px -18px rgb(8 38 26 / .35);
+  }
+  .service-card:hover img { transform: scale(1.035); }
+}
+.service-card:focus-within { border-color: var(--color-copper-600); }
+
+/* The homepage process keeps its ruled list on desktop. Phones use a bounded
+   scroll scene: cards peel up and away as the remaining stack straightens. */
+.process-deck-track { position: relative; }
+.process-deck-progress { display: none; }
+@media (width < 48rem) and (height >= 650px) and (prefers-reduced-motion: no-preference) {
+  .process-deck-track[data-deck="on"] { height: 208svh; }
+  [data-deck="on"] .process-deck-pin {
+    position: sticky;
+    top: 72px;
+    height: calc(100svh - 128px - env(safe-area-inset-bottom, 0px));
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  [data-deck="on"] .process-deck-layout { gap: 24px; padding-block: 16px 32px; }
+  [data-deck="on"] #process-title { max-width: none; font-size: 2.15rem; line-height: 1.02; }
+  [data-deck="on"] .process-deck-aside header > p:last-of-type { font-size: .85rem; }
+  [data-deck="on"] .process-deck-aside header > div { margin-top: 16px; }
+  [data-deck="on"] .process-deck-cards {
+    position: relative;
+    height: 260px;
+    border: 0;
+    margin-inline: 10px;
+    isolation: isolate;
+  }
+  [data-deck="on"] .process-deck-card {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 22px;
+    border: 1px solid #d9c8a5;
+    border-top: 3px solid var(--color-copper-500);
+    background: #fffaf2;
+    box-shadow: 0 15px 24px -15px rgb(8 38 26 / .4);
+    transform-origin: 50% 90%;
+    transform: translate3d(var(--deck-x, 0px), var(--deck-y, 0px), 0) rotate(var(--deck-rotation, 0deg));
+    opacity: var(--deck-opacity, 1);
+    will-change: transform, opacity;
+  }
+  [data-deck="on"] .process-deck-card:nth-child(even) { background: #f0e2c3; }
+  [data-deck="on"] .process-deck-card h3 { font-size: 1.6rem; }
+  [data-deck="on"] .process-deck-card p { margin-top: 10px; color: var(--color-ink-soft); font-size: .88rem; }
+  [data-deck="on"] .process-deck-number { padding: 0; font-size: .8rem; }
+  [data-deck="on"] .process-deck-progress { display: flex; gap: 7px; margin-top: 20px; }
+  .process-deck-progress span { width: 24px; height: 2px; background: var(--color-line); }
+  [data-active="0"] .process-deck-progress span:nth-child(1),
+  [data-active="1"] .process-deck-progress span:nth-child(-n+2),
+  [data-active="2"] .process-deck-progress span:nth-child(-n+3),
+  [data-active="3"] .process-deck-progress span:nth-child(-n+4) { background: var(--color-copper-600); }
+}
+@media print {
+  .process-deck-track[data-deck] { height: auto !important; }
+  .process-deck-track .process-deck-pin { position: static; height: auto; overflow: visible; }
+  .process-deck-track .process-deck-cards { height: auto; }
+  .process-deck-track .process-deck-card { position: static; transform: none; opacity: 1; }
 }

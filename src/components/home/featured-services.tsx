@@ -42,20 +42,22 @@ export function FeaturedServices() {
 
         <ServiceDeck
           titleAs="h4"
-          items={top.map((s) => ({ slug: s.slug, name: s.name, short: s.short, problem: s.problem, lede: s.lede, image: s.image }))}
+          items={top.map((s) => ({ slug: s.slug, name: s.name, short: s.short, problem: s.problem, image: s.image }))}
         />
 
-        <p className="mt-4 text-sm leading-relaxed text-ink-soft">
+        <div className="mt-7 flex flex-col gap-5 border-t border-ink/15 pt-6 sm:flex-row sm:items-center sm:justify-between sm:gap-10">
+        <p className="max-w-[48ch] text-sm leading-relaxed text-ink-soft">
           These are a few common requests. Have another project for your home or business?{" "}
           <Link href="/contact" className="font-semibold underline underline-offset-4 hover:text-copper-700">Let&apos;s talk.</Link>
         </p>
 
         <Link
           href="/services"
-          className="mt-5 flex min-h-12 items-center justify-center gap-2 border border-ink/25 px-4 font-semibold text-ink hover:border-ink hover:bg-ink hover:text-volt-400 sm:ml-auto sm:w-fit"
+          className="flex min-h-12 shrink-0 items-center justify-center gap-4 border border-ink/25 px-5 text-sm font-semibold text-ink transition-colors hover:border-ink hover:bg-ink hover:text-volt-400"
         >
           Explore our services <span aria-hidden="true">→</span>
         </Link>
+        </div>
       </div>
     </section>
   );

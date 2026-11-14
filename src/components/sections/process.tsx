@@ -1,4 +1,5 @@
 import { ButtonLink } from "@/components/ui/button";
+import { ProcessFlipDeck } from "./process-flip-deck";
 
 /**
  * "How we work": one four-step sequence. This replaced the separate "How we
@@ -67,12 +68,11 @@ export function Process({ variant = "full" }: { variant?: "full" | "compact" }) 
     );
   }
 
-  // Option 4 layout: the title column on the left, the four steps as a ruled
-  // list on the right. Plain HTML, nothing depends on JS or motion.
+  // Desktop keeps its ruled list; phones enhance the same source-order steps.
   return (
     <section className="border-t border-line bg-mist-100 py-12 sm:py-16 lg:py-20" aria-labelledby="process-title">
-      <div className="container-x grid gap-9 lg:grid-cols-[0.9fr_1.1fr] lg:gap-[clamp(2rem,5vw,4.5rem)]">
-        <header data-reveal>
+      <ProcessFlipDeck steps={steps} aside={
+        <header>
           <p className="label-mono text-copper-600">How we work</p>
           <h2 id="process-title" className="mt-3 max-w-[9ch] text-[3rem] leading-[0.99] text-night-900 sm:text-[4rem] lg:text-[clamp(3rem,6vw,5.1rem)]">
             We&apos;d rather do it once.
@@ -84,24 +84,7 @@ export function Process({ variant = "full" }: { variant?: "full" | "compact" }) 
             </ButtonLink>
           </div>
         </header>
-
-        <ol className="border-t border-line" data-reveal>
-          {steps.map((s, i) => (
-            <li key={s.title} className="grid grid-cols-[2.6rem_1fr] gap-3.5 border-b border-line py-5 sm:py-6">
-              <span aria-hidden="true" className="pt-1.5 text-[0.7rem] font-medium tracking-[0.08em] text-copper-600">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h3 className="text-[1.55rem] leading-tight text-night-900">
-                  <span className="sr-only">Step {i + 1}: </span>
-                  {s.title}
-                </h3>
-                <p className="mt-1 max-w-[52ch] text-[0.85rem] leading-relaxed text-ink-mute">{s.body}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
+      } />
     </section>
   );
 }
