@@ -197,10 +197,9 @@
   background-color: var(--color-mist-50);
 }
 
-/* Homepage forest surfaces: directional light over a fine matte grain.
-   Background layers keep texture behind the content without extra elements,
-   scripts, animation or network requests. Adjacent reviews/areas share the
-   same horizontal shade; their light fades out at the shared section edge. */
+/* Homepage forest surfaces: sculpted panels, directional light and matte grain.
+   Broad diagonal seams have a dark cast shadow and a lit bevel. Everything is
+   painted behind content; no extra elements, scripts or moving backgrounds. */
 :where(
   section[aria-labelledby="ticket-title"],
   section[aria-labelledby="reviews-title"],
@@ -208,32 +207,106 @@
   section[aria-labelledby="careers-title"] .on-night
 ) {
   --forest-light: radial-gradient(
-    ellipse at 20% 4%,
-    #28603f 0%,
-    rgb(33 82 51 / 0.85) 32%,
-    transparent 76%
+    ellipse at 16% 0%,
+    #39704c 0%,
+    rgb(34 83 53 / 0.9) 34%,
+    transparent 74%
   );
   background-color: var(--color-night-900);
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='grain' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' seed='12' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='.10'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Cpath fill='white' filter='url(%23grain)' d='M0 0h180v180H0z'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(
+      118deg,
+      transparent 0 310px,
+      rgb(0 0 0 / 0.48) 311px,
+      rgb(0 0 0 / 0.2) 338px,
+      rgb(0 0 0 / 0.02) 375px,
+      rgb(167 218 174 / 0.2) 377px,
+      rgb(167 218 174 / 0.035) 379px,
+      transparent 440px 760px
+    ),
     var(--forest-light),
     linear-gradient(
-      90deg,
-      #0b3020,
-      #0b3020 24%,
-      #020e09
+      112deg,
+      #123d28,
+      #092b1c 48%,
+      #020c08
     );
-  background-size: 180px 180px, 100% 100%, 100% 100%;
-  background-repeat: repeat, no-repeat, no-repeat;
+  background-size: 180px 180px, auto, 100% 100%, 100% 100%;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+  box-shadow:
+    inset 0 1px 0 rgb(206 235 204 / 0.22),
+    inset 0 28px 38px -28px rgb(0 0 0 / 0.9),
+    inset 0 -1px 0 rgb(0 0 0 / 0.6);
 }
 
 section[aria-labelledby="areas-title"] {
   --forest-light: radial-gradient(
-    ellipse at 56% 100%,
-    rgb(40 96 63 / 0.8) 0%,
-    rgb(33 82 51 / 0.4) 34%,
-    transparent 76%
+    ellipse at 48% 85%,
+    rgb(57 112 76 / 0.9) 0%,
+    rgb(34 83 53 / 0.65) 35%,
+    transparent 78%
   );
+}
+
+/* The reviews sit above the wall, with a lit top edge and a visible cast shadow. */
+section[aria-labelledby="reviews-title"] .marquee {
+  padding-block: 8px 26px;
+  row-gap: 26px;
+}
+
+section[aria-labelledby="reviews-title"] figure {
+  border-color: rgb(120 174 131 / 0.3);
+  border-top-color: rgb(192 224 181 / 0.58);
+  border-bottom-color: rgb(0 0 0 / 0.7);
+  background: linear-gradient(145deg, #265d3d, #17462d 55%, #0d2c1e);
+  box-shadow:
+    0 18px 22px -8px rgb(0 0 0 / 0.8),
+    0 4px 6px rgb(0 0 0 / 0.35),
+    inset 1px 1px 0 rgb(183 220 170 / 0.16),
+    inset -1px -1px 0 rgb(0 0 0 / 0.28);
+}
+
+section[aria-labelledby="reviews-title"] figure figcaption span:last-child {
+  color: var(--color-mist-200);
+}
+
+section[aria-labelledby="reviews-title"] figure svg.text-volt-400 {
+  color: var(--color-volt-300);
+}
+
+/* Raised process tiles make the material treatment visible directly below the hero. */
+section[aria-labelledby="ticket-title"] ol > li {
+  padding: 14px 16px;
+  border: 1px solid rgb(124 177 135 / 0.32);
+  border-top-color: rgb(192 224 181 / 0.55);
+  border-bottom-color: rgb(0 0 0 / 0.65);
+  background: linear-gradient(145deg, #2b6543, #163f2a 72%);
+  box-shadow:
+    0 12px 18px -7px rgb(0 0 0 / 0.8),
+    inset 1px 1px 0 rgb(183 220 170 / 0.16);
+}
+
+/* The diagram is recessed into its own panel; the careers panel floats over paper. */
+section[aria-labelledby="areas-title"] > .container-x > [data-reveal] {
+  padding: clamp(0px, 1.5vw, 20px);
+  border: 1px solid rgb(138 182 140 / 0.3);
+  border-top-color: rgb(0 0 0 / 0.9);
+  border-bottom-color: rgb(166 204 156 / 0.45);
+  background: linear-gradient(145deg, #041b10, #123d29);
+  box-shadow:
+    inset 0 14px 24px -9px rgb(0 0 0 / 0.85),
+    inset 0 0 24px rgb(0 0 0 / 0.3),
+    0 1px 0 rgb(202 229 187 / 0.2);
+}
+
+section[aria-labelledby="careers-title"] .on-night {
+  border: 1px solid rgb(150 190 140 / 0.28);
+  border-top-color: rgb(184 216 166 / 0.55);
+  box-shadow:
+    0 30px 45px -16px rgb(2 17 10 / 0.6),
+    0 10px 16px -9px rgb(2 17 10 / 0.55),
+    inset 1px 1px 0 rgb(199 231 180 / 0.12);
 }
 
 /* Brighter labels and supporting text keep their contrast in the lit areas. */
@@ -244,12 +317,18 @@ section[aria-labelledby="areas-title"] {
   section[aria-labelledby="careers-title"]
 ) .label-mono,
 section[aria-labelledby="ticket-title"] ol > li > span:first-child {
-  color: var(--color-volt-200);
+  color: #fff1e2;
 }
 
 #reviews-title + p,
 section[aria-labelledby="ticket-title"] ol > li > span:last-child {
   color: var(--color-mist-100);
+}
+
+@media (width < 48rem) {
+  section[aria-labelledby="areas-title"] > .container-x > [data-reveal] {
+    padding: 0;
+  }
 }
 
 /* Animated current along an SVG path. Paused for reduced motion (below). */
