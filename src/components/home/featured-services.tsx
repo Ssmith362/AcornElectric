@@ -2,7 +2,7 @@ import Link from "next/link";
 import { publishedServices as services } from "@/content/services";
 import { ServiceDeck } from "./service-deck";
 
-/** The jobs that show the most (bigger scope, real photos) come first in the rail. */
+/** The bigger, most-requested jobs come first in the rail. Photos are illustrative, not a portfolio. */
 const FEATURED = [
   "ev-charger-installation",
   "electrical-panel-upgrades",
@@ -37,7 +37,7 @@ export function FeaturedServices() {
             <span aria-hidden="true" className="h-px w-8 bg-copper-500/60" />
             What we do most
           </h3>
-          <p className="label-mono text-ink-mute">Project showcase</p>
+          <p className="label-mono text-ink-mute">Common electrical projects</p>
         </div>
 
         <ServiceDeck

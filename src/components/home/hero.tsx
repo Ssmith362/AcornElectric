@@ -5,9 +5,9 @@ import { site, tel } from "@/lib/site";
 
 const ticket = [
   { k: "Look & explain", v: "Before any quote" },
-  { k: "Permit", v: "Pulled by us" },
+  { k: "Permit", v: "Pulled by us when required" },
   { k: "The work", v: "To code, cleaned up" },
-  { k: "Inspection", v: "Signed off" },
+  { k: "Inspection", v: "Arranged when required" },
 ];
 
 /**

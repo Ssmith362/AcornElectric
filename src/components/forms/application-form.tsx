@@ -3,9 +3,13 @@
 import Link from "next/link";
 import { useRef, useState, useSyncExternalStore } from "react";
 import { certificateOptions, openings } from "@/content/careers";
-import { EXPERIENCE_OPTIONS, LIMITS, RESUME, resumeNameOk, validateApplication, type Errors } from "@/lib/forms/rules";
+import { RESUME_FILE as RESUME, resumeKindFromName } from "@/lib/forms/attachments";
+import { EXPERIENCE_OPTIONS, LIMITS, validateApplication, type Errors } from "@/lib/forms/rules";
 import { mailto, site, tel } from "@/lib/site";
-import { Field, Honeypot, RadioPair, SendProblem, describedBy, inputCls } from "./fields";
+import { Field, Honeypot, RadioPair, RequiredNote, SendProblem, describedBy, inputCls } from "./fields";
+import { postForm } from "./post-form";
+
+const ORDER = ["opening", "name", "city", "email", "phone", "certificate", "certNumber", "experience", "residentialService", "driversLicense", "about", "resume"];
 
 const GENERAL = "General interest (future openings)";
 
@@ -22,6 +26,7 @@ export function ApplicationForm() {
   const fileRef = useRef<HTMLInputElement>(null);
 
   const [state, setState] = useState<State>("idle");
+  const [progress, setProgress] = useState(0);
   const [errors, setErrors] = useState<Errors>({});
   const [v, setV] = useState({
     opening: roles[0],
@@ -41,34 +46,45 @@ export function ApplicationForm() {
   function checkFile(): string | undefined {
     const f = fileRef.current?.files?.[0];
     if (!f) return undefined;
-    if (f.size > RESUME.maxBytes || !resumeNameOk(f.name)) return `Resume must be ${RESUME.label}.`;
+    if (f.size > RESUME.maxBytes || !resumeKindFromName(f.name)) return `Resume must be ${RESUME.label}.`;
+  }
+
+  function focusFirst(errs: Errors) {
+    const first = ORDER.find((k) => errs[k]);
+    if (!first) return;
+    const el =
+      first === "residentialService" || first === "driversLicense"
+        ? document.querySelector<HTMLInputElement>(`input[name="${first}"]`)
+        : document.getElementById(`ap-${first}`);
+    el?.focus();
   }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (state === "sending") return;
     const { errors: errs } = validateApplication(v);
     const fileErr = checkFile();
     if (fileErr) errs.resume = fileErr;
     setErrors(errs);
     if (Object.keys(errs).length) {
-      document.getElementById(`ap-${Object.keys(errs)[0]}`)?.focus();
+      focusFirst(errs);
       return;
     }
-    setState("sending");
     const fd = new FormData(e.currentTarget);
     fd.set("startedAt", String(startedAt));
-    try {
-      const res = await fetch("/api/apply", { method: "POST", body: fd });
-      if (res.ok) return setState("sent");
-      if (res.status === 422 || res.status === 413) {
-        const body = await res.json().catch(() => ({}));
-        setErrors(body.errors || {});
-        return setState("idle");
-      }
-      setState(res.status === 503 ? "unconfigured" : res.status === 429 ? "ratelimited" : "failed");
-    } catch {
-      setState("failed");
+    setProgress(0);
+    setState("sending");
+    const hasFile = !!fileRef.current?.files?.length;
+    const res = await postForm("/api/apply", fd, hasFile ? setProgress : undefined);
+    if (res.status === 200) return setState("sent");
+    if (res.status === 422 || res.status === 413) {
+      const serverErrors = (res.data.errors as Errors) || { resume: `Resume must be ${RESUME.label}.` };
+      setErrors(serverErrors);
+      setState("idle");
+      focusFirst(serverErrors);
+      return;
     }
+    setState(res.status === 503 ? "unconfigured" : res.status === 429 ? "ratelimited" : "failed");
   }
 
   if (state === "sent") {
@@ -79,24 +95,25 @@ export function ApplicationForm() {
         </p>
         <h3 className="mt-4 text-3xl font-bold">Thanks, {v.name.split(" ")[0]}. We&apos;ve got it.</h3>
         <p className="mt-3 max-w-xl text-ink-soft">
-          Your application for <strong>{v.opening}</strong> went straight to Acorn. Every application is read by a
-          person. If it looks like a fit, we&apos;ll reach out at {v.email} or {v.phone}.
+          Your application for <strong>{v.opening}</strong> went to Acorn. Every application is read by a person. If it
+          looks like a fit, we&apos;ll reach out at {v.email} or {v.phone}.
         </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate encType="multipart/form-data" className="relative bg-mist-50 p-5 text-ink sm:p-10" aria-labelledby="ap-heading">
+    <form onSubmit={onSubmit} noValidate encType="multipart/form-data" className="relative bg-mist-50 p-5 text-ink sm:p-10" aria-labelledby="ap-heading" aria-busy={state === "sending"}>
       <div className="flex items-center justify-between gap-4 border-b border-ink/10 pb-4">
         <h3 id="ap-heading" className="text-2xl font-bold sm:text-3xl">Apply</h3>
         <span className="label-mono text-[0.6rem] text-ink-mute">About 5 minutes</span>
       </div>
+      <RequiredNote />
       <Honeypot />
 
-      <div className="mt-6 grid gap-5 sm:grid-cols-2">
+      <fieldset disabled={state === "sending"} className="mt-5 grid gap-5 sm:grid-cols-2">
         <Field id="ap-opening" label="Role" error={errors.opening} className="sm:col-span-2">
-          <select id="ap-opening" name="opening" value={v.opening} onChange={set("opening")} className={inputCls}>
+          <select id="ap-opening" aria-required="true" name="opening" value={v.opening} onChange={set("opening")} className={inputCls}>
             {roles.map((r) => (
               <option key={r}>{r}</option>
             ))}
@@ -104,20 +121,20 @@ export function ApplicationForm() {
         </Field>
 
         <Field id="ap-name" label="Full name" error={errors.name}>
-          <input id="ap-name" name="name" autoComplete="name" maxLength={LIMITS.name} value={v.name} onChange={set("name")} aria-invalid={!!errors.name} aria-describedby={describedBy("ap-name", errors.name)} className={inputCls} />
+          <input id="ap-name" aria-required="true" name="name" autoComplete="name" maxLength={LIMITS.name} value={v.name} onChange={set("name")} aria-invalid={!!errors.name} aria-describedby={describedBy("ap-name", errors.name)} className={inputCls} />
         </Field>
         <Field id="ap-city" label="Where you're based" error={errors.city}>
-          <input id="ap-city" name="city" autoComplete="address-level2" maxLength={LIMITS.short} value={v.city} onChange={set("city")} aria-invalid={!!errors.city} aria-describedby={describedBy("ap-city", errors.city)} className={inputCls} />
+          <input id="ap-city" aria-required="true" name="city" autoComplete="address-level2" maxLength={LIMITS.short} value={v.city} onChange={set("city")} aria-invalid={!!errors.city} aria-describedby={describedBy("ap-city", errors.city)} className={inputCls} />
         </Field>
         <Field id="ap-email" label="Email" error={errors.email}>
-          <input id="ap-email" name="email" type="email" autoComplete="email" maxLength={LIMITS.email} value={v.email} onChange={set("email")} aria-invalid={!!errors.email} aria-describedby={describedBy("ap-email", errors.email)} className={inputCls} />
+          <input id="ap-email" aria-required="true" name="email" type="email" autoComplete="email" maxLength={LIMITS.email} value={v.email} onChange={set("email")} aria-invalid={!!errors.email} aria-describedby={describedBy("ap-email", errors.email)} className={inputCls} />
         </Field>
         <Field id="ap-phone" label="Phone" error={errors.phone}>
-          <input id="ap-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" maxLength={LIMITS.phone} value={v.phone} onChange={set("phone")} aria-invalid={!!errors.phone} aria-describedby={describedBy("ap-phone", errors.phone)} className={inputCls} />
+          <input id="ap-phone" aria-required="true" name="phone" type="tel" inputMode="tel" autoComplete="tel" maxLength={LIMITS.phone} value={v.phone} onChange={set("phone")} aria-invalid={!!errors.phone} aria-describedby={describedBy("ap-phone", errors.phone)} className={inputCls} />
         </Field>
 
         <Field id="ap-certificate" label="Washington electrician certificate" error={errors.certificate}>
-          <select id="ap-certificate" name="certificate" value={v.certificate} onChange={set("certificate")} aria-invalid={!!errors.certificate} aria-describedby={describedBy("ap-certificate", errors.certificate)} className={inputCls}>
+          <select id="ap-certificate" aria-required="true" name="certificate" value={v.certificate} onChange={set("certificate")} aria-invalid={!!errors.certificate} aria-describedby={describedBy("ap-certificate", errors.certificate)} className={inputCls}>
             <option value="" disabled>Choose one</option>
             {certificateOptions.map((c) => (
               <option key={c}>{c}</option>
@@ -129,7 +146,7 @@ export function ApplicationForm() {
         </Field>
 
         <Field id="ap-experience" label="Years working as an electrician" error={errors.experience}>
-          <select id="ap-experience" name="experience" value={v.experience} onChange={set("experience")} aria-invalid={!!errors.experience} aria-describedby={describedBy("ap-experience", errors.experience)} className={inputCls}>
+          <select id="ap-experience" aria-required="true" name="experience" value={v.experience} onChange={set("experience")} aria-invalid={!!errors.experience} aria-describedby={describedBy("ap-experience", errors.experience)} className={inputCls}>
             <option value="" disabled>Choose one</option>
             {EXPERIENCE_OPTIONS.map((x) => (
               <option key={x}>{x}</option>
@@ -142,7 +159,7 @@ export function ApplicationForm() {
         <RadioPair name="driversLicense" legend="Do you have a valid driver's license?" value={v.driversLicense} onChange={(x) => setV((s) => ({ ...s, driversLicense: x }))} error={errors.driversLicense} />
 
         <Field id="ap-about" label="Tell us about your work" hint="The kind of jobs you've run, what you're proud of, and what you want next." error={errors.about} className="sm:col-span-2">
-          <textarea id="ap-about" name="about" rows={6} maxLength={LIMITS.message} value={v.about} onChange={set("about")} aria-invalid={!!errors.about} aria-describedby={describedBy("ap-about", errors.about, "The kind of jobs you've run, what you're proud of, and what you want next.")} className={inputCls} />
+          <textarea id="ap-about" aria-required="true" name="about" rows={6} maxLength={LIMITS.message} value={v.about} onChange={set("about")} aria-invalid={!!errors.about} aria-describedby={describedBy("ap-about", errors.about, "The kind of jobs you've run, what you're proud of, and what you want next.")} className={inputCls} />
         </Field>
 
         <Field id="ap-resume" label="Resume" optional hint={RESUME.label} error={errors.resume} className="sm:col-span-2">
@@ -158,12 +175,12 @@ export function ApplicationForm() {
             className="block w-full border border-dashed border-ink/25 bg-peach-50 p-3 text-sm file:mr-4 file:border-0 file:bg-ink file:px-4 file:py-2 file:font-semibold file:text-mist-50"
           />
         </Field>
-      </div>
+      </fieldset>
 
       {state === "unconfigured" || state === "failed" || state === "ratelimited" ? (
         <div className="mt-6">
           <SendProblem status={state}>
-            Please email your details and resume to{" "}
+            Everything you entered is still here, so you can try again. Or email your details and resume to{" "}
             <a href={`${mailto}?subject=${encodeURIComponent(`Application: ${v.opening}`)}`} className="font-semibold text-ink underline">
               {site.email.value}
             </a>{" "}
@@ -182,7 +199,13 @@ export function ApplicationForm() {
           disabled={state === "sending"}
           className="inline-flex min-h-12 items-center justify-center gap-3 bg-ink px-7 font-semibold text-mist-50 transition-colors hover:bg-night-700 disabled:opacity-60"
         >
-          {state === "sending" ? "Sending…" : "Send application"}
+          {state === "sending"
+            ? progress > 0 && progress < 1
+              ? `Uploading… ${Math.round(progress * 100)}%`
+              : "Sending…"
+            : state === "idle"
+              ? "Send application"
+              : "Try sending again"}
           <span aria-hidden="true" className="h-2 w-2 rounded-full bg-volt-400 shadow-[0_0_8px_var(--color-volt-400)]" />
         </button>
         <p className="text-xs text-ink-mute">

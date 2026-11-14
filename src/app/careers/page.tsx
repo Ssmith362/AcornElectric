@@ -3,8 +3,7 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { ButtonLink } from "@/components/ui/button";
 import { JsonLd } from "@/components/ui/json-ld";
 import { Photo } from "@/components/ui/photo";
-import { ReviewFlag, SHOW_REVIEW_FLAGS } from "@/components/ui/review-flag";
-import { isPostingComplete, openings } from "@/content/careers";
+import { isPostingComplete, openings, postingDetails } from "@/content/careers";
 import { jobPostingSchema } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
 
@@ -130,41 +129,9 @@ export default function CareersPage() {
                   </p>
                   <h3 className="mt-4 text-3xl font-bold">{o.title}</h3>
                   <p className="mt-4 leading-relaxed text-mist-300">{o.summary}</p>
-                  {/* Unconfirmed details show a review flag in previews and are left out
-                      entirely in production, so no label ever renders empty. */}
-                  <dl className="mt-5 grid grid-cols-2 gap-4 border-t border-white/10 pt-5 text-sm sm:mt-6">
-                    {[
-                      { k: "Location", v: "Spokane, WA", flag: "", wide: false },
-                      {
-                        k: "Type",
-                        v: o.posting.employmentType ? (o.posting.employmentType === "FULL_TIME" ? "Full-time" : "Part-time") : null,
-                        flag: "type",
-                        wide: false,
-                      },
-                      {
-                        k: "Pay",
-                        v: o.posting.pay
-                          ? `$${o.posting.pay.min}–$${o.posting.pay.max} / ${o.posting.pay.unit === "HOUR" ? "hour" : "year"}`
-                          : null,
-                        flag: "pay range",
-                        wide: false,
-                      },
-                      { k: "Schedule", v: o.posting.schedule, flag: "schedule", wide: false },
-                      {
-                        k: "Benefits",
-                        v: o.posting.benefits?.length ? o.posting.benefits.join(" · ") : null,
-                        flag: "benefits (none listed until confirmed)",
-                        wide: true,
-                      },
-                    ]
-                      .filter((row) => row.v || SHOW_REVIEW_FLAGS)
-                      .map((row) => (
-                        <div key={row.k} className={row.wide ? "col-span-2" : undefined}>
-                          <dt className="label-mono text-[0.6rem] text-mist-400">{row.k}</dt>
-                          <dd className="mt-1.5">{row.v ?? <ReviewFlag tone="dark">{row.flag}</ReviewFlag>}</dd>
-                        </div>
-                      ))}
-                  </dl>
+                  {/* Only confirmed terms are listed. Anything Acorn hasn't supplied yet is
+                      left off and named once below, never guessed. */}
+                  <PostingTerms opening={o} />
                 </div>
                 <div className="lg:col-span-7">
                   <h4 className="label-mono text-mist-400">What you bring</h4>
@@ -178,9 +145,6 @@ export default function CareersPage() {
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-6">
-                    <ReviewFlag tone="dark">exact licensing requirement and role details</ReviewFlag>
-                  </p>
                 </div>
               </article>
             ))}
@@ -219,6 +183,29 @@ export default function CareersPage() {
       {live.map((o) => (
         <JsonLd key={o.id} data={jobPostingSchema(o)} />
       ))}
+    </>
+  );
+}
+
+function PostingTerms({ opening }: { opening: (typeof openings)[number] }) {
+  const { rows, missing } = postingDetails(opening);
+  const list = missing.join(", ").replace(/, ([^,]+)$/, " and $1");
+  return (
+    <>
+      <dl className="mt-5 grid grid-cols-2 gap-4 border-t border-white/10 pt-5 text-sm sm:mt-6">
+        {rows.map((row) => (
+          <div key={row.k} className={row.wide ? "col-span-2" : undefined}>
+            <dt className="label-mono text-[0.6rem] text-mist-400">{row.k}</dt>
+            <dd className="mt-1.5">{row.v}</dd>
+          </div>
+        ))}
+      </dl>
+      {missing.length ? (
+        <p className="mt-5 border-l-2 border-volt-500 pl-3 text-sm leading-relaxed text-mist-300">
+          {list.charAt(0).toUpperCase() + list.slice(1)} for this role aren&apos;t listed here yet. Ask us about them when
+          you apply.
+        </p>
+      ) : null}
     </>
   );
 }

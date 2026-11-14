@@ -2,7 +2,9 @@ import type { ReactNode } from "react";
 
 /**
  * Form primitives. Every input gets a visible <label>, an optional hint, and an
- * error message wired up with aria-describedby / aria-invalid.
+ * error message wired up with aria-describedby / aria-invalid. Required inputs
+ * carry aria-required; optional ones show an "Optional" tag. Each form says at
+ * the top that everything else is required (<RequiredNote />).
  */
 
 export const inputCls =
@@ -32,13 +34,14 @@ export function Field({
         {optional ? <span className="label-mono text-[0.6rem] font-normal text-ink-mute">Optional</span> : null}
       </label>
       {children}
-      {hint && !error ? (
+      {hint ? (
         <p id={`${id}-hint`} className="mt-1.5 text-sm text-ink-mute">
           {hint}
         </p>
       ) : null}
       {error ? (
         <p id={`${id}-error`} className="mt-1.5 text-sm font-medium text-danger">
+          <span className="sr-only">Error: </span>
           {error}
         </p>
       ) : null}
@@ -46,16 +49,24 @@ export function Field({
   );
 }
 
+/** Error first (so it's read first), then the hint. */
 export function describedBy(id: string, error?: string, hint?: string) {
-  if (error) return `${id}-error`;
-  if (hint) return `${id}-hint`;
-  return undefined;
+  const ids = [error ? `${id}-error` : "", hint ? `${id}-hint` : ""].filter(Boolean);
+  return ids.length ? ids.join(" ") : undefined;
 }
 
-/** Off-screen honeypot. Real people never see or fill it. */
+export function RequiredNote() {
+  return <p className="mt-4 text-sm text-ink-mute">Fields marked Optional can be left blank. Everything else is needed to send.</p>;
+}
+
+/**
+ * Off-screen honeypot. Real people never see or fill it: `inert` keeps it out
+ * of keyboard focus and the accessibility tree, and tabIndex -1 covers
+ * browsers without `inert`. Bots that fill every input still find it.
+ */
 export function Honeypot() {
   return (
-    <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+    <div aria-hidden="true" inert className="absolute -left-[9999px] h-px w-px overflow-hidden">
       <label>
         Company website
         <input type="text" name="company_site" tabIndex={-1} autoComplete="off" defaultValue="" />
@@ -91,6 +102,7 @@ export function RadioPair({
               name={name}
               value={opt}
               checked={value === opt}
+              required
               onChange={() => onChange(opt)}
               className="sr-only"
             />

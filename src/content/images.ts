@@ -14,9 +14,16 @@
  *
  * Only use photos Acorn has permission to publish. Real job photos beat stock.
  *
- * Real photos below were supplied by Eric Beisley (Acorn) on Oct 16 2026 for
- * use on the site. Originals: IMG_xxxx.jpg in his email / Google Drive share.
- * Slots still on a placeholder need a photo from Acorn (see `brief`).
+ * PROVENANCE (Nov 2026). Photos without a comment came from Eric Beisley's
+ * Oct 16 2026 share (IMG_xxxx.jpg). Acorn has NOT confirmed that each one shows
+ * its own work, and slots marked "AI-generated stand-in" are synthetic. So:
+ *   - Alt text describes only what is visible. No "Acorn job", no customer
+ *     location, no exact counts that a crop might contradict.
+ *   - Section labels say "common projects", never "our work" or "showcase".
+ * Originals live in the Flourish Now Digital drive (Acorn/Photos). The site
+ * copies are those originals re-encoded at full size (1536 or 2048 px long
+ * edge, EXIF stripped). Files that still need larger or real replacements are
+ * listed in docs/handoff.md, "Images".
  */
 
 export type Art =
@@ -48,9 +55,11 @@ export type ImageEntry = {
 const landscape = { width: 1600, height: 1100 };
 
 export const images = {
+  // Not rendered since the truck hero (Nov 2026); the same photo now serves
+  // "new-construction" below.
   "home-hero": {
     src: "/images/kitchen-remodel-lighting.webp",
-    alt: "Finished kitchen remodel with recessed lights, pendant lights over the island and under-cabinet lighting",
+    alt: "Finished kitchen with recessed lights, pendant lights over the island and under-cabinet lighting",
     ...landscape,
     focus: "50% 50%",
     art: "recessed",
@@ -58,13 +67,13 @@ export const images = {
   },
   ev: {
     src: "/images/ev-charger-exterior-wall.webp",
-    alt: "Level 2 EV charger mounted on the outside wall of a Spokane-area home, cable coiled on the unit",
+    alt: "Level 2 EV charger mounted on a home's exterior wall, with its cable coiled on the unit",
     ...landscape,
     focus: "50% 55%",
     art: "ev",
     brief: "Wall-mounted Level 2 charger, tidy conduit run to the panel",
   },
-  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  // AI-generated stand-in (Nov 2026). Illustrative only; replace with a real Acorn photo when one exists.
   panel: {
     src: "/images/new-200-amp-panel.webp",
     alt: "New main breaker panel with the door open showing neatly organized breakers, beside the meter on a garage wall",
@@ -82,7 +91,7 @@ export const images = {
     art: "subpanel",
     brief: "Subpanel in a detached shop or garage",
   },
-  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  // AI-generated stand-in (Nov 2026). Illustrative only; replace with a real Acorn photo when one exists.
   hottub: {
     src: "/images/hot-tub-disconnect.webp",
     alt: "Hot tub on a deck with its disconnect box mounted on the house wall and conduit running to the tub",
@@ -94,7 +103,7 @@ export const images = {
   },
   recessed: {
     src: "/images/kitchen-recessed-pendants.webp",
-    alt: "Kitchen with recessed ceiling lights and three glass pendant lights over the island",
+    alt: "Kitchen with recessed ceiling lights and glass pendant lights over the island",
     ...landscape,
     focus: "50% 40%",
     art: "recessed",
@@ -124,7 +133,7 @@ export const images = {
     art: "recessed",
     brief: "Ceiling fan on a covered patio",
   },
-  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  // AI-generated stand-in (Nov 2026). Illustrative only; replace with a real Acorn photo when one exists.
   bathroomfan: {
     src: "/images/bathroom-fan-controls.webp",
     alt: "Bathroom exhaust fan and light in the ceiling with the wall switch and fan control beside the door",
@@ -150,7 +159,7 @@ export const images = {
     art: "exterior",
     brief: "House at dusk with new exterior lights",
   },
-  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  // AI-generated stand-in (Nov 2026). Illustrative only; replace with a real Acorn photo when one exists.
   repair: {
     src: "/images/outlet-fault-tracing.webp",
     alt: "Electrician in work gloves testing an open wall outlet with a voltage tester",
@@ -180,7 +189,7 @@ export const images = {
   },
   crew: {
     src: "/images/eric-beisley-service-pedestal.webp",
-    alt: "Eric Beisley, owner of Acorn Electric, beside a newly installed meter pedestal",
+    alt: "Eric Beisley, owner of Acorn Electric, with two children beside a newly installed meter pedestal",
     width: 1200,
     height: 1500,
     focus: "50% 60%",
@@ -229,15 +238,18 @@ export const images = {
     art: "recessed",
     brief: "Remodel or addition with new lighting",
   },
+  // Was the empty-garage photo (new-garage-lighting.webp). The finished
+  // kitchen reads far better for a new-home page; a real Acorn new-build photo
+  // (whole-house exterior or finished interior) would be better still.
   "new-construction": {
-    src: "/images/new-garage-lighting.webp",
-    alt: "New garage with long LED shop lights across a white ceiling",
+    src: "/images/kitchen-remodel-lighting.webp",
+    alt: "Finished kitchen with recessed lights, pendant lights over the island and under-cabinet lighting",
     ...landscape,
-    focus: "50% 40%",
+    focus: "50% 55%",
     art: "recessed",
     brief: "New build, wired and lit",
   },
-  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  // AI-generated stand-in (Nov 2026). Illustrative only; replace with a real Acorn photo when one exists.
   "knob-tube": {
     src: "/images/knob-and-tube-basement.webp",
     alt: "Original knob and tube wiring on basement joists, cloth-covered wires running through white porcelain knobs and tubes",
@@ -247,7 +259,9 @@ export const images = {
     art: "inspection",
     brief: "Knob and tube wiring in a basement, attic or crawlspace",
   },
-  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  // AI-generated stand-in (Nov 2026). NOT RENDERED and should not be: the
+  // conductors run across the front of the breaker cover, which no installer
+  // would do. Needs a real photo before any page uses this slot.
   surge: {
     src: "/images/surge-protector-panel.webp",
     alt: "Whole-home surge protector mounted beside an open breaker panel",
@@ -257,7 +271,7 @@ export const images = {
     art: "panel",
     brief: "Whole-home surge protector installed at the panel",
   },
-  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  // AI-generated stand-in (Nov 2026). Not rendered on any page at present.
   "real-estate": {
     src: "/images/inspection-repair-fix.webp",
     alt: "Corrected junction box and outlet on a basement wall with an inspection report nearby",
@@ -267,7 +281,7 @@ export const images = {
     art: "inspection",
     brief: "Repair called out on a home inspection, fixed",
   },
-  // AI-generated stand-in (Nov 2026). Replace with a real Acorn job photo before launch.
+  // AI-generated stand-in (Nov 2026). Illustrative only; replace with a real Acorn photo when one exists.
   commercial: {
     src: "/images/commercial-led-lighting.webp",
     alt: "Commercial space with new LED linear lighting and an electrical panel on the wall",

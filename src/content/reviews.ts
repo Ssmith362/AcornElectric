@@ -18,7 +18,11 @@ export type Review = {
   source: "Google";
   /** Stars the reviewer actually gave (all 20 below gave 5). */
   rating: number;
-  /** Google's own relative wording as of Oct 19, 2026. Refresh when you refresh the list. */
+  /**
+   * Google's relative wording as read on Oct 19, 2026. Kept for reference only;
+   * NOT rendered, because relative dates go stale. Don't show it unless it's
+   * replaced with a verified date.
+   */
   when?: string;
 };
 

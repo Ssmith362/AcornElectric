@@ -16,7 +16,7 @@ Status key: ✅ confirmed · 🟡 sourced but unconfirmed · ❌ unknown
 | Public email | eric@callacornelectric.com | ✅ | Eric's email signature. Still set where form leads/applications go (`LEADS_TO`, `CAREERS_TO`) |
 | **Public address** | *not published* | ❌ | Site lists 4615 E 6th Ave, Spokane Valley; Google reportedly lists 3707 E Decatur Ave #2, Spokane. Decide which is real, and whether to show an address at all (service-area business). Update Google Business Profile to match |
 | **WA contractor license #** | ACORNEL752C5 | 🟡 | Third-party listing only. Verify on https://secure.lni.wa.gov/verify/ |
-| Hours | *not shown* | ❌ | |
+| Hours | Mon–Sat 8 a.m.–5 p.m., Sun closed | ✅ | Google Business Profile hours, confirmed by the owner (Nov 2026). Contact page, footer and schema |
 | Emergency / after-hours service | *not claimed anywhere* | ❌ | Old site mentions "emergency services". Don't add until confirmed, with real availability |
 | Official website URL | https://www.callacornelectric.com | 🟡 | Eric confirmed he bought callacornelectric.com on Wix. Confirm www vs non-www for the canonical host |
 | Social profiles | *none linked* | ❌ | Only add genuine Acorn accounts. Old site's social links reportedly point to wrong profiles |
@@ -105,10 +105,21 @@ is not the same as ranking for it, so only three get a dedicated page.
 | Fully stocked tools provided | ✅ | Meeting notes |
 | Team book club | ✅ | Meeting notes. The current book is deliberately NOT named on the site (it would go out of date) |
 | Leadership / management growth | ✅ | Meeting notes |
-| **Role title + licensing requirement** | 🟡 | "Residential Electrician (02)". Confirm exact requirement (02 only, or 01 also?) |
+| **Role title + licensing requirement** | 🟡 | Shown as "Residential Electrician" with "a current Washington electrician certificate for residential work" (Nov 2026). Eric to confirm the exact requirement (02 only, or 01 also?) |
 | **Pay range** | ❌ | WA pay-transparency law (RCW 49.58.110) applies to employers with 15+ employees; confirm whether it applies. JobPosting schema stays off until pay, dates and type are set |
-| Employment type, schedule, benefits | ❌ | Shown as "To confirm" in preview |
-| Where applications go | ❌ | `CAREERS_TO` env var |
+| Employment type, schedule, benefits, posting dates | ❌ | Left off the page; one line tells applicants they aren't listed yet. Eric is supplying them |
+| Where applications go | ✅ | eric@callacornelectric.com (owner decision, Nov 2026); the code defaults to it, `CAREERS_TO` can override |
+
+## Privacy notice (`src/app/privacy/page.tsx`)
+
+Rewritten Nov 13, 2026 from the actual code. Business-policy statements Eric
+still needs to confirm:
+
+| Statement | Status |
+|---|---|
+| Acorn doesn't sell or share contact details for marketing | 🟡 Kept from the earlier draft; confirm |
+| Requests and applications are kept in the business email like other customer mail; deletion requests are handled from the inbox | 🟡 Confirm retention practice and who can access eric@ |
+| Privacy contact is eric@callacornelectric.com | 🟡 Confirm, or name another address |
 
 ## Brand and assets
 
@@ -117,7 +128,7 @@ is not the same as ranking for it, so only three get a dedicated page.
 | Logo | ✅ | Real logo set from Eric (8 JPG exports, Oct 16 2026). Transparent cut-outs in `public/brand/`. Eric also has AI/EPS masters if we need vectors |
 | Brand colours | ✅ | Sampled from the logo: green #013328, cream #FEEFC6, yellow #FFFF01, orange #E0661D. In `src/app/globals.css` |
 | Brand fonts | ✅ / 🟡 | Luckiest Guy (primary) installed. Secondary is Modica SemiBold, a licensed face: site uses Montserrat as a stand-in until Eric sends the web licence/file |
-| Photos | 🟡 | 14 real job photos from Eric (Oct 16 2026) placed in `src/content/images.ts`. Still on placeholders: hot tub, attic fan, repair, van, surge protector, home-sale repair, commercial |
+| Photos | 🟡 | Photos from Eric's Oct 16 2026 share plus AI-generated stand-ins (marked in `src/content/images.ts`). Owner (Nov 2026): some are stock or AI, so none are presented as Acorn's projects. Replacement list: `handoff.md`, November section |
 | Careers photo of Eric with two kids | 🟡 | Eric sent it; confirm he's happy with the kids on the public careers page |
 | Real customer reviews (text + name) | ✅ | 20 Google reviews (all 5 stars, with Google's relative dates) copied word for word into `src/content/reviews.ts` (Oct 19, 2026), shown as a two-ribbon marquee like Therapy in Motion. Refresh from Google when new ones come in |
 | Owner bio / photo (optional) | ❌ | Would strengthen an About section later |

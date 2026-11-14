@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
-import { ReviewFlag } from "@/components/ui/review-flag";
 import { communities } from "@/content/areas";
 import { mailto, site, tel } from "@/lib/site";
 import { serviceNav } from "./nav";
@@ -31,9 +30,20 @@ export function SiteFooter() {
                 <a href={mailto} className="inline-block py-1 text-white underline-offset-4 hover:underline">
                   {site.email.value}
                 </a>
-                {!site.email.verified ? <ReviewFlag tone="dark">lead inbox</ReviewFlag> : null}
               </dd>
             </div>
+            {site.hours.verified ? (
+              <div>
+                <dt className="label-mono text-[0.62rem] text-mist-400">Office hours</dt>
+                <dd className="mt-1 leading-relaxed">
+                  {site.hours.value.map((h) => (
+                    <span key={h.label} className="block">
+                      {h.label}: {h.display}
+                    </span>
+                  ))}
+                </dd>
+              </div>
+            ) : null}
           </dl>
         </div>
 

@@ -14,7 +14,7 @@ Digital" on any client-facing output.
 
 ## Before you call anything done
 
-1. `npm run check` (case check, typecheck, lint, build). It must pass.
+1. `npm run check` (case check, typecheck, lint, tests, build). It must pass.
 2. `npm run start`, then `npm run check:site -- http://localhost:3000`.
 
 ## Where things live
@@ -50,16 +50,28 @@ surfaces, mist = paper/cream. Orange buttons carry dark text (white fails AA).
 Homepage order: truck hero + "Done right." process strip (`home/hero.tsx`),
 the Tesla-at-Fred-Meyer intro and "What we do most" side-scroll rail
 (`home/featured-services.tsx`, `home/service-deck.tsx`: always a peek of the
-next card; 1 on phones, 2 on tablets, 3 on desktop; the cards use real
-job photos, and the separate project showcase was merged into the rail), "We'd rather
-do it once." four steps
+next card; 1 on phones, 2 on tablets, 3 on desktop; labelled "Common
+electrical projects": some photos are stock or AI-generated, so never call them
+Acorn's work), "We'd rather do it once." four steps
 (`sections/process.tsx`), review ribbons on forest green with the squirrel
 (`home/reviews.tsx`), the service-area map (`sections/area-map.tsx`, the original
 circuit-trace diagram restyled to Option 4), careers teaser, and the request form CTA.
 
+## Forms
+
+- Shared rules: `src/lib/forms/rules.ts` (fields), `attachments.ts` (files).
+  Handlers: `src/lib/forms/handlers.ts`; the API routes only re-export them.
+- Attachments: 5 files, 4 MB total (Vercel's 4.5 MB request limit is the real
+  ceiling). Resumes 4 MB. Never raise these without a different upload path.
+- Test with `MAIL_TRANSPORT=log` in `.env.local`; never send test submissions
+  to Eric. `npm test` stubs Resend.
+- Keep `src/app/privacy/page.tsx` true to the code: change it in the same
+  commit as any new storage, analytics or third-party service.
+
 ## SEO rules
 
-- Indexing is off (`NEXT_PUBLIC_ALLOW_INDEXING=false`) until launch.
+- Indexing is off until launch. Rules and the env matrix: `src/lib/seo.ts`
+  and `docs/handoff.md` (November section). Previews can never be indexed.
 - One distinct search purpose per page; related small jobs can share sections.
 - Current service decisions and redirects: `docs/service-consolidation-2026-10-24.md`.
 - No em dashes in new customer-facing copy. No arbitrary service-count claims.

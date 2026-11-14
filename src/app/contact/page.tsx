@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ServiceRequestForm } from "@/components/forms/service-request-form";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { PhoneGlyph } from "@/components/ui/button";
-import { ReviewFlag, SHOW_REVIEW_FLAGS } from "@/components/ui/review-flag";
 import { communities } from "@/content/areas";
 import { pageMetadata } from "@/lib/seo";
 import { mailto, site, tel } from "@/lib/site";
@@ -64,22 +63,17 @@ export default function ContactPage() {
                   <a href={mailto} className="inline-block py-1 text-lg underline underline-offset-4 hover:text-volt-300">
                     {site.email.value}
                   </a>
-                  {!site.email.verified ? <ReviewFlag tone="dark">lead inbox</ReviewFlag> : null}
                 </dd>
               </div>
-              {site.hours || SHOW_REVIEW_FLAGS ? (
+              {site.hours.verified ? (
                 <div>
-                  <dt className="label-mono text-[0.62rem] text-mist-400">Hours</dt>
+                  <dt className="label-mono text-[0.62rem] text-mist-400">Office hours</dt>
                   <dd className="mt-1.5 text-mist-200 sm:mt-2">
-                    {site.hours ? (
-                      site.hours.map((h) => (
-                        <span key={h.days} className="block">
-                          {h.days}: {h.open}–{h.close}
-                        </span>
-                      ))
-                    ) : (
-                      <ReviewFlag tone="dark">business hours</ReviewFlag>
-                    )}
+                    {site.hours.value.map((h) => (
+                      <span key={h.label} className="block">
+                        {h.label}: {h.display}
+                      </span>
+                    ))}
                   </dd>
                 </div>
               ) : null}

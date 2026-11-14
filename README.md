@@ -9,7 +9,7 @@ Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Node deploy.
 npm install
 cp .env.example .env.local   # then fill in what you have
 npm run dev                  # http://localhost:3000
-npm run check                # case check + typecheck + lint + production build
+npm run check                # case check + typecheck + lint + tests + production build
 npm run start                # serve the production build
 npm run check:site -- http://localhost:3000   # crawl + SEO/a11y checks
 ```
