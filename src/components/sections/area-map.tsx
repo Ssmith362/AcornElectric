@@ -28,7 +28,7 @@ export function AreaMap() {
   return (
     <figure className="relative">
       <svg viewBox="0 0 420 270" className="h-auto w-full" role="group" aria-labelledby="map-title">
-        <title id="map-title">Diagram of Acorn Electric&apos;s service area: Spokane and eleven nearby communities (not to scale)</title>
+        <title id="map-title">Acorn Electric&apos;s service area map: Spokane and eleven nearby communities</title>
         {/* river */}
         <path
           d="M10 214c40-8 70-30 110-26s60 16 92 10 70-10 110-4 70 10 92 6"
