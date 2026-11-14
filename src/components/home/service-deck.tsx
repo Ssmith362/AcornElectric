@@ -30,7 +30,8 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
   const [atEnd, setAtEnd] = useState(false);
   const [announce, setAnnounce] = useState("");
   const [open, setOpen] = useState<Record<string, boolean>>({});
-  const [desktopOpen, setDesktopOpen] = useState<string | null>(null);
+  const [desktopHover, setDesktopHover] = useState<string | null>(null);
+  const [desktopFocus, setDesktopFocus] = useState<string | null>(null);
   const n = items.length;
 
   /** Card start positions measured from the first card, so padding doesn't matter. */
@@ -200,33 +201,47 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
         </button>
       </div>
       </div>
-      <div className="hidden xl:flex xl:flex-col xl:gap-5" aria-label="Featured services">
-        {[0, 1].map((row) => (
-          <div key={row} className="flex min-h-[25rem] gap-5" role="list">
-            {items.slice(row * 3, row * 3 + 3).map((service, col) => {
-              const i = row * 3 + col;
-              const selected = desktopOpen === service.slug;
-              const detailId = `${id}-desktop-${i}`;
-              return (
-                <article key={service.slug} role="listitem" className={`relative flex min-w-0 flex-col overflow-hidden border border-ink/15 bg-peach-50 transition-[flex-grow,box-shadow] duration-300 ${selected ? "flex-[2] shadow-[0_16px_36px_rgba(25,54,39,0.16)]" : "flex-1"}`}>
-                  <Photo id={service.image} ticks={false} compactLabel sizes="(min-width: 1280px) 40vw, 33vw" className="aspect-[16/9]! shrink-0" />
-                  <div className="flex flex-1 flex-col p-5 2xl:p-6">
-                    <Title className="font-sans text-xl leading-snug font-bold text-ink 2xl:text-2xl"><Link href={`/services/${service.slug}`} className="hover:text-copper-700">{service.short}</Link></Title>
-                    <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-soft">{service.problem}</p>
-                    <div id={detailId} className={selected ? "mt-3 border-l-2 border-volt-500 pl-3 text-[0.92rem] leading-relaxed text-ink-soft" : "hidden"}>{service.lede}</div>
-                    <div className="mt-auto flex items-center justify-between gap-3 pt-4">
-                      <button type="button" aria-expanded={selected} aria-controls={detailId} onClick={() => setDesktopOpen(selected ? null : service.slug)} className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-copper-700 hover:text-ink">
-                        <span aria-hidden="true" className={`relative h-3 w-3 before:absolute before:top-1/2 before:left-0 before:h-px before:w-3 before:bg-current after:absolute after:top-0 after:left-1/2 after:h-3 after:w-px after:bg-current after:transition-transform ${selected ? "after:scale-y-0" : ""}`} />
-                        {selected ? "Collapse" : "Expand"}<span className="sr-only"> {service.short}</span>
-                      </button>
-                      <Link href={`/services/${service.slug}`} className="inline-flex min-h-11 items-center text-sm font-semibold text-ink underline decoration-volt-500 decoration-2 underline-offset-4 hover:text-copper-700">Details<span className="sr-only">: {service.name}</span> <span aria-hidden="true">&nbsp;→</span></Link>
-                    </div>
+      <div className="hidden h-[25rem] gap-2 xl:flex" role="list" aria-label="Featured services">
+        {items.map((service) => {
+          const expanded = desktopHover === service.slug || desktopFocus === service.slug;
+          return (
+            <article
+              key={service.slug}
+              role="listitem"
+              onMouseEnter={() => setDesktopHover(service.slug)}
+              onMouseLeave={(event) => {
+                setDesktopHover(null);
+                if (event.currentTarget.contains(document.activeElement)) return;
+              }}
+              onFocusCapture={() => setDesktopFocus(service.slug)}
+              onBlurCapture={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setDesktopFocus(null);
+              }}
+              style={{ flexGrow: expanded ? 3 : 1 }}
+              className="group relative min-w-0 flex-1 overflow-hidden border border-ink/15 bg-night-950 transition-[flex-grow,box-shadow] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:shadow-[0_18px_40px_rgb(8_38_26/.22)] focus-within:shadow-[0_18px_40px_rgb(8_38_26/.22)]"
+            >
+              <Photo id={service.image} ticks={false} compactLabel sizes="(min-width: 1280px) 42vw, 100vw" className="absolute inset-0 h-full w-full" />
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/40 to-night-950/5 transition-colors duration-500 group-hover:from-night-950/95 group-focus-within:from-night-950/95" />
+              <div className="absolute inset-x-0 bottom-0 p-4 2xl:p-5">
+                <Title className="font-display text-lg leading-tight font-semibold text-white drop-shadow-sm 2xl:text-xl">
+                  <Link href={`/services/${service.slug}`} className="inline-block rounded-sm focus-visible:outline-offset-4">
+                    {service.short}
+                  </Link>
+                </Title>
+                <div className={`grid transition-[grid-template-rows,opacity,margin] duration-300 ${expanded ? "mt-2 grid-rows-[1fr] opacity-100" : "mt-0 grid-rows-[0fr] opacity-0"}`}>
+                  <div className="overflow-hidden">
+                    <p className="max-w-[34ch] text-sm leading-relaxed text-mist-100">{service.problem}</p>
+                    <Link href={`/services/${service.slug}`} className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-volt-300 underline decoration-volt-400/70 underline-offset-4 hover:text-white">
+                      Explore {service.name}<span aria-hidden="true">↗</span>
+                    </Link>
                   </div>
-                </article>
-              );
-            })}
-          </div>
-        ))}
+                </div>
+              </div>
+              <span aria-hidden="true" className="pointer-events-none absolute top-3 left-3 h-3 w-3 border-t border-l border-volt-400/80 opacity-60 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100" />
+              <span aria-hidden="true" className="pointer-events-none absolute top-3 right-3 h-3 w-3 border-t border-r border-volt-400/80 opacity-60 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100" />
+            </article>
+          );
+        })}
       </div>
       <p className="sr-only" aria-live="polite">
         {announce}
