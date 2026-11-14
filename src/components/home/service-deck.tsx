@@ -8,18 +8,10 @@ import type { ImageKey } from "@/content/images";
 export type DeckItem = { slug: string; name: string; short: string; problem: string; lede: string; image: ImageKey };
 
 /**
- * "What we do most": a side-scrolling card rail on the cream surface, at every
- * screen size, always with a peek of the next card so it reads as scrollable:
- * one card on phones, two on tablets, three on desktop.
- *
- * Built on CSS scroll-snap, so swiping, trackpads and shift+wheel all work
- * natively. Previous/Next buttons, dot buttons and a position readout drive
- * it too. Accessibility follows the APG carousel pattern: a labelled region
- * with aria-roledescription="carousel", each card a "slide" group labelled
- * "n of N", a polite live region announcing the position after a button
- * press, and no auto-rotation. Each card's short detail is a disclosure
- * button (aria-expanded); the detail stays in the HTML either way. Nothing
- * depends on hover. `titleAs` sets the card heading level for the outline.
+ * "What we do most": swipeable cards on phones and tablets, then an expandable
+ * three-column card grid on wide desktop. Each card's short detail opens with
+ * its disclosure button; nothing depends on hover. `titleAs` sets the card
+ * heading level for the outline.
  */
 export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[]; titleAs?: "h3" | "h4" }) {
   const id = useId();
@@ -100,11 +92,12 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
     "flex h-11 w-11 items-center justify-center border border-ink/25 text-ink transition-colors hover:border-ink hover:bg-ink hover:text-volt-400 disabled:opacity-35 disabled:hover:border-ink/25 disabled:hover:bg-transparent disabled:hover:text-ink";
 
   return (
-    <div role="region" aria-roledescription="carousel" aria-label="Services we do most" className="mt-5 sm:mt-6">
+    <div role="region" aria-label="Services we do most" className="mt-5 sm:mt-6">
       <div
         ref={track}
         id={`${id}-track`}
-        className="deck-track relative -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 pb-1 sm:-mx-6 sm:scroll-px-6 sm:px-6 md:gap-4 lg:mx-0 lg:scroll-px-0 lg:gap-5 lg:px-0"
+        role="list"
+        className="deck-track relative -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 pb-1 sm:-mx-6 sm:scroll-px-6 sm:px-6 md:gap-4 lg:mx-0 lg:scroll-px-0 lg:gap-5 lg:px-0 xl:grid xl:grid-cols-3 xl:overflow-visible xl:snap-none"
       >
         {items.map((s, i) => {
           const isOpen = !!open[s.slug];
@@ -112,10 +105,8 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
           return (
             <div
               key={s.slug}
-              role="group"
-              aria-roledescription="slide"
-              aria-label={`${i + 1} of ${n}: ${s.short}`}
-              className="relative flex w-[80%] shrink-0 snap-start flex-col border border-ink/15 bg-peach-50 sm:w-[44%] md:w-[calc((100%-2rem)/2.4)] lg:w-[calc((100%-2.5rem)/3.2)]"
+              role="listitem"
+              className="relative flex w-[80%] shrink-0 snap-start flex-col border border-ink/15 bg-peach-50 sm:w-[44%] md:w-[calc((100%-2rem)/2.4)] lg:w-[calc((100%-2.5rem)/3.2)] xl:w-auto xl:min-w-0 xl:shrink xl:snap-none"
             >
               <Photo id={s.image} ticks={false} compactLabel sizes="(min-width: 1024px) 30vw, (min-width: 640px) 44vw, 80vw" className="aspect-[16/10]!" />
               <div className="flex flex-1 flex-col p-4 lg:p-6">
@@ -156,7 +147,7 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
         })}
       </div>
 
-      <div className="mt-4 flex items-center justify-between gap-3 lg:mt-6">
+      <div className="mt-4 flex items-center justify-between gap-3 lg:mt-6 xl:hidden">
         <button type="button" onClick={() => go(index - 1)} disabled={atStart} aria-controls={`${id}-track`} className={btn}>
           <span className="sr-only">Previous service</span>
           <svg viewBox="0 0 12 12" className="h-3 w-3" aria-hidden="true">
