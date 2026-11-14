@@ -30,6 +30,7 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
   const [atEnd, setAtEnd] = useState(false);
   const [announce, setAnnounce] = useState("");
   const [open, setOpen] = useState<Record<string, boolean>>({});
+  const [desktopOpen, setDesktopOpen] = useState<string | null>(null);
   const n = items.length;
 
   /** Card start positions measured from the first card, so padding doesn't matter. */
@@ -101,6 +102,7 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
 
   return (
     <div role="region" aria-roledescription="carousel" aria-label="Services we do most" className="mt-5 sm:mt-6">
+      <div className="xl:hidden">
       <div
         ref={track}
         id={`${id}-track`}
@@ -196,6 +198,35 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
             <path d="M4 1l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.8" />
           </svg>
         </button>
+      </div>
+      </div>
+      <div className="hidden xl:flex xl:flex-col xl:gap-5" aria-label="Featured services">
+        {[0, 1].map((row) => (
+          <div key={row} className="flex min-h-[25rem] gap-5" role="list">
+            {items.slice(row * 3, row * 3 + 3).map((service, col) => {
+              const i = row * 3 + col;
+              const selected = desktopOpen === service.slug;
+              const detailId = `${id}-desktop-${i}`;
+              return (
+                <article key={service.slug} role="listitem" className={`relative flex min-w-0 flex-col overflow-hidden border border-ink/15 bg-peach-50 transition-[flex-grow,box-shadow] duration-300 ${selected ? "flex-[2] shadow-[0_16px_36px_rgba(25,54,39,0.16)]" : "flex-1"}`}>
+                  <Photo id={service.image} ticks={false} compactLabel sizes="(min-width: 1280px) 40vw, 33vw" className="aspect-[16/9]! shrink-0" />
+                  <div className="flex flex-1 flex-col p-5 2xl:p-6">
+                    <Title className="font-sans text-xl leading-snug font-bold text-ink 2xl:text-2xl"><Link href={`/services/${service.slug}`} className="hover:text-copper-700">{service.short}</Link></Title>
+                    <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-soft">{service.problem}</p>
+                    <div id={detailId} className={selected ? "mt-3 border-l-2 border-volt-500 pl-3 text-[0.92rem] leading-relaxed text-ink-soft" : "hidden"}>{service.lede}</div>
+                    <div className="mt-auto flex items-center justify-between gap-3 pt-4">
+                      <button type="button" aria-expanded={selected} aria-controls={detailId} onClick={() => setDesktopOpen(selected ? null : service.slug)} className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-copper-700 hover:text-ink">
+                        <span aria-hidden="true" className={`relative h-3 w-3 before:absolute before:top-1/2 before:left-0 before:h-px before:w-3 before:bg-current after:absolute after:top-0 after:left-1/2 after:h-3 after:w-px after:bg-current after:transition-transform ${selected ? "after:scale-y-0" : ""}`} />
+                        {selected ? "Collapse" : "Expand"}<span className="sr-only"> {service.short}</span>
+                      </button>
+                      <Link href={`/services/${service.slug}`} className="inline-flex min-h-11 items-center text-sm font-semibold text-ink underline decoration-volt-500 decoration-2 underline-offset-4 hover:text-copper-700">Details<span className="sr-only">: {service.name}</span> <span aria-hidden="true">&nbsp;→</span></Link>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        ))}
       </div>
       <p className="sr-only" aria-live="polite">
         {announce}
