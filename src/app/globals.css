@@ -209,6 +209,45 @@
     linear-gradient(125deg, var(--color-night-850), var(--color-night-900) 58%, var(--color-night-950));
 }
 
+/* Site-wide depth for full-width section backgrounds. Small cards keep their own fills. */
+section.bg-grid-night,
+section.bg-night-900 {
+  background-color: var(--color-night-900);
+  background-image:
+    radial-gradient(ellipse at 88% 12%, rgb(58 132 82 / 0.2), transparent 38%),
+    radial-gradient(ellipse at 4% 100%, rgb(8 38 26 / 0.46), transparent 42%),
+    linear-gradient(125deg, var(--color-night-850), var(--color-night-900) 58%, var(--color-night-950));
+}
+
+section.bg-night-950 {
+  background-color: var(--color-night-950);
+  background-image:
+    radial-gradient(ellipse at 88% 10%, rgb(58 132 82 / 0.15), transparent 38%),
+    linear-gradient(135deg, var(--color-night-900), var(--color-night-950) 72%);
+}
+
+section.bg-grid-mist,
+section.bg-mist-50 {
+  background-color: var(--color-mist-50);
+  background-image:
+    radial-gradient(ellipse at 12% 0%, rgb(255 255 255 / 0.82), transparent 42%),
+    linear-gradient(140deg, #fff9f0 0%, var(--color-mist-50) 52%, var(--color-mist-100) 100%);
+}
+
+section.bg-mist-100 {
+  background-color: var(--color-mist-100);
+  background-image:
+    radial-gradient(ellipse at 92% 8%, rgb(255 255 255 / 0.72), transparent 38%),
+    linear-gradient(135deg, #fffaf3 0%, var(--color-mist-100) 58%, #f1e4ca 100%);
+}
+
+section.bg-mist-200 {
+  background-color: var(--color-mist-200);
+  background-image:
+    radial-gradient(ellipse at 10% 0%, rgb(255 255 255 / 0.6), transparent 44%),
+    linear-gradient(140deg, var(--color-mist-100), var(--color-mist-200));
+}
+
 /* Animated current along an SVG path. Paused for reduced motion (below). */
 @utility flow {
   stroke-dasharray: 6 194;
