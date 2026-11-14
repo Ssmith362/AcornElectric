@@ -197,6 +197,43 @@
   background-color: var(--color-mist-50);
 }
 
+/* Homepage forest surfaces: soft directional light over a fine matte grain.
+   Background layers keep texture behind the content without extra elements,
+   scripts, animation or network requests. Adjacent reviews/areas share the
+   same horizontal shade; their light fades out at the shared section edge. */
+:where(
+  section[aria-labelledby="ticket-title"],
+  section[aria-labelledby="reviews-title"],
+  section[aria-labelledby="areas-title"],
+  section[aria-labelledby="careers-title"] .on-night
+) {
+  --forest-light: radial-gradient(
+    ellipse at 18% 0%,
+    rgb(58 132 82 / 0.32),
+    transparent 72%
+  );
+  background-color: var(--color-night-900);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='grain' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' seed='12' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='.06'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Cpath fill='white' filter='url(%23grain)' d='M0 0h180v180H0z'/%3E%3C/svg%3E"),
+    var(--forest-light),
+    linear-gradient(
+      90deg,
+      var(--color-night-900),
+      var(--color-night-900) 28%,
+      var(--color-night-950)
+    );
+  background-size: 180px 180px, 100% 100%, 100% 100%;
+  background-repeat: repeat, no-repeat, no-repeat;
+}
+
+section[aria-labelledby="areas-title"] {
+  --forest-light: radial-gradient(
+    ellipse at 68% 100%,
+    rgb(58 132 82 / 0.18),
+    transparent 72%
+  );
+}
+
 /* Animated current along an SVG path. Paused for reduced motion (below). */
 @utility flow {
   stroke-dasharray: 6 194;
