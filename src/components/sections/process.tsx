@@ -85,18 +85,18 @@ export function Process({ variant = "full" }: { variant?: "full" | "compact" }) 
           </div>
         </header>
 
-        <ol className="border-t border-line" data-reveal>
+        <ol className="relative grid gap-0 lg:border-t lg:border-line" data-reveal>
           {steps.map((s, i) => (
-            <li key={s.title} className="grid grid-cols-[2.6rem_1fr] gap-3.5 border-b border-line py-5 sm:py-6">
-              <span aria-hidden="true" className="pt-1.5 text-[0.7rem] font-medium tracking-[0.08em] text-copper-600">
+            <li key={s.title} className="relative -mt-px grid grid-cols-1 border border-mist-300 border-t-2 border-t-copper-500/70 bg-[#fffdf8] px-4 py-4 shadow-[0_10px_24px_rgb(20_35_26/.07)] first:mt-0 odd:mr-3 even:ml-3 lg:mt-0 lg:grid-cols-[2.6rem_1fr] lg:gap-3.5 lg:border-x-0 lg:border-t-0 lg:border-b lg:border-line lg:bg-transparent lg:px-0 lg:py-5 lg:shadow-none lg:odd:mr-0 lg:even:ml-0">
+              <span aria-hidden="true" className="hidden pt-1.5 text-[0.7rem] font-medium tracking-[0.08em] text-copper-600 lg:block">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
-                <h3 className="text-[1.55rem] leading-tight text-night-900">
+                <h3 className="text-[1.3rem] leading-tight text-night-900 lg:text-[1.55rem]">
                   <span className="sr-only">Step {i + 1}: </span>
                   {s.title}
                 </h3>
-                <p className="mt-1 max-w-[52ch] text-[0.85rem] leading-relaxed text-ink-mute">{s.body}</p>
+                <p className="mt-1 max-w-[52ch] text-[0.9rem] leading-relaxed text-ink-mute lg:text-[0.85rem]">{s.body}</p>
               </div>
             </li>
           ))}
