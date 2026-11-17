@@ -53,8 +53,8 @@ export const site = {
 
   license: {
     value: "ACORNEL752C5",
-    verified: false,
-    note: "From a third-party license listing. Verify on the WA L&I contractor lookup before launch.",
+    verified: true,
+    note: "WA L&I contractor lookup, Nov 17 2026: ACORN ELECTRIC LLC, Electrical Contractor, Active, expires 02/25/2027. Re-check before that date.",
   } as Fact<string>,
 
   /**
