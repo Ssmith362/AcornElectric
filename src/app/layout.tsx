@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { GoogleAnalytics } from "@/components/layout/google-analytics";
 import { MobileCallBar } from "@/components/layout/mobile-call-bar";
 import { RevealObserver } from "@/components/layout/reveal-observer";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <RevealObserver />
         <JsonLd data={businessSchema()} />
         <JsonLd data={websiteSchema()} />
+        <GoogleAnalytics />
       </body>
     </html>
   );
