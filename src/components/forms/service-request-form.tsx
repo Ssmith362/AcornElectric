@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRef, useState, useSyncExternalStore } from "react";
 import { SERVICE_ATTACHMENTS } from "@/lib/forms/attachments";
+import { trackLead } from "@/lib/analytics";
 import { CONTACT_METHODS, LIMITS, contactRequirements, validateInquiry, type Errors } from "@/lib/forms/rules";
 import { mailto, site, tel } from "@/lib/site";
 import { AttachmentPicker, type PickedFile } from "./attachment-picker";
@@ -92,7 +93,10 @@ export function ServiceRequestForm({
     setProgress(0);
     setState("sending");
     const res = await postForm("/api/inquiry", fd, files.length ? setProgress : undefined);
-    if (res.status === 200) return setState("sent");
+    if (res.status === 200) {
+      if (res.data.delivered === true) trackLead();
+      return setState("sent");
+    }
     if (res.status === 422 || res.status === 413) {
       const serverErrors = (res.data.errors as Errors) || { attachments: "The files couldn't be sent. Remove one and try again." };
       setErrors(serverErrors);
