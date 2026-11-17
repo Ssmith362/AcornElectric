@@ -20,6 +20,13 @@
 export const legacyRedirects = [
   { from: "/about", to: "/" },
   { from: "/book-online", to: "/contact" },
+  { from: "/portfolio", to: "/services" },
+  { from: "/portfolio-collections/my-portfolio", to: "/services" },
+  { from: "/portfolio-collections/my-portfolio/new-system-installations", to: "/services/new-home-electrical" },
+  { from: "/portfolio-collections/my-portfolio/upgrading-current-electrical-system", to: "/services/electrical-panel-upgrades" },
+  { from: "/service-page/demand-call", to: "/services/electrical-repair" },
+  { from: "/service-page/home-inspection", to: "/services/electrical-inspections" },
+  { from: "/service-page/system-upgrade", to: "/services/electrical-panel-upgrades" },
   { from: "/services/electrical-service-upgrade", to: "/services/electrical-panel-upgrades#service-upgrades" },
   { from: "/services/whole-home-surge-protection", to: "/services/electrical-inspections#surge-protection" },
   { from: "/services/grounding-and-bonding-upgrades", to: "/services/electrical-inspections#grounding-and-bonding" },
