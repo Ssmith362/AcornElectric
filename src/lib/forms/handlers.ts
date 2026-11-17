@@ -123,7 +123,7 @@ export async function handleInquiry(req: Request): Promise<Response> {
 
   if (result === "unconfigured") return json({ error: "unconfigured" }, 503);
   if (result === "failed") return json({ error: "send-failed" }, 502);
-  return json({ ok: true });
+  return json({ ok: true, delivered: true });
 }
 
 /* -------------------------------------------------------------- application */
