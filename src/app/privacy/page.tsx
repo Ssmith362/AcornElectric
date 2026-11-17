@@ -18,14 +18,15 @@ export const metadata = pageMetadata({
  *   - Rate limit: src/lib/forms/guard.ts keeps IP addresses in memory for up
  *     to 10 minutes; never saved.
  *   - Photos are re-encoded in the browser (src/lib/forms/compress-image.ts).
- *   - No analytics, ad pixels or cookies set by the site; fonts and images
- *     are self-hosted.
+ *   - Google Analytics 4 records site usage and confirmed service inquiries.
+ *     It may use cookies or similar technologies. Form contents and attachments
+ *     are not sent to Google Analytics; fonts and images are self-hosted.
  * If any of that changes (analytics, a CRM, file storage), update this page in
  * the same change. Business-policy lines (selling, retention) are Acorn's
  * statements; see docs/client-facts-checklist.md for what Eric still confirms.
  * Not legal advice.
  */
-const UPDATED = "November 13, 2026";
+const UPDATED = "November 17, 2026";
 
 export default function PrivacyPage() {
   return (
@@ -75,9 +76,11 @@ export default function PrivacyPage() {
                 logs record whether a message was sent, never what you wrote.
               </p>
               <p className="mt-3">
-                This site doesn&apos;t use analytics, advertising trackers or its own cookies. If that changes,
-                we&apos;ll update this page first. Links to Google (for reviews and our business profile) take you to
-                Google&apos;s site, where Google&apos;s privacy policy applies.
+                We use Google Analytics 4 to understand which pages people visit and whether a service request was
+                successfully emailed to us. It may use cookies or similar technologies to collect device and usage
+                information. We do not send your form answers, contact details or attachments to Google Analytics.
+                Google handles this data under its <a href="https://policies.google.com/privacy" className="underline">privacy policy</a>.
+                Links to Google for reviews and our business profile also take you to Google&apos;s site.
               </p>
             </section>
 
