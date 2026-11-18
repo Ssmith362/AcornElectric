@@ -86,7 +86,7 @@ export function AreaMap() {
           </text>
         </Link>
       </svg>
-      <figcaption className="label-mono mt-2 text-right text-[0.6rem] text-mist-400">Diagram · not to scale</figcaption>
+      
     </figure>
   );
 }
