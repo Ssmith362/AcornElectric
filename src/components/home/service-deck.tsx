@@ -13,8 +13,7 @@ export type DeckItem = { slug: string; name: string; short: string; problem: str
  * one card on phones, two on tablets, three on desktop.
  *
  * Built on CSS scroll-snap, so swiping, trackpads and shift+wheel all work
- * natively. Previous/Next buttons and a position readout drive
- * it too. Accessibility follows the APG carousel pattern: a labelled region
+ * natively. Previous/Next buttons work alongside touch and trackpad scrolling. Accessibility follows the APG carousel pattern: a labelled region
  * with aria-roledescription="carousel", each card a "slide" group labelled
  * "n of N", a polite live region announcing the position after a button
  * press, and no auto-rotation. Headings and View service link directly to the full
@@ -92,10 +91,6 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
     );
   }
 
-  const shown = Math.min(n, index + visible);
-  const number = (value: number) => String(value).padStart(2, "0");
-  const readout = visible > 1 && shown > index + 1 ? `${number(index + 1)}–${number(shown)} / ${number(n)}` : `${number(index + 1)} / ${number(n)}`;
-
   const btn =
     "flex h-11 w-11 items-center justify-center border border-ink/25 text-ink transition-colors hover:border-ink hover:bg-ink hover:text-volt-400 disabled:opacity-35 disabled:hover:border-ink/25 disabled:hover:bg-transparent disabled:hover:text-ink";
 
@@ -118,7 +113,6 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
                 <Photo id={s.image} ticks={false} compactLabel sizes="(min-width: 1024px) 30vw, (min-width: 640px) 44vw, 84vw" className="aspect-[16/11]!" />
               </Link>
               <div className="flex flex-1 flex-col p-5 lg:p-6">
-                <p aria-hidden="true" className="label-mono mb-3 text-copper-600">{number(i + 1)}</p>
                 <Title className="text-[1.7rem] leading-[1.08] font-semibold text-night-900 lg:text-[1.85rem]">
                   <Link href={`/services/${s.slug}`} className="block hover:text-copper-700">
                     {s.short}
@@ -140,9 +134,6 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
       </div>
 
       <div className="flex items-center justify-end gap-3 pt-1">
-        <p className="label-mono mr-2 text-ink-mute" aria-hidden="true">
-          {readout}
-        </p>
         <button type="button" onClick={() => go(index - 1)} disabled={atStart} aria-controls={`${id}-track`} className={btn}>
           <span className="sr-only">Previous service</span>
           <svg viewBox="0 0 12 12" className="h-3 w-3" aria-hidden="true">
