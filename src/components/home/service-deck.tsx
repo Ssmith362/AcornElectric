@@ -116,9 +116,6 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
             >
               <Link href={`/services/${s.slug}`} className="service-card-image relative block overflow-hidden" aria-label={`Explore ${s.name}`} tabIndex={-1}>
                 <Photo id={s.image} ticks={false} compactLabel sizes="(min-width: 1024px) 30vw, (min-width: 640px) 44vw, 84vw" className="aspect-[16/11]!" />
-                <span aria-hidden="true" className="absolute right-4 bottom-4 flex h-10 w-10 items-center justify-center border border-white/40 bg-night-950/70 text-white backdrop-blur-sm">
-                  <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none"><path d="M4 16 16 4M4 4h12v12" stroke="currentColor" strokeWidth="1.4" /></svg>
-                </span>
               </Link>
               <div className="flex flex-1 flex-col p-5 lg:p-6">
                 <p aria-hidden="true" className="label-mono mb-3 text-copper-600">{number(i + 1)}</p>
@@ -142,40 +139,16 @@ export function ServiceDeck({ items, titleAs: Title = "h3" }: { items: DeckItem[
         ))}
       </div>
 
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex items-center justify-end gap-3 pt-1">
+        <p className="label-mono mr-2 text-ink-mute" aria-hidden="true">
+          {readout}
+        </p>
         <button type="button" onClick={() => go(index - 1)} disabled={atStart} aria-controls={`${id}-track`} className={btn}>
           <span className="sr-only">Previous service</span>
           <svg viewBox="0 0 12 12" className="h-3 w-3" aria-hidden="true">
             <path d="M8 1L3 6l5 5" fill="none" stroke="currentColor" strokeWidth="1.8" />
           </svg>
         </button>
-        <div className="flex items-center gap-3">
-          <ol className="flex items-center" aria-label="Choose a service card">
-            {items.map((s, i) => {
-              const inView = i >= index && i < index + visible;
-              return (
-                <li key={s.slug}>
-                  <button
-                    type="button"
-                    onClick={() => go(i)}
-                    aria-controls={`${id}-track`}
-                    aria-current={i === index ? "true" : undefined}
-                    className="flex h-11 w-6 items-center justify-center sm:w-9"
-                  >
-                    <span className="sr-only">Show {s.short}</span>
-                    <span
-                      aria-hidden="true"
-                      className={`block h-px w-5 transition-colors duration-200 sm:w-8 ${inView ? "bg-copper-600" : "bg-ink/20"}`}
-                    />
-                  </button>
-                </li>
-              );
-            })}
-          </ol>
-          <p className="label-mono min-w-[3.6rem] text-right text-ink-mute" aria-hidden="true">
-            {readout}
-          </p>
-        </div>
         <button type="button" onClick={() => go(index + 1)} disabled={atEnd} aria-controls={`${id}-track`} className={btn}>
           <span className="sr-only">Next service</span>
           <svg viewBox="0 0 12 12" className="h-3 w-3" aria-hidden="true">
