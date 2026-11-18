@@ -13,11 +13,11 @@ export type DeckItem = { slug: string; name: string; short: string; problem: str
  * one card on phones, two on tablets, three on desktop.
  *
  * Built on CSS scroll-snap, so swiping, trackpads and shift+wheel all work
- * natively. Previous/Next buttons, dot buttons and a position readout drive
+ * natively. Previous/Next buttons and a position readout drive
  * it too. Accessibility follows the APG carousel pattern: a labelled region
  * with aria-roledescription="carousel", each card a "slide" group labelled
  * "n of N", a polite live region announcing the position after a button
- * press, and no auto-rotation. Headings and Details link directly to the full
+ * press, and no auto-rotation. Headings and View service link directly to the full
  * service pages. Nothing depends on hover. `titleAs` sets the card heading
  * level for the outline.
  */
