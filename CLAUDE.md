@@ -80,3 +80,4 @@ circuit-trace diagram restyled to Option 4), careers teaser, and the request for
 - No aggregateRating/review schema for Acorn's own reviews.
 - WA contractor license number shown in header and footer.
 - Before launch, map every indexed URL of the old site in `legacyRedirects`.
+- Sitemap `lastmod` comes from `src/content/last-modified.ts` (real dates, not build time). Bump a group's date in the same commit that changes those pages.
